@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+</head>
+<body>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<div class="dropdown" style="float: inherit;">
+      <li class="Education"><a href="#Education" >Education</a></li>
+<div class="dropdown-content">
+      <a href="#Learning" id="comingSoon1">Learning</a>
+      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+      <a href="#Updates" id="comingSoon3">Updates</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
+<div class="dropdown-content2">
+        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+        <a href="#Policies" id="comingSoon5">Policies</a>
+        <a href="#Documents" id="comingSoon6">Documents</a>
+        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+</div>
+</div>
+
+<div class="dropdown2" style="float: inherit;">
+    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
+<div class="dropdown-content2">
+        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+        <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+        <a href="#CSSD" id="comingSoon12">CSSD</a>
+        <a href="#Loan" id="comingSoon13">Loan</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
+<div class="dropdown-content2">
+        <a href="#Audit" id="comingSoon14">Audit</a>
+        <a href="#Statistics" id="comingSoon15">Statistics</a>
+        <a href="#Ejada" id="comingSoon16">Ejada</a>
+        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
+<div class="dropdown-content2"id="NursingHR">
+        <a href="Personal Data list.html">Personal Data and Training Records</a>
+        <a href="DashboardMain.html">Dashboard</a>
+        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+        <a href="#Other" id="comingSoon21">Other</a>
+
+</div></div>
+
+<!-- Admin Control (مخفي افتراضياً) -->
+<div class="dropdown2"  id="adminControlMenu">
+  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div></div>
+
+
+</div>
+
+    <li><a href="About.html">About Me</a></li>
+
+<!-- زر Account -->
+<li style="float: right; margin-left: 10px; position:relative;">
+  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+
+</ul>
+</nav>
+    </ul>
+</nav>
+
+
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+</script>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>PEDIATRIC HIGH DEPENDENCY UNIT</h1>
+    <small>Committed to Excellence in Care</small>
+  </div>
+
+  <!-- Row 1 -->
+  <div class="row" style="margin-top:1px">
+    <!-- Staffing -->
+    <div>
+      <div class="section-title">Staffing</div>
+      <div class="grid grid-2">
+        <div class="card stat"style="height: 6rem;">
+          <div class="badge" style="background:#fef3c7;color:#b45309">🛏️</div>
+          <div class="info"><span class="muted">Bed Capacity</span><b id="bedCap">-</b></div>
+        </div>
+        <div class="card stat"style="height: 6rem;">
+          <div class="badge" style="background:#ede9fe;color:#6d28d9">👥</div>
+          <div class="info"><span class="muted">Staff Needed</span><b id="need">-</b></div>
+        </div>
+        <div class="card stat"style="height: 6rem;">
+          <div class="badge" style="background:#dcfce7;color:#166534">✅</div>
+          <div class="info"><span class="muted">Current Staff</span><b id="current">-</b></div>
+        </div>
+        <div class="card stat" style="height: 6rem;">
+          <div class="badge" style="background:#fee2e2;color:#b91c1c">⚠️</div>
+          <div class="info"><span class="muted">Deficit</span><b id="deficit">-</b></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nationality -->
+    <div>
+      <div class="section-title" style="font-size:12px; padding:6px 10px;">Nationality</div>
+      <div class="card" style="padding:8px; height:200px; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;">
+        <canvas id="natChart" height="150" style="display:block; max-width:100%;"></canvas>
+        <div class="legend" style="margin-top:1rem; gap:6px; font-size:9px; display:flex; justify-content:center;">
+          <span><i style="background:#f59e0b; width:3px; height:3px;"></i> Omani</span>
+          <span><i style="background:#9ca3af; width:3px; height:3px;"></i> Non-Omani</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualification -->
+    <div>
+      <div class="section-title">Qualification</div>
+      <div class="card">
+        <canvas id="qualChart" height="180"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="row" style="margin-top:6px">
+    <!-- Experience -->
+    <div>
+      <div class="section-title">Level of Experience</div>
+      <div class="card">
+        <canvas id="expChart" height="135"></canvas>
+      </div>
+    </div>
+
+<!-- Gender -->
+  <div>
+    <div class="section-title">Gender</div>
+    <div class="card gender-card" style="height:200px"> <!-- نفس الارتفاع -->
+      <div class="gender-item">
+        <canvas id="genderF" width="80" height="80"></canvas>
+        <b id="pctF">0%</b>
+        <span class="muted">Female</span>
+      </div>
+      <div class="gender-item">
+        <canvas id="genderM" width="80" height="80"></canvas>
+        <b id="pctM">0%</b>
+        <span class="muted">Male</span>
+      </div>
+    </div>
+  </div>
+
+   <!-- Contract -->
+  <div>
+    <div class="section-title">Contract Type</div>
+    <div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:6px;align-items:center; height:200px"> <!-- نفس الارتفاع -->
+      <div style="text-align:center">
+        <div class="cyl">
+          <div class="top"></div>
+          <div class="fill" id="tempFill" style="height:0%"></div>
+          <div class="pct" id="tempPct">0%</div>
+        </div>
+        <div style="margin-top:6px;font-weight:600;font-size:12px">Temporary</div>
+      </div>
+      <div style="text-align:center">
+        <div class="cyl">
+          <div class="top"></div>
+          <div class="fill" id="permFill" style="height:0%;background:linear-gradient(#fb923c,#ea580c)"></div>
+          <div class="pct" id="permPct">0%</div>
+        </div>
+        <div style="margin-top:6px;font-weight:600;font-size:12px">Permanent</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?gid=0&single=true&output=csv";
+
+  let female = 0, male = 0, omani = 0, nonOmani = 0;
+
+  function computePercents(a,b){ 
+    const total = a + b; 
+    return total === 0 ? {a:0,b:0} : {a:Math.round(a/total*100), b:Math.round(b/total*100)}; 
+  }
+
+  Papa.parse(csvUrl, { 
+    download:true, header:true, skipEmptyLines:true,
+    complete:function(res){
+      // تنظيف أسماء الأعمدة
+      const rows = res.data.map(row => {
+        const cleanRow = {};
+        Object.keys(row).forEach(k => {
+          const cleanKey = k.replace(/"/g,'').trim();
+          cleanRow[cleanKey] = row[k];
+        });
+        return cleanRow;
+      });
+
+      if(!rows.length) return console.error("CSV فارغ");
+
+      // مفاتيح الأعمدة
+      const genderKey = "Gender";
+      const nationKey = "Nationality";
+      const expKey = "Experinse in Royal hospital";
+      const contractKey = "Type of Employment";
+      const qualKey = "Qualification";
+      const bedKey = "Bed Capacity";
+      const needKey = "Staff Needed";
+
+      // Staffing
+      const currentStaff = rows.filter(r => Object.values(r).some(v => v && v.trim() !== "")).length;
+      const bedCap = parseInt(rows[0][bedKey] || 12, 10);
+      const staffNeeded = parseInt(rows[0][needKey] || 42, 10);
+      document.getElementById('bedCap').textContent = bedCap;
+      document.getElementById('need').textContent = staffNeeded;
+      document.getElementById('current').textContent = currentStaff;
+      const deficit = currentStaff - staffNeeded;
+      const defEl = document.getElementById('deficit'); 
+      defEl.textContent = deficit; 
+      defEl.style.color = deficit < 0 ? '#b91c1c' : '#16a34a';
+
+      // Gender & Nationality
+      rows.forEach(r => {
+        const g = (r[genderKey] || '').toLowerCase().trim(); 
+        if(g === 'female') female++; 
+        else if(g === 'male') male++;
+
+        const n = (r[nationKey] || '').toLowerCase().trim(); 
+        if(n === 'omani') omani++; 
+        else if(n !== '') nonOmani++;
+      });
+
+      const pg = computePercents(female, male);
+      const pn = computePercents(omani, nonOmani);
+
+      function create3DChart(canvas, percent, color, elId){
+        const ctx = canvas.getContext('2d');
+        const radius = canvas.width/2;
+        const grad = ctx.createRadialGradient(radius, radius, radius*0.1, radius, radius, radius);
+        grad.addColorStop(0, color); grad.addColorStop(0.7, color+'CC'); grad.addColorStop(1, color+'88');
+        let current = 0;
+        const chart = new Chart(canvas,{
+          type:'doughnut',
+          data:{datasets:[{data:[0,100],backgroundColor:[grad,'#e5e7eb'],borderWidth:0}]},
+          options:{responsive:false,cutout:'70%',plugins:{legend:{display:false},tooltip:{enabled:false}}}
+        });
+        const step = () => {
+          if(current < percent){
+            current++; 
+            chart.data.datasets[0].data[0] = current; 
+            chart.data.datasets[0].data[1] = 100 - current; 
+            chart.update(); 
+            document.getElementById(elId).textContent = current + '%'; 
+            requestAnimationFrame(step);
+          }
+        }; 
+        requestAnimationFrame(step);
+      }
+
+      create3DChart(document.getElementById('genderF'), pg.a, '#ec4899', 'pctF');
+      create3DChart(document.getElementById('genderM'), pg.b, '#3b82f6', 'pctM');
+
+      const natChartCtx = document.getElementById('natChart').getContext('2d');
+      new Chart(natChartCtx,{
+        type:'doughnut',
+        data:{labels:['Omani','Non-Omani'],datasets:[{data:[pn.a, 100 - pn.a],backgroundColor:['#f59e0b','#9ca3af']}]},
+        options:{cutout:'50%',responsive:false,plugins:{legend:{display:false}}}
+      });
+
+      // Qualification
+      let dgn=0, bsn=0, ms=0, phd=0, qualTotal=0;
+      rows.forEach(r=>{
+        const q = (r[qualKey] || "").trim().toUpperCase();
+        if(!q) return;
+        qualTotal++;
+        if(q.includes("DGN") || q.includes("DIP")) dgn++;
+        else if(q.includes("BSN") || q.includes("BSCN")) bsn++;
+        else if(q.includes("MS") || q.includes("MSC")) ms++;
+        else if(q.includes("PHD")) phd++;
+      });
+      const qualData = [
+        Math.round(dgn/qualTotal*100),
+        Math.round(bsn/qualTotal*100),
+        Math.round(ms/qualTotal*100),
+        Math.round(phd/qualTotal*100)
+      ];
+      new Chart(document.getElementById('qualChart'),{
+        type:'bar',
+        data:{labels:['DGN','BSN','MS','PHD'],datasets:[{data:qualData,backgroundColor:['#60a5fa','#3b82f6','#10b981','#f59e0b'],borderRadius:8}]},
+        options:{plugins:{legend:{display:false},tooltip:{callbacks:{label: ctx=>ctx.raw+'%'}}},scales:{x:{grid:{display:false}},y:{grid:{color:'#eef2ff'},suggestedMax:100,ticks:{callback:v=>v+'%'}}}}
+      });
+
+      // Experience
+      const expRanges = [
+        {label: "0–1 year", min: 0, max: 1},
+        {label: "2–5 years", min: 2, max: 5},
+        {label: "6–10 years", min: 6, max: 10},
+        {label: "More than 10 years", min: 11, max: Infinity}
+      ];
+      const expCounts = {"0–1 year":0,"2–5 years":0,"6–10 years":0,"More than 10 years":0};
+      let validExpCount = 0;
+      rows.forEach(r => {
+        const raw = String(r[expKey]||'').trim();
+        let years=0, months=0;
+        let match = raw.match(/(\d+)\s*years?\s*(\d+)?\s*months?/i);
+        if(match){ years = parseInt(match[1],10); months = match[2]?parseInt(match[2],10):0; }
+        else { match = raw.match(/(\d+)\s*years?/i); if(match) years = parseInt(match[1],10); }
+        if(years || months){
+          const totalYears = years + months/12;
+          validExpCount++;
+          for(const range of expRanges){
+            if(totalYears >= range.min && totalYears <= range.max){
+              expCounts[range.label]++;
+              break;
+            }
+          }
+        }
+      });
+      const expLabels = expRanges.map(r => r.label);
+      const expValues = expLabels.map(l => expCounts[l]);
+      const expPercentages = expValues.map(v => validExpCount===0?0:Math.round(v*100/validExpCount));
+      new Chart(document.getElementById("expChart").getContext("2d"),{
+        type:'bar',
+        data:{
+          labels: expLabels,
+          datasets:[{
+            label: 'Experience %',
+            data: expPercentages,
+            backgroundColor: ["#4f46e5","#3b82f6","#10b981","#f59e0b"],
+            borderRadius: 12,
+            barThickness: 60
+          }]
+        },
+        options:{
+          responsive:true,
+          plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`${ctx.parsed.y}% (${expValues[ctx.dataIndex]} staff)`}} },
+          scales:{
+            y:{beginAtZero:true,title:{display:true,text:"Percentage (%)"},ticks:{callback:v=>v+'%'}},
+            x:{title:{display:true,text:"Level of Experience" }}
+
+          }
+        }
+      });
+
+      // Contract
+      let tempCount=0, permCount=0;
+      rows.forEach(r=>{
+        const val = (r[contractKey]||'').toLowerCase().trim();
+        if(val.includes("temporary")) tempCount++;
+        else if(val.includes("permanent")) permCount++;
+      });
+      const totalContract = tempCount + permCount || 1;
+      const tempFinal = Math.round((tempCount/totalContract)*100);
+      const permFinal = Math.round((permCount/totalContract)*100);
+      const cylHeight = 90, innerHeight = cylHeight - 18;
+      let tempPct = 0, permPct = 0;
+      function animateContract(){
+        if(tempPct < tempFinal || permPct < permFinal){
+          if(tempPct < tempFinal) tempPct++;
+          if(permPct < permFinal) permPct++;
+          document.getElementById('tempFill').style.height = (innerHeight * tempPct / 100) + 'px';
+          document.getElementById('permFill').style.height = (innerHeight * permPct / 100) + 'px';
+          document.getElementById('tempPct').textContent = tempPct + '%';
+          document.getElementById('permPct').textContent = permPct + '%';
+          requestAnimationFrame(animateContract);
+        }
+      }
+      animateContract();
+
+    },
+    error:function(err){ console.error("CSV load error:",err);}
+  });
+});
+</script>
+
+
+
+
+
+
+
+</section>
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+
+</section>
+
+
+</body>
+</html>
+
+<head>
+  <style>
+    :root{
+      --bg:#f3f4f6;
+      --panel:#ffffff;
+      --title:#1f2937;
+      --muted:#6b7280;
+      --brand:#9333ea;
+      --brand-2:#f59e0b;
+      --ok:#16a34a;
+      --warn:#ef4444;
+      --shadow:0 6px 12px rgba(0,0,0,.05);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Poppins',system-ui,Roboto;background:var(--bg);color:#111827;font-size:13px}
+    .container{max-width:1100px;margin:20px auto;padding:0 12px}
+    .header{background:linear-gradient(180deg,#fde68a20,#fff);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 14px 8px;text-align:center;border:1px solid #e5e7eb}
+    .header h1{margin:0;font-size:20px;letter-spacing:.3px}
+    .header small{display:block;margin-top:4px;color:#b45309;font-weight:600;font-size:12px}
+    .section-title{display:flex;align-items:center;gap:6px;font-weight:700;color:var(--title);background:#eef2ff;border:1px solid #e5e7eb;padding:6px 10px;border-radius:10px;margin:16px 0 8px;font-size:12px}
+    .grid{display:grid;gap:10px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .card{background:var(--panel);border-radius:var(--radius);box-shadow:var(--shadow);padding:10px;border:1px solid #e5e7eb;font-size:12px}
+    .stat{display:flex;align-items:center;gap:8px}
+    .stat .badge{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:16px}
+    .stat .info b{font-size:20px;display:block}
+    .muted{color:var(--muted);font-size:11px}
+    .xp-row{display:flex;align-items:center;gap:8px;margin:6px 0}
+    .xp-row .bar{flex:1;height:10px;background:#eef2ff;border-radius:999px;overflow:hidden;border:1px solid #e5e7eb}
+    .xp-row .bar > span{display:block;height:100%;background:linear-gradient(90deg,#6366f1,#8b5cf6)}
+    .xp-row b{font-size:11px}
+    .cyl{width:70px;height:90px;background:linear-gradient(#f3f4f6,#d1d5db);border-radius:40px/14px;position:relative;margin-inline:auto;border:1px solid #cbd5e1;box-shadow:inset 0 4px 8px rgba(0,0,0,.06)}
+    .cyl .fill{position:absolute;left:4px;right:4px;bottom:6px;border-radius:20px 20px 10px 10px;background:linear-gradient(#a78bfa,#7c3aed);box-shadow:inset 0 6px 12px rgba(0,0,0,.15)}
+    .cyl .top{position:absolute;left:4px;right:4px;height:12px;top:-6px;border-radius:50px;background:radial-gradient(circle at 50% 35%,#fff,#e5e7eb)}
+    .cyl .pct{position:absolute;inset:0;display:grid;place-items:center;font-weight:700;font-size:12px}
+    .row{display:grid;grid-template-columns:1.2fr .9fr .9fr;gap:10px}
+    @media (max-width:1050px){.row{grid-template-columns:1fr}}
+    .legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+    .legend span{display:flex;align-items:center;gap:4px;font-size:11px}
+    .legend i{display:inline-block;width:10px;height:10px;border-radius:3px}
+    /* Gender container */
+    .gender-card{display:flex; justify-content:center; gap:30px; align-items:center; height:140px;}
+    .gender-item{text-align:center;}
+    .gender-item b{display:block;margin-top:4px; font-size:14px;}
+  </style>

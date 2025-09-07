@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+</head>
+<body>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<div class="dropdown" style="float: inherit;">
+      <li class="Education"><a href="#Education" >Education</a></li>
+<div class="dropdown-content">
+      <a href="#Learning" id="comingSoon1">Learning</a>
+      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+      <a href="#Updates" id="comingSoon3">Updates</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
+<div class="dropdown-content2">
+        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+        <a href="#Policies" id="comingSoon5">Policies</a>
+        <a href="#Documents" id="comingSoon6">Documents</a>
+        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+</div>
+</div>
+
+<div class="dropdown2" style="float: inherit;">
+    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
+<div class="dropdown-content2">
+        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+        <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+        <a href="#CSSD" id="comingSoon12">CSSD</a>
+        <a href="#Loan" id="comingSoon13">Loan</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
+<div class="dropdown-content2">
+        <a href="#Audit" id="comingSoon14">Audit</a>
+        <a href="#Statistics" id="comingSoon15">Statistics</a>
+        <a href="#Ejada" id="comingSoon16">Ejada</a>
+        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
+<div class="dropdown-content2"id="NursingHR">
+        <a href="Personal Data list.html">Personal Data and Training Records</a>
+        <a href="DashboardMain.html">Dashboard</a>
+        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+        <a href="#Other" id="comingSoon21">Other</a>
+
+</div></div>
+
+<!-- Admin Control (مخفي افتراضياً) -->
+<div class="dropdown2"  id="adminControlMenu">
+  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div></div>
+
+
+</div>
+
+    <li><a href="About.html">About Me</a></li>
+
+<!-- زر Account -->
+<li style="float: right; margin-left: 10px; position:relative;">
+  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+
+</ul>
+</nav>
+    </ul>
+</nav>
+
+
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+</script>
+
+
+
+
+<section style="text-align: center; margin-top: 2rem;"><h1>Employee Directory</h1></section>
+
+<div class="toolbar">
+  <input id="search" type="text" placeholder="Search by Staff Number, Name, Designation, or Phone..." />
+</div>
+
+<div class="container">
+  <div id="spinner" class="spinner"></div>
+  <div id="grid" class="grid"></div>
+  <div id="empty" class="empty" style="display:none">No results found.</div>
+</div>
+
+<!-- Password Modal (نفس الموجود في كودك الأصلي) -->
+<div id="passwordModal" class="modal-overlay">
+  <div class="modal-box">
+    <h3>Enter Password</h3>
+    <input type="password" id="passwordInput" placeholder="Password" />
+    <br>
+    <button id="submitPassword">Submit</button>
+    <button onclick="closeModal('passwordModal')">Cancel</button>
+  </div>
+</div>
+
+<!-- Dashboard Modal — التصميم كما طلبت (محافظ على ستايلك) -->
+<div id="dashboardModal">
+  <div class="modal">
+    <span class="close-btn" onclick="closeModal('dashboardModal')">&times;</span>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>My Data</h2>
+      <div class="profile">
+        <!-- هذه العناصر لها IDs لملئها ديناميكياً -->
+        <img id="dashPhoto" src="https://i.pravatar.cc/150?img=8" alt="Employee">
+        <h3 id="dashName">John Williams</h3>
+        <p id="dashDesignation">Software Engineer</p>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <div class="main">
+      <header>
+        <div>Employee / Employee Detail</div>
+        <div class="user">
+          <span id="dashNameHeader">John Williams</span>
+          <img id="dashPhotoHeader" src="https://i.pravatar.cc/150?img=8" alt="user">
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="tabs" role="tablist" aria-label="Employee tabs">
+          <div class="tab active" data-tab="personal">Personal Information</div>
+          <div class="tab" data-tab="address">Address</div>
+          <div class="tab" data-tab="emergency">Emergency Contact</div>
+          <div class="tab" data-tab="employment">Employment Details</div>
+          <div class="tab" data-tab="education">Education & Qualification</div>
+          <div class="tab" data-tab="health">Health Information</div>
+          <div class="tab" data-tab="certificates">Certificates & Courses</div>
+        </div>
+
+        <!-- Tab contents (فارغة الآن، سيتم تعبئتها ديناميكياً) -->
+        <div id="personal" class="tab-content active">
+          <div class="card">
+            <h3><i class="fa-solid fa-user"></i> Basic Information</h3>
+            <div id="personalInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="address" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-map-marker-alt"></i> Address</h3>
+            <div id="addressInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="emergency" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-phone-volume"></i> Emergency Contact</h3>
+            <div id="emergencyInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="employment" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-id-badge"></i> Employment Information</h3>
+            <div id="employmentInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="education" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-graduation-cap"></i> Education & Qualification</h3>
+            <div id="educationInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="health" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-heart-pulse"></i> Health Information</h3>
+            <div id="healthInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+        <div id="certificates" class="tab-content">
+          <div class="card">
+            <h3><i class="fa-solid fa-award"></i> Certificates & Courses</h3>
+            <div id="certificatesInfo" class="info-grid"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PapaParse -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
+/* ============ إعداد قراءة الشيت ============ */
+const userSheetLink = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pubhtml?gid=0&single=true";
+const correctPassword = "1234";
+let selectedEmployeeIndex = null;
+let selectedEmployee = null;
+let data = [];
+
+function toCsvUrl(link){
+  try{
+    let url = new URL(link);
+    url.pathname = url.pathname.replace(/\/pubhtml$/, '/pub');
+    url.searchParams.set('output','csv');
+    return url.toString();
+  }catch(e){ return link; }
+}
+const CSV_URL = toCsvUrl(userSheetLink);
+
+/* دوال مساعدة لقراءة الأعمدة باحكام */
+function getField(emp, keys){
+  for(const key of Object.keys(emp||{})){
+    const cleanKey = key.replace(/["]/g,'').trim().toLowerCase();
+    for(const k of keys){
+      if(cleanKey === k.toLowerCase() && emp[key]) return String(emp[key]).trim();
+    }
+  }
+  return '';
+}
+
+function getValue(emp, colNameKeywords){
+  if(!emp) return '';
+  if(!Array.isArray(colNameKeywords)) colNameKeywords = [colNameKeywords];
+  for (const key of Object.keys(emp)) {
+    const cleanKey = key.replace(/["]/g,'').trim().toLowerCase();
+    for (const kw of colNameKeywords) {
+      const cleanKw = kw.toLowerCase();
+      if (cleanKey.includes(cleanKw)) return emp[key] || '';
+    }
+  }
+  return '';
+}
+
+/* ============ رندر قائمة الموظفين ============ */
+const gridEl = document.getElementById('grid');
+const emptyEl = document.getElementById('empty');
+const spinnerEl = document.getElementById('spinner');
+const searchEl = document.getElementById('search');
+
+function render(list){
+  gridEl.innerHTML = '';
+  if(!list || !list.length){ emptyEl.style.display = 'block'; return; }
+  emptyEl.style.display = 'none';
+  list.forEach(r=>{
+    const origIdx = data.indexOf(r);
+    const staffNumber = getField(r, ["Staff Number","staff number","Staff_Number","ID"]);
+    const staffName   = getField(r, ["Staff Name","staff name","Name"]);
+    const designation = getField(r, ["Designation","Job Title","Position"]);
+    const phone       = getField(r, ["Phone Number","Phone","Mobile"]);
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="name">${staffName||'—'}</div>
+      <div class="row"><span class="label">Staff Number:</span> ${staffNumber||'—'}</div>
+      <div class="row"><span class="label">Designation:</span> ${designation||'—'}</div>
+      <div class="row"><span class="label">Phone:</span> ${phone||'—'}</div>
+    `;
+    card.onclick = ()=>{
+      selectedEmployeeIndex = origIdx;
+      selectedEmployee = {...data[origIdx]};
+      openModal('passwordModal');
+      setTimeout(()=>{ const pi = document.getElementById('passwordInput'); if(pi) pi.focus(); }, 50);
+    };
+    gridEl.appendChild(card);
+  });
+}
+
+function applySearch(){
+  const q = (searchEl.value||'').trim().toLowerCase();
+  const filtered = data.filter(r=>{
+    return getField(r, ["Staff Number","staff number"]).toLowerCase().includes(q) ||
+           getField(r, ["Staff Name","staff name"]).toLowerCase().includes(q) ||
+           getField(r, ["Designation","Job Title","Position"]).toLowerCase().includes(q) ||
+           getField(r, ["Phone Number","Phone","Mobile"]).toLowerCase().includes(q);
+  });
+  render(q?filtered:data);
+}
+searchEl.addEventListener('input', applySearch);
+
+/* تحميل البيانات عبر PapaParse */
+function load(){
+  spinnerEl.classList.add('show');
+  Papa.parse(CSV_URL,{
+    download:true,header:true,skipEmptyLines:true,
+    complete:res=>{
+      spinnerEl.classList.remove('show');
+      data = res.data||[];
+      render(data);
+    },
+    error:err=>{
+      spinnerEl.classList.remove('show');
+      emptyEl.innerText = 'Failed to load data.';
+      emptyEl.style.display = 'block';
+    }
+  });
+}
+document.addEventListener('DOMContentLoaded', load);
+
+/* ============ فتح/إغلاق النوافذ ============ */
+function openModal(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.add('show');
+}
+
+function closeModal(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.classList.remove('show');
+
+  if(id === 'passwordModal'){
+    const pi = document.getElementById('passwordInput');
+    if(pi) pi.value = '';
+  }
+
+  if(id === 'dashboardModal'){
+    location.reload(); // إعادة تحميل الصفحة بالكامل
+  }
+}
+
+/* ============ التحقق من الباسورد ============ */
+document.getElementById('submitPassword').addEventListener('click', ()=>{
+  const pwd = (document.getElementById('passwordInput').value || '').trim();
+  if(selectedEmployeeIndex === null || selectedEmployeeIndex === undefined){
+    alert('No employee selected. Please click a card first.');
+    return;
+  }
+  if(pwd === correctPassword){
+    const emp = data[selectedEmployeeIndex];
+    if(!emp){ alert('Selected employee not found (data changed).'); return; }
+    showDashboard(emp);
+    closeModal('passwordModal');
+  } else {
+    alert("Incorrect password!");
+  }
+});
+
+const pwdInputEl = document.getElementById('passwordInput');
+if(pwdInputEl){
+  pwdInputEl.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter') document.getElementById('submitPassword').click();
+  });
+}
+
+/* ============ تعبئة بيانات الداشبورد ============ */
+function showDashboard(emp){
+  if(!emp) return alert('No employee selected.');
+
+  const name = getField(emp, ["Staff Name","Name"]) || '—';
+  const designation = getField(emp, ["Designation","Job Title","Position"]) || '—';
+  const photo = getValue(emp, ['Photo','photo']) || '';
+
+  document.getElementById('dashPhoto').src = photo || 'Media/faceless-portrait-nurse-isolated-vector-illustration_7504-679.avif';
+  document.getElementById('dashPhotoHeader').src = photo || 'Media/faceless-portrait-nurse-isolated-vector-illustration_7504-679.avif';
+  document.getElementById('dashName').innerText = name;
+  document.getElementById('dashNameHeader').innerText = name;
+  document.getElementById('dashDesignation').innerText = designation;
+
+  fillInfo('personalInfo',[
+    'Staff Number','Staff Name','DOB','Age','Gender','Marital Status','Nationality','Country','cvill number','phone number','Email'
+  ], emp);
+
+  fillInfo('addressInfo',[
+    'Current Address','Permanent Address','Way of Commuting to Work','Time from Home to Hospital','Driving Status'
+  ], emp);
+
+  fillInfo('emergencyInfo',[
+    'Phone Number','contact number of next of Kin','Contact Number of Next of Kin'
+  ], emp);
+
+  fillInfo('employmentInfo',[
+    'Type of Employment','Date of Joining Royal Hospital','Experinse in Royal hospital','Date of Appointment in MOH','Experinse in MOH','Designation','Actual Position in Hospital','Department','Section','Unit','Finance Grade','Last Promotion Date','Type of Contract','Date of Contract Start','Date of Contract End','INP RH'
+  ], emp);
+
+  fillInfo('educationInfo',[
+    'Qualification','Year Obtained Nursing Certificate','Do you have Specialty?','what Specialty you have?','MOH registration number ?'
+  ], emp);
+
+  fillInfo('healthInfo',[
+    'Do you have chronic illness ?','if yes pls list it down'
+  ], emp);
+
+  fillInfo('certificatesInfo',[
+    'Date of Last BLS Certificate','Date of Last PALS Certificate','IV therapy','Pain management','Patient Safety','Aggression Course','Lean Management','BFHI','infection control Hakeem theory','infection control Hakeem Practice','ECG','Manual handling','chemotherapy course theory','chemotherapy course practice','central line course','Practice central line','leadership management','preceptorship course','ethical course','communication course','Niv course','transporting critical ill pt','care of arterial line','peritoneal Dialysis','Other Courses'
+  ], emp);
+
+  openModal('dashboardModal');
+}
+
+/* دالة مساعدة لتعبئة الحقول */
+function fillInfo(containerId, fields, emp){
+  const cont = document.getElementById(containerId);
+  if(!cont) return;
+  cont.innerHTML = '';
+  fields.forEach(f=>{
+    const val = getValue(emp, f) || '—';
+    cont.innerHTML += `<div class="info-item"><b>${f}:</b> ${val}</div>`;
+  });
+}
+
+/* تبويبات داخل المودال */
+document.addEventListener('click', e=>{
+  if(e.target.classList && e.target.classList.contains('tab')){
+    document.querySelectorAll('#dashboardModal .tab').forEach(t=>t.classList.remove('active'));
+    e.target.classList.add('active');
+    document.querySelectorAll('#dashboardModal .tab-content').forEach(c=>c.classList.remove('active'));
+    const id = e.target.dataset.tab;
+    document.getElementById(id).classList.add('active');
+  }
+});
+
+/* إغلاق الداشبورد عند النقر خارج الصندوق */
+document.getElementById('dashboardModal').addEventListener('click', (e)=>{
+  if(e.target === document.getElementById('dashboardModal')){
+    closeModal('dashboardModal');
+  }
+});
+
+/* دعم زر X لإغلاق الداشبورد */
+document.querySelectorAll('.close-dashboard').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    closeModal('dashboardModal');
+  });
+});
+</script>
+
+
+
+
+</section>
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 40px; font-family: Arial, sans-serif; margin-top: 6rem;" >
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+
+
+
+
+</body>
+</html>
+
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+:root{
+  --bg:#f0f2f5; --card:#ffffff; --text:#222; --muted:#6b7280; --primary:#2563eb;
+  --shadow:0 6px 18px rgba(0,0,0,.12); --accent:#1e40af;
+  --shadow-color: rgba(0,0,0,0.15);
+}
+
+/* ============ Layout الأساسي (الكود الأصلي متحافظ عليه) ============ */
+*{box-sizing:border-box}
+
+
+h1{margin:0 0 8px;font-size:clamp(20px,3vw,28px)}
+
+.toolbar{display:flex;justify-content:center;margin:18px auto;padding:0 16px}
+.toolbar input{width:min(640px,90vw);padding:10px;border-radius:10px;border:1px solid #ddd;font-size:14px}
+
+.container{max-width:1100px;margin:0 auto;padding:0 16px 40px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(240px,1fr));gap:16px}
+.card{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--shadow);cursor:pointer;transition:.2s;text-align:center}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.15)}
+.name{font-weight:700;font-size:14px;color:var(--primary);margin-bottom:6px}
+.row{margin:4px 0;font-size:12px}
+.label{font-weight:600}
+
+.empty{text-align:center;margin:24px;color:var(--muted)}
+.spinner{display:none;justify-content:center;align-items:center;margin:24px 0}
+.spinner.show{display:flex}
+.spinner:after{content:"";width:28px;height:28px;border:3px solid #cbd5e1;border-top-color:var(--primary);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ============ Password Modal (من الكود الأصلي) ============ */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;justify-content:center;align-items:center;z-index:1000;
+}
+.modal-overlay.show{display:flex}
+.modal-box{
+  background:#fff;padding:20px;border-radius:12px;width:90%;max-width:400px;text-align:center;box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+.modal-box h3{margin-top:0;color:var(--primary);text-align:center;}
+.modal-box input{width:80%;padding:8px;margin:10px 0;border:1px solid #ccc;border-radius:6px}
+.modal-box button{margin:8px;padding:8px 16px;border:none;border-radius:6px;background:var(--primary);color:#fff;cursor:pointer}
+.modal-box button:hover{background:var(--accent);}
+
+/* ============ Dashboard Modal (ستايلك المفضل) ========
+   أسندت كل قواعد المودال هذه إلى #dashboardModal حتى لا تتداخل مع بقية CSS
+===================================================== */
+#dashboardModal {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  background: rgba(0,0,0,0.6); display:none; justify-content:center; align-items:center; z-index:2000;
+}
+#dashboardModal.show { display:flex; }
+
+#dashboardModal .modal {
+  background: var(--card);
+  width: 90%;
+  max-width: 1100px;
+  max-height: 90vh;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px var(--shadow-color);
+  position: relative;
+}
+
+/* Close button */
+#dashboardModal .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  color: var(--muted);
+  cursor: pointer;
+  z-index: 101;
+}
+#dashboardModal .close-btn:hover { color: var(--primary); }
+
+/* Sidebar */
+#dashboardModal .sidebar {
+  background: var(--card);
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 15px;
+}
+#dashboardModal .sidebar h2 { font-size: 1.2rem; margin-bottom: 25px; color: var(--primary); font-weight: 600; }
+#dashboardModal .sidebar .profile { text-align:center; margin-bottom:30px; transition: transform .3s; }
+#dashboardModal .sidebar .profile img { width:130px;height:130px;border-radius:50%;border:4px solid var(--primary);object-fit:cover;margin-bottom:10px; }
+#dashboardModal .sidebar .profile h3 { margin:5px 0 2px; font-size:1.05rem; color:var(--text); font-weight:600; }
+#dashboardModal .sidebar .profile p { margin:0; font-size:.85rem; color:var(--muted); }
+
+/* Main content inside the modal */
+#dashboardModal .main { display:flex; flex-direction:column; overflow:hidden; height:100%; }
+#dashboardModal header { background:var(--card); padding:15px 25px; border-bottom:1px solid #e5e7eb; display:flex; justify-content:space-between; align-items:center; box-shadow: 0 2px 4px var(--shadow-color); }
+#dashboardModal header .user { display:flex; align-items:center; gap:15px; font-weight:500; }
+#dashboardModal header .user img { width:50px; height:50px; border-radius:50%; object-fit:cover; border:2px solid var(--primary) ;margin-right: 1REM;}
+
+/* content area */
+#dashboardModal .content { padding:20px; overflow-y:auto; max-height:calc(80vh - 70px); }
+
+/* tabs */
+#dashboardModal .tabs { display:flex; border-bottom:2px solid #ddd; margin-bottom:25px; gap:20px; flex-wrap:wrap; }
+#dashboardModal .tab { padding:10px 15px; cursor:pointer; font-size:.8rem; color:var(--muted); border-radius:30px 30px 0 0; transition:0.3s; }
+#dashboardModal .tab:hover { background:#f0f0ff; color:var(--primary); }
+#dashboardModal .tab.active { color:#fff; background:var(--primary); font-weight:600; box-shadow:0 3px 6px var(--shadow-color); }
+
+#dashboardModal .tab-content { display:none; animation:fadeIn .3s ease-in; }
+#dashboardModal .tab-content.active { display:block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+
+/* cards inside modal (scoped) */
+#dashboardModal .card { background:var(--card); border-radius:16px; padding:25px; box-shadow:0 4px 12px var(--shadow-color); margin-bottom:25px; transition:transform .2s; }
+#dashboardModal .card h3 { margin:0 0 15px; font-size:.9rem; color:#74757f; border-bottom:1px solid #eee; padding-bottom:10px; font-weight:600; text-align: left;}
+#dashboardModal .info-item:hover { background: #f0f0ff; }
+#dashboardModal .info-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:15px 25px; }
+#dashboardModal .info-item { font-size:.75rem; color:var(--text); padding:8px 10px; border-radius:8px; background:#f9f9f9; text-align: left;}
+#dashboardModal .info-item b { display:block; font-weight:600; color:var(--primary); margin-bottom:4px; }
+
+@media (max-width: 900px) {
+  #dashboardModal .modal { grid-template-columns: 1fr; width:95%; max-height:95vh; }
+  #dashboardModal .sidebar { flex-direction:row; overflow-x:auto; padding:15px; }
+  #dashboardModal .sidebar .profile { margin-bottom:0; margin-right:20px; }
+}
+</style>

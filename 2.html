@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<ht lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff List - Professional UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+
+<style>
+    .body1 {
+        font-family: 'Poppins', sans-serif;
+        background-color: #eef2f7;
+        margin: 0;
+        padding: 20px;
+        color: #333;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 5px;
+        color: #1a97e7;
+    }
+    #userDisplay1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+        color: #1a97e7;
+    }
+    #addStaffForm {
+        width: 60%;
+        max-width: 500px;
+        margin: 0 auto 20px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(-20px);
+        display: none;
+    }
+    #addStaffForm.show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+    #addStaffForm input {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    #addStaffForm button {
+        width: 100%;
+        padding: 12px;
+        margin-top: 10px;
+        background-color: #1a97e7;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    #addStaffForm button:hover {
+        background-color: #ff5252;
+    }
+    #searchInput {
+        width: 60%;
+        max-width: 400px;
+        display: block;
+        margin: 0 auto 20px;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    table {
+        width: 90%;
+        margin: 0 auto 20px;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        background-color: #fff;
+        font-size: 0.7em;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+    th {
+        background-color: #1a97e7;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        user-select: none;
+        transition: background 0.3s;
+    }
+    th:hover {
+        background-color: #1573b9;
+    }
+    tr {
+        transition: background 0.3s;
+    }
+    tr:nth-child(even) {
+        background-color: #f7f9fc;
+    }
+    tr:hover {
+        background-color: #e0f0ff;
+    }
+    button.actionBtn {
+        padding: 6px 12px;
+        margin: 2px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 10px;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    button.editBtn {
+        background-color: #5b9700;
+        color: #fff;
+    }
+    button.editBtn:hover {
+        background-color: #4700e0;
+    }
+    button.deleteBtn {
+        background-color: #ff5252;
+        color: #fff;
+    }
+    button.deleteBtn:hover {
+        background-color: #fa8c88;
+    }
+    #backBtn {
+        display: block;
+        margin: 20px auto;
+        padding: 12px 25px;
+        background-color: #1a97e7;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 10px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    #backBtn:hover {
+        background-color: #ff5252;
+    }
+    #toggleAddForm {
+        display: block;
+        margin: 0 auto 20px;
+        padding: 12px 25px;
+        background-color: #1a97e7;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    #toggleAddForm:hover {
+        background-color: #ff5252;
+    }
+</style>
+</head>
+<ht>
+<section class="Body1">
+<h2>Staff List</h2>
+<div id="userDisplay1">Loading user...</div>
+
+<!-- زر إظهار النموذج -->
+<button id="toggleAddForm">Add New Staff</button>
+
+<!-- نموذج الإضافة مخفي افتراضياً -->
+<form id="addStaffForm">
+    <h3>Add New Staff</h3>
+    <input type="text" id="newName" placeholder="Name" required>
+    <input type="email" id="newEmail" placeholder="Email" required>
+    <input type="text" id="newPassword" placeholder="Password" required>
+    <button type="submit">Add Staff</button>
+</form>
+
+<input type="text" id="searchInput" placeholder="Search by name or email">
+
+<table id="staffTable">
+    <thead>
+        <tr>
+            <th data-key="index">#</th>
+            <th data-key="name">Name</th>
+            <th data-key="email">Email</th>
+            <th data-key="password">Password</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- الموظفين سيتم إضافتهم بواسطة JS -->
+    </tbody>
+</table>
+
+<button id="backBtn">Back</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const staffTableBody = document.querySelector("#staffTable tbody");
+    const userDisplay1 = document.getElementById("userDisplay1");
+    const addStaffForm = document.getElementById("addStaffForm");
+    const searchInput = document.getElementById("searchInput");
+    const toggleAddFormBtn = document.getElementById("toggleAddForm");
+    let staffData = [];
+
+    let db;
+    const request = indexedDB.open("StaffDB", 1);
+
+    request.onupgradeneeded = (event) => {
+        db = event.target.result;
+        if (!db.objectStoreNames.contains("staff")) {
+            const store = db.createObjectStore("staff", { keyPath: "email" });
+            store.createIndex("name", "name", { unique: false });
+        }
+    };
+
+    request.onsuccess = (event) => {
+        db = event.target.result;
+        loadOldData(() => {
+            displayUser();
+            loadStaff(renderStaff);
+        });
+    };
+
+    request.onerror = (event) => console.error("DB Error:", event.target.errorCode);
+
+    function loadOldData(callback) {
+        const oldStaff = JSON.parse(localStorage.getItem("staffList")) || [];
+        if (oldStaff.length === 0) return callback();
+        const transaction = db.transaction(["staff"], "readwrite");
+        const store = transaction.objectStore("staff");
+        oldStaff.forEach(staff => {
+            store.get(staff.email).onsuccess = (e) => {
+                if (!e.target.result) store.add(staff);
+            };
+        });
+        callback();
+    }
+
+    function loadStaff(callback) {
+        const transaction = db.transaction(["staff"], "readonly");
+        const store = transaction.objectStore("staff");
+        const request = store.getAll();
+        request.onsuccess = () => {
+            staffData = request.result;
+            callback();
+        };
+    }
+
+    function addStaff(staff, callback) {
+        const transaction = db.transaction(["staff"], "readwrite");
+        const store = transaction.objectStore("staff");
+        store.add(staff).onsuccess = () => callback();
+    }
+
+    function updateStaff(staff, callback) {
+        const transaction = db.transaction(["staff"], "readwrite");
+        const store = transaction.objectStore("staff");
+        store.put(staff).onsuccess = () => callback();
+    }
+
+    function deleteStaff(email, callback) {
+        const transaction = db.transaction(["staff"], "readwrite");
+        const store = transaction.objectStore("staff");
+        store.delete(email).onsuccess = () => callback();
+    }
+
+    function renderStaff(filter = "") {
+        let data = staffData;
+        if (filter) {
+            const term = filter.toLowerCase();
+            data = data.filter(s => s.name.toLowerCase().includes(term) || s.email.toLowerCase().includes(term));
+        }
+        staffTableBody.innerHTML = "";
+        if (data.length === 0) {
+            staffTableBody.innerHTML = `<tr><td colspan="5">No staff found.</td></tr>`;
+            return;
+        }
+        data.forEach((staff, index) => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${staff.name}</td>
+                <td>${staff.email}</td>
+                <td>${staff.password}</td>
+                <td>
+                    <button class="actionBtn editBtn" data-email="${staff.email}">Edit</button>
+                    <button class="actionBtn deleteBtn" data-email="${staff.email}">Delete</button>
+                </td>
+            `;
+            staffTableBody.appendChild(row);
+        });
+        attachEvents();
+    }
+
+    function attachEvents() {
+        document.querySelectorAll(".deleteBtn").forEach(btn => {
+            btn.onclick = () => {
+                const email = btn.dataset.email;
+                if (confirm("هل أنت متأكد من حذف هذا الموظف؟")) {
+                    deleteStaff(email, () => loadStaff(() => renderStaff(searchInput.value)));
+                }
+            };
+        });
+        document.querySelectorAll(".editBtn").forEach(btn => {
+            btn.onclick = () => {
+                const email = btn.dataset.email;
+                const transaction = db.transaction(["staff"], "readonly");
+                const store = transaction.objectStore("staff");
+                store.get(email).onsuccess = (event) => {
+                    const staff = event.target.result;
+                    const newName = prompt("أدخل الاسم الجديد:", staff.name);
+                    if (!newName) return;
+                    const newEmail = prompt("أدخل البريد الإلكتروني الجديد:", staff.email);
+                    if (!newEmail) return;
+                    const newPassword = prompt("أدخل كلمة المرور الجديدة:", staff.password);
+                    if (!newPassword) return;
+                    updateStaff({ name: newName, email: newEmail, password: newPassword }, () => loadStaff(() => renderStaff(searchInput.value)));
+                };
+            };
+        });
+    }
+
+    addStaffForm.onsubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById("newName").value.trim();
+        const email = document.getElementById("newEmail").value.trim();
+        const password = document.getElementById("newPassword").value.trim();
+        if (!name || !email || !password) return;
+        const transaction = db.transaction(["staff"], "readonly");
+        const store = transaction.objectStore("staff");
+        store.get(email).onsuccess = (event) => {
+            if (event.target.result) {
+                alert("هذا البريد مستخدم مسبقًا!");
+            } else {
+                addStaff({ name, email, password }, () => {
+                    addStaffForm.reset();
+                    loadStaff(() => renderStaff(searchInput.value));
+                });
+            }
+        };
+    };
+
+    searchInput.oninput = () => renderStaff(searchInput.value);
+
+    document.querySelectorAll("#staffTable th[data-key]").forEach(th => {
+        th.onclick = () => {
+            const key = th.dataset.key;
+            staffData.sort((a, b) => {
+                if (key === "index") return 0;
+                return a[key].toLowerCase().localeCompare(b[key].toLowerCase());
+            });
+            renderStaff(searchInput.value);
+        };
+    });
+
+    function displayUser() {
+        const loggedUser = localStorage.getItem("loggedUser");
+        userDisplay1.textContent = loggedUser ? "Logged in as: " + loggedUser : "Not logged in";
+    }
+
+    document.getElementById("backBtn").onclick = () => window.history.back();
+
+    // Toggle form visibility with animation
+    toggleAddFormBtn.onclick = () => {
+        if (addStaffForm.classList.contains("show")) {
+            addStaffForm.classList.remove("show");
+            toggleAddFormBtn.textContent = "Add New Staff";
+        } else {
+            addStaffForm.classList.add("show");
+            toggleAddFormBtn.textContent = "Hide Form";
+        }
+    };
+});
+</script>
+</section>
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+</ht>
+</body>
+</html>

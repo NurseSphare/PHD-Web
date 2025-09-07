@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PHDU Admin Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/9c9f6d7f5b.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="Editcss.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+<body>
+<div class="wrap">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="logo">PHDU</div>
+    <div><img src="Media/PHDU Logo.png"></div>
+  </div>
+  <nav class="nav">
+    <a onclick="showSection('phdu-dashboard')" class="active"><i class="fa-solid fa-chart-line"></i> PHDU Dashboard</a>
+    <a onclick="showSection('staff-data-dashboard')"><i class="fa-solid fa-user-doctor"></i> Staff Data</a>
+    <a onclick="showSection('education-training')"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+    <a onclick="showSection('search')"><i class="fa-solid fa-magnifying-glass"></i> Search</a> <!-- هذه الخانة الجديدة -->
+    <a onclick="showSection('Equipment')"><i class="fa-solid fa-toolbox"></i>Equipment</a>
+  </nav>
+  <div class="side-footer">
+    <div class="profile-pic">Admin</div>
+    <div><div style="font-weight:600">Asma</div><div style="font-size:13px">Nurse Incharge</div></div>
+  </div>
+</aside>
+
+<main class="main">
+<!-- 🔍 Topbar Search -->
+<div class="topbar" >
+  <div class="search">
+    <i class="fa-solid fa-magnifying-glass" style="color:var(--muted)"></i>
+    <input type="text" placeholder="Search..." id="searchInput">
+  </div>
+<div class="icons">
+      <div class="circle-btn"><i ></i></div>
+  <!-- دائرة للهوم -->
+  <a href="index.html" class="circle-btn" title="الرئيسية">
+    <i class="fa-solid fa-house" style="color: #6b6b6b;"></i>
+  </a>
+    <div class="circle-btn"><i ></i></div>
+</div>
+
+  </div>
+
+<!-- PHDU Dashboard Section -->
+<section id="phdu-dashboard" class="section active">
+  <section class="cards"><h3 style="margin-top: -10px; margin-bottom: 0rem;">Staffing</h3></section>
+  <section class="cards">
+    <div id="das" class="card"><h3>Bed Capacity</h3><div class="value">12</div></div>
+    <div id="das" class="card"><h3>Total Staff Needed</h3><div class="value">42</div></div>
+    <div id="das" class="card"><h3>Current Number of Staffing</h3><div class="value" id="staffCount">0</div></div>
+    <div id="das" class="card"><h3>Deficit</h3><div class="value">0</div></div>
+  </section>
+
+<div class="header titlesRow">
+  <div class="title">PHDU Gender Ratio</div>
+  <div class="title">PHDU Nationality Ratio</div>
+</div>
+  <div class="genderNationalityContainer">
+
+    <!-- Gender Card -->
+    <div class="cardGender">
+      <div class="header">
+      </div>
+      <div class="charts">
+        <div class="chart-box">
+          <canvas id="maleChart"></canvas>
+          <div id="malePercent" class="percent">Male</div>
+                    <div id="malePercent" class="percent">Male</div>
+        </div>
+        <div class="chart-box">
+          <canvas id="femaleChart"></canvas>
+          <div id="femalePercent" class="percent">Female</div>
+                    <div id="femalePercent" class="percent">Female</div>
+        </div>
+      </div>
+    </div>
+
+<!-- Nationality Card -->
+<div class="cardNationality">
+  <div class="header">
+  </div>
+  <div class="charts">
+    <div class="chart-box">
+      <canvas id="omaniChart"></canvas>
+      <div id="omaniPercent" class="percent">Omani</div>      <div id="omaniPercent" class="percent">Omani</div>
+    </div>
+    <div class="chart-box">
+      <canvas id="expatChart"></canvas>
+      <div id="expatPercent" class="percent">Non-Omani</div>
+      <div id="expatPercent" class="percent">Non-Omani</div>
+    </div>
+  </div>
+</div>
+<div class="header titlesRow">
+  <div class="title">Qualification Distribution</div>
+  <div class="title">Level of Experience</div>
+  </div>
+  <div class="cardQualification">
+    <canvas id="qChart"></canvas>
+  </div>
+
+  <div class="cardQualification">
+    <canvas id="expChart"></canvas>
+  </div>
+
+</section>
+
+
+  <!-- سكربتات الجيندر -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+  
+
+</section>
+
+<!-- Staff Section -->
+<section id="staff-data-dashboard" class="section">
+    <h3>Staff List</h3>
+  <div class="panel">
+    <div class="table-scroll">
+
+      <table>
+  <thead>
+    <tr><th>Staff Name</th><th>Staff Number</th><th>Designation</th></tr>
+  </thead>
+  <tbody id="staffTable">
+    <!-- سيتم ملء الصفوف هنا بواسطة JS -->
+  </tbody>
+</table>
+    </div>
+  </div>
+</section>
+
+<!-- Education Section -->
+<section id="education-training" class="section">
+  <section class="cards1">
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Purple Gradient Words Instagram Highlight Covers.png" alt="BLS Icon" class="card1-img"><h3>BLS</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (14).png" alt="BLS Icon" class="card1-img"><h3>PALS</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (15).png" alt="BLS Icon" class="card1-img"><h3>IV Therapy</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (16).png" alt="BLS Icon" class="card1-img"><h3>Pain Management</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (18).png" alt="BLS Icon" class="card1-img"><h3>Patient Safety</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (19).png" alt="BLS Icon" class="card1-img"><h3>Aggression Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (21).png" alt="BLS Icon" class="card1-img"><h3>Online Lean Management</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (20).png" alt="BLS Icon" class="card1-img"><h3>Online Lean Management Physical</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (22).png" alt="BLS Icon" class="card1-img"><h3>BFHI</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (24).png" alt="BLS Icon" class="card1-img"><h3>Infection Control Hakeem Theory</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (23).png" alt="BLS Icon" class="card1-img"><h3>Infection Control Hakeem Practice</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (25).png" alt="BLS Icon" class="card1-img"><h3>ECG</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (26).png" alt="BLS Icon" class="card1-img"><h3>Manual Handling</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (28).png" alt="BLS Icon" class="card1-img"><h3>Chemotherapy Course Theory</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (27).png" alt="BLS Icon" class="card1-img"><h3>Chemotherapy Course Practice</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (30).png" alt="BLS Icon" class="card1-img"><h3>Central Line Course Theory</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (29).png" alt="BLS Icon" class="card1-img"><h3>Central Line Course Practice</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (31).png" alt="BLS Icon" class="card1-img"><h3>Leadership Management</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (32).png" alt="BLS Icon" class="card1-img"><h3>Preceptorship Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (33).png" alt="BLS Icon" class="card1-img"><h3>Ethical Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (34).png" alt="BLS Icon" class="card1-img"><h3>Communication Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (35).png" alt="BLS Icon" class="card1-img"><h3>NIV Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (36).png" alt="BLS Icon" class="card1-img"><h3>Transporting Critical Ill Patient Course</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (37).png" alt="BLS Icon" class="card1-img"><h3>Care of Arterial Line</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+
+<div class="card1"><div class="top-box">
+  <img src="Media/Untitled design (38).png" alt="BLS Icon" class="card1-img"><h3>Peritoneal Dialysis</h3></div>
+  <div class="bottom-box"><div class="sub-box certified"><span>Certified</span><div class="value"></div></div>
+                          <div class="sub-box not-certified"><span>Not Certified</span><div class="value"></div>
+</div></div></div>
+  </section>
+
+  </section>
+
+<!-- --search-- -->
+<section id="search" class="section">
+<Section class="bodyٍsearch">
+<!-- PapaParse Library -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<h2>Staff Course Search</h2>
+<div class="panel">
+  <div class="search-filters">
+    <label for="courseSelect" style="  font-size: 14px;  font-weight: bold;   font-family: Arial, sans-serif; /* نوع الخط */">Select Course:</label>
+    <select id="courseSelect" style="  font-size: 10px;  font-weight: bold;   font-family: Arial, sans-serif;">
+      <option value="">-- Choose Course --</option>
+    </select>
+
+    <label for="statusSelect" style="  font-size: 14px;  font-weight: bold;   font-family: Arial, sans-serif; /* نوع الخط */">Status:</label>
+    <select id="statusSelect" style="  font-size: 10px;  font-weight: bold;   font-family: Arial, sans-serif;">
+      <option value="">All</option>
+      <option value="Yes">Certified</option>
+      <option value="No">Not Certified</option>
+      <option value="Expired">Expired</option>
+    </select>
+
+<div class="actions">
+  <button id="searchBtn">
+    <i class="fa-solid fa-magnifying-glass"></i> Search
+  </button>
+  <button id="clearBtn" class="clear-btn">
+    <i class="fa-solid fa-trash"></i> Clear
+  </button>
+</div>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Staff Name</th>
+          <th>Staff Number</th>
+          <th>Designation</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="searchResults">
+        <!-- النتائج -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</section></section>
+
+
+<!-- Other -->
+<section id="Equipment" class="section" style="display:none;">
+  <h2>Medical Equipment</h2>
+
+
+
+  <section class="cards">
+    <div id="equipment-total" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (39).png" class="E-img">
+      <h3>Total Equipment</h3>
+      <div class="value">0</div>
+    </div>
+
+    <div id="equipment-working" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (41).png" class="E-img">
+      <h3>Total Equipment (Working)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-missing" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (42).png" class="E-img">
+      <h3>Total Equipment (Missing)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-spare" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (43).png" class="E-img">
+      <h3>Total Equipment (Waiting for a spare part)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-condem" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (44).png" class="E-img">
+      <h3>Total Condem Equipment</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-condem-use" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (45).png" class="E-img">
+      <h3>Total Condem Equipment (In Use)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-loan-patient" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (46).png" class="E-img">
+      <h3>Total Equipment Loan (by Patient)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-loan-ward" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (47).png" class="E-img">
+      <h3>Total Equipment Loan (by Other Ward)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-loan-out" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (48).png" class="E-img">
+      <h3>Total Equipment Loan (Out)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-workorder" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (49).png" class="E-img">
+      <h3>Equipment Work Order</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-workshop" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (50).png" class="E-img">
+      <h3>Total Equipment (In Biomedical Workshop)</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-ppm" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (51).png" class="E-img">
+      <h3>PPM</h3>
+      <div class="value">0</div>
+    </div>
+    <div id="equipment-disposed" class="card" style="text-align:center;">
+      <img src="Media/Untitled design (52).png" class="E-img">
+      <h3>Disposed Equipment</h3>
+      <div class="value">0</div>
+    </div>
+  </section>
+
+
+<!-- مكتبة PapaParse -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
+function showSection(sectionId) {
+  document.querySelectorAll('.section').forEach(sec => {
+    sec.style.display = 'none';
+  });
+  document.querySelectorAll('.nav a').forEach(link => {
+    link.classList.remove('active');
+  });
+  const section = document.getElementById(sectionId);
+  if (section) section.style.display = 'block';
+  const activeLink = document.querySelector(`.nav a[onclick="showSection('${sectionId}')"]`);
+  if (activeLink) activeLink.classList.add('active');
+}
+// 🔍 بحث
+document.getElementById("searchInput").addEventListener("keyup", function(){
+  let filter = this.value.toLowerCase();
+
+  // بحث في مرضى
+  document.querySelectorAll(".patient").forEach(p => {
+    let txt = p.innerText.toLowerCase();
+    p.style.display = txt.includes(filter) ? "" : "none";
+  });
+
+  // بحث في صفوف الجداول
+  document.querySelectorAll("table tbody tr").forEach(row => {
+    let txt = row.innerText.toLowerCase();
+    row.style.display = txt.includes(filter) ? "" : "none";
+  });
+
+  // بحث في بطاقات قسم Education / Training
+  document.querySelectorAll("#education-training .card1").forEach(card => {
+    let txt = card.innerText.toLowerCase();
+    card.style.display = txt.includes(filter) ? "" : "none";
+  });
+});
+
+// Chart.js Line
+new Chart(document.getElementById('lineChart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar'],
+    datasets: [{ label: 'Patients', data: [50, 70, 90] }]
+  }
+});
+
+
+const sheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?output=csv&gid=108483462';
+
+fetch(sheetUrl)
+.then(res => res.text())
+.then(data => {
+    const rows = data.split('\n');
+    const row = rows[2].split(','); // كل القيم موجودة في الصف الثالث
+
+    // مصفوفة تحدد كل كورس ومؤشرات العمود للـ Certified و Not Certified
+    const courses = [
+        { card: 1, certified: [1,2], notCertified: [0,3] }, // BLS
+        { card: 2, certified: [7,8], notCertified: [6,9] },  //PALS
+        { card: 3, certified: 12, notCertified: 13 },  //IV Therapy
+        { card: 4, certified: 16, notCertified: 17 },  //Pain Managment
+        { card: 5, certified: 20, notCertified: 21 },  // Patient Safety
+        { card: 6, certified: 24, notCertified: 25 },  //Agression course
+        { card: 7, certified: 28, notCertified: 29 },  //Online Lean
+        { card: 8, certified: 32, notCertified: 33 },  //Physical Lean
+        { card: 9, certified: 36, notCertified: 37 },  //BFHI
+        { card:10, certified: [41,42], notCertified: [40,43] },  //Infection control therory
+        { card:11, certified: [47,48], notCertified: [46,49] },  //infection control practice
+        { card:12, certified: 52, notCertified: 53 },  //ECG
+        { card:13, certified: 56, notCertified: 57 },//manual handling
+        { card:14, certified: 60, notCertified: 61 },  //chemotherapy theory
+        { card:15, certified: 64, notCertified: 65 },  //chemotherapy practise
+        { card:16, certified: 68, notCertified: 69 }, //central line theory
+        { card:17, certified: 72, notCertified: 73 }, //central line practice
+        { card:18, certified: 76, notCertified: 77 },  //leadership
+        { card:19, certified: 80, notCertified: 81 }, //preceptor
+        { card:20, certified: 84, notCertified: 85 }, //ethical
+        { card:21, certified: 88, notCertified: 89 }, //communication
+        { card:22, certified: 92, notCertified: 93 },  //NIV
+        { card:23, certified: 96, notCertified: 97 },  //transport
+        { card:24, certified: 100, notCertified: 101 }, //arterial line
+        { card:25, certified: 104, notCertified: 105 }  //peritonial
+    ];
+
+    courses.forEach(c => {
+        // certified (رقم أو مصفوفة)
+        let certifiedValue = 0;
+        if (Array.isArray(c.certified)) {
+            certifiedValue = c.certified.reduce((sum, idx) => sum + (parseInt(row[idx]) || 0), 0);
+        } else {
+            certifiedValue = parseInt(row[c.certified]) || 0;
+        }
+
+        // notCertified (رقم أو مصفوفة)
+        let notCertifiedValue = 0;
+        if (Array.isArray(c.notCertified)) {
+            notCertifiedValue = c.notCertified.reduce((sum, idx) => sum + (parseInt(row[idx]) || 0), 0);
+        } else {
+            notCertifiedValue = parseInt(row[c.notCertified]) || 0;
+        }
+
+        document.querySelector(`.card1:nth-child(${c.card}) .certified .value`).innerText =
+            certifiedValue;
+
+        document.querySelector(`.card1:nth-child(${c.card}) .not-certified .value`).innerText =
+            notCertifiedValue;
+    });
+})
+.catch(err => {
+    console.error(err);
+    document.querySelectorAll('.card1 .certified .value, .card1 .not-certified .value')
+        .forEach(el => el.innerText = 'Error');
+});
+
+
+const staffSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?output=csv&gid=0';
+
+Papa.parse(staffSheetUrl, {
+  download: true,
+  header: false,
+  skipEmptyLines: true,
+  complete: function(results) {
+    const data = results.data;
+    const tbody = document.getElementById('staffTable');
+    tbody.innerHTML = ''; // تنظيف الجدول قبل الملء
+
+    // بدءًا من الصف الثاني لتخطي رأس الجدول
+    for (let i = 1; i < data.length; i++) {
+      const number = data[i][0] ? data[i][0].trim() : ''; // العمود A
+      const name = data[i][1] ? data[i][1].trim() : '';   // العمود B
+      const designation = data[i][22] ? data[i][22].trim() : ''; // العمود W: Designation
+
+   if ((name && name !== '') || (number && number !== '')) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${name}</td><td>${number}</td><td>${designation}</td>`; 
+        tbody.appendChild(tr);
+        console.log('Staff Name:', name, '| Staff Number:', number, '| Designation:', designation);
+      }
+    }
+  },
+  error: function(err) {
+    console.error('Error parsing CSV:', err);
+    const tbody = document.getElementById('staffTable');
+    tbody.innerHTML = `<tr><td colspan="2">Error loading staff</td></tr>`;
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const staffSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?output=csv&gid=0';
+
+  const COL_NUMBER = 0;
+  const COL_NAME = 1;
+  const COL_DESIG = 22;
+
+  // مصفوفة الكورسات
+  const courses = [
+    { name: "BLS Course", columnIndex: 67 },
+    { name: "PALS Course", columnIndex: 68 },
+    { name: "IV Therapy Course", columnIndex: 42 },
+    { name: "Pain Management Course", columnIndex: 43 },
+    { name: "Patient Safety Course", columnIndex: 44 },
+    { name: "Aggression Course", columnIndex: 45 },
+    { name: "Online Lean Management Course", columnIndex: 46 },
+    { name: "Online Lean Management Physical Course", columnIndex: 47 },
+    { name: "BFHI Course", columnIndex: 48 },
+    { name: "Infection Control Hakeem Theory Course", columnIndex: 69 },
+    { name: "Infection Control Hakeem Practice Course", columnIndex: 70 },
+    { name: "ECG Course", columnIndex: 51 },
+    { name: "Manual Handling Course", columnIndex: 52 },
+    { name: "Chemotherapy Theory Course", columnIndex: 53 },
+    { name: "Chemotherapy Practice Course", columnIndex: 54 },
+    { name: "Central Line Theory Course", columnIndex: 55 },
+    { name: "Central Line Practice Course", columnIndex: 56 },
+    { name: "Leadership Management Course", columnIndex: 57 },
+    { name: "Preceptorship Course", columnIndex: 58 },
+    { name: "Ethical Course", columnIndex: 59 },
+    { name: "Communication Course", columnIndex: 60 },
+    { name: "NIV Course", columnIndex: 61 },
+    { name: "Transporting Critical Ill Patient Course", columnIndex: 62 },
+    { name: "Care of Arterial Line Course", columnIndex: 63 },
+    { name: "Peritoneal Dialysis Course", columnIndex: 64 },
+  ];
+
+  const specialCourses = [67, 68, 69, 70]; // BLS, PALS, Infection Control Theory & Practice
+
+  const courseSelect = document.getElementById('courseSelect');
+  const statusSelect = document.getElementById('statusSelect');
+  const searchBtn = document.getElementById('searchBtn');
+  const clearBtn = document.getElementById('clearBtn');
+  const tbody = document.getElementById('searchResults');
+
+  // تعبئة قائمة الكورسات
+  courses.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = String(c.columnIndex);
+    opt.textContent = c.name;
+    courseSelect.appendChild(opt);
+  });
+
+  let rows = [];
+
+  Papa.parse(staffSheetUrl, {
+    download: true,
+    header: false,
+    skipEmptyLines: true,
+    complete: function (res) {
+      rows = res.data.filter(r => Array.isArray(r) && r.length > 0);
+      renderAllStaff();
+    },
+    error: function (err) {
+      console.error('Error loading sheet:', err);
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:#c00">Failed to load data</td></tr>`;
+    }
+  });
+
+  // تحديث StatusSelect حسب الكورس
+  courseSelect.addEventListener('change', function() {
+    statusSelect.innerHTML = '<option value="">All</option>';
+    const selectedIdx = parseInt(courseSelect.value, 10);
+    let options = [];
+
+    if (specialCourses.includes(selectedIdx)) {
+      options = ['Certified', 'Expired', 'Near Expiry', 'NOT CERTIFIED'];
+    } else {
+      options = ['Yes', 'No'];
+    }
+
+    options.forEach(optText => {
+      const opt = document.createElement('option');
+      opt.value = optText;
+      opt.textContent = optText;
+      statusSelect.appendChild(opt);
+    });
+  });
+
+  function interpretCourseValue(val) {
+    if (!val || val.toString().trim() === '') return 'no';
+    const raw = val.toString().trim().toLowerCase();
+    if (raw === 'yes') return 'yes';
+    if (raw === 'no') return 'no';
+    return 'no';
+  }
+
+  searchBtn.addEventListener('click', function () {
+    const selectedIdx = parseInt(courseSelect.value, 10);
+    const status = (statusSelect.value || '').toLowerCase();
+
+    if (Number.isNaN(selectedIdx)) {
+      alert('Please select a course.');
+      return;
+    }
+
+    const dataRows = rows.slice(1);
+
+    const filtered = dataRows.filter(r => {
+      let raw;
+      if (specialCourses.includes(selectedIdx)) {
+        raw = (r[selectedIdx] ?? '').toString().trim();
+        if (!raw || raw.toLowerCase() === '#num!') raw = 'NOT CERTIFIED';
+        else if (raw.toLowerCase() === 'valid') raw = 'Certified';
+      } else {
+        raw = interpretCourseValue(r[selectedIdx]);
+        raw = raw === 'yes' ? 'Yes' : 'No';
+      }
+
+      if (status && raw.toLowerCase() !== status.toLowerCase()) return false;
+      return true;
+    });
+
+    render(filtered, selectedIdx);
+  });
+
+  clearBtn.addEventListener('click', function () {
+    courseSelect.value = "";
+    statusSelect.innerHTML = '<option value="">All</option>';
+    renderAllStaff();
+  });
+
+  function renderAllStaff() {
+    const dataRows = rows.slice(1);
+    tbody.innerHTML = '';
+    dataRows.forEach(r => {
+      const name = (r[COL_NAME] ?? '').toString().trim();
+      const number = (r[COL_NUMBER] ?? '').toString().trim();
+      const desig = (r[COL_DESIG] ?? '').toString().trim();
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${name || '-'}</td>
+        <td>${number || '-'}</td>
+        <td>${desig || '-'}</td>
+        <td>Search First</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  function render(dataRows, courseIdx) {
+    tbody.innerHTML = '';
+    if (!dataRows.length) {
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;font-style:italic;">No staff found</td></tr>`;
+      return;
+    }
+
+    dataRows.forEach(r => {
+      const name = (r[COL_NAME] ?? '').toString().trim();
+      const number = (r[COL_NUMBER] ?? '').toString().trim();
+      const desig = (r[COL_DESIG] ?? '').toString().trim();
+
+      let statusText = '';
+      if (specialCourses.includes(courseIdx)) {
+        let raw = (r[courseIdx] ?? '').toString().trim();
+        if (!raw || raw.toLowerCase() === '#num!') statusText = 'NOT CERTIFIED';
+        else if (raw.toLowerCase() === 'valid') statusText = 'Certified';
+        else statusText = raw;
+      } else {
+        const val = interpretCourseValue(r[courseIdx]);
+        statusText = val === 'yes' ? 'Yes' : 'No';
+      }
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${name || '-'}</td>
+        <td>${number || '-'}</td>
+        <td>${desig || '-'}</td>
+        <td>${statusText}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?gid=0&single=true&output=csv";
+
+  // --- GENDER VARIABLES ---
+  let female = 0, male = 0;
+
+  // --- NATIONALITY VARIABLES ---
+  let omani = 0, expat = 0;
+
+  function computePercents(a,b){
+    const total = a+b;
+    return total===0?{a:0,b:0}:{a:Math.round(a/total*100), b:Math.round(b/total*100)};
+  }
+
+  // Plugin لإضافة الصورة في وسط كل الدونات
+  const drawImagePlugin = {
+    id: 'drawImagePlugin',
+    afterDraw: (chart) => {
+      const ctx = chart.ctx;
+      const {width, height} = chart;
+      const img = new Image();
+      if(chart.canvas.id==='maleChart') img.src='Media/male.svg';
+      else if(chart.canvas.id==='femaleChart') img.src='Media/female.svg';
+      else if(chart.canvas.id==='omaniChart') img.src='Media/local.svg';
+      else if(chart.canvas.id==='expatChart') img.src='Media/expat.svg';
+      img.onload = ()=>{ ctx.drawImage(img, width/2-40, height/2-40, 80, 80); };
+    }
+  };
+
+  // خيارات مشتركة لكل الشارتات مع تفعيل tooltip
+  const commonOptions = {
+    type:'doughnut',
+    options:{
+      cutout:'70%',
+      plugins:{
+        legend:{ display:false },
+        tooltip:{
+          enabled:true,
+          callbacks:{
+            label: function(ctx){
+              const label = ctx.label || '';
+              const value = ctx.parsed || 0;
+              return `${label}: ${value}%`;
+            }
+          }
+        }
+      }
+    },
+    plugins:[drawImagePlugin]
+  };
+
+  // --- GENDER CHARTS ---
+  const femaleChart = new Chart(document.getElementById('femaleChart'), {...commonOptions, data:{labels:['Female','Male'], datasets:[{data:[0,100], backgroundColor:["#ec4899","#E7E7E7"]}] }});
+  const maleChart = new Chart(document.getElementById('maleChart'), {...commonOptions, data:{labels:['Male','Female'], datasets:[{data:[0,100], backgroundColor:["#3b82f6","#E7E7E7"]}] }});
+
+  const femalePercentEl = document.getElementById('femalePercent');
+  const malePercentEl = document.getElementById('malePercent');
+
+  // --- NATIONALITY CHARTS ---
+  const omaniChart = new Chart(document.getElementById('omaniChart'), {...commonOptions, data:{labels:['Omani','Expat'], datasets:[{data:[0,100], backgroundColor:['#10b981','#E7E7E7']}] }});
+  const expatChart = new Chart(document.getElementById('expatChart'), {...commonOptions, data:{labels:['Expat','Omani'], datasets:[{data:[0,100], backgroundColor:['#f59e0b','#E7E7E7']}] }});
+
+  const omaniPercentEl = document.getElementById('omaniPercent');
+  const expatPercentEl = document.getElementById('expatPercent');
+
+  // --- PARSE GOOGLE SHEET ---
+  Papa.parse(sheetUrl,{
+    download:true,
+    header:true,
+    skipEmptyLines:true,
+    complete:function(results){
+      results.data.forEach(row=>{
+        // Gender
+        const g = (row["Gender"]||'').toLowerCase().trim();
+        if(g==='female') female++; else if(g==='male') male++;
+
+        // Nationality
+        const n = (row["Nationality"]||'').toLowerCase().trim();
+        if(n==='omani') omani++; else if(n!=='') expat++;
+      });
+
+      // تحديث Gender
+      const pg = computePercents(female,male);
+      femaleChart.data.datasets[0].data = [pg.a,100-pg.a];
+      maleChart.data.datasets[0].data = [pg.b,100-pg.b];
+      femaleChart.update(); maleChart.update();
+      femalePercentEl.textContent = pg.a+'%';
+      malePercentEl.textContent = pg.b+'%';
+
+      // تحديث Nationality
+      const pn = computePercents(omani,expat);
+      omaniChart.data.datasets[0].data = [pn.a,100-pn.a];
+      expatChart.data.datasets[0].data = [pn.b,100-pn.b];
+      omaniChart.update(); expatChart.update();
+      omaniPercentEl.textContent = pn.a+'%';
+      expatPercentEl.textContent = pn.b+'%';
+    }
+  });
+});
+
+
+const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?gid=0&single=true&output=csv";
+
+const QUAL_IDX = 32; // Column AG
+const EXP_IDX = 19;  // Column T
+
+Papa.parse(csvUrl, {
+  download: true,
+  header: false,
+  skipEmptyLines: "greedy",
+  complete: function(res){
+    const rows = res.data.slice(1).filter(r => r.length > Math.max(QUAL_IDX, EXP_IDX));
+
+    // ===== Qualification Chart =====
+    const qualCounts = {};
+    rows.forEach(r => {
+      let q = String(r[QUAL_IDX]||"").trim().toUpperCase();
+      if(q==="BSCN") q="BSN";
+      if(q==="MSC") q="MS";
+      if(q.includes("DIP")) q="DGN";
+      if(q.includes("PHD")) q="PHD";
+      if(q) qualCounts[q] = (qualCounts[q]||0)+1;
+    });
+
+    const qualOrder = ["DGN","BSN","MS","PHD"];
+    const qualOthers = Object.keys(qualCounts).filter(k => !qualOrder.includes(k)).sort();
+    const qualLabels = [...qualOrder.filter(k=>qualCounts[k]), ...qualOthers];
+    const qualValues = qualLabels.map(l => qualCounts[l]||0);
+    const qualTotal = qualValues.reduce((a,b)=>a+b,0)||1;
+    const qualPercentages = qualValues.map(v => +(v*100/qualTotal).toFixed(1));
+
+    const qCtx = document.getElementById("qChart").getContext("2d");
+    const qGradients = [
+      qCtx.createLinearGradient(0,0,0,400),
+      qCtx.createLinearGradient(0,0,0,400),
+      qCtx.createLinearGradient(0,0,0,400),
+      qCtx.createLinearGradient(0,0,0,400)
+    ];
+    qGradients[0].addColorStop(0,"#4f46e5"); qGradients[0].addColorStop(1,"#6366f1");
+    qGradients[1].addColorStop(0,"#6366f1"); qGradients[1].addColorStop(1,"#60a5fa");
+    qGradients[2].addColorStop(0,"#10b981"); qGradients[2].addColorStop(1,"#34d399");
+    qGradients[3].addColorStop(0,"#f59e0b"); qGradients[3].addColorStop(1,"#fbbf24");
+
+    new Chart(qCtx, {
+      type: "bar",
+      data: { labels: qualLabels, datasets:[{ data: qualPercentages, backgroundColor: qGradients.slice(0,qualLabels.length), borderRadius:14, barThickness:60 }]},
+      options: {
+        responsive:true,
+        plugins:{
+          legend:{ display:false },
+          tooltip:{ callbacks:{ label: (ctx)=>`${ctx.parsed.y}% (${qualValues[ctx.dataIndex]} staff)` } }
+        },
+        scales:{
+          y:{ beginAtZero:true, ticks:{ callback: v=>v+"%" }, title:{ display:true, text:"Percentage (%)" } },
+          x:{ title:{ display:true, text:"Qualification" } }
+        }
+      }
+    });
+
+    // ===== Experience Chart =====
+    const expRanges = [
+      { label: "0–1 year", min:0, max:1 },
+      { label: "2–5 years", min:2, max:5 },
+      { label: "6–10 years", min:6, max:10 },
+      { label: "More than 10 years", min:11, max:Infinity }
+    ];
+    const expCounts = { "0–1 year":0, "2–5 years":0, "6–10 years":0, "More than 10 years":0 };
+
+    rows.forEach(r => {
+      let exp = parseFloat(r[EXP_IDX]);
+      if(!isNaN(exp)){
+        for(const range of expRanges){
+          if(exp>=range.min && exp<=range.max){
+            expCounts[range.label]++;
+            break;
+          }
+        }
+      }
+    });
+
+    const expLabels = expRanges.map(r=>r.label);
+    const expValues = expLabels.map(l=>expCounts[l]);
+    const expTotal = expValues.reduce((a,b)=>a+b,1);
+    const expPercentages = expValues.map(v=>+(v*100/expTotal).toFixed(1));
+
+    const eCtx = document.getElementById("expChart").getContext("2d");
+    const expColors = ["#4f46e5","#3b82f6","#10b981","#f59e0b"];
+
+    new Chart(eCtx, {
+      type: "bar",
+      data: { labels: expLabels, datasets:[{ data: expPercentages, backgroundColor: expColors, borderRadius:12, barThickness:60 }]},
+      options:{
+        responsive:true,
+        plugins:{
+          legend:{ display:false },
+          tooltip:{ callbacks:{ label:(ctx)=>`${ctx.parsed.y}% (${expValues[ctx.dataIndex]} staff)` } }
+        },
+        scales:{
+          y:{ beginAtZero:true, ticks:{ callback:v=>v+"%" }, title:{ display:true, text:"Percentage (%)" } },
+          x:{ title:{ display:true, text:"Level of Experience" } }
+        }
+      }
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', function () {
+  const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?gid=0&single=true&output=csv";
+
+  function updateStaffCount() {
+    Papa.parse(csvUrl, {
+      download: true,
+      header: false,
+      skipEmptyLines: true,
+      complete: function(res){
+        const rows = res.data;
+        const dataRows = rows.slice(1); // تجاهل رأس الجدول
+        const staffCount = dataRows.filter(row => row.some(cell => cell && cell.trim() !== "")).length;
+        const el = document.getElementById("staffCount");
+        if(el) el.textContent = staffCount;
+      },
+      error: function(err){
+        console.error("CSV load error:", err);
+      }
+    });
+  }
+
+  updateStaffCount();
+  // إذا تريد تحديث تلقائي كل 30 ثانية
+  // setInterval(updateStaffCount, 30000);
+});
+document.addEventListener('DOMContentLoaded', function() {
+  const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pub?gid=0&single=true&output=csv";
+
+  Papa.parse(csvUrl, {
+    download: true,
+    header: false,
+    skipEmptyLines: true,
+    complete: function(res){
+      const rows = res.data.slice(1); // تجاهل رأس الجدول
+      const currentStaff = rows.filter(r => r.some(cell => cell && cell.trim() !== "")).length;
+
+      // الوصول لكل البطاقات بالترتيب كما هي في HTML
+      const cards = document.querySelectorAll('#das');
+
+      // تحويل نص Total Staff Needed لنص رقمي صحيح
+      const totalNeeded = parseInt(cards[1].querySelector('.value').textContent.replace(/\D/g, '') || 0, 10);
+
+      // تحديث Current Staff
+      cards[2].querySelector('.value').textContent = currentStaff;
+
+      // حساب Deficit كـ Current − Total
+      const deficit = currentStaff - totalNeeded;
+      cards[3].querySelector('.value').textContent = deficit; // يمكن أن يكون سالب إذا Current أقل من Total
+    },
+    error: function(err){
+      console.error("CSV load error:", err);
+    }
+  });
+});
+async function updateEquipmentCards() {
+  const cards = [
+    {selector:"#equipment-total .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"P6"},
+    {selector:"#equipment-working .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"H6"},
+    {selector:"#equipment-missing .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"I6"},
+    {selector:"#equipment-spare .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"J6"},
+    {selector:"#equipment-condem .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"K6"},
+    {selector:"#equipment-condem-use .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"L6"},
+    {selector:"#equipment-loan-patient .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"H2"},
+    {selector:"#equipment-loan-ward .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"I2"},
+    {selector:"#equipment-loan-out .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=383785959&single=true&output=csv", cell:"F5"},
+    {selector:"#equipment-workorder .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=29123448&single=true&output=csv", cell:"I4"},
+    {selector:"#equipment-workshop .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"O6"},
+    {selector:"#equipment-ppm .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1477274679&single=true&output=csv", cell:"K8"},
+    {selector:"#equipment-disposed .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"Q6"}
+  ];
+
+  function cellToIndex(cell) {
+    const col = cell.match(/[A-Z]+/)[0];
+    const row = parseInt(cell.match(/\d+/)[0], 10) - 1;
+    let colIndex = 0;
+    for (let i = 0; i < col.length; i++) {
+      colIndex *= 26;
+      colIndex += col.charCodeAt(i) - 65;
+    }
+    return {row, col: colIndex};
+  }
+
+  async function fetchAndUpdate() {
+    for (let card of cards) {
+      try {
+        const response = await fetch(card.sheetUrl);
+        const csvText = await response.text();
+        const parsed = Papa.parse(csvText.trim(), {header:false});
+        const {row, col} = cellToIndex(card.cell);
+        const value = parsed.data[row]?.[col] || "0";
+        document.querySelector(card.selector).textContent = value;
+      } catch (err) {
+        console.error("Error fetching sheet:", err);
+      }
+    }
+  }
+
+  // تحديث أول مرة عند تحميل الصفحة
+  fetchAndUpdate();
+
+  // تحديث تلقائي كل 30 ثانية
+  setInterval(fetchAndUpdate, 10000);
+}
+
+document.addEventListener("DOMContentLoaded", updateEquipmentCards);
+</script>
+
+</body>
+</html>

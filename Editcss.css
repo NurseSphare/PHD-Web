@@ -1,0 +1,329 @@
+:root{  /* --المربعات البيضاء-- */
+  --bg:#f5fbf9;
+  --card:#fff;
+  --muted:#7d8a99;
+  --accent:#27ae60;
+  --accent-2:#6ee7b7;
+  --shadow:0 8px 25px rgba(28,49,66,0.08);
+  --radius:14px;
+        --male:#3b82f6;
+      --female:#ec4899;
+}
+html,body{
+    height:100%;
+    margin:0;
+    font-family:"Inter",sans-serif;
+    background:linear-gradient(180deg,#f3fbf9 0%,#fff 70%);
+    color:#1b2733
+}
+.wrap{ /* --يخلي مسافة بين مربع لمربع -- */
+    display:flex;
+    min-height:100vh;
+    gap:24px;
+    padding:28px
+}
+
+/* Sidebar ثابت */
+.sidebar{
+  width:200px;
+  position: fixed;
+  top:0;left:0; margin-top: 1rem; margin-left: 1.5rem;
+  height:88vh;
+  background: url('Media/Blue and White Modern Gradient Weekly Meeting Agenda Instagram Post.png') center/cover no-repeat;
+  border-radius:16px;
+  padding:20px;
+  box-shadow:var(--shadow);
+  flex-shrink:0;
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  color:white;
+  z-index:1000;
+}
+
+.brand{display:flex;align-items:center;gap:12px}
+.brand img {
+  width: 135px;   /* صغّر أو كبّر حسب رغبتك */
+  height: auto;  /* يحافظ على التناسب */
+  object-fit: contain;
+}
+.brand img:hover{  transform: scale(1.1);  /* يكبر شوي */
+transition: transform 0.3s ease, box-shadow 0.5s ease;}
+.logo{
+    width:60px;
+    height:48px;
+    border-radius:10px;
+    background:rgba(42, 9, 9, 0.3);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:700;
+    box-shadow:0 6px 18px rgba(0,0,0,0.3)}
+
+.nav{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;color:white;text-decoration:none;font-weight:600;transition:0.2s;cursor:pointer;}
+.nav a:hover{background: rgba(255,255,255,0.15);}
+.nav a.active{background: rgba(255,255,255,0.25);font-weight:700;}
+.nav a i{width:20px;text-align:center}   
+
+.side-footer{margin-top:auto;padding-top:6px;border-top:1px dashed rgba(255,255,255,0.4);display:flex;gap:10px;align-items:center}
+
+.profile-pic{width:60px;height:44px;border-radius:10px;background:rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+
+/* Main area */
+.main{flex:1;display:flex;flex-direction:column;gap:18px;margin-left:300px;}
+/* Topbar Search */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}
+
+.search{display:flex;align-items:center;gap:10px;background:var(--card);padding:10px 14px;border-radius:999px;box-shadow:var(--shadow);width:60%}
+.search input{border:0;outline:none;background:transparent;font-size:14px;width:100%;color:#1b2733}
+.search input::placeholder{color:var(--muted)}
+.icons{display:flex;gap:12px;align-items:center}
+.circle-btn{background:var(--card); padding:10px;border-radius:10px;box-shadow:var(--shadow);cursor:pointer;transition:0.2s}
+.circle-btn:hover{transform: scale(1.1);}
+
+
+/* Cards row */
+.cards{display:grid;grid-template-columns: repeat(4, 1fr);gap:18px;margin-bottom: 1rem;}
+
+.card{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow);transition: transform 0.25s ease}
+.card:hover{transform: translateY(-6px);box-shadow:0 12px 30px rgba(28,49,66,0.12)}
+.card h3{margin:0;font-size:13px;color:var(--muted)}
+.card .value{font-size:20px;font-weight:700;margin-top:8px}
+
+/* content grid */
+.content{display:grid;grid-template-columns:1.2fr 0.8fr;gap:18px;align-items:start}
+.panel{background:var(--card);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+.panel.chart-small{height:240px;}
+.panel.chart-small canvas{height:100% !important}
+
+/* patient list */
+.patient-list{display:flex;flex-direction:column;gap:12px}
+.patient{display:flex;gap:12px;align-items:center;padding:10px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfffb);transition:0.2s}
+.patient:hover{transform: translateX(4px);box-shadow:0 8px 20px rgba(46,204,113,0.1)}
+.patient .avatar{width:56px;height:56px;border-radius:10px;background:#d3f1ff;display:flex;align-items:center;justify-content:center;font-weight:700;color:#08237a}
+.patient .meta{flex:1}
+.patient .meta h4{margin:0;font-size:15px}
+.patient .meta p{margin:0;color:var(--muted);font-size:13px}
+
+
+/* tables */
+table{width:100%;border-collapse:collapse;margin-top:12px}
+table th, table td{padding:10px;text-align:left;border-bottom:1px solid #eee}
+table th{background:#f5f5f5;color:#333;font-weight:600}
+table td{font-size: 12px; color: #6c6c6c;}
+table td:hover{font-size: medium; font-weight: bold;background: linear-gradient(45deg,#002aff,#8ae7fe,#89beff);-webkit-background-clip: text;
+background-clip: text;-webkit-text-stroke: 0.2px black;-webkit-text-fill-color: transparent;}
+.table-scroll{overflow-x:auto}
+
+
+/* hide sections */
+.section{display:none}
+.section.active{display:block}
+
+/* responsive */
+@media (max-width:1000px){.cards{grid-template-columns: repeat(2,1fr)}.content{grid-template-columns:1fr}.sidebar{display:none}.search{width:100%}}
+@media (max-width:600px){.cards{grid-template-columns:1fr}}
+
+
+
+/* Cards row */
+.cards1{display:grid;grid-template-columns: repeat(5, 1fr);gap:18px;margin-bottom: 1rem;}
+.top-box:hover, .sub-box:hover{transform: translateY(-3px);box-shadow:0 12px 30px rgba(28,49,66,0.12)}
+.card1 {
+  width: 180x; /* حجم البطاقة */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.card1-img, .E-img {
+  width: 70px;   /* حجم الصورة */
+  height: 70px;
+  margin-bottom: 10px;
+  margin: 0 auto 10px auto; /* يخليها بالوسط أفقياً */
+  display: block;           /* يضمن إنها تأخذ صف كامل */
+border-radius: 50%;          /* تجعل الصورة دائرية */
+border: 3px solid transparent;  /* حد افتراضي شفاف */
+transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.status {
+  display: flex;
+  justify-content: space-around; /* يخلي Certified و Not Certified جنب بعض */
+  margin-top: 10px;
+  align-items: center !important;
+}
+
+.certified, .not-certified {
+  flex: 1;
+  text-align: center;
+}
+
+.certified span { color: rgb(80, 80, 80); font-weight: bold;font-size: 10px; }
+.not-certified span { color: rgb(80, 80, 80); font-weight: bold;font-size: 10px; }
+
+.value {
+  font-size: 16px;
+  color: #adadad;
+  margin-top: 5px;
+  font-weight: bold;
+}
+.top-box {
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+/* حاوية المربعين */
+.bottom-box {
+  display: flex;
+  gap: 10px; /* مسافة بينهم */
+}
+.sub-box {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.card1 h3 {
+  font-size: 10px;       /* حجم الخط */
+  font-weight: bold;     /* سماكة الخط */
+  margin: 5px 0 0 0;     /* المسافة من فوق وتحت */
+  text-align: center;    /* محاذاة النص بالوسط */
+  font-family: Arial, sans-serif; /* نوع الخط */
+    white-space: nowrap;   /* يمنع النص من النزول للسطر الثاني */
+}
+
+.value:hover{
+    background: linear-gradient(45deg,#3C73D6,#7BA9E1,#2482BE);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 0.2px black;
+    font-weight: bolder;
+    font-size: larger;
+}
+.card1 h3:hover{
+       background: linear-gradient(45deg,#000000,#8ae7fe,#135eb8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.2px black;
+    -webkit-text-fill-color: transparent;
+    font-weight: bolder;
+    font-size: 14px; 
+}
+/* تأثير hover */
+
+.card1 .top-box img.card1-img:hover {
+  transform: scale(1.1);       /* تكبير الصورة */
+  border-color:rgba(0, 144, 234,0.5);       /* لون الخط حول الصورة عند hover */
+}
+
+.E-img:hover{  transform: scale(1.1);       /* تكبير الصورة */
+  border-color:rgba(0, 144, 234,0.5);       /* لون الخط حول الصورة عند hover */}
+
+
+  .panel { max-width: 1000px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+  .search-filters { margin-bottom: 20px; display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
+  .actions { margin-left: auto; display: flex; gap: 10px; }
+  select, button { padding: 8px 12px; font-size: 14px; border-radius: 5px; border: 1px solid #ccc; }
+  button { cursor: pointer; background: #007ed2; color: white; border: none; }
+  button:hover { background: #8ffff0; color: #000000; font-weight: bold;}
+  .clear-btn { background: #f44336; }
+  .clear-btn:hover { background: #ff9d9d; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+  th { background-color: #f2f2f2; }
+  .table-scroll { overflow-x: auto; }
+  .expired { color: #c1bd38; font-weight: bold; -webkit-text-stroke: 0.2px black;}
+  .yes { color: #00a508; font-weight: bold; -webkit-text-stroke: 0.2px black;}
+  .no { color: #ff0000; font-weight: bold; -webkit-text-stroke: 0.2px black;}
+
+
+/* حاوية الكارتين */
+.genderNationalityContainer {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap; /* إذا الشاشة ضيقة تنتقل الكارتات أسفل بعض */
+  margin-top: 20px;
+}
+
+/* كل كارت */
+.cardGender, .cardNationality, .cardQualification {
+  flex: 0 0 462px; /* عرض ثابت */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* عنوان الكارت */
+.header{
+  font-size: 18px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 15px;
+}
+
+/* حاوية الشارتات داخل الكارت */
+.charts {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* كل شارت مع النص */
+.chart-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#maleChart, #femaleChart, #omaniChart, #expatChart{  max-width: 150px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.1));
+}
+
+
+/* النص أسفل كل شارت */
+.percent {
+  margin-top: 8px;
+  font-weight: 600;
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  margin-left: 0; /* مهم جداً لإزالة التعارض السابق */
+}
+.cardGender:hover, .cardNationality:hover, .cardQualification:hover{
+transform: translateY(-5px);box-shadow:0 12px 30px rgba(28,49,66,0.12)
+} 
+.titlesRow {
+  display: flex;
+  gap: 350px; /* مسافة بينهم */
+}
+
+.titlesRow , .title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+.cardQualification{margin-top: -1rem;width: 460px;}
+.card h3:hover{
+       background: linear-gradient(45deg,#000000,#8ae7fe,#135eb8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 0.2px black;
+    -webkit-text-fill-color: transparent;
+    font-weight: bolder;
+    font-size: 14px; 
+
+}

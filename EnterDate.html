@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Staff Registration Form</title>
+ <link rel="stylesheet" href="styledata.css">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    
+    <!-- فيديو الخلفية-->
+
+<video autoplay muted loop class="video-background" src="Media/Gradient Blue Modern Sale Marketing Video Ad.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" />
+
+</head>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<div class="dropdown" style="float: inherit;">
+      <li class="Education"><a href="#Education" >Education</a></li>
+<div class="dropdown-content">
+      <a href="#Learning" id="comingSoon1">Learning</a>
+      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+      <a href="#Updates" id="comingSoon3">Updates</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
+<div class="dropdown-content2">
+        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+        <a href="#Policies" id="comingSoon5">Policies</a>
+        <a href="#Documents" id="comingSoon6">Documents</a>
+        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+</div>
+</div>
+
+<div class="dropdown2" style="float: inherit;">
+    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
+<div class="dropdown-content2">
+        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+        <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+        <a href="#CSSD" id="comingSoon12">CSSD</a>
+        <a href="#Loan" id="comingSoon13">Loan</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
+<div class="dropdown-content2">
+        <a href="#Audit" id="comingSoon14">Audit</a>
+        <a href="#Statistics" id="comingSoon15">Statistics</a>
+        <a href="#Ejada" id="comingSoon16">Ejada</a>
+        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
+<div class="dropdown-content2"id="NursingHR">
+        <a href="Personal Data list.html">Personal Data and Training Records</a>
+        <a href="DashboardMain.html">Dashboard</a>
+        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+        <a href="#Other" id="comingSoon21">Other</a>
+
+</div></div>
+
+<!-- Admin Control (مخفي افتراضياً) -->
+<div class="dropdown2"  id="adminControlMenu">
+  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div></div>
+
+
+</div>
+
+    <li><a href="About.html">About Me</a></li>
+
+<!-- زر Account -->
+<li style="float: right; margin-left: 10px; position:relative;">
+  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+
+</ul>
+</nav>
+    </ul>
+</nav>
+
+
+
+</header>
+<body>
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+</script>
+
+
+
+
+<section class="formstaff">
+  <div class="container">
+    <h2>Staff Registration Form</h2>
+    <div class="progress-bar">
+      <div class="progress" id="progress"></div>
+    </div>    <form id="multiTabForm">
+    <div class="tabs">
+      <div class="tab active" onclick="showTab(0)">Basic</div>
+      <div class="tab" onclick="showTab(1)">Contact</div>
+      <div class="tab" onclick="showTab(2)">Employment</div>
+      <div class="tab" onclick="showTab(3)">Courses</div>
+    </div>
+<!-- Tab 1 -->
+<div class="tab-content active">
+<!-- رفع صورة -->
+<div class="photo-upload"><label for="photoInput"><div class="photo-box" id="photoPreview"></div></label>
+<input type="file" id="photoInput" name="photo" accept="image/*" onchange="previewImage(event)"></div>
+<div><label for="staffnumber">Staff Number</label><input type="number" id="staffnumber" name="staffnumber"></div>
+<div><label for="staffname">Staff Name</label><input type="text" id="staffname" name="staffname"></div>
+<div><label for="dob">Date of Birth</label><input type="date" id="dob" name="dob"></div>
+<div><label for="gender">Gender</label><select id="gender" name="gender"><option value=""></option><option value="Male">Male</option><option value="Female">Female</option></select></div>
+<div><label for="maritalStatus">Marital Status</label><select id="maritalStatus" name="maritalStatus"><option></option><option>Married</option><option>Single</option><option>Divorced</option><option>Widowed</option></select></div>
+<div><label for="nationality">Nationality</label><select id="nationality" name="nationality"><option></option><option>Non-Omani</option><option>Omani</option></select></div>
+<div><label for="country">Country</label><select id="country" name="country"><option></option><option>Algeria</option><option>Angola</option><option>Benin</option><option>Botswana</option><option>Burkina Faso</option><option>Burundi</option><option>Cabo Verde</option><option>Congo (Republic of the)</option><option>Côte d'Ivoire</option><option>Congo (Democratic Republic of the)</option><option>Djibouti</option><option>Equatorial Guinea</option><option>Egypt</option><option>Cameroon</option><option>Chad</option><option>Central African Republic</option><option>Comoros</option><option>Eritrea</option><option>Ethiopia</option><option>Eswatini</option><option>Gabon</option><option>Ghana</option><option>Gambia</option><option>Guinea</option><option>Kenya</option><option>Guinea-Bissau</option><option>Lesotho</option><option>Libya</option><option>Liberia</option><option>Madagascar</option><option>Mali</option><option>Malawi</option><option>Mauritania</option><option>Mauritius</option><option>Morocco</option><option>Mozambique</option><option>Namibia</option><option>Niger</option><option>Nigeria</option><option>Rwanda</option><option>São Tomé and Príncipe</option><option>Senegal</option><option>Seychelles</option><option>Sierra Leone</option><option>Somalia</option><option>South Africa</option><option>South Sudan</option><option>Sudan</option><option>Tanzania</option><option>Togo</option><option>Tunisia</option><option>Uganda</option><option>Zambia</option><option>Zimbabwe</option><option>Afghanistan</option><option>Bahrain</option><option>Bangladesh</option><option>Bhutan</option><option>Brunei</option><option>Cambodia</option><option>China</option><option>India</option><option>Indonesia</option><option>Iran</option><option>Iraq</option><option>Israel</option><option>Japan</option><option>Jordan</option><option>Kazakhstan</option><option>Kuwait</option><option>Kyrgyzstan</option><option>Laos</option><option>Lebanon</option><option>Malaysia</option><option>Maldives</option><option>Mongolia</option><option>Myanmar</option><option>Nepal</option><option>North Korea</option><option>Oman</option><option>Pakistan</option><option>Palestine</option><option>Philippines</option><option>Qatar</option><option>Saudi Arabia</option><option>Singapore</option><option>South Korea</option><option>Sri Lanka</option><option>Syria</option><option>Tajikistan</option><option>Thailand</option><option>Timor-Leste</option><option>Turkey</option><option>Turkmenistan</option><option>United Arab Emirates (UAE)</option><option>Uzbekistan</option><option>Vietnam</option><option>Yemen</option><option>Albania</option><option>Andorra</option><option>Armenia</option><option>Austria</option><option>Azerbaijan</option><option>Belarus</option><option>Belgium</option><option>Bosnia and Herzegovina</option><option>Bulgaria</option><option>Croatia</option><option>Cyprus</option><option>Czechia</option><option>Denmark</option><option>Estonia</option><option>Finland</option><option>France</option><option>Georgia</option><option>Germany</option><option>Greece</option><option>Hungary</option><option>Iceland</option><option>Ireland</option><option>Italy</option><option>Latvia</option><option>Liechtenstein</option><option>Lithuania</option><option>Luxembourg</option><option>Malta</option><option>Moldova</option><option>Monaco</option><option>Montenegro</option><option>Netherlands</option><option>North Macedonia</option><option>Poland</option><option>Norway</option><option>Portugal</option><option>Russia</option><option>Romania</option><option>San Marino</option><option>Slovakia</option><option>Serbia</option><option>Slovenia</option><option>Spain</option><option>Sweden</option><option>Switzerland</option><option>Ukraine</option><option>Vatican City</option><option>United Kingdom (UK)</option><option>Antigua and Barbuda</option><option>Argentina</option><option>Bahamas</option><option>Barbados</option><option>Belize</option><option>Bolivia</option><option>Brazil</option><option>Canada</option><option>Chile</option><option>Colombia</option><option>Costa Rica</option><option>Cuba</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option><option>El Salvador</option><option>Grenada</option><option>Guatemala</option><option>Guyana</option><option>Haiti</option><option>Honduras</option><option>Jamaica</option><option>Mexico</option><option>Nicaragua</option><option>Panama</option><option>Paraguay</option><option>Peru</option><option>Saint Kitts and Nevis</option><option>Saint Lucia</option><option>Saint Vincent and the Grenadines</option><option>Suriname</option><option>Trinidad and Tobago</option><option>Uruguay</option><option>United States of America (USA)</option><option>Venezuela</option><option>Australia</option><option>Kiribati</option><option>Fiji</option><option>Micronesia</option><option>Marshall Islands</option><option>Nauru</option><option>Palau</option><option>New Zealand</option><option>Papua New Guinea</option><option>Samoa</option><option>Solomon Islands</option><option>Tonga</option><option>Vanuatu</option><option>Tuvalu</option></select></div>
+<div><label for="cvil">Civil Number</label><input type="number" id="cvil" name="cvil"></div>       
+</div>
+<!-- Tab 2 --><div class="tab-content">          
+<div><label for="phone">Phone Number</label><input type="number" id="phone" name="phone"></div>       
+<div><label for="contactNumberOfNextKin">Next of Kin Contact</label><input type="number" id="contactNumberOfNextKin" name="contactNumberOfNextKin"></div>  
+<div><label for="email">Email</label><input type="email" id="email" name="email"></div> 
+<div><label for="address">Current Address</label><select id="address" name="address"><option></option><option>Muscat</option><option>Seeb</option><option>Bawshar</option><option>Muttrah</option><option>Al Amarat</option><option>Qurayyat</option><option>Sohar</option><option>Saham</option><option>Shinas</option><option>Rustaq</option><option>Nakhal</option><option>Al Awabi</option><option>Wadi Al Maawil</option><option>Al Suwaiq</option><option>Al Khaburah</option><option>Ibri</option><option>Yanqul</option><option>Dhank</option><option>Nizwa</option><option>Bahla</option><option>Samail</option><option>Izki</option><option>Manah</option><option>Adam</option><option>Al Hamra</option><option>Bidbid</option><option>Sur</option><option>Ibra</option><option>Bidiya</option><option>Jalan Bani Bu Ali</option><option>Jalan Bani Bu Hassan</option><option>Mahout</option><option>Duqm</option><option>Haima</option><option>Salalah</option><option>Taqah</option><option>Mirbat</option><option>Thumrait</option><option>Madinat Al Haq</option><option>Khasab</option><option>Bukha</option><option>Dibba Al-Baya</option><option>Madha</option><option>Al Buraimi</option><option>Mahdah</option><option>Sinaw</option><option>Liwa</option><option>Al Jazer</option><option>Masirah</option><option>Barka</option></select></div>
+<div><label for="permaddress">Permanent Address</label><select id="permaddress" name="permaddress"><option></option><option>Muscat</option><option>Dhofar</option><option>Musandam</option><option>Al Buraimi</option><option>Ad Dakhiliyah</option><option>North Al Batinah</option><option>South Al Batinah</option><option>Al Wusta</option><option>North Ash Sharqiyah</option><option>South Ash Sharqiyah</option><option>Al Dhahirah</option></select></div>
+<div><label for="driving">Driving Status</label><select id="driving" name="driving"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="waywork">Way of Coming to Work</label><select id="waywork" name="waywork"><option></option><option>Private car</option><option>Walking</option><option>Transport</option></select></div>
+<div><label for="timefhomethos">Time from Home to Hospital</label><select id="timefhomethos" name="timefhomethos"><option></option><option>5-15 min</option><option>16-30 min</option><option>31-45 min</option><option>46-60 min</option><option>More than 1 hr</option></select></div>
+</div>
+<!-- Tab 3 --><div class="tab-content">
+<div><label for="typeOfEmployment">Type of Employment</label><select id="typeOfEmployment" name="typeOfEmployment"><option></option><option>Permanent Employee to unit</option><option>Temporary Enhancment</option><option>Temporary internal</option><option>Temporary External</option></select></div>
+<div><label for="dateOfJoiningRH">Date of Joining Royal Hospital</label><input type="date" id="dateOfJoiningRH" name="dateOfJoiningRH"> </div>
+<div><label for="dateOfAppointmentMOH">Date of Appointment in MOH</label><input type="date" id="dateOfAppointmentMOH" name="dateOfAppointmentMOH"> </div>
+<div><label for="designation">Designation</label><select id="designation" name="designation"><option></option><option>Staff Nurse A</option><option>Staff Nurse B</option><option>Staff Nurse D</option><option>Medical Orderly</option><option>Health Assistant</option><option>General Nurse</option></select></div>
+<div><label for="actualPosition">Actual Position in Hospital</label><select id="actualPosition" name="actualPosition"><option></option><option>DGN</option><option>SH</option><option>UN</option><option>WN</option><option>Supervisior</option><option>Shift Incharge</option><option>Bedside</option><option>Medical Ordely</option><option>Health Assistance</option><option>Human Resource Nursing</option><option>Research Nurse</option><option>Duty Nursing Supervisors</option><option>Clinical Instructor</option></select></div>
+<div><label for="department">Department</label><select id="department" name="department"><option></option><option>Nursing</option><option>Store</option><option>IT</option><option>Main HR</option><option>Other</option></select></div>
+<div><label for="section">Section</label><select id="section" name="section"><option></option><option>Pediatric Nursing</option><option>Human Resource</option><option>Adult Nursing</option><option>Support Nursing</option><option>NHC</option><option>NOC</option><option>NEC and Other</option></select></div>
+<div><label for="unit">Unit</label><select id="unit" name="unit"><option></option><option>PCCU</option><option>ACCU</option><option>NICU</option><option>Pediatric</option></select></div>
+<div><label for="finance">Finance Grade</label><select id="finance" name="finance"><option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select></div>
+<div><label for="lastPromotionDate">Last Promotion Date</label><input type="date" id="lastPromotionDate" name="lastPromotionDate"></div> 
+<div><label for="typeOfContract">Type of Contract</label><select id="typeOfContract" name="typeOfContract"><option></option><option>Permanent</option><option>Temporary</option></select></div>
+<div><label for="dateOfContractStart">Contract Start Date</label><input type="date" title="If you are Temporary contract, keep the box empty" id="dateOfContractStart" name="dateOfContractStart"> </div>
+<div><label for="dateOfContractEnd">Contract End Date</label><input type="date" title="If you are Temporary contract, keep the box empty" id="dateOfContractEnd" name="dateOfContractEnd"> </div>
+<div><label for="qualification">Qualification</label><select id="qualification" name="qualification"><option></option><option>Diploma in General Nursing</option><option>BSN in General Nursing</option><option>Master</option><option>Doctorate</option></select></div>
+<div><label for="yearObtained">Year Obtained Nursing Certificate</label><input type="text" id="yearObtained" name="yearObtained"> </div>
+<div><label for="haveSpecialty">Do you have Specialty?</label><select id="haveSpecialty" name="haveSpecialty"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="whatSpecialty">What Specialty?</label><select id="whatSpecialty" name="whatSpecialty"><option></option><option>Administration</option><option>AICU</option><option>PICU & NICU</option><option>Emergency</option><option>Midwifery</option><option>Infection Control</option><option>Dialysis</option><option>Psychiatric Community</option></select></div>
+<div><label for="mohRegistr">MOH Registration Number</label><input type="number" id="mohRegistr" name="mohRegistr"> </div>
+<div><label for="chronicIllness">Do you have Chronic illness?</label><select id="chronicIllness" name="chronicIllness"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="chronicIllnessList">If yes, list:</label><input type="text" title="If not applicable keep it empty" id="chronicIllnessList" name="chronicIllnessList"></div> 
+<div><label for="inpRH">INP RH</label><input type="text" title="If not applicable keep it empty" id="inpRH" name="inpRH"></div>
+</div>
+<!-- Tab 4 --><div class="tab-content">
+<div><label for="blsdate">Date of Last BLS Certificate</label><input type="date" title="If not finished write 1/1/1111" id="blsdate" name="blsdate"> </div>
+<div><label for="palsdate">Date of Last PALS Certificate</label><input type="date" title="If not finished write 1/1/1111" id="palsdate" name="palsdate"> </div>
+<div><label for="ivTherapy">IV therapy completed</label><select id="ivTherapy" name="ivTherapy"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="painManagement">Pain management completed</label><select id="painManagement" name="painManagement"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="patientSafety">Patient Safety completed</label><select id="patientSafety" name="patientSafety"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="aggressionCourse">Aggression Course completed</label><select id="aggressionCourse" name="aggressionCourse"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="onlineLeanManagement">Online Lean Management completed</label><select id="onlineLeanManagement" name="onlineLeanManagement"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="leanManagementPhysical">Lean Management physical attended</label><select id="leanManagementPhysical" name="leanManagementPhysical"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="bfhi">BFHI completed</label><select id="bfhi" name="bfhi"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="infectionTheory">Infection control Hakeem theory</label><input type="date" title="If not finished write 1/1/1111" id="infectionTheory" name="infectionTheory"> </div>
+<div><label for="infectionPractice">Infection control Hakeem Practice</label><input type="date" title="If not finished write 1/1/1111" id="infectionPractice" name="infectionPractice"> </div>
+<div><label for="ecg">ECG completed</label><select id="ecg" name="ecg"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="manualHandling">Manual handling completed</label><select id="manualHandling" name="manualHandling"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="chemotherapyTheory">Chemotherapy course theory completed</label><select id="chemotherapyTheory" name="chemotherapyTheory"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="chemotherapyPractice">Chemotherapy course practice completed</label><select id="chemotherapyPractice" name="chemotherapyPractice"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="central">Central line course completed</label><select id="central" name="central"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="practice">Practice central line</label><select id="practice" name="practice"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="leader">Leadership management</label><select id="leader" name="leader"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="preceptor">Preceptorship course</label><select id="preceptor" name="preceptor"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="ethical">Ethical course</label><select id="ethical" name="ethical"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="commun">Communication course completed</label><select id="commun" name="commun"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="niv">NIV course completed</label><select id="niv" name="niv"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="transporting">Transporting critically ill patient course completed</label><select id="transporting" name="transporting"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="arterial">Care of arterial line completed</label><select id="arterial" name="arterial"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="peritoneal">Peritoneal Dialysis</label><select id="peritoneal" name="peritoneal"><option></option><option>Yes</option><option>No</option></select></div>
+<div><label for="other">List down any other courses attended not mentioned above</label><input type="text" title="If not applicable keep it empty" id="other" name="other"> </div>
+</div>
+      <!-- ----------------------------- -->
+      <div class="navigation">
+        <button type="button" class="prev-btn" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+        <button type="button" class="next-btn" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        <button type="submit" class="submit-btn1" id="submitBtn">Submit</button>
+
+      </div>
+    </form>
+<div id="messageBox"></div>   
+  </div>
+<!-- Modal -->
+<div id="modalOverlay" class="modal-overlay">
+  <div id="modalBox" class="modal">
+    <p id="modalMessage"></p>
+    <button onclick="closeModal()">Close</button>
+  </div>
+</div>
+</section>
+<script>
+let currentTab = 0;
+let photoBase64 = ""; // نخزن الصورة هنا
+
+// التحكم بالتبويبات وشريط التقدم
+const tabButtons = document.querySelectorAll('.tabs .tab');
+const tabContents = document.querySelectorAll('.tab-content');
+const progress = document.getElementById('progress');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const submitBtn = document.getElementById('submitBtn');
+const messageBox = document.getElementById('messageBox');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalBox = document.getElementById('modalBox');
+const modalMessage = document.getElementById('modalMessage');
+
+function showTab(n) {
+  tabButtons.forEach(btn => btn.classList.remove('active'));
+  tabContents.forEach(content => content.classList.remove('active'));
+  tabButtons[n].classList.add('active');
+  tabContents[n].classList.add('active');
+
+  prevBtn.style.display = n === 0 ? 'none' : 'inline-block';
+  if (n === tabContents.length - 1) {
+    nextBtn.style.display = 'none';
+    submitBtn.style.display = 'inline-block';
+  } else {
+    nextBtn.style.display = 'inline-block';
+    submitBtn.style.display = 'none';
+  }
+
+  progress.style.width = ((n + 1) / tabContents.length) * 100 + '%';
+  currentTab = n;
+}
+
+function nextPrev(step) {
+  if(step === 1 && !validateForm()) return false;
+  let newTab = currentTab + step;
+  if (newTab < 0 || newTab >= tabContents.length) return;
+  showTab(newTab);
+}
+
+function previewImage(event) {
+  const photoPreview = document.getElementById('photoPreview');
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      photoPreview.style.backgroundImage = `url(${e.target.result})`;
+      photoPreview.textContent = '';
+      photoPreview.style.backgroundSize = 'cover';
+      photoPreview.style.backgroundPosition = 'center';
+      photoBase64 = e.target.result;
+    }
+    reader.readAsDataURL(file);
+  }
+}
+
+function showWarning(text){
+  messageBox.textContent = text;
+  messageBox.className = "warning";
+  messageBox.style.display = "block";
+  messageBox.style.fontSize= "12px";
+  setTimeout(() => { messageBox.style.display = "none"; }, 4000);
+}
+
+function showModal(text, type){
+  modalMessage.textContent = text;
+  modalBox.className = "modal " + type;
+  modalOverlay.style.display = "flex";
+}
+
+function closeModal(){
+  modalOverlay.style.display = "none";
+}
+
+function validateForm() {
+  const requiredFieldsPerTab = {
+    0: [
+      { field: document.getElementById('staffnumber'), name: "Staff Number" },
+      { field: document.getElementById('staffname'), name: "Staff Name" },
+      { field: document.getElementById('dob'), name: "Date of Birth" },
+      { field: document.getElementById('gender'), name: "Gender" },
+      { field: document.getElementById('maritalStatus'), name: "Marital Status" },
+      { field: document.getElementById('nationality'), name: "Nationality" },
+      { field: document.getElementById('country'), name: "Country" },
+      { field: document.getElementById('cvil'), name: "Civil Number" }
+    ],
+    1: [
+      { field: document.getElementById('phone'), name: "Phone Number" },
+      { field: document.getElementById('contactNumberOfNextKin'), name: "Next of Kin Contact" },
+      { field: document.getElementById('email'), name: "Email" },
+      { field: document.getElementById('address'), name: "Current Address" },
+      { field: document.getElementById('permaddress'), name: "Permanent Address" },
+      { field: document.getElementById('driving'), name: "Driving Status" },
+      { field: document.getElementById('waywork'), name: "Way of Coming to Work" },
+      { field: document.getElementById('timefhomethos'), name: "Time from Home to Hospital" }      
+    ],
+    2: [
+      { field: document.getElementById('typeOfEmployment'), name: "Type of Employment" },
+      { field: document.getElementById('dateOfJoiningRH'), name: "Date of Joining Royal Hospital" },
+      { field: document.getElementById('dateOfAppointmentMOH'), name: "Date of Appointment in MOH" },
+      { field: document.getElementById('designation'), name: "Designation" },
+      { field: document.getElementById('actualPosition'), name: "Actual Position in Hospital" },
+      { field: document.getElementById('department'), name: "Department" },    
+      { field: document.getElementById('section'), name: "Section" },
+      { field: document.getElementById('unit'), name: "Unit" },
+      { field: document.getElementById('finance'), name: "Finance Grade" },     
+      { field: document.getElementById('lastPromotionDate'), name: "Last Promotion Date" },
+      { field: document.getElementById('typeOfContract'), name: "Type of Contract" },
+      { field: document.getElementById('dateOfContractStart'), name: "Contract Start Date" },   
+      { field: document.getElementById('dateOfContractEnd'), name: "Contract End Date" },
+      { field: document.getElementById('qualification'), name: "Qualification" },
+      { field: document.getElementById('yearObtained'), name: "Year Obtained Nursing Certificate" },     
+      { field: document.getElementById('haveSpecialty'), name: "Do you have Specialty?" },
+      { field: document.getElementById('mohRegistr'), name: "MOH Registration Number" },
+      { field: document.getElementById('chronicIllness'), name: "Do you have Chronic illness?" }        
+    ],
+    3: [
+      { field: document.getElementById('blsdate'), name: "Date of Last BLS Certificate" },
+      { field: document.getElementById('palsdate'), name: "Date of Last PALS Certificate" },
+      { field: document.getElementById('ivTherapy'), name: "IV Therapy Completed" },
+      { field: document.getElementById('painManagement'), name: "Pain Management Completed" },
+      { field: document.getElementById('patientSafety'), name: "Patient Safety Completed" },
+      { field: document.getElementById('aggressionCourse'), name: "Aggression Course Completed" },
+      { field: document.getElementById('onlineLeanManagement'), name: "Online Lean Management Completed" },
+      { field: document.getElementById('leanManagementPhysical'), name: "Lean Management Physical Attended" },
+      { field: document.getElementById('bfhi'), name: "BFHI Completed" },
+      { field: document.getElementById('infectionTheory'), name: "Infection Control Theory" },
+      { field: document.getElementById('infectionPractice'), name: "Infection Control Practice" },
+      { field: document.getElementById('ecg'), name: "ECG Completed" },
+      { field: document.getElementById('manualHandling'), name: "Manual Handling Completed" },
+      { field: document.getElementById('chemotherapyTheory'), name: "Chemotherapy Theory Completed" },
+      { field: document.getElementById('chemotherapyPractice'), name: "Chemotherapy Practice Completed" },
+      { field: document.getElementById('central'), name: "Central Line Course Completed" },
+      { field: document.getElementById('practice'), name: "Practice Central Line" },
+      { field: document.getElementById('leader'), name: "Leadership Management" },
+      { field: document.getElementById('preceptor'), name: "Preceptorship Course" },
+      { field: document.getElementById('ethical'), name: "Ethical Course" },
+      { field: document.getElementById('commun'), name: "Communication Course Completed" },
+      { field: document.getElementById('niv'), name: "NIV Course Completed" },
+      { field: document.getElementById('transporting'), name: "Transporting Critically Ill Patient Course Completed" },
+      { field: document.getElementById('arterial'), name: "Care of Arterial Line Completed" },
+      { field: document.getElementById('peritoneal'), name: "Peritoneal Dialysis" }
+    ]
+  };
+
+  const requiredFields = requiredFieldsPerTab[currentTab] || [];
+  let emptyFields = [];
+
+  for (let i = 0; i < requiredFields.length; i++) {
+    if (!requiredFields[i].field.value || requiredFields[i].field.value.trim() === "") {
+      emptyFields.push(requiredFields[i].name);
+    }
+  }
+
+  if (emptyFields.length > 0) {
+    showWarning(`⚠️ Please fill or select the following: ${emptyFields.join(", ")}`);
+    return false;
+  }
+
+  return true;
+}
+
+// جمع البيانات يدويًا كما في الكود القديم
+function submitForm() {
+  const formData = {
+    staffnumber: document.getElementById('staffnumber').value,
+    staffname: document.getElementById('staffname').value,
+    dob: document.getElementById('dob').value,
+    gender: document.getElementById('gender').value,
+    maritalStatus: document.getElementById('maritalStatus').value,
+    nationality: document.getElementById('nationality').value,
+    country: document.getElementById('country').value,
+    cvil: document.getElementById('cvil').value,
+    phone: document.getElementById('phone').value,
+    contactNumberOfNextKin: document.getElementById('contactNumberOfNextKin').value,
+    email: document.getElementById('email').value,
+    address: document.getElementById('address').value,
+    permaddress: document.getElementById('permaddress').value,
+    driving: document.getElementById('driving').value,
+    waywork: document.getElementById('waywork').value,
+    timefhomethos: document.getElementById('timefhomethos').value,
+    typeOfEmployment: document.getElementById('typeOfEmployment').value,
+    dateOfJoiningRH: document.getElementById('dateOfJoiningRH').value,
+    dateOfAppointmentMOH: document.getElementById('dateOfAppointmentMOH').value,
+    designation: document.getElementById('designation').value,
+    actualPosition: document.getElementById('actualPosition').value,
+    department: document.getElementById('department').value,
+    section: document.getElementById('section').value,
+    unit: document.getElementById('unit').value,
+    finance: document.getElementById('finance').value,
+    lastPromotionDate: document.getElementById('lastPromotionDate').value,
+    typeOfContract: document.getElementById('typeOfContract').value,
+    dateOfContractStart: document.getElementById('dateOfContractStart').value,
+    dateOfContractEnd: document.getElementById('dateOfContractEnd').value,
+    qualification: document.getElementById('qualification').value,
+    yearObtained: document.getElementById('yearObtained').value,
+    haveSpecialty: document.getElementById('haveSpecialty').value,
+    whatSpecialty: document.getElementById('whatSpecialty').value,
+    mohRegistr: document.getElementById('mohRegistr').value,
+    chronicIllness: document.getElementById('chronicIllness').value,
+    chronicIllnessList: document.getElementById('chronicIllnessList').value,
+    inpRH: document.getElementById('inpRH').value,
+    blsdate: document.getElementById('blsdate').value,
+    palsdate: document.getElementById('palsdate').value,
+    ivTherapy: document.getElementById('ivTherapy').value,
+    painManagement: document.getElementById('painManagement').value,
+    patientSafety: document.getElementById('patientSafety').value,
+    aggressionCourse: document.getElementById('aggressionCourse').value,
+    onlineLeanManagement: document.getElementById('onlineLeanManagement').value,
+    leanManagementPhysical: document.getElementById('leanManagementPhysical').value,
+    bfhi: document.getElementById('bfhi').value,
+    infectionTheory: document.getElementById('infectionTheory').value,
+    infectionPractice: document.getElementById('infectionPractice').value,
+    ecg: document.getElementById('ecg').value,
+    manualHandling: document.getElementById('manualHandling').value,
+    chemotherapyTheory: document.getElementById('chemotherapyTheory').value,
+    chemotherapyPractice: document.getElementById('chemotherapyPractice').value,
+    central: document.getElementById('central').value,
+    practice: document.getElementById('practice').value,
+    leader: document.getElementById('leader').value,
+    preceptor: document.getElementById('preceptor').value,
+    ethical: document.getElementById('ethical').value,
+    commun: document.getElementById('commun').value,
+    niv: document.getElementById('niv').value,
+    transporting: document.getElementById('transporting').value,
+    arterial: document.getElementById('arterial').value,
+    peritoneal: document.getElementById('peritoneal').value,
+    other: document.getElementById('other').value,
+    photo: photoBase64
+  };
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbwYTGGQXxOoqYrJClv084KYWWE7oZAozd7Pc3xqVXPeN72H721E1H3mBKKtVR4sBFmr/exec';
+
+  fetch(scriptURL, {
+    method: 'POST',
+    body: JSON.stringify(formData)
+  })
+  .then(response => response.json())
+  .then(result => {
+    showModal("Data submitted successfully!", "success");
+    document.getElementById('multiTabForm').reset();
+
+
+    // إعادة ضبط الصورة
+    const photoPreview = document.getElementById('photoPreview');
+    photoPreview.style.backgroundImage = '';
+    photoPreview.classList.remove('has-image');
+    photoBase64 = "";
+
+
+    currentTab = 0;
+    showTab(currentTab);
+  })
+  .catch(error => {
+    showModal("An error occurred while submitting, please try again.", "error");
+    console.error(error);
+  });
+}
+
+// ربط الفورم بزر Submit
+document.getElementById('multiTabForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  submitForm();
+});
+</script>
+
+
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+</body></html>

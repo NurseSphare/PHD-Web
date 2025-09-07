@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+</head>
+<body>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<div class="dropdown" style="float: inherit;">
+      <li class="Education"><a href="#Education" >Education</a></li>
+<div class="dropdown-content">
+      <a href="#Learning" id="comingSoon1">Learning</a>
+      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+      <a href="#Updates" id="comingSoon3">Updates</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
+<div class="dropdown-content2">
+        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+        <a href="#Policies" id="comingSoon5">Policies</a>
+        <a href="#Documents" id="comingSoon6">Documents</a>
+        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+</div>
+</div>
+
+<div class="dropdown2" style="float: inherit;">
+    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
+<div class="dropdown-content2">
+        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+        <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+        <a href="#CSSD" id="comingSoon12">CSSD</a>
+        <a href="#Loan" id="comingSoon13">Loan</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
+<div class="dropdown-content2">
+        <a href="#Audit" id="comingSoon14">Audit</a>
+        <a href="#Statistics" id="comingSoon15">Statistics</a>
+        <a href="#Ejada" id="comingSoon16">Ejada</a>
+        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
+<div class="dropdown-content2"id="NursingHR">
+        <a href="Personal Data list.html">Personal Data and Training Records</a>
+        <a href="DashboardMain.html">Dashboard</a>
+        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+        <a href="#Other" id="comingSoon21">Other</a>
+
+</div></div>
+
+<!-- Admin Control (مخفي افتراضياً) -->
+<div class="dropdown2"  id="adminControlMenu">
+  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div></div>
+
+
+</div>
+
+    <li><a href="About.html">About Me</a></li>
+
+<!-- زر Account -->
+<li style="float: right; margin-left: 10px; position:relative;">
+  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+
+</ul>
+</nav>
+    </ul>
+</nav>
+
+
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+</script>
+<section class="Body1">
+
+<div class="GrWords1">       <!-- قسم جديد مصغر  -->
+    <img class="NurseED" src="Media/NurseED.png" alt="Nurse ED">
+      <h1 class="Education1">Where Nursing Meets Excellence.</h1>
+      <h1 class="Education2">(Education • Resources • Management)</h1>
+      <h2 class="All">An all-in-one hub for nursing education, clinical guidelines, HR tools, policies, and quality improvement resources. Accessible anytime, anywhere, even from home.</h2>
+      <div class="Body1Btn">
+        <a class="Expolore" href="ExploreOptions.html">Explore Options</a>
+        <a class="Start" href="#Learning" id="comingSoon22">Start Learnng now</a>
+      </div>
+</div>
+</section>
+
+<section class="Body2">
+
+    <hr class="Line2">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+<h1 class="Welcome">Welcome to Nurse Sphare</h1>
+<h2 class="Why">Why Nurse Sphare?</h2>
+<p class="NurseEDDeveloped">
+    NurseSphere was created to provide nurses and healthcare professionals with a centralized, easy-to-use platform for all aspects of <br>nursing practice. It provide a quick access to guidelines, policies, educational resources, HR tools, and operational updates<br> which are essential for delivering safe and high-quality patient care – all in one place that are accessible <br>anytime—whether you’re on the ward or at home.<br></p>
+
+<!-- هنا البداية -->
+
+<div class="features-container">
+  <div class="feature-box" onclick="setActiveBox(0)">
+    <div class="icon"><img class="EducaionIcon" src="Media/45.png"></div>
+    <h3 class="WordIcon1">Education</h3>
+  </div>
+
+  <div class="feature-box" onclick="setActiveBox(1)">
+    <div class="icon"><img class="ClinicalResourcesIcon" src="Media/Guidline Icon.png"></div>
+    <h3 class="WordIcon2">Clinical Resources</h3>
+  </div>
+
+  <div class="feature-box" onclick="setActiveBox(2)">
+    <div class="icon"><img class="HospitalOperationsIcon" src="Media/Competency Tools Icon.png"></div>
+    <h3 class="WordIcon3">Hospital Operations</h3>
+  </div>
+
+  <div class="feature-box" onclick="setActiveBox(3)">
+    <div class="icon"><img class="QualityandSafetyIcon" src="Media/Documents (6).png"></div>
+    <h3 class="WordIcon4">Quality and Safety</h3>
+  </div>
+
+  <div class="feature-box" onclick="setActiveBox(4)">
+    <div class="icon"><img class="NursingHRIcon" src="Media/Documents (4).png"></div>
+    <h3 class="WordIcon5">Nursing HR</h3>
+  </div>
+<!-- المربع الثابت السفلي -->
+ </div>
+<div class="extra-info-box" id="extraInfo" style="display: flex; align-items: center; gap: 20px; padding: 20px;">
+  <div id="extraText" style="flex: 1; color: #003366;">
+    <h2 id="extraHeading" style="margin-top: 0; font-family: 'Fredoka', sans-serif; color: #2a6ef2; -webkit-text-stroke: 0.6px rgb(26, 23, 36);"></h2>
+    <div id="extraParagraphs" style="font-size: large;">
+      Explore each feature to discover more 🔍
+    </div>
+  </div>
+  <img id="extraImage" src="" alt="" style="width: 55%; height: auto; object-fit: cover; display: none; border-radius: 15px;" />
+</div>
+<div class="section-gap1"></div>
+</section>
+<section class="Body3">
+  <div class="star">
+  <h1 class="PHDU2">PHDU</h1>
+  <h2 class="Stay">Stay informed, Stay skilled, and Stay connected — <br>Your Nursing Resource Center</h2>
+  <p class="part2">At Nurse Sphare, our mission is clear:</p>
+  <p class="part3">To empower nurses by providing easy access to comprehensive clinical resources, educational tools, and professional development opportunities. We aim to support safe, efficient, and high-quality patient care while fostering continuous learning, collaboration, and excellence in nursing practice.
+
+</p>
+  </div>
+  <img class="d" src="Media/PHDU Body.png" style="    position: absolute; /* تظهر فوق الخلفية */
+    top: 17rem; /* تعديل حسب المكان المطلوب */
+    left: 6rem; /* تعديل حسب المكان المطلوب */
+    width: 25em;  /* الحجم المطلوب */
+    height: 22em; /* الحجم المطلوب */
+    z-index: 2; /* فوق الصورة a */">
+  <img class="a"  src="Media/Green and White Simple Online Travel Site Dekstop Prototype.png" style="  display: block;
+    width: 100%; /* تغطي كامل الحاوية */
+    height: auto;
+    z-index: 1; /* الخلفية */">
+</section>
+<section class="Body4">
+<section id="announcements" style="padding: 40px; background-color: #c1ddf2; font-family: Arial, sans-serif;">
+  <h2 style="text-align: center; color: #1a73e8; margin-bottom: 30px;">📢 Announcements / News</h2>
+
+  <!-- الحاوية المرنة للبطاقات -->
+  <div id="announcement-list" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;"></div>
+</section>
+
+<script>
+const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQxspWy62AswfTeyBlv2R01CFjW3rUsH03G4H1yOeIsYckD8arGyhYes8bHSaTv2aBba9TzAkIEetqO/pub?output=csv";
+
+fetch(sheetUrl)
+  .then(res => res.text())
+  .then(csvText => {
+    const container = document.getElementById("announcement-list");
+    const lines = csvText.trim().split("\n");
+
+    if (lines.length <= 1) {
+      container.innerHTML = "<p style='text-align:center; color:#555;'>No announcements yet.</p>";
+      return;
+    }
+
+    const dataLines = lines.slice(1);
+
+    dataLines.forEach(line => {
+      const values = line.split(",");
+      const date = values[0] || '';
+      const category = values[1] || '';
+      const title = values[2] || '';
+      const details = values.slice(3).join(",") || ''; // مهم: عشان لو النص فيه فاصلة ما يقطع
+
+      const card = document.createElement("div");
+      card.style.cssText = `
+        background-color: #fff;
+        padding: 12px 14px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        transition: transform 0.2s;
+        width: calc(33% - 10px);
+        box-sizing: border-box;
+        height: auto; 
+        word-wrap: break-word;
+        flex-grow: 1;
+      `;
+      card.innerHTML = `
+        <div style="font-size: 13px; color: #555; margin-bottom: 4px;">
+          <span>Date: ${date}</span> | <span>Category: ${category}</span>
+        </div>
+        <h3 style="margin: 4px 0; color: #1a73e8; font-size: 18px;">${title}</h3>
+        <p style="color: #333; font-size: 15px; white-space: pre-line;">${details}</p>
+      `;
+
+      card.onmouseover = () => card.style.transform = 'scale(1.02)';
+      card.onmouseout = () => card.style.transform = 'scale(1)';
+
+      container.appendChild(card);
+    });
+  })
+  .catch(err => {
+    console.error("Error fetching announcements:", err);
+    document.getElementById("announcement-list").innerHTML = "<p style='text-align:center;color:red;'>Failed to load announcements.</p>";
+  });
+</script>
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+
+</section>
+
+
+<div id="deviceModal">
+  <div id="deviceModalContent">
+    <h2>Access Restricted</h2>
+    <p>This content is currently not supported on mobile or tablet devices. We are working on it and will provide updates soon.</p>
+    <p>Please enter the password to access:</p>
+    <input type="password" id="accessPassword" placeholder="Password">
+    <br>
+    <button onclick="checkPassword()">Enter</button>
+  </div>
+</div>
+
+<script>
+  // Set your password here
+  const correctPassword = "1234";
+
+  // Detect if device is mobile or tablet (improved detection)
+  function isMobileOrTablet() {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // iOS detection
+    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      return true;
+    }
+
+    // Android detection
+    if (/Android/.test(ua)) {
+      return true;
+    }
+
+    // Any other mobile/tablet
+    if (/webOS|BlackBerry|IEMobile|Opera Mini/.test(ua)) {
+      return true;
+    }
+
+    return false; // desktop
+  }
+
+  // Show modal only on mobile/tablet
+  window.onload = function() {
+    if(isMobileOrTablet()) {
+      document.getElementById("deviceModal").style.display = "block";
+    }
+  }
+
+  // Check password
+  function checkPassword() {
+    const entered = document.getElementById("accessPassword").value;
+    if(entered === correctPassword) {
+      document.getElementById("deviceModal").style.display = "none";
+    } else {
+      alert("Incorrect password!");
+    }
+  }
+</script>
+
+</body>
+</html>
+
+<head>

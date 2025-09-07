@@ -1,0 +1,459 @@
+@media (max-width: 768px) {
+
+header {
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    padding: 0 1rem;
+    
+  }
+
+      .PHDULogo{
+        width: 10rem;   /* تصغير حجم اللوجو للهواتف */
+        height: 3rem;
+        margin-top: 1rem;
+        margin-left: -0.3rem;
+        
+    }
+        .Navigation {
+        display: none;  /* مخفية افتراضياً */
+    }
+
+
+ .Navigation.show {
+    display: flex;
+  }
+  .Navigation ul {
+    flex-direction: column;       /* عمودية */
+    gap: 2.7rem;                    /* تقليل الفراغ بين العناصر */
+    margin: 0;                     /* نشيل أي مسافة خارجية */
+    padding: 1rem;                 /* مساحة داخلية للقائمة */
+    border-radius: 0 0px 20px 0;  /* فقط الحواف اليمنى مستديرة */
+    background-color: rgba(62, 79, 97, 0.8); /* لون الخلفية */
+    position: fixed;  /* لتبقى في مكانها */
+    top: 3.9rem;           /* من الأعلى */
+    left: 0;          /* على يسار الشاشة */
+    height: 91.5vh;    /* تغطي ارتفاع الشاشة كامل */
+    width: 170px;     /* يمكن تعديل العرض حسب الحاجة */
+    z-index: 1000;    /* لتكون فوق كل العناصر */
+  }
+    .Navigation a {
+        font-size: 1rem;         /* تكبير الخط قليلًا للهواتف */
+        text-align: left;
+    }
+
+.Navigation li {
+  position: relative; /* ضروري لاحتواء dropdown */
+}
+
+.dropdown-content, .dropdown-content2 {
+  position: absolute; /* بدل fixed */
+  top: 0;
+  left: 100%;         /* يظهر بجانب العنصر */
+  z-index: 1100;
+  display: none;
+  background-color: rgba(62, 79, 97, 0.9);
+  min-width: 150px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.Navigation li:hover .dropdown-content,
+.Navigation li:hover .dropdown-content2 {
+  display: block;
+}
+.Body1 {
+    display: flex;
+    flex-direction: column; /* العناصر تصطف عموديًا */
+    
+}
+.NurseED{height: 8rem; width: 32rem;
+}
+.NurseED,
+.Education1,
+.Education2,
+.All,
+.Expolore {
+    margin-left: 14rem; /* إزالة التحريك اليدوي */
+}
+
+ .Welcome {
+      font-size: 2rem;       /* تصغير النص للهواتف */
+      margin-top: 1.5rem;
+  }
+
+  .Why {
+      font-size: 3rem;       /* تصغير كبير للهواتف */
+      margin-top: -1.5rem;   /* ضبط المسافة */
+      text-shadow: 2px 2px 5px #026368;
+      -webkit-text-stroke: 0.2px rgb(255, 255, 255);
+  }
+
+  .NurseEDDeveloped {
+      font-size:smaller;     /* تصغير الخط */
+      -webkit-text-stroke: 0.1px rgb(48, 50, 154);
+  }
+
+/* الحاوية الرئيسية للمربعات */
+.features-container {
+    display: flex;
+    flex-wrap: nowrap;           /* كل المربعات في صف واحد */
+    gap: 8px;                    /* تقليل المسافة بين المربعات للهواتف */
+    padding: 0 0.5rem 0 18rem;           /* مساحة جانبية أصغر للهواتف */
+    overflow-x: auto;            /* تمكين التمرير الأفقي */
+    scroll-behavior: smooth;     /* سلاسة التمرير */
+}
+
+/* كل مربع داخل الحاوية */
+.features-container .feature-item {
+    flex: 0 0 60px;              /* عرض أصغر للهواتف */
+    height: 60px;                /* ارتفاع أصغر */
+    min-width: 60px;
+    background-color: #f0f0f0;
+    border-radius: 5px;          /* زوايا أصغر تناسب الهواتف */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;          /* تصغير الخطوص داخل المربع */
+}
+
+/* إضافة لمسة جمال عند التمرير */
+.features-container::-webkit-scrollbar {
+    height: 6px;                  /* سمك شريط التمرير */
+}
+
+.features-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+}
+
+.features-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
+ .extra-info-box {
+    padding: 40px 20px;       /* تقليل الـ padding للهواتف */
+    font-size: 1rem;           /* تصغير الخط */
+    min-height: auto;          /* السماح للارتفاع بالانكماش حسب المحتوى */
+    max-width: 95%;            /* تقليل العرض ليصبح متناسب مع الهاتف */
+     flex-direction: column; /* النص فوق الصورة */
+}
+
+  #extraText {
+    width: 100%;
+    text-align: center;
+    font-size: 14px; /* نص أصغر للهاتف */
+  }
+
+  #extraHeading {
+    font-size: 20px; /* أصغر قليلاً */
+  }
+
+  #extraParagraphs {
+    font-size: 8px; /* أصغر قليلاً */
+  }
+
+#extraImage {
+  width: 300000000000px !important;       /* إجبار العرض */
+  height: 200px !important;      /* إجبار الارتفاع */
+  min-width: 0;                  /* إزالة الحد الأدنى للعرض */
+  min-height: 0;                 /* إزالة الحد الأدنى للارتفاع */
+  object-fit: cover;             /* الحفاظ على شكل الصورة */
+  display: block;                
+  margin: 0 auto;                
+  border-radius: 2px;            
+}
+ .Body3 img {
+    width: 100%;
+    height: 100%; /* أو 100% حسب الشكل المطلوب */
+  }
+   .PHDU2 {
+    transform: translate(-50%, 0);
+    font-size: 16px; /* تصغير الخط */
+    text-align: center;
+  }
+  .Stay {
+    font-size: 23px; /* تصغير الخط */
+    margin-left: 1.5rem;
+    margin-top: -1.1rem;    
+  }
+ 
+  .part2 {
+    transform: translate(-50%, 0);
+    font-size: 14px;
+    margin-left: 1.5rem;
+    margin-top: -2.9rem;
+  }
+  .part3 {
+    transform: translate(-50%, 0);
+    font-size: 12px;
+    margin-top: -4rem;
+    margin-left: -0.5rem;
+  }
+  .d {
+    max-width: 350px;   /* ضمان عدم التوسع */
+    max-height: 300px;
+    margin-top: 17rem;
+    margin-left: 2rem;
+  }
+}
+
+
+/* ريسبونسيف للشاشات الصغيرة جدًا */
+@media (max-width: 480px) {
+
+  header {
+    flex-direction: row;
+    height: 60px;
+    width: 103.3%;
+    padding: 0 1rem;
+  }
+
+  .Line1{    width: 103.3%;}
+
+  .PHDULogo{
+    width: 8rem;   /* أصغر حجم للوجو */
+    height: 2.5rem;
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  .Navigation {
+    display: none;  /* مخفية افتراضياً */
+  }
+
+  .Navigation.show {
+    display: flex;
+  }
+
+  .Navigation ul {
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0 0 15px 0;
+    background-color: rgba(62, 79, 97, 0.8);
+    position: fixed;
+    top: 3.9rem;
+    left: 0;
+    height: 92vh;
+    width: 160px;
+    z-index: 1000;
+  }
+
+  .Navigation a {
+    font-size: 0.9rem;
+    text-align: left;
+  }
+
+  .Body1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .NurseED{ height: 6rem; width: 25rem;}
+  .NurseED, .Education1, .Education2, .All, .Expolore {
+    margin-left: 4rem; /* إزالة التحريك اليدوي */
+    font-size: medium;
+  }
+  .Expolore, .Start {font-size: small;}
+
+  .Welcome {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .Why {
+    font-size: 1.7rem;
+    margin-top: -1rem;
+    text-align: center;
+    text-shadow: 2px 2px 5px #026368;
+    -webkit-text-stroke: 0.1px rgb(255, 255, 255);
+  }
+
+  .NurseEDDeveloped {
+    font-size:x-small;
+    -webkit-text-stroke: 0.1px rgb(48, 50, 154);
+    margin-left: 1rem;    margin-right: 1rem;
+  }
+
+ .features-container {
+    justify-content: flex-start;  /* بدء العناصر من اليسار */
+    gap: 6px;                     /* تقليل الفراغ بين المربعات */
+    padding: 0 5px;   
+    height: 7rem;            /* تقليل البادينج الجانبي */
+  }
+
+  .features-container .feature-item {
+    flex: 0 0 50px;               /* تصغير عرض المربعات للهاتف */
+    height: 50px;                 /* تصغير ارتفاع المربعات */
+    font-size: 0.1rem;           /* تصغير الخطوص داخل المربع */
+  }
+/* إضافة لمسة جمال عند التمرير */
+.features-container::-webkit-scrollbar {
+    height: 6px;                  /* سمك شريط التمرير */
+}
+.WordIcon1, .WordIcon2, .WordIcon3, .WordIcon4, .WordIcon5{
+    font-size: x-small;
+margin-top: -1rem;}
+
+.features-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 3px;
+}
+
+.features-container::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+  .EducaionIcon {
+    height: 3rem;
+    margin-left: 0;
+    margin-top: -11;
+  }
+
+  .ClinicalResourcesIcon {
+    height: 4rem;
+    margin-left: 0;
+    margin-top: -10;
+  }
+
+  .HospitalOperationsIcon {
+    height: 3.5rem;
+    margin-left: 0;
+    margin-top: -0.5rem;
+  }
+
+  .QualityandSafetyIcon {
+    height: 3rem;
+    margin-left: 0;
+    margin-top: -0.1rem;
+  }
+
+  .NursingHRIcon {
+    height: 3rem;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+
+/* تعديل الصندوق الرئيسي */
+  .extra-info-box {
+    padding: 30px 15px;        /* تقليل البادينج */
+    min-height: auto;          /* السماح للارتفاع بالانكماش حسب المحتوى */
+    max-width: 95%;            /* لا يتجاوز عرض الشاشة */
+    flex-direction: column;    /* النص فوق الصورة */
+    margin: 0 auto;            /* توسيط الصندوق */
+    font-size: 0.9rem !important;   /* إجبار تصغير الخط */
+    line-height: 1.4;
+  }
+
+ /* النص الرئيسي */
+  #extraText {
+    width: 100%;
+    text-align: center;
+   font-size: 0.9rem !important;
+    margin-bottom: 10px;
+  }
+
+  /* العنوان */
+  #extraHeading {
+   font-size: 1.2rem !important;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  /* الفقرات */
+  #extraParagraphs {
+    font-size: 0.8rem !important;
+    line-height: 1.4;
+    text-align: justify;
+  }
+  #featureBtn {
+  font-size: 0.5rem !important;    padding: 8px 18px; /* تقليل المسافة */; font-weight: bold;}
+  /* الصورة */
+  #extraImage {
+    width: 50%;               /* عرض متناسب مع الحاوية */
+    max-width: 50%;           /* لا يتجاوز الحاوية */
+    height: auto;              /* الحفاظ على نسبة الطول للعرض */
+    object-fit: cover;         /* الحفاظ على شكل الصورة */
+    display: block;
+    margin: 0 auto 15px;       /* توسيط الصورة وإضافة مسافة أسفلها */
+    border-radius: 5px;        /* زوايا الصورة */
+  }
+
+ .Body3 img {
+    width: 100%;
+    height: 100%; /* أو 100% حسب الشكل المطلوب */
+  }
+  .Body3 {
+    height: auto;              /* بدل 100vh خليها تتمدد حسب المحتوى */
+  }
+
+  .PHDU2 {
+    top: 1rem;
+    left: 3.1rem;
+    font-size: 10px;
+  }
+  .Stay {
+    font-size: 13px;
+    margin-left: 0.1rem;
+  }
+    .part2 {
+    font-size: 9px;    margin-left: 1.5rem;   margin-top: -2rem;
+  }
+  .part3 {
+    font-size: 9px; margin-left: -0.1rem;
+    line-height: 1.5; margin-top: -2rem;
+  }
+
+  .d {
+    max-width: 150px;   /* ضمان عدم التوسع */
+    max-height: 150px;
+    margin-top:11.2rem;
+    margin-left: 2rem;
+  }
+#announcement-list {
+                font-size:x-small;
+}
+
+    #announcement-list > div {
+        width: calc(50% - 10px);
+}
+
+       footer {
+      padding: 20px 10px;
+      font-size: 11px;
+    }
+
+    .footer-container {
+      flex-direction: column !important;
+      align-items: center;
+      gap: 1px !important; /* قلل المسافة بين الأقسام */
+    }
+
+    .footer-section {
+      width: 100% !important;
+      text-align: center;
+    }
+
+    /* تصغير الخط داخل Quick Links فقط */
+    .footer-section:nth-of-type(2) a,
+    .footer-section:nth-of-type(2) li {
+      font-size: 9px !important;  /* أصغر من الباقي */
+    }
+
+    .Footer li {
+      width: 100% !important;
+      margin-bottom: 5px;
+    }
+
+    footer div[style*="text-align: center"] {
+      font-size: 10px !important;
+    }
+
+    .AbP {
+      font-size: 9.5px !important;
+    }
+  }
+

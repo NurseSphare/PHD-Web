@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Styles.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+        <link rel="stylesheet" href="ExploreStyle.css">
+    <!-- فيديو الخلفية-->
+
+<video autoplay muted loop class="video-background" src="Media/vid.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+</head>
+<body>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<div class="dropdown" style="float: inherit;">
+      <li class="Education"><a href="#Education" >Education</a></li>
+<div class="dropdown-content">
+      <a href="#Learning" id="comingSoon1">Learning</a>
+      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+      <a href="#Updates" id="comingSoon3">Updates</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
+<div class="dropdown-content2">
+        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+        <a href="#Policies" id="comingSoon5">Policies</a>
+        <a href="#Documents" id="comingSoon6">Documents</a>
+        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+</div>
+</div>
+
+<div class="dropdown2" style="float: inherit;">
+    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
+<div class="dropdown-content2">
+        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+        <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+        <a href="#CSSD" id="comingSoon12">CSSD</a>
+        <a href="#Loan" id="comingSoon13">Loan</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
+<div class="dropdown-content2">
+        <a href="#Audit" id="comingSoon14">Audit</a>
+        <a href="#Statistics" id="comingSoon15">Statistics</a>
+        <a href="#Ejada" id="comingSoon16">Ejada</a>
+        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+</div>
+</div>
+<div class="dropdown2" style="float: inherit;">
+    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
+<div class="dropdown-content2"id="NursingHR">
+        <a href="Personal Data list.html">Personal Data and Training Records</a>
+        <a href="DashboardMain.html">Dashboard</a>
+        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+        <a href="#Other" id="comingSoon21">Other</a>
+
+</div></div>
+
+<!-- Admin Control (مخفي افتراضياً) -->
+<div class="dropdown2"  id="adminControlMenu">
+  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div></div>
+
+
+</div>
+
+    <li><a href="About.html">About Me</a></li>
+
+<!-- زر Account -->
+<li style="float: right; margin-left: 10px; position:relative;">
+  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+
+</ul>
+</nav>
+    </ul>
+</nav>
+
+
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27","comingSoon28","comingSoon29","comingSoon30","comingSoon31","comingSoon32"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+</script>
+
+
+    <!-- ================= Services Section ================= -->
+    <section class="services-section">
+        <div class="services-header">
+            <h2>Explore Our Features</h2>
+            <p>Quick and easy access to essential resources.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Service Cards -->
+            <div class="service-card">
+                 <img class="Icon"src="Media/iconEducation.jpg">
+                <h3 class="headicon">Education</h3>
+                <p class="pergicon">Access interactive lessons, tutorials, and competency-based training.</p>
+               <ul class="Bull">
+               <li>Access interactive lessons, tutorials, and competency-based training.</li>
+               <li>Self-assessment forms, quizzes, and skill-tracking dashboards.</li>
+               <li>Notifications about new learning content, workshops, or mandatory courses.</li>
+               <li>Supports continuous professional development and ensures nurses meet hospital standards.</li>
+               </ul>
+               <button class="view-btn"  id="comingSoon28" data-service="Data Analysis">View More</button>
+            </div>
+
+            <div class="service-card">
+                <img class="Icon"src="Media/iconClinicalREsources.jpg">
+                <h3 class="headicon">Clinical Resources</h3>
+                <p class="pergicon">Materials and tools that support healthcare providers in delivering safe and effective care.</p>
+                <ul class="Bull">
+               <li>Up-to-date clinical guidelines and protocols.</li>
+               <li>Policies and procedures to ensure standardized care.</li>
+               <li>Quick references for medications, calculations, and assessments.</li>
+               <li>Practical tools to support day-to-day nursing practice.</li>
+               </ul>
+                <button class="view-btn"  id="comingSoon29"  data-service="Publication Support">View More</button>
+            </div>
+
+
+            <div class="service-card">
+                <img class="Icon"src="Media/icon3.jpg">
+                <h3 class="headicon">Hospital Operations</h3>
+                <p class="pergicon">Hospitals operate as integrated systems where every department and staff member contributes to delivering effective, safe, and timely healthcare services</p>
+                <ul class="Bull">
+               <li>Stepwise guidance for patient movement between wards or departments.</li>
+               <li>Interactive schedules to view shifts and manage workload.</li>
+               <li>Tools to track medical supplies, repairs, or new equipment.</li>
+               <li>Supports efficient workflow and smooth hospital logistics.</li>
+               </ul>
+                <button class="view-btn"  id="comingSoon30"  data-service="Clinical Data">View More</button>
+            </div>
+
+
+            <div class="service-card">
+                <img src="Media/icon5.jpg">
+                <h3 class="headicon">Quality and Safety</h3>
+                <p class="pergicon">Hospital staff work together to ensure patient safety, maintain high-quality care, and continuously improve hospital practices.</p>
+                <ul class="Bull">
+               <li>Tools to track compliance, review incident logs, and generate statistics.</li>
+               <li>Procedures for reporting incidents and handling emergencies.</li>
+               <li>Monitoring Ejada performance and staff engagement.</li>
+               <li>Enhances patient safety and ensures hospital-wide quality standards are maintained.</li>
+               </ul>
+                <button class="view-btn"  id="comingSoon31"  data-service="Educational Resources">View More</button>
+            </div>
+
+
+
+            <div class="service-card">
+                <img class="Icon" src="Media/icon4.jpg">
+                <h3 class="headicon">Nursing HR</h3>
+                <p class="pergicon">Nursing HR uses a dedicated dashboard to manage staffing, track performance, coordinate training, and support the professional development of the nursing team.</p>
+                 <ul class="Bull">
+               <li>Quick access to names, roles, and contacts of PHDU staff.</li>
+               <li>View completed courses, expiration dates, and certifications.</li>
+               <li>Tools to evaluate staff skills and development.</li>
+               <li>Attendance tracking, HR forms, and other documentation.</li>
+               </ul>
+                <button class="view-btn" id="comingSoon32"  data-service="Visualization Tools">View More</button>
+            </div>
+
+
+            <div class="service-card">
+                <img class="Icon"src="Media/icon6.jpg">
+                <h3 class="headicon">About Me</h3>
+                <p class="pergicon">This section is designed to introduce the website owner to visitors in a professional and relatable way. It builds trust, highlights expertise, and gives an overview of the website’s mission.</p>
+                <a href="About.html"><button class="view-btn" data-service="Collaboration Platform">View More</button></a>
+            </div>
+
+        </div>
+
+    </section>
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="#Education" id="comingSoon23"   style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="#ClinicalResources" id="comingSoon24" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+    <li style="width: 45%;"><a href="#HospitalOperations" id="comingSoon25" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="#QualityandSafety" id="comingSoon26" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="#NursingHR" id="comingSoon27" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+
+</section>
+
+
+</body>
+</html>
+
+<head>
