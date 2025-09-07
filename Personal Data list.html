@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="passwordModal" class="modal-overlay">
   <div class="modal-box">
     <h3>Enter Password</h3>
-    <input type="password" id="passwordInput" placeholder="Password" />
+<input type="password" id="dashboardPasswordInput" placeholder="Password" />
     <br>
     <button id="submitPassword">Submit</button>
     <button onclick="closeModal('passwordModal')">Cancel</button>
@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
 /* ============ إعداد قراءة الشيت ============ */
 const userSheetLink = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRMW_RnBtr2byH88CiiGtfuuVJ4B0auewxP5YzxkCQzSeldGHR3l3_JEca5WjcUkeoUaIZ7eCwhpCEA/pubhtml?gid=0&single=true";
-const correctPassword = "hajer";
+const correctPassword = "1234";
 let selectedEmployeeIndex = null;
 let selectedEmployee = null;
 let data = [];
@@ -402,7 +402,7 @@ function render(list){
       selectedEmployeeIndex = origIdx;
       selectedEmployee = {...data[origIdx]};
       openModal('passwordModal');
-      setTimeout(()=>{ const pi = document.getElementById('passwordInput'); if(pi) pi.focus(); }, 50);
+      setTimeout(()=>{ const pi = document.getElementById('dashboardPasswordInput'); if(pi) pi.focus(); }, 50);
     };
     gridEl.appendChild(card);
   });
@@ -463,7 +463,7 @@ function closeModal(id){
 
 /* ============ التحقق من الباسورد ============ */
 document.getElementById('submitPassword').addEventListener('click', ()=>{
-  const pwd = (document.getElementById('passwordInput').value || '').trim();
+  const pwd = (document.getElementById('dashboardPasswordInput').value || '').trim();
   if(selectedEmployeeIndex === null || selectedEmployeeIndex === undefined){
     alert('No employee selected. Please click a card first.');
     return;
@@ -478,7 +478,7 @@ document.getElementById('submitPassword').addEventListener('click', ()=>{
   }
 });
 
-const pwdInputEl = document.getElementById('passwordInput');
+const pwdInputEl = document.getElementById('dashboardPasswordInput');
 if(pwdInputEl){
   pwdInputEl.addEventListener('keydown', (e)=>{
     if(e.key === 'Enter') document.getElementById('submitPassword').click();
