@@ -416,32 +416,52 @@ fetch(sheetUrl)
   // Set your password here
   const correctPassword = "1234";
 
-  // Detect if device is mobile or tablet (improved detection)
+  // Detect if device is mobile or tablet
   function isMobileOrTablet() {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // iOS detection
-    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      return true;
-    }
+    if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) return true;
+    if (/Android/.test(ua)) return true;
+    if (/webOS|BlackBerry|IEMobile|Opera Mini/.test(ua)) return true;
+    return false;
+  }
 
-    // Android detection
-    if (/Android/.test(ua)) {
-      return true;
-    }
+  // Disable scrolling completely
+  function disableScroll() {
+    document.body.style.overflow = "hidden";
+    document.body.style.height = "100%";
 
-    // Any other mobile/tablet
-    if (/webOS|BlackBerry|IEMobile|Opera Mini/.test(ua)) {
-      return true;
-    }
+    // Prevent touch scrolling
+    document.addEventListener('touchmove', preventDefault, { passive: false });
+    // Prevent arrow key scrolling
+    document.addEventListener('keydown', preventDefaultForScrollKeys, false);
+  }
 
-    return false; // desktop
+  // Enable scrolling again
+  function enableScroll() {
+    document.body.style.overflow = "auto";
+    document.body.style.height = "auto";
+
+    document.removeEventListener('touchmove', preventDefault, { passive: false });
+    document.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+  }
+
+  function preventDefault(e) {
+    e.preventDefault();
+  }
+
+  const keys = {37:1,38:1,39:1,40:1}; // arrow keys
+  function preventDefaultForScrollKeys(e) {
+    if(keys[e.keyCode]) {
+      preventDefault(e);
+      return false;
+    }
   }
 
   // Show modal only on mobile/tablet
   window.onload = function() {
     if(isMobileOrTablet()) {
       document.getElementById("deviceModal").style.display = "block";
+      disableScroll();
     }
   }
 
@@ -450,11 +470,13 @@ fetch(sheetUrl)
     const entered = document.getElementById("accessPassword").value;
     if(entered === correctPassword) {
       document.getElementById("deviceModal").style.display = "none";
+      enableScroll();
     } else {
       alert("Incorrect password!");
     }
   }
 </script>
+
 
 </body>
 </html>
