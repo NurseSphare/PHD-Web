@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="STYLE2.CSS">
-        <link rel="stylesheet" href="StylesPhone.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>📟 Device Status</title>
+     <link rel="stylesheet" href="STYLE2.CSS">
+            <link rel="stylesheet" href="StylesPhone.css">
     <script src="login.js"></script>
     <script src="Animated.js"></script>
     <!-- فيديو الخلفية-->
@@ -26,8 +26,9 @@
 <link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
 <link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
 <link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+
 </head>
-<body>
 <header>   <!-- الهيدر -->
  <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
 
@@ -63,7 +64,7 @@
     <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
     <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
     <a href="#Inventory" id="comingSoon10">Inventory</a>
-    <a href="Equipment List.html">Equipment</a>
+        <a href="Equipment List.html">Equipment</a>
     <a href="#WorkOrder" id="comingSoon11">Work Order</a>
     <a href="#CSSD" id="comingSoon12">CSSD</a>
     <a href="#Loan" id="comingSoon13">Loan</a>
@@ -261,164 +262,173 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
-<section class="Body1">
+  <style>
+    .Equipmentform{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:linear-gradient(135deg,#5ee7df 0%,#584961 50%,#7b3625 100%);
+      display:flex;flex-direction:column;align-items:center;
+      padding:40px 10px;min-height:100vh;
+    }
+    h2{color:#fff;margin-bottom:25px;font-weight:700;text-align:center;}
+    .cards-container{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;max-width:900px;}
+    .field-card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);width:400px;padding:24px;transition:transform 0.2s,box-shadow 0.2s;}
+    .field-card:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(0,0,0,0.2);}
+    .field-card label{font-weight:600;color:#374151;display:block;margin-bottom:8px;}
+    .field-card input{width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:1.05rem;height:52px;box-sizing:border-box;transition:border-color 0.3s,box-shadow 0.3s;}
+    .field-card input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.3);}
+    button{background:#06b6d4;color:#fff;border:none;border-radius:25px;padding:12px 30px;font-weight:600;font-size:1rem;cursor:pointer;transition:background 0.3s;margin-top:10px;}
+    button:hover{background:#0891b2;}
+    .result{margin-top:15px;font-weight:bold;color:#fff;text-align:center;}
+    #lastSaved{margin-top:15px;font-weight:bold;color:#fff;text-align:center;}
+    .modalEquipClass{position:fixed;inset:0;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7));display:flex;justify-content:center;align-items:center;z-index:1000;animation:fadeInBg 0.4s ease;}
+    .modal-box{background:#fff;border-radius:20px;padding:30px 25px;text-align:center;width:90%;max-width:360px;box-shadow:0 8px 24px rgba(0,0,0,0.25);animation:slideIn 0.4s ease;}
+    .modal-box h3{margin-bottom:20px;color:#3b82f6;font-size:1.3rem;font-weight:700;}
+    .modal-box input{width:70%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:1rem;margin-bottom:18px;}
+    .modal-box button{background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;border:none;border-radius:25px;padding:12px 28px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+    .modal-box button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    .hidden{display:none!important;}
+    @keyframes fadeInBg{from{opacity:0;}to{opacity:1;}}
+    @keyframes slideIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+    .saveeq:hover{background-color:#ce2020;}
+  </style>
+</head>
+<body>
+<section class="Equipmentform">
 
-<div class="GrWords1">       <!-- قسم جديد مصغر  -->
-    <img class="NurseED" src="Media/NurseED.png" alt="Nurse ED">
-      <h1 class="Education1">Where Nursing Meets Excellence.</h1>
-      <h1 class="Education2">(Education • Resources • Management)</h1>
-      <h2 class="All">An all-in-one hub for nursing education, clinical guidelines, HR tools, policies, and quality improvement resources. Accessible anytime, anywhere, even from home.</h2>
-      <div class="Body1Btn">
-        <a class="Expolore" href="ExploreOptions.html">Explore Options</a>
-        <a class="Start" href="#Learning" id="comingSoon22">Start Learnng now</a>
-      </div>
-</div>
-</section>
-
-<section class="Body2"  style="margin-top: 4rem;">
-
-    <hr class="Line2">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
-<h1 class="Welcome">Welcome to Nurse Sphare</h1>
-<h2 class="Why">Why Nurse Sphare?</h2>
-<p class="NurseEDDeveloped">
-    NurseSphere was created to provide nurses and healthcare professionals with a centralized, easy-to-use platform for all aspects of <br>nursing practice. It provide a quick access to guidelines, policies, educational resources, HR tools, and operational updates<br> which are essential for delivering safe and high-quality patient care – all in one place that are accessible <br>anytime—whether you’re on the ward or at home.<br></p>
-
-<!-- هنا البداية -->
-
-<div class="features-container">
-  <div class="feature-box" onclick="setActiveBox(0)">
-    <div class="icon"><img class="EducaionIcon" src="Media/45.png"></div>
-    <h3 class="WordIcon1">Education</h3>
-  </div>
-
-  <div class="feature-box" onclick="setActiveBox(1)">
-    <div class="icon"><img class="ClinicalResourcesIcon" src="Media/Guidline Icon.png"></div>
-    <h3 class="WordIcon2">Clinical Resources</h3>
-  </div>
-
-  <div class="feature-box" onclick="setActiveBox(2)">
-    <div class="icon"><img class="HospitalOperationsIcon" src="Media/Competency Tools Icon.png"></div>
-    <h3 class="WordIcon3">Hospital Operations</h3>
-  </div>
-
-  <div class="feature-box" onclick="setActiveBox(3)">
-    <div class="icon"><img class="QualityandSafetyIcon" src="Media/Documents (6).png"></div>
-    <h3 class="WordIcon4">Quality and Safety</h3>
-  </div>
-
-  <div class="feature-box" onclick="setActiveBox(4)">
-    <div class="icon"><img class="NursingHRIcon" src="Media/Documents (4).png"></div>
-    <h3 class="WordIcon5">Nursing HR</h3>
-  </div>
-<!-- المربع الثابت السفلي -->
- </div>
-<div class="extra-info-box" id="extraInfo" style="display: flex; align-items: center; gap: 20px; padding: 20px;">
-  <div id="extraText" style="flex: 1; color: #003366;">
-    <h2 id="extraHeading" style="margin-top: 0; font-family: 'Fredoka', sans-serif; color: #2a6ef2; -webkit-text-stroke: 0.6px rgb(26, 23, 36);"></h2>
-    <div id="extraParagraphs" style="font-size: large;">
-      Explore each feature to discover more 🔍
+  <!-- مودال إدخال الاسم -->
+  <div id="modalEquip" class="modalEquipClass">
+    <div class="modal-box">
+      <h3>Enter Your Name</h3>
+      <input id="deviceUserName" placeholder="Your name here">
+      <button onclick="saveDeviceUserName()">Enter</button>
     </div>
   </div>
-  <img id="extraImage" src="" alt="" style="width: 55%; height: auto; object-fit: cover; display: none; border-radius: 15px;" />
-</div>
 
-<!-- ✅ مودال يظهر فقط في الموبايل -->
-<div id="featureModal-Phone" class="feature-modal-Phone">
-  <div class="feature-modal-content-Phone">
-<span class="feature-close-Phone-btn" onclick="closeModalPhone()">×</span>
-    <h2 id="feature-modal-Phone-Title"></h2>
-    <div id="feature-modal-Phone-Paragraphs"></div>
-    <img id="feature-modal-Phone-Image" src="" alt="">
+  <!-- مودال التنبيه -->
+  <div id="deviceAlertModal" class="modalEquipClass hidden">
+    <div class="modal-box">
+      <h3 id="deviceAlertTitle">Message</h3>
+      <p id="deviceAlertMessage"></p>
+      <button onclick="closeDeviceAlertModal()">OK</button>
+    </div>
   </div>
-</div>
 
+  <h2>Device Status</h2>
+  <p id="displayUser" style="background:linear-gradient(45deg,#5d5d5d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:0.3px #fff;font-weight:600;font-size:larger;"></p>
 
-
-<div class="section-gap1"></div>
-
-<section class="Body3">
-  <div class="star">
-  <h1 class="PHDU2">PHDU</h1>
-  <h2 class="Stay">Stay informed, Stay skilled, and Stay connected — <br>Your Nursing Resource Center</h2>
-  <p class="part2">At Nurse Sphare, our mission is clear:</p>
-  <p class="part3">To empower nurses by providing easy access to comprehensive clinical resources, educational tools, and professional development opportunities. We aim to support safe, efficient, and high-quality patient care while fostering continuous learning, collaboration, and excellence in nursing practice.
-
-</p>
+  <div class="cards-container" style="margin-top: 2rem;">
+    <div class="field-card">
+      <label for="bioNumber">Bio Number</label>
+      <input id="bioNumber" placeholder="Enter or scan bio number" onblur="fetchEquipment()">
+    </div>
+    <div class="field-card">
+      <label for="equipment">Device Name</label>
+      <input id="equipment" placeholder="Will appear automatically" readonly>
+    </div>
+    <div class="field-card">
+      <label for="status">Status</label>
+      <input id="status" placeholder="Enter status">
+    </div>
   </div>
-  <img class="d" src="Media/PHDU Body.png" style="    position: absolute; /* تظهر فوق الخلفية */
-    top: 19rem; /* تعديل حسب المكان المطلوب */
-    left: 6rem; /* تعديل حسب المكان المطلوب */
-    width: 25em;  /* الحجم المطلوب */
-    height: 22em; /* الحجم المطلوب */
-    z-index: 2; /* فوق الصورة a */">
-  <img class="a"  src="Media/Green and White Simple Online Travel Site Dekstop Prototype.png" style="  display: block;
-    width: 100%; /* تغطي كامل الحاوية */
-    height: auto;
-    z-index: 1; /* الخلفية */">
-</section></section>
-<section class="Body4">
-<section id="announcements" style="padding: 40px; background-color: #c1ddf2; font-family: Arial, sans-serif;">
-  <h2 style="text-align: center; color: #1a73e8; margin-bottom: 30px;">📢 Announcements / News</h2>
 
-  <!-- الحاوية المرنة للبطاقات -->
-  <div id="announcement-list" style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 15px; justify-content: center;"></div>
+  <button class="saveeq" onclick="saveStatus()">Save</button>
+  <div class="result" id="result"></div>
+  <div id="lastSaved"></div>
 </section>
 
 <script>
-const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQxspWy62AswfTeyBlv2R01CFjW3rUsH03G4H1yOeIsYckD8arGyhYes8bHSaTv2aBba9TzAkIEetqO/pub?output=csv";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzgM9HWHWTC27IY2qQRpdBArlSA0hbnDNNy8hbEjfZlY_pglOedwkymKoR1t-c4Ca9_sw/exec";
+let currentUser = "";
 
-fetch(sheetUrl)
-  .then(res => res.text())
-  .then(csvText => {
-    const container = document.getElementById("announcement-list");
-    const lines = csvText.trim().split("\n");
+function showDeviceAlertModal(title, message){
+  document.getElementById('deviceAlertTitle').innerText=title;
+  document.getElementById('deviceAlertMessage').innerText=message;
+  document.getElementById('deviceAlertModal').classList.remove('hidden');
+}
+function closeDeviceAlertModal(){
+  document.getElementById('deviceAlertModal').classList.add('hidden');
+}
 
-    if (lines.length <= 1) {
-      container.innerHTML = "<p style='text-align:center; color:#555;'>No announcements yet.</p>";
-      return;
+function saveDeviceUserName(){
+  const name=document.getElementById('deviceUserName').value.trim();
+  if(!name){
+    showDeviceAlertModal("⚠️ Warning","Please enter your name");
+    return;
+  }
+  currentUser=name;
+  document.getElementById('modalEquip').classList.add('hidden');
+  document.getElementById('displayUser').textContent=`Logged in as: ${currentUser}`;
+  showDeviceAlertModal("Welcome",`Welcome, ${currentUser}!`);
+}
+
+document.getElementById('deviceUserName').addEventListener('keydown',e=>{
+  if(e.key==="Enter")saveDeviceUserName();
+});
+
+async function fetchEquipment(){
+  const bioNumber=document.getElementById('bioNumber').value.trim();
+  if(!bioNumber)return;
+  try{
+    const res=await fetch(`${SCRIPT_URL}?bioNumber=${encodeURIComponent(bioNumber)}`);
+    const data=await res.json();
+    if(data.equipment){
+      document.getElementById('equipment').value=data.equipment;
+    }else{
+      document.getElementById('equipment').value="❌ Not found";
+      showDeviceAlertModal("⚠️ Not Found",`No device found for Bio Number: ${bioNumber}`);
     }
+  }catch(err){
+    console.error(err);
+    showDeviceAlertModal("❌ Error","Error fetching data");
+  }
+}
 
-    const dataLines = lines.slice(1);
+async function saveStatus(){
+  if(!currentUser){
+    document.getElementById('modalEquip').classList.remove('hidden');
+    return;
+  }
+  const bioNumber=document.getElementById('bioNumber').value.trim();
+  const deviceName=document.getElementById('equipment').value.trim();
+  const status=document.getElementById('status').value.trim();
+  if(!bioNumber||!status||!deviceName||deviceName==="❌ Not found"){
+    showDeviceAlertModal("⚠️ Warning","Enter valid bio number, fetch device, and status");
+    return;
+  }
+  try{
+    const params=new URLSearchParams();
+    params.append("bioNumber",bioNumber);
+    params.append("status",status);
+    params.append("checkedBy",currentUser);
 
-    dataLines.forEach(line => {
-      const values = line.split(",");
-      const date = values[0] || '';
-      const category = values[1] || '';
-      const title = values[2] || '';
-      const details = values.slice(3).join(",") || ''; // مهم: عشان لو النص فيه فاصلة ما يقطع
-
-      const card = document.createElement("div");
-      card.style.cssText = `
-        background-color: #fff;
-        padding: 12px 14px;
-        border-radius: 10px;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.15);
-        transition: transform 0.2s;
-        width: calc(33% - 10px);
-        box-sizing: border-box;
-        height: auto; 
-        word-wrap: break-word;
-        flex-grow: 1;
-      `;
-      card.innerHTML = `
-        <div style="font-size: 13px; color: #555; margin-bottom: 4px;">
-          <span>Date: ${date}</span> | <span>Category: ${category}</span>
-        </div>
-        <h3 style="margin: 4px 0; color: #1a73e8; font-size: 18px;">${title}</h3>
-        <p style="color: #333; font-size: 15px; white-space: pre-line;">${details}</p>
-      `;
-
-      card.onmouseover = () => card.style.transform = 'scale(1.02)';
-      card.onmouseout = () => card.style.transform = 'scale(1)';
-
-      container.appendChild(card);
+    const res=await fetch(SCRIPT_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+      body:params.toString()
     });
-  })
-  .catch(err => {
-    console.error("Error fetching announcements:", err);
-    document.getElementById("announcement-list").innerHTML = "<p style='text-align:center;color:red;'>Failed to load announcements.</p>";
-  });
+    const data=await res.json();
+
+    if(data.status==="success"){
+      const msg=`Saved by ${currentUser}\nDevice: ${deviceName}\nBio Number: ${bioNumber}`;
+      showDeviceAlertModal("✅ Success", msg);
+      document.getElementById('lastSaved').textContent=
+        `✔ Last saved: ${deviceName} (Bio: ${bioNumber}) by ${currentUser}`;
+      document.getElementById('bioNumber').value="";
+      document.getElementById('equipment').value="";
+      document.getElementById('status').value="";
+      document.getElementById('bioNumber').focus();
+    }else{
+      showDeviceAlertModal("⚠️ Warning",data.message||"Unknown error");
+    }
+  }catch(err){
+    console.error(err);
+    showDeviceAlertModal("❌ Error","Failed to connect to server!");
+  }
+}
 </script>
+</section>
+
 
 <!-- Footer Section -->
 <footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
@@ -464,7 +474,7 @@ fetch(sheetUrl)
 
 </section>
 
+
 </body>
 </html>
 
-<head>

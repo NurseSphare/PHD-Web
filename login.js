@@ -182,77 +182,81 @@ submitLogin?.addEventListener("click", () => {
     });
 
     // ------------------ Account Menu & Admin Dropdown ------------------
-    function updateAccountMenu() {
-        const currentUser = localStorage.getItem("loggedUser");
-        const currentIsAdmin = localStorage.getItem("isAdmin") === "true";
+// ------------------ Account Menu & Admin Dropdown ------------------
+function updateAccountMenu() {
+    const currentUser = localStorage.getItem("loggedUser");
+    const currentIsAdmin = localStorage.getItem("isAdmin") === "true";
 
-        if (currentUser) {
-            userDisplay.innerText = `(Welcome ${currentIsAdmin ? "Admin " + currentUser : currentUser})`;
-            userDisplay.style.fontSize = "9px";
-            userDisplay.style.marginTop = "0.48rem";
-            loginOption.style.display = "none";
-            logoutOption.style.display = "block";
-            updateAdminDropdown(currentIsAdmin);
-        } else {
-            userDisplay.innerText = "";
-            loginOption.style.display = "block";
-            logoutOption.style.display = "none";
-            adminControlMenu.style.display = "none";
-            adminDropdown.innerHTML = "";
-        }
-    }
-
-    function updateAdminDropdown(isAdmin) {
-        if (!isAdmin) {
-            adminControlMenu.style.display = "none";
-            adminDropdown.innerHTML = "";
-            return;
-        }
-
-        adminControlMenu.style.display = "inline-block";
+    if (currentUser) {
+        userDisplay.innerText = `(Welcome ${currentIsAdmin ? "Admin " + currentUser : currentUser})`;
+        userDisplay.style.fontSize = "9px";
+        userDisplay.style.marginTop = "0.48rem";
+        loginOption.style.display = "none";
+        logoutOption.style.display = "block";
+        updateAdminDropdown(currentIsAdmin);
+    } else {
+        userDisplay.innerText = "";
+        loginOption.style.display = "block";
+        logoutOption.style.display = "none";
+        adminControlMenu.style.display = "none";
         adminDropdown.innerHTML = "";
+    }
+}
 
-        const adminOptions = [
-            { text: "Add Staff (Web)", action: () => addStaffModal.style.display = "flex" },
-            { text: "Add Staff (New)", action: () => window.location.href = "EnterDate.html" },
-            { text: "Dashboard", action: () => window.location.href = "Dashboard.html" },
-        ];
-
-        adminOptions.forEach(opt => {
-            const li = document.createElement("li");
-            li.style.listStyle = "none";
-
-            const link = document.createElement("a");
-            link.href = "javascript:void(0)";
-            link.innerText = opt.text;
-            Object.assign(link.style, {
-                display: "block",
-                padding: "10px",
-                color: "#fff",
-                whiteSpace: "nowrap", 
-                textDecoration: "none",
-                borderRadius: "5px"
-                
-            });
-
-            link.addEventListener("mouseenter", () => link.style.backgroundColor = "#4e5a70");
-            link.addEventListener("mouseleave", () => link.style.backgroundColor = "transparent");
-            link.addEventListener("click", opt.action);
-
-            li.appendChild(link);
-            adminDropdown.appendChild(li);
-        });
+function updateAdminDropdown(isAdmin) {
+    if (!isAdmin) {
+        adminControlMenu.style.display = "none";
+        adminDropdown.innerHTML = "";
+        return;
     }
 
-    if (!adminControlMenu.dataset.eventsAdded) {
-        adminControlMenu.addEventListener("mouseenter", () => {
-            adminDropdown.style.display = "block";
-        });
-        adminControlMenu.addEventListener("mouseleave", () => {
-            adminDropdown.style.display = "none";
-        });
-        adminControlMenu.dataset.eventsAdded = "true";
-    }
+    adminControlMenu.style.display = "inline-block";
+    adminDropdown.innerHTML = "";
 
-    updateAccountMenu();
+const adminOptions = [
+  { text: "Add Staff (Web)", action: () => addStaffModal.style.display = "flex" },
+  { text: "Add Staff (New)", action: () => window.location.href = "EnterDate.html" },
+  { text: "Edit Staff", action: () => window.location.href = "EnterDate Edit.html" },
+  { text: "Dashboard", action: () => window.location.href = "Dashboard.html" } // نفس الرابط للجميع
+];
+
+    adminOptions.forEach(opt => {
+        const li = document.createElement("li");
+        li.style.listStyle = "none";
+
+        const link = document.createElement("a");
+        link.href = "javascript:void(0)";
+        link.innerText = opt.text;
+        Object.assign(link.style, {
+            display: "block",
+            padding: "10px",
+            color: "#fff",
+            whiteSpace: "nowrap",
+            textDecoration: "none",
+            borderRadius: "5px"
+        });
+
+        link.addEventListener("mouseenter", () => link.style.backgroundColor = "#4e5a70");
+        link.addEventListener("mouseleave", () => link.style.backgroundColor = "transparent");
+        link.addEventListener("click", opt.action);
+
+        li.appendChild(link);
+        adminDropdown.appendChild(li);
+    });
+}
+
+// إضافة أحداث الهيدر فقط مرة واحدة
+if (!adminControlMenu.dataset.eventsAdded) {
+    adminControlMenu.addEventListener("mouseenter", () => {
+        adminDropdown.style.display = "block";
+    });
+    adminControlMenu.addEventListener("mouseleave", () => {
+        adminDropdown.style.display = "none";
+    });
+    adminControlMenu.dataset.eventsAdded = "true";
+}
+
+// تهيئة القائمة عند تحميل الصفحة
+updateAccountMenu();
+
 });

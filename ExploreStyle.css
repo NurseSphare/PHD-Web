@@ -108,3 +108,93 @@ body {
     margin-bottom: 1rem;
 }
 
+/* 📱 موبايل */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr; /* كل كرت ياخذ عرض كامل */
+    gap: 15px;
+  }
+
+  .services-section {
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  .services-header {
+    padding: 20px 10px;
+  }
+
+  .services-header h2 {
+    font-size: 18px;
+  }
+
+  .services-header p {
+    font-size: 13px;
+  }
+
+  .service-card {
+    padding: 15px;
+    text-align: center;
+  }
+
+  .service-card h3 {
+    font-size: 16px;
+  }
+
+  .service-card p {
+    font-size: 13px;
+  }
+
+  .Bull {
+    font-size: 11px;
+    padding-left: 15px;
+  }
+
+  .Bull li {
+    margin-bottom: 4px;
+  }
+
+  .Icon {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .view-btn {
+    width: 100%; /* زر ياخذ عرض البطاقة */
+    padding: 8px;
+    font-size: 13px;
+  }
+}
+
+/* 📱 شاشات أصغر (أقل من 480px) */
+@media (max-width: 480px) {
+  .services-header h2 {
+    font-size: 16px;
+  }
+
+  .services-header p {
+    font-size: 12px;
+  }
+
+  .service-card h3 {
+    font-size: 15px;
+  }
+
+  .service-card p {
+    font-size: 12px;
+  }
+
+  .Icon {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .Bull {
+    font-size: 10px;
+  }
+
+  .view-btn {
+    font-size: 12px;
+    padding: 7px;
+  }
+}

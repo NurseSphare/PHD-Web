@@ -1,57 +1,220 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>PHDU Admin Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHDU Mobile Dashboard</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/9c9f6d7f5b.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="Editcss.css" rel="stylesheet">
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+  :root {
+    --bg:#f5fbf9;
+    --card:#fff;
+    --accent:#5053ff;
+    --muted:#7d8a99;
+    --radius:12px;
+  }
+  body { font-family: 'Inter', sans-serif; margin:0; background: var(--bg); }
+  .header { text-align:center; padding:10px; font-weight:600; }
+  .card { background: var(--card); border-radius: var(--radius); box-shadow:0 4px 10px rgba(0,0,0,0.08); padding:15px; margin:10px 0; text-align:center; }
+  .card h3 { font-size:14px; margin:5px 0; }
+  .card .value { font-size:18px; font-weight:600; color:var(--accent); }
+  .charts { display:flex; flex-wrap:wrap; justify-content:space-around; }
+  canvas { max-width:120px !important; max-height:120px !important; margin:10px auto; }
+  select, input, button { width:100%; margin:5px 0; padding:8px; font-size:14px; border-radius:6px; border:1px solid #ccc; }
+  .topbar { display:flex; flex-direction:column; padding:10px; gap:5px; }
+  .section { display:none; padding:10px; }
+  .section.active { display:block; }
+  .nav { display:flex; overflow-x:auto; gap:10px; padding:10px; background:#fff; border-bottom:1px solid #ccc; }
+  .nav a { flex:none; padding:8px 12px; border-radius:8px; background:#eee; text-decoration:none; color:#333; font-size:14px; }
+  .nav a.active { background:var(--accent); color:#fff; }
+  table { width:100%; border-collapse:collapse; margin-top:10px; font-size:12px; }
+  th, td { padding:6px; text-align:center; border:1px solid #ddd; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto; /* يسمح بالتمرير العمودي */
+}
+
+main.main {
+  min-height: 100vh; /* على الأقل ارتفاع الشاشة */
+  padding-bottom: 2rem; /* مساحة أسفل الصفحة */
+}
+
+@media (max-width: 768px) {
+
+ .topbar {
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .topbar  {
+    width: 70%;
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .nav a {
+    flex: 1 1 48%;
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .cards, .cards1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card, .card1 {
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .card .value {
+    font-size: 16px;
+  }
+
+  canvas {
+    max-width: 80px !important;
+    max-height: 80px !important;
+    margin: 5px auto;
+  }
+
+  .genderNationalityContainer {
+    flex-direction: column;
+  }
+
+  .cardGender, .cardNationality, .cardQualification {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-size: 10px;
+  }
+
+  table th, table td {
+    padding: 4px;
+  }
+
+  .search-filters label, .search-filters select, .search-filters button {
+    font-size: 12px;
+  }
+
+  .actions button {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .E-img {
+    width: 50px;
+    height: 50px;
+  }
+  }
+  
+/* --- CSS خاص بالهواتف --- */
+@media (max-width: 768px) {
+  .cards1 {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 8px;
+  }
+
+  .card1 {
+    padding: 6px;
+  }
+
+  .card1-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .card1 h3 {
+    font-size: 12px;
+  }
+
+  .card1 .sub-box span,
+  .card1 .sub-box .value {
+    font-size: 10px;
+  }
+}.cards1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  padding: 10px;
+}
+
+.card1 {
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* الصور داخل الكروت */
+.card1-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+/* عنوان البطاقة */
+.card1 h3 {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* النصوص الصغيرة */
+.card1 .sub-box span,
+.card1 .sub-box .value {
+  font-size: 12px;
+}
+.section {
+  display: none;
+  padding: 10px;
+  min-height: 100%; /* لا تمنع التمرير */
+}
+.section.active {
+  display: block;
+}
+
+
+</style>
 </head>
 <body>
-<div class="wrap">
-  <!-- زر الهامبرجر يظهر فقط على الهاتف -->
-<button class="hamburger" onclick="toggleSidebar()">☰</button>
-<aside class="sidebar">
-  <div class="brand">
-    <div class="logo">PHDU</div>
-    <div><img src="Media/PHDU Logo.png"></div>
+<div style="text-align:center; margin:10px 0;">
+  <img src="Media/PHDU Logo.png" style="width: 11rem; height: 3rem;">
+</div>
+<main class="main">
+<!-- 🔍 Topbar Search -->
+<div class="topbar" >
+     <a href="index.html" class="circle-btn" title="الرئيسية">
+    <i class="fa-solid fa-house" style="color: #6b6b6b;"></i>
+  </a> 
+  <div class="search">
+    <input type="text" placeholder="Search..." id="searchInput">
   </div>
+</div>
+
+  </div>
+<!-- Navigation -->
   <nav class="nav">
-    <a onclick="showSection('phdu-dashboard')" class="active"><i class="fa-solid fa-chart-line"></i> PHDU Dashboard</a>
+     <a onclick="showSection('phdu-dashboard')" class="active"><i class="fa-solid fa-chart-line"></i> PHDU Dashboard</a>
     <a onclick="showSection('staff-data-dashboard')"><i class="fa-solid fa-user-doctor"></i> Staff Data</a>
     <a onclick="showSection('education-training')"><i class="fa-solid fa-graduation-cap"></i> Education</a>
     <a onclick="showSection('search')"><i class="fa-solid fa-magnifying-glass"></i> Search</a> <!-- هذه الخانة الجديدة -->
     <a onclick="showSection('Equipment')"><i class="fa-solid fa-toolbox"></i>Equipment</a>
   </nav>
-  <div class="side-footer">
-    <div class="profile-pic">Admin</div>
-    <div><div style="font-weight:600">Asma</div><div style="font-size:13px">Nurse Incharge</div></div>
-  </div>
-</aside>
-
-<main class="main">
-<!-- 🔍 Topbar Search -->
-<div class="topbar" >
-  <div class="search">
-    <i class="fa-solid fa-magnifying-glass" style="color:var(--muted)"></i>
-    <input type="text" placeholder="Search..." id="searchInput">
-  </div>
-<div class="icons">
-      <div class="circle-btn"><i ></i></div>
-  <!-- دائرة للهوم -->
-  <a href="index.html" class="circle-btn" title="الرئيسية">
-    <i class="fa-solid fa-house" style="color: #6b6b6b;"></i>
-  </a>
-    <div class="circle-btn"><i ></i></div>
-</div>
-
-  </div>
-
-<!-- PHDU Dashboard Section -->
 <section id="phdu-dashboard" class="section active">
   <section class="cards"><h3 style="margin-top: -10px; margin-bottom: 0rem;">Staffing</h3></section>
   <section class="cards">
@@ -71,8 +234,6 @@
     <div class="cardGender">
       <div class="header">
       </div>
-   <!-- 👇 العنوان الداخلي -->
-    <h4 class="mobile-title">PHDU Gender Ratio</h4>
       <div class="charts">
         <div class="chart-box">
           <canvas id="maleChart"></canvas>
@@ -91,8 +252,6 @@
 <div class="cardNationality">
   <div class="header">
   </div>
-      <!-- 👇 العنوان الداخلي -->
-    <h4 class="mobile-title">PHDU Nationality Ratio</h4>
   <div class="charts">
     <div class="chart-box">
       <canvas id="omaniChart"></canvas>
@@ -109,13 +268,11 @@
   <div class="title">Qualification Distribution</div>
   <div class="title">Level of Experience</div>
   </div>
-  <div class="cardQualification"> <!-- 👇 العنوان الداخلي -->
-  <h4 class="mobile-title2">Qualification Distribution</h4>
+  <div class="cardQualification">
     <canvas id="qChart"></canvas>
   </div>
 
-  <div class="cardQualification"> <!-- 👇 العنوان الداخلي -->
-  <h4 class="mobile-title2">Level of Experience</h4>
+  <div class="cardQualification">
     <canvas id="expChart"></canvas>
   </div>
 
@@ -1035,11 +1192,11 @@ async function updateEquipmentCards() {
     {selector:"#equipment-condem .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"K6"},
     {selector:"#equipment-condem-use .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"L6"},
     {selector:"#equipment-loan-patient .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"H2"},
-    {selector:"#equipment-loan-ward .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"L9"},
-    {selector:"#equipment-loan-out .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"M9"},
-    {selector:"#equipment-workorder .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"N9"},
+    {selector:"#equipment-loan-ward .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"I2"},
+    {selector:"#equipment-loan-out .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=383785959&single=true&output=csv", cell:"F5"},
+    {selector:"#equipment-workorder .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=29123448&single=true&output=csv", cell:"I4"},
     {selector:"#equipment-workshop .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"O6"},
-    {selector:"#equipment-ppm .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"O9"},
+    {selector:"#equipment-ppm .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1477274679&single=true&output=csv", cell:"K8"},
     {selector:"#equipment-disposed .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"Q6"}
   ];
 
@@ -1077,42 +1234,9 @@ async function updateEquipmentCards() {
 }
 
 document.addEventListener("DOMContentLoaded", updateEquipmentCards);
-
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  sidebar.classList.toggle('active');
-}
-
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  const hamburger = document.querySelector('.hamburger');
-
-  sidebar.classList.toggle('active');
-  hamburger.classList.toggle('open'); // ← أضف/أزل الكلاس للحالة
-
-  // عند الفتح احذف أي كلاس قديم
-  if (!sidebar.classList.contains('active')) {
-    hamburger.classList.remove('open');
-  }
-}
-
-// إغلاق الشريط عند الضغط خارجَه
-document.addEventListener('click', function (e) {
-  const sidebar = document.querySelector('.sidebar');
-  const hamburger = document.querySelector('.hamburger');
-  if (
-    sidebar.classList.contains('active') &&
-    !sidebar.contains(e.target) &&
-    !hamburger.contains(e.target)
-  ) {
-    sidebar.classList.remove('active');
-    hamburger.classList.remove('open'); // ← أعد الهامبرجر إلى حالته الأصلية
-  }
-});
 </script>
+
+
 
 </body>
 </html>
-<script>
-
-</script>

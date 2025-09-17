@@ -86,8 +86,19 @@ const featureContents = [
   }
 ];
 
-
+// دالة لتحديد الجهاز وتشغيل الكود المناسب
 function setActiveBox(index) {
+  if (window.innerWidth > 768) {
+    // ✅ كود الكمبيوتر
+    computerFeature(index);
+  } else {
+    // ✅ كود الهاتف
+    mobileFeature(index);
+  }
+}
+
+/* ---------------- كود الكمبيوتر ---------------- */
+function computerFeature(index) {
   document.querySelectorAll('.feature-box').forEach((box, i) => {
     box.classList.toggle('active', i === index);
   });
@@ -108,22 +119,13 @@ function setActiveBox(index) {
   content.paragraphs.forEach(paragraph => {
     if (typeof paragraph === "string") {
       const p = document.createElement("p");
-
-      if (
-        paragraph.includes("What You'll Find:") ||
-        paragraph.includes("Types of Learning Content Available:")
-      ) {
+      if (paragraph.includes("What You'll Find:") || paragraph.includes("Types of Learning Content Available:")) {
         p.style.fontWeight = "bold";
         p.style.color = "#1a4d80";
         p.style.marginTop = "20px";
         p.style.fontSize = "18px";
         p.style.fontFamily = "Arial, sans-serif";
       }
-
-      if (content.heading === "Learning") {
-        p.style.marginBottom = "15px";
-      }
-
       p.textContent = paragraph;
       extraParagraphs.appendChild(p);
     } else if (paragraph.type === "bullets") {
@@ -164,17 +166,15 @@ function setActiveBox(index) {
     extraImage.src = content.image;
     extraImage.style.display = "block";
     extraImage.style.width = "100%";
-extraImage.style.maxWidth = "400px"; // won’t grow too large
-extraImage.style.height = "auto";
+    extraImage.style.maxWidth = "400px";
+    extraImage.style.height = "auto";
   } else {
     extraImage.style.display = "none";
   }
 
-  // إزالة زر سابق إذا موجود
   const existingBtn = document.getElementById("featureBtn");
   if (existingBtn) existingBtn.remove();
 
-  // إضافة زر تحت النص
   if (content.buttonUrl) {
     const btn = document.createElement("button");
     btn.id = "featureBtn";
@@ -204,8 +204,55 @@ extraImage.style.height = "auto";
   }
 }
 
-// دالة تعيد المحتوى للوضع الافتراضي
+/* ---------------- كود الهاتف ---------------- */
+function mobileFeature(index) {
+  const titles = featureContents.map(c => c.heading);
+  const paragraphs = featureContents.map(c => c.paragraphs[0]);
+  const images = featureContents.map(c => c.image);
+
+  const contents = [
+    `<ul>
+       <li>Enhance knowledge, skills, and stay updated in nursing.</li>
+       <li>Access resources, case studies, and current research.</li>
+       <li>Expand expertise with practical insights and educational materials.</li>
+    </ul>`,
+    `<ul>
+       <li>Up-to-date clinical protocols</li>
+       <li>Policies and procedures</li>
+       <li>Quick references for medications, calculations, and assessments.</li>
+     </ul>`,
+    `<ul>
+       <li>Manage patient admissions, transfers, and discharges</li>
+       <li>Check staff schedules and assignments</li>
+       <li>Track medical supplies and equipment</li>
+     </ul>`,
+    `<ul>
+       <li>Regular audits of hospital policies</li>
+       <li>Collect & analyze clinical data</li>
+       <li>Emergency guidelines and protocols</li>
+     </ul>`,
+    `<ul>
+       <li>PHDU Staff Directory</li>
+       <li>Staff Training & Certification</li>
+       <li>Performance & Competency tracking</li>
+     </ul>`
+  ];
+  
+
+  document.getElementById("feature-modal-Phone-Title").textContent = titles[index];
+  document.getElementById("feature-modal-Phone-Paragraphs").innerHTML = `<p>${paragraphs[index]}</p>${contents[index]}`;
+  document.getElementById("feature-modal-Phone-Image").src = images[index];
+  document.getElementById("featureModal-Phone").style.display = "flex";
+}
+
+function closeModalPhone() {
+  document.getElementById("featureModal-Phone").style.display = "none";
+}
+
+/* ---------------- إعادة التعيين للكمبيوتر ---------------- */
 function resetDetailBoxToDefault() {
+  if (window.innerWidth <= 768) return;
+
   const extraHeading = document.getElementById("extraHeading");
   const extraParagraphs = document.getElementById("extraParagraphs");
   const extraImage = document.getElementById("extraImage");
@@ -223,13 +270,10 @@ function resetDetailBoxToDefault() {
   extraImage.style.display = "none";
 }
 
-// مراقبة السكروول وإعادة التعيين
 window.addEventListener('scroll', () => {
   if (window.scrollY < 50) {
     resetDetailBoxToDefault();
   }
 });
 
-// استدعاء أول مرة لعرض النص الافتراضي
 resetDetailBoxToDefault();
-

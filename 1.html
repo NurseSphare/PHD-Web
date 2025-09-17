@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>PHDU Gallery with Slider (Google Sheets)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <style>
+    body {font-family: Arial, sans-serif;background:#f6f8fa;margin:0;padding:0;}
+    header {text-align:center;padding:20px;background:linear-gradient(135deg,#5ee7df 0%,#584961 100%);color:white;}
+    .controls {text-align:center;margin:20px;}
+    input[type="text"] {padding:8px;width:250px;border:1px solid #ccc;border-radius:5px;}
+    button {padding:8px 15px;border:none;border-radius:5px;background:#584961;color:white;cursor:pointer;}
+    .swiper {width:90%;max-width:900px;margin:30px auto;border-radius:10px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    .swiper-slide img {width:100%;height:300px;object-fit:cover;}
+    .gallery {display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:20px;}
+    .card {background:white;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);overflow:hidden;}
+    .card img {width:100%;height:200px;object-fit:cover;}
+    .caption {padding:10px;text-align:center;}
+    .lightbox {display:none;position:fixed;z-index:1000;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);justify-content:center;align-items:center;}
+    .lightbox img {max-width:90%;max-height:80%;border-radius:8px;}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>PHDU Department Gallery</h1>
+  <p>Images saved in Google Sheets and visible to everyone</p>
+</header>
+
+<!-- Slider -->
+<div class="swiper mySwiper">
+  <div class="swiper-wrapper" id="sliderWrapper"></div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- Controls -->
+<div class="controls">
+  <input type="text" id="imageUrl" placeholder="Paste image URL">
+  <input type="text" id="captionText" placeholder="Enter caption (optional)">
+  <button onclick="addImage()">Add Image</button>
+</div>
+
+<!-- Gallery -->
+<section class="gallery" id="gallery">Loading...</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  const gallery = document.getElementById('gallery');
+  const sliderWrapper = document.getElementById('sliderWrapper');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+
+  // Replace with your deployed Apps Script URL
+  const SHEETS_URL = 'YOUR_WEB_APP_URL';
+
+  // Initialize slider
+  const swiper = new Swiper('.mySwiper', {
+    loop: true,
+    autoplay: { delay: 3000 },
+    pagination: { el: '.swiper-pagination', clickable: true },
+  });
+
+  // Load images from Google Sheets
+  async function loadImages() {
+    const response = await fetch(SHEETS_URL);
+    const images = await response.json();
+    gallery.innerHTML = '';
+    sliderWrapper.innerHTML = '';
+    images.forEach(img => {
+      createCard(img.url, img.caption);
+      addSlide(img.url);
+    });
+    swiper.update();
+  }
+
+  // Add image to Sheets
+  async function addImage() {
+    const url = document.getElementById('imageUrl').value.trim();
+    const caption = document.getElementById('captionText').value.trim() || 'New Image';
+    if (!url) {
+      alert('Paste a public image URL first.');
+      return;
+    }
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      body: JSON.stringify({ url, caption }),
+      headers: { 'Content-Type': 'application/json' }
+    });
+    loadImages();
+    document.getElementById('imageUrl').value = '';
+    document.getElementById('captionText').value = '';
+  }
+
+  function createCard(src, caption) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `<img src="${src}" alt=""><div class="caption">${caption}</div>`;
+    card.querySelector('img').addEventListener('click', () => {
+      lightboxImg.src = src;
+      lightbox.style.display = 'flex';
+    });
+    gallery.appendChild(card);
+  }
+
+  function addSlide(src) {
+    const slide = document.createElement('div');
+    slide.className = 'swiper-slide';
+    slide.innerHTML = `<img src="${src}" alt="">`;
+    sliderWrapper.appendChild(slide);
+  }
+
+  lightbox.addEventListener('click', () => lightbox.style.display = 'none');
+
+  window.onload = loadImages;
+</script>
+
+</body>
+</html>

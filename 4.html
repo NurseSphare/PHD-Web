@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>جدول مع 11 بطاقة</title>
+  <style>
+    body {
+      font-family: "Cairo", system-ui, Arial;
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      margin: 0;
+      padding: 60px;
+    }
+
+    /* ===== زر أعلى المربعات ===== */
+    .btn-container {
+      max-width: 1250px;
+      margin: 0 auto 20px auto;
+      text-align: center;
+    }
+    .check-btn {
+      background-color: #1a60e8;
+      color: #fff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .check-btn:hover {
+      background-color: #164bb8;
+      transform: translateY(-2px);
+    }
+
+    /* ===== البطاقات ===== */
+    .cards-container {
+      max-width: 1250px;
+      margin: 0 auto 20px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+    .info-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+    .info-card h3 {
+      margin: 0 0 8px;
+      font-size: 15px;
+      color: #1a60e8;
+    }
+    .info-card p {
+      margin-bottom: 10px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    /* ===== البطاقة التي تحتوي الجدول ===== */
+    .card {
+      max-width: 10000px;
+      margin: auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+      padding: 20px;
+      overflow-x: auto;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 22px;
+      text-align: center;
+    }
+    .controls {
+      display: flex;
+      gap: 8px;
+      margin: 12px 0 20px;
+    }
+    .controls input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      direction: ltr;
+    }
+    th, td {
+      padding: 10px 14px;
+      border: 1px solid #eee;
+      text-align: left;
+    }
+    th {
+      background: #eef5ff;
+      color: #1a60e8;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    .empty {
+      padding: 14px;
+      text-align: center;
+      color: #777;
+    }
+    #search {
+  text-align: left;          /* محاذاة النص الذي يكتبه المستخدم لليسار */
+  direction: ltr;            /* يجعل مؤشر الكتابة يبدأ من اليسار */
+}
+
+#search::placeholder {
+  text-align: left;          /* محاذاة نص الـ placeholder لليسار */
+  direction: ltr;            /* اتجاه placeholder من اليسار */
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- زر فوق المربعات -->
+  <div class="btn-container">
+<button class="check-btn" onclick="window.location.href='Equipment.html'">
+  Check Equipment
+</button>
+  </div>
+
+  <!-- المربعات -->
+  <div class="cards-container">
+    <div class="info-card"><h3>Total Equipment in PHDU</h3><p id="total">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment Checked</h3><p id="checked">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment Not Checked</h3><p id="notChecked">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Working)</h3><p id="working">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Missing)</h3><p id="missing">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Disposed)</h3><p id="disposed">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Waiting for spare part)</h3><p id="spare">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (With Biomedical)</h3><p id="biomedical">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Loaned by patient)</h3><p id="loaned">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Condemn)</h3><p id="condemn">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Condemn in Use)</h3><p id="condemnUse">Waiting...</p></div>
+    <div class="info-card"><h3>Total Equipment (Missing condemn in use)</h3><p id="missingCondemnUse">Waiting...</p></div>
+  </div>
+
+  <!-- الجدول -->
+  <div class="card">
+    <h1>Equipment in PHDU list</h1>
+    <div class="controls">
+      <input id="search" placeholder="Search..." />
+    </div>
+    <div id="status" class="empty"></div>
+    <table id="table"></table>
+  </div>
+<script>
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbya6-ptPklsa_0cVthWL9DQ4HH4yVg5DNi86Vizveg3CD0VRBqWS7liPmpV0o89DhUg/exec";
+
+  const tableEl = document.getElementById('table');
+  const statusEl = document.getElementById('status');
+  const searchEl = document.getElementById('search');
+
+  const cardsMap = {
+    total: "total",
+    checked: "checked",           // Rows that have any status
+    notChecked: "notChecked",     // ✅ Empty status rows
+    working: "working",
+    missing: "missing",
+    disposed: "disposed",
+    spare: "spare",
+    biomedical: "biomedical",
+    loaned: "loaned",
+    condemn: "condemn",
+    condemnUse: "condemnUse",
+    missingCondemnUse: "missingCondemnUse",
+  };
+
+  let rows = [];
+  let headers = [];
+
+  function render(items) {
+    tableEl.innerHTML = '';
+    if (!items.length) {
+      statusEl.textContent = 'No matching data.';
+      return;
+    }
+    statusEl.textContent = '';
+
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    headers.forEach(h => {
+      const th = document.createElement('th');
+      th.textContent = h;
+      headerRow.appendChild(th);
+    });
+    thead.appendChild(headerRow);
+    tableEl.appendChild(thead);
+
+    const tbody = document.createElement('tbody');
+    items.forEach(row => {
+      const tr = document.createElement('tr');
+      headers.forEach(h => {
+        const td = document.createElement('td');
+        td.textContent = row[h] ?? '';
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    tableEl.appendChild(tbody);
+  }
+
+  function filter() {
+    const q = searchEl.value.trim().toLowerCase();
+    const filtered = rows.filter(r =>
+      Object.values(r).some(val => String(val).toLowerCase().includes(q))
+    );
+    render(filtered);
+    updateCards(filtered);
+  }
+
+  function updateCards(data) {
+    if (!data || !data.length) {
+      Object.values(cardsMap).forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = "0";
+      });
+      return;
+    }
+
+    const totals = {
+      total: data.length,
+      checked: 0,
+      notChecked: 0,    // ✅ Empty status rows
+      working: 0,
+      missing: 0,
+      disposed: 0,
+      spare: 0,
+      biomedical: 0,
+      loaned: 0,
+      condemn: 0,
+      condemnUse: 0,
+      missingCondemnUse: 0,
+    };
+
+    const statusCol = "STATUS"; // ← Use the exact column name in the sheet
+
+    data.forEach(r => {
+      const rawStatus = r[statusCol] || "";
+      const status = rawStatus.trim().toLowerCase();
+
+      if (status) {
+        totals.checked++;   // Has text
+      } else {
+        totals.notChecked++; // ✅ Empty
+      }
+
+      if (status === "working" || status.includes("working")) totals.working++;
+      if (status.includes("missing condemin in use")) totals.missingCondemnUse++;
+      else if (status.includes("missing")) totals.missing++;
+      if (status.includes("disposed")) totals.disposed++;
+      if (status.includes("spare")) totals.spare++;
+      if (status.includes("biomedical")) totals.biomedical++;
+      if (status.includes("loan")) totals.loaned++;
+      if (status.includes("condemn in use")) totals.condemnUse++;
+      else if (status.includes("condemn")) totals.condemn++;
+    });
+
+    Object.entries(totals).forEach(([key, value]) => {
+      const el = document.getElementById(cardsMap[key]);
+      if (el) el.textContent = value;
+    });
+  }
+
+  async function load() {
+    statusEl.textContent = 'Loading...';
+    try {
+      const res = await fetch(SCRIPT_URL);
+      const data = await res.json();
+      rows = data.rows || [];
+      headers = data.headers || [];
+      console.log("Headers:", headers);
+      render(rows);
+      updateCards(rows);
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = 'Failed to fetch data. Please check Web App permissions.';
+    }
+  }
+
+  searchEl.addEventListener('input', filter);
+  load();
+</script>
+
+
+</body>
+</html>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Styles.css">
+    <link rel="stylesheet" href="STYLE2.CSS">
+            <link rel="stylesheet" href="StylesPhone.css">
     <script src="login.js"></script>
     <script src="Animated.js"></script>
     <!-- فيديو الخلفية-->
@@ -30,86 +31,92 @@
 <body>
 <header>   <!-- الهيدر -->
  <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
 <nav class="Navigation">   <!--القسم مخصص للتنقل-->
     <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
 
 <li class="active"><a href="index.html">Home</a></li>
 
-<div class="dropdown" style="float: inherit;">
-      <li class="Education"><a href="#Education" >Education</a></li>
-<div class="dropdown-content">
-      <a href="#Learning" id="comingSoon1">Learning</a>
-      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
-      <a href="#Updates" id="comingSoon3">Updates</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
-<div class="dropdown-content2">
-        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
-        <a href="#Policies" id="comingSoon5">Policies</a>
-        <a href="#Documents" id="comingSoon6">Documents</a>
-        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
-</div>
-</div>
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+    <a href="#Policies" id="comingSoon5">Policies</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
 
-<div class="dropdown2" style="float: inherit;">
-    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
-<div class="dropdown-content2">
-        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
-        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
-        <a href="#Inventory" id="comingSoon10">Inventory</a>
-        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
-        <a href="#CSSD" id="comingSoon12">CSSD</a>
-        <a href="#Loan" id="comingSoon13">Loan</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
-<div class="dropdown-content2">
-        <a href="#Audit" id="comingSoon14">Audit</a>
-        <a href="#Statistics" id="comingSoon15">Statistics</a>
-        <a href="#Ejada" id="comingSoon16">Ejada</a>
-        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
-        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
-<div class="dropdown-content2"id="NursingHR">
-        <a href="Personal Data list.html">Personal Data and Training Records</a>
-        <a href="DashboardMain.html">Dashboard</a>
-        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
-        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
-        <a href="#Other" id="comingSoon21">Other</a>
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon15">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
 
-</div></div>
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
 
-<!-- Admin Control (مخفي افتراضياً) -->
-<div class="dropdown2"  id="adminControlMenu">
-  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
   <div class="dropdown-content2" id="Adminss">
     <ul id="adminDropdown">
       <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
     </ul>
-  </div></div>
+  </div>
+</li>
 
-
-</div>
 
     <li><a href="About.html">About Me</a></li>
 
-<!-- زر Account -->
-<li style="float: right; margin-left: 10px; position:relative;">
-  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
   <ul id="accountMenu">
     <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
     <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
   </ul>
 </li>
+
 <div id="logoContainer" >
     <div  id="userDisplay" ></div>
 </div>
+
 
 <!-- Login Modal HTML -->
 <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
@@ -159,10 +166,6 @@
         <button id="viewStaffBtn">View All Staff</button>
     </div>
 </div>
-
-</ul>
-</nav>
-    </ul>
 </nav>
 
 </header>
@@ -205,6 +208,58 @@ document.addEventListener("DOMContentLoaded", function() {
             popup.classList.remove("show");
         }
     });
+});
+
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
 });
 </script>
     <section class="sectionc">

@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Staff Registration Form</title>
- <link rel="stylesheet" href="styledata.css">
-    <link rel="stylesheet" href="Styles.css">
+ <link rel="stylesheet" href="styledata.css"> <link rel="stylesheet" href="STYLE2.CSS">
+        <link rel="stylesheet" href="StylesPhone.css">
     <script src="login.js"></script>
     <script src="Animated.js"></script>
     
@@ -31,86 +31,92 @@
 </head>
 <header>   <!-- الهيدر -->
  <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
 <nav class="Navigation">   <!--القسم مخصص للتنقل-->
     <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
 
 <li class="active"><a href="index.html">Home</a></li>
 
-<div class="dropdown" style="float: inherit;">
-      <li class="Education"><a href="#Education" >Education</a></li>
-<div class="dropdown-content">
-      <a href="#Learning" id="comingSoon1">Learning</a>
-      <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
-      <a href="#Updates" id="comingSoon3">Updates</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="ClinicalResources"><a href="#ClinicalResources">Clinical Resources</a></li>
-<div class="dropdown-content2">
-        <a href="#Guidelines" id="comingSoon4">Guidelines</a>
-        <a href="#Policies" id="comingSoon5">Policies</a>
-        <a href="#Documents" id="comingSoon6">Documents</a>
-        <a href="#QuickReferences" id="comingSoon7">Quick References</a>
-</div>
-</div>
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="#Guidelines" id="comingSoon4">Guidelines</a>
+    <a href="#Policies" id="comingSoon5">Policies</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
 
-<div class="dropdown2" style="float: inherit;">
-    <li class="HospitalOperations"><a href="#HospitalOperations">Hospital Operations</a></li>
-<div class="dropdown-content2">
-        <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
-        <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
-        <a href="#Inventory" id="comingSoon10">Inventory</a>
-        <a href="#WorkOrder" id="comingSoon11">Work Order</a>
-        <a href="#CSSD" id="comingSoon12">CSSD</a>
-        <a href="#Loan" id="comingSoon13">Loan</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="Quality&Safety"><a href="#Quality&Safety">Quality and Safety</a></li>
-<div class="dropdown-content2">
-        <a href="#Audit" id="comingSoon14">Audit</a>
-        <a href="#Statistics" id="comingSoon15">Statistics</a>
-        <a href="#Ejada" id="comingSoon16">Ejada</a>
-        <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
-        <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
-</div>
-</div>
-<div class="dropdown2" style="float: inherit;">
-    <li class="NursingHR"><a href="#NursingHR">Nursing HR</a></li>
-<div class="dropdown-content2"id="NursingHR">
-        <a href="Personal Data list.html">Personal Data and Training Records</a>
-        <a href="DashboardMain.html">Dashboard</a>
-        <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
-        <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
-        <a href="#Other" id="comingSoon21">Other</a>
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon15">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="#DisasterPlan" id="comingSoon17">Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
 
-</div></div>
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="#ReportsandTracking" id="comingSoon20">Reports and Tracking</a>
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
 
-<!-- Admin Control (مخفي افتراضياً) -->
-<div class="dropdown2"  id="adminControlMenu">
-  <li class="AdminControl"><a href="#AdminControl">Admin Control</a></li>
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
   <div class="dropdown-content2" id="Adminss">
     <ul id="adminDropdown">
       <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
     </ul>
-  </div></div>
+  </div>
+</li>
 
-
-</div>
 
     <li><a href="About.html">About Me</a></li>
 
-<!-- زر Account -->
-<li style="float: right; margin-left: 10px; position:relative;">
-  <a href="javascript:void(0)" class="account-btn" id="accountBtn">Account </a>
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
   <ul id="accountMenu">
     <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
     <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
   </ul>
 </li>
+
 <div id="logoContainer" >
     <div  id="userDisplay" ></div>
 </div>
+
 
 <!-- Login Modal HTML -->
 <div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
@@ -160,17 +166,12 @@
         <button id="viewStaffBtn">View All Staff</button>
     </div>
 </div>
-
-</ul>
 </nav>
-    </ul>
-</nav>
-
-
 
 </header>
-<body>
+
 <hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
 
 <!-- Popup -->
 <div class="popup" id="popup">
@@ -208,8 +209,59 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-</script>
 
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
+});
+</script>
 
 
 
@@ -225,6 +277,10 @@ document.addEventListener("DOMContentLoaded", function() {
       <div class="tab" onclick="showTab(2)">Employment</div>
       <div class="tab" onclick="showTab(3)">Courses</div>
     </div>
+        <!-- مؤشر التحميل -->
+<div id="loadingSpinner" class="spinner-overlay">
+  <div class="spinner"></div>
+</div>
 <!-- Tab 1 -->
 <div class="tab-content active">
 <!-- رفع صورة -->
@@ -311,32 +367,36 @@ document.addEventListener("DOMContentLoaded", function() {
 <div id="messageBox"></div>   
   </div>
 <!-- Modal -->
-<div id="modalOverlay" class="modal-overlay">
-  <div id="modalBox" class="modal">
-    <p id="modalMessage"></p>
-    <button onclick="closeModal()">Close</button>
+<div id="modalOverlay2" class="modal-overlay2">
+  <div id="modalBox2" class="modal2">
+    <p id="modalMessage2"></p>
+    <button onclick="closeModal2()">Close</button>
   </div>
 </div>
 </section>
 <script>
 let currentTab = 0;
-let photoBase64 = ""; // نخزن الصورة هنا
+let photoBase64 = "";
 
-// التحكم بالتبويبات وشريط التقدم
-const tabButtons = document.querySelectorAll('.tabs .tab');
-const tabContents = document.querySelectorAll('.tab-content');
+// عناصر DOM
+const tabButtons = document.querySelectorAll('.tabs .tab') || [];
+const tabContents = document.querySelectorAll('.tab-content') || [];
 const progress = document.getElementById('progress');
 const prevBtn = document.getElementById('prevBtn');
 const nextBtn = document.getElementById('nextBtn');
 const submitBtn = document.getElementById('submitBtn');
-const messageBox = document.getElementById('messageBox');
-const modalOverlay = document.getElementById('modalOverlay');
-const modalBox = document.getElementById('modalBox');
-const modalMessage = document.getElementById('modalMessage');
+const modalOverlay2 = document.getElementById('modalOverlay2');
+const modalBox2 = document.getElementById('modalBox2');
+const modalMessage2 = document.getElementById('modalMessage2');
+const loadingSpinner = document.getElementById('loadingSpinner');
+const messageBox = document.getElementById('messageBox'); // صندوق التحذير
 
+// ✅ إظهار التبويب الحالي
 function showTab(n) {
+  if (!tabButtons.length || !tabContents.length) return;
   tabButtons.forEach(btn => btn.classList.remove('active'));
   tabContents.forEach(content => content.classList.remove('active'));
+
   tabButtons[n].classList.add('active');
   tabContents[n].classList.add('active');
 
@@ -349,242 +409,189 @@ function showTab(n) {
     submitBtn.style.display = 'none';
   }
 
-  progress.style.width = ((n + 1) / tabContents.length) * 100 + '%';
+  if (progress) progress.style.width = ((n + 1) / tabContents.length) * 100 + '%';
   currentTab = n;
 }
 
+// ✅ التنقل بين التبويبات مع التحقق
 function nextPrev(step) {
-  if(step === 1 && !validateForm()) return false;
-  let newTab = currentTab + step;
+  if (step === 1 && !validateForm()) return false;
+  const newTab = currentTab + step;
   if (newTab < 0 || newTab >= tabContents.length) return;
   showTab(newTab);
 }
 
+// ✅ معاينة الصورة
 function previewImage(event) {
   const photoPreview = document.getElementById('photoPreview');
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
-    reader.onload = function(e) {
+    reader.onload = e => {
       photoPreview.style.backgroundImage = `url(${e.target.result})`;
-      photoPreview.textContent = '';
       photoPreview.style.backgroundSize = 'cover';
       photoPreview.style.backgroundPosition = 'center';
+      photoPreview.classList.add('has-image');
       photoBase64 = e.target.result;
-    }
+    };
     reader.readAsDataURL(file);
   }
 }
 
-function showWarning(text){
+// ✅ عرض تحذير
+function showWarning(text) {
   messageBox.textContent = text;
   messageBox.className = "warning";
   messageBox.style.display = "block";
-  messageBox.style.fontSize= "12px";
   setTimeout(() => { messageBox.style.display = "none"; }, 4000);
 }
 
-function showModal(text, type){
-  modalMessage.textContent = text;
-  modalBox.className = "modal " + type;
-  modalOverlay.style.display = "flex";
+// ✅ المودال
+function showModal2(text, type) {
+  modalMessage2.textContent = text || "Operation completed!";
+  modalBox2.className = "modal2 " + (type || "success");
+  modalOverlay2.style.display = "flex";
+  modalOverlay2.style.zIndex = "99999";
 }
 
-function closeModal(){
-  modalOverlay.style.display = "none";
+function closeModal2() {
+  modalOverlay2.style.display = "none";
 }
 
+// ✅ مؤشر التحميل
+function toggleSpinner(show) {
+  loadingSpinner.style.display = show ? 'flex' : 'none';
+}
+
+// ✅ التحقق من الحقول
 function validateForm() {
   const requiredFieldsPerTab = {
     0: [
-      { field: document.getElementById('staffnumber'), name: "Staff Number" },
-      { field: document.getElementById('staffname'), name: "Staff Name" },
-      { field: document.getElementById('dob'), name: "Date of Birth" },
-      { field: document.getElementById('gender'), name: "Gender" },
-      { field: document.getElementById('maritalStatus'), name: "Marital Status" },
-      { field: document.getElementById('nationality'), name: "Nationality" },
-      { field: document.getElementById('country'), name: "Country" },
-      { field: document.getElementById('cvil'), name: "Civil Number" }
+      { field: staffnumber, name: "Staff Number" },
+      { field: staffname, name: "Staff Name" },
+      { field: dob, name: "Date of Birth" },
+      { field: gender, name: "Gender" },
+      { field: maritalStatus, name: "Marital Status" },
+      { field: nationality, name: "Nationality" },
+      { field: country, name: "Country" },
+      { field: cvil, name: "Civil Number" }
     ],
     1: [
-      { field: document.getElementById('phone'), name: "Phone Number" },
-      { field: document.getElementById('contactNumberOfNextKin'), name: "Next of Kin Contact" },
-      { field: document.getElementById('email'), name: "Email" },
-      { field: document.getElementById('address'), name: "Current Address" },
-      { field: document.getElementById('permaddress'), name: "Permanent Address" },
-      { field: document.getElementById('driving'), name: "Driving Status" },
-      { field: document.getElementById('waywork'), name: "Way of Coming to Work" },
-      { field: document.getElementById('timefhomethos'), name: "Time from Home to Hospital" }      
+      { field: phone, name: "Phone Number" },
+      { field: contactNumberOfNextKin, name: "Next of Kin Contact" },
+      { field: email, name: "Email" },
+      { field: address, name: "Current Address" },
+      { field: permaddress, name: "Permanent Address" },
+      { field: driving, name: "Driving Status" },
+      { field: waywork, name: "Way of Coming to Work" },
+      { field: timefhomethos, name: "Time from Home to Hospital" }
     ],
     2: [
-      { field: document.getElementById('typeOfEmployment'), name: "Type of Employment" },
-      { field: document.getElementById('dateOfJoiningRH'), name: "Date of Joining Royal Hospital" },
-      { field: document.getElementById('dateOfAppointmentMOH'), name: "Date of Appointment in MOH" },
-      { field: document.getElementById('designation'), name: "Designation" },
-      { field: document.getElementById('actualPosition'), name: "Actual Position in Hospital" },
-      { field: document.getElementById('department'), name: "Department" },    
-      { field: document.getElementById('section'), name: "Section" },
-      { field: document.getElementById('unit'), name: "Unit" },
-      { field: document.getElementById('finance'), name: "Finance Grade" },     
-      { field: document.getElementById('lastPromotionDate'), name: "Last Promotion Date" },
-      { field: document.getElementById('typeOfContract'), name: "Type of Contract" },
-      { field: document.getElementById('dateOfContractStart'), name: "Contract Start Date" },   
-      { field: document.getElementById('dateOfContractEnd'), name: "Contract End Date" },
-      { field: document.getElementById('qualification'), name: "Qualification" },
-      { field: document.getElementById('yearObtained'), name: "Year Obtained Nursing Certificate" },     
-      { field: document.getElementById('haveSpecialty'), name: "Do you have Specialty?" },
-      { field: document.getElementById('mohRegistr'), name: "MOH Registration Number" },
-      { field: document.getElementById('chronicIllness'), name: "Do you have Chronic illness?" }        
+      { field: typeOfEmployment, name: "Type of Employment" },
+      { field: dateOfJoiningRH, name: "Date of Joining Royal Hospital" },
+      { field: dateOfAppointmentMOH, name: "Date of Appointment in MOH" },
+      { field: designation, name: "Designation" },
+      { field: actualPosition, name: "Actual Position in Hospital" },
+      { field: department, name: "Department" },
+      { field: section, name: "Section" },
+      { field: unit, name: "Unit" },
+      { field: finance, name: "Finance Grade" },
+      { field: lastPromotionDate, name: "Last Promotion Date" },
+      { field: typeOfContract, name: "Type of Contract" },
+      { field: dateOfContractStart, name: "Contract Start Date" },
+      { field: dateOfContractEnd, name: "Contract End Date" },
+      { field: qualification, name: "Qualification" },
+      { field: yearObtained, name: "Year Obtained Nursing Certificate" },
+      { field: haveSpecialty, name: "Do you have Specialty?" },
+      { field: mohRegistr, name: "MOH Registration Number" },
+      { field: chronicIllness, name: "Do you have Chronic illness?" }
     ],
     3: [
-      { field: document.getElementById('blsdate'), name: "Date of Last BLS Certificate" },
-      { field: document.getElementById('palsdate'), name: "Date of Last PALS Certificate" },
-      { field: document.getElementById('ivTherapy'), name: "IV Therapy Completed" },
-      { field: document.getElementById('painManagement'), name: "Pain Management Completed" },
-      { field: document.getElementById('patientSafety'), name: "Patient Safety Completed" },
-      { field: document.getElementById('aggressionCourse'), name: "Aggression Course Completed" },
-      { field: document.getElementById('onlineLeanManagement'), name: "Online Lean Management Completed" },
-      { field: document.getElementById('leanManagementPhysical'), name: "Lean Management Physical Attended" },
-      { field: document.getElementById('bfhi'), name: "BFHI Completed" },
-      { field: document.getElementById('infectionTheory'), name: "Infection Control Theory" },
-      { field: document.getElementById('infectionPractice'), name: "Infection Control Practice" },
-      { field: document.getElementById('ecg'), name: "ECG Completed" },
-      { field: document.getElementById('manualHandling'), name: "Manual Handling Completed" },
-      { field: document.getElementById('chemotherapyTheory'), name: "Chemotherapy Theory Completed" },
-      { field: document.getElementById('chemotherapyPractice'), name: "Chemotherapy Practice Completed" },
-      { field: document.getElementById('central'), name: "Central Line Course Completed" },
-      { field: document.getElementById('practice'), name: "Practice Central Line" },
-      { field: document.getElementById('leader'), name: "Leadership Management" },
-      { field: document.getElementById('preceptor'), name: "Preceptorship Course" },
-      { field: document.getElementById('ethical'), name: "Ethical Course" },
-      { field: document.getElementById('commun'), name: "Communication Course Completed" },
-      { field: document.getElementById('niv'), name: "NIV Course Completed" },
-      { field: document.getElementById('transporting'), name: "Transporting Critically Ill Patient Course Completed" },
-      { field: document.getElementById('arterial'), name: "Care of Arterial Line Completed" },
-      { field: document.getElementById('peritoneal'), name: "Peritoneal Dialysis" }
+      { field: blsdate, name: "Date of Last BLS Certificate" },
+      { field: palsdate, name: "Date of Last PALS Certificate" },
+      { field: ivTherapy, name: "IV Therapy Completed" },
+      { field: painManagement, name: "Pain Management Completed" },
+      { field: patientSafety, name: "Patient Safety Completed" },
+      { field: aggressionCourse, name: "Aggression Course Completed" },
+      { field: onlineLeanManagement, name: "Online Lean Management Completed" },
+      { field: leanManagementPhysical, name: "Lean Management Physical Attended" },
+      { field: bfhi, name: "BFHI Completed" },
+      { field: infectionTheory, name: "Infection Control Theory" },
+      { field: infectionPractice, name: "Infection Control Practice" },
+      { field: ecg, name: "ECG Completed" },
+      { field: manualHandling, name: "Manual Handling Completed" },
+      { field: chemotherapyTheory, name: "Chemotherapy Theory Completed" },
+      { field: chemotherapyPractice, name: "Chemotherapy Practice Completed" },
+      { field: central, name: "Central Line Course Completed" },
+      { field: practice, name: "Practice Central Line" },
+      { field: leader, name: "Leadership Management" },
+      { field: preceptor, name: "Preceptorship Course" },
+      { field: ethical, name: "Ethical Course" },
+      { field: commun, name: "Communication Course Completed" },
+      { field: niv, name: "NIV Course Completed" },
+      { field: transporting, name: "Transporting Critically Ill Patient Course Completed" },
+      { field: arterial, name: "Care of Arterial Line Completed" },
+      { field: peritoneal, name: "Peritoneal Dialysis" }
     ]
   };
 
   const requiredFields = requiredFieldsPerTab[currentTab] || [];
-  let emptyFields = [];
-
-  for (let i = 0; i < requiredFields.length; i++) {
-    if (!requiredFields[i].field.value || requiredFields[i].field.value.trim() === "") {
-      emptyFields.push(requiredFields[i].name);
-    }
-  }
+  const emptyFields = requiredFields.filter(item => !item.field.value.trim()).map(item => item.name);
 
   if (emptyFields.length > 0) {
-    showWarning(`⚠️ Please fill or select the following: ${emptyFields.join(", ")}`);
+    showWarning(`⚠️ Please fill or select: ${emptyFields.join(", ")}`);
     return false;
   }
-
   return true;
 }
 
-// جمع البيانات يدويًا كما في الكود القديم
-function submitForm() {
-  const formData = {
-    staffnumber: document.getElementById('staffnumber').value,
-    staffname: document.getElementById('staffname').value,
-    dob: document.getElementById('dob').value,
-    gender: document.getElementById('gender').value,
-    maritalStatus: document.getElementById('maritalStatus').value,
-    nationality: document.getElementById('nationality').value,
-    country: document.getElementById('country').value,
-    cvil: document.getElementById('cvil').value,
-    phone: document.getElementById('phone').value,
-    contactNumberOfNextKin: document.getElementById('contactNumberOfNextKin').value,
-    email: document.getElementById('email').value,
-    address: document.getElementById('address').value,
-    permaddress: document.getElementById('permaddress').value,
-    driving: document.getElementById('driving').value,
-    waywork: document.getElementById('waywork').value,
-    timefhomethos: document.getElementById('timefhomethos').value,
-    typeOfEmployment: document.getElementById('typeOfEmployment').value,
-    dateOfJoiningRH: document.getElementById('dateOfJoiningRH').value,
-    dateOfAppointmentMOH: document.getElementById('dateOfAppointmentMOH').value,
-    designation: document.getElementById('designation').value,
-    actualPosition: document.getElementById('actualPosition').value,
-    department: document.getElementById('department').value,
-    section: document.getElementById('section').value,
-    unit: document.getElementById('unit').value,
-    finance: document.getElementById('finance').value,
-    lastPromotionDate: document.getElementById('lastPromotionDate').value,
-    typeOfContract: document.getElementById('typeOfContract').value,
-    dateOfContractStart: document.getElementById('dateOfContractStart').value,
-    dateOfContractEnd: document.getElementById('dateOfContractEnd').value,
-    qualification: document.getElementById('qualification').value,
-    yearObtained: document.getElementById('yearObtained').value,
-    haveSpecialty: document.getElementById('haveSpecialty').value,
-    whatSpecialty: document.getElementById('whatSpecialty').value,
-    mohRegistr: document.getElementById('mohRegistr').value,
-    chronicIllness: document.getElementById('chronicIllness').value,
-    chronicIllnessList: document.getElementById('chronicIllnessList').value,
-    inpRH: document.getElementById('inpRH').value,
-    blsdate: document.getElementById('blsdate').value,
-    palsdate: document.getElementById('palsdate').value,
-    ivTherapy: document.getElementById('ivTherapy').value,
-    painManagement: document.getElementById('painManagement').value,
-    patientSafety: document.getElementById('patientSafety').value,
-    aggressionCourse: document.getElementById('aggressionCourse').value,
-    onlineLeanManagement: document.getElementById('onlineLeanManagement').value,
-    leanManagementPhysical: document.getElementById('leanManagementPhysical').value,
-    bfhi: document.getElementById('bfhi').value,
-    infectionTheory: document.getElementById('infectionTheory').value,
-    infectionPractice: document.getElementById('infectionPractice').value,
-    ecg: document.getElementById('ecg').value,
-    manualHandling: document.getElementById('manualHandling').value,
-    chemotherapyTheory: document.getElementById('chemotherapyTheory').value,
-    chemotherapyPractice: document.getElementById('chemotherapyPractice').value,
-    central: document.getElementById('central').value,
-    practice: document.getElementById('practice').value,
-    leader: document.getElementById('leader').value,
-    preceptor: document.getElementById('preceptor').value,
-    ethical: document.getElementById('ethical').value,
-    commun: document.getElementById('commun').value,
-    niv: document.getElementById('niv').value,
-    transporting: document.getElementById('transporting').value,
-    arterial: document.getElementById('arterial').value,
-    peritoneal: document.getElementById('peritoneal').value,
-    other: document.getElementById('other').value,
-    photo: photoBase64
-  };
+// ✅ إرسال النموذج
+async function submitForm() {
+  const formData = Object.fromEntries(new FormData(document.getElementById('multiTabForm')).entries());
+  formData.photo = photoBase64;
 
   const scriptURL = 'https://script.google.com/macros/s/AKfycbwYTGGQXxOoqYrJClv084KYWWE7oZAozd7Pc3xqVXPeN72H721E1H3mBKKtVR4sBFmr/exec';
+  try {
+    toggleSpinner(true);
 
-  fetch(scriptURL, {
-    method: 'POST',
-    body: JSON.stringify(formData)
-  })
-  .then(response => response.json())
-  .then(result => {
-    showModal("Data submitted successfully!", "success");
+    const response = await fetch(scriptURL, {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    });
+    const result = await response.json();
+    console.log('Server response:', result);
+
+    showModal2("✅ Data submitted successfully!", "success");
     document.getElementById('multiTabForm').reset();
 
-
-    // إعادة ضبط الصورة
     const photoPreview = document.getElementById('photoPreview');
     photoPreview.style.backgroundImage = '';
     photoPreview.classList.remove('has-image');
     photoBase64 = "";
 
-
     currentTab = 0;
     showTab(currentTab);
-  })
-  .catch(error => {
-    showModal("An error occurred while submitting, please try again.", "error");
+    progress.style.width = '0%';
+  } catch (error) {
     console.error(error);
-  });
+    showModal2("❌ An error occurred while submitting.", "error");
+  } finally {
+    toggleSpinner(false);
+  }
 }
 
-// ربط الفورم بزر Submit
-document.getElementById('multiTabForm').addEventListener('submit', function(e){
-  e.preventDefault();
-  submitForm();
+// ✅ عند تحميل الصفحة
+document.addEventListener('DOMContentLoaded', () => {
+  showTab(currentTab);
+  document.getElementById('multiTabForm').addEventListener('submit', e => {
+    e.preventDefault();
+    if (validateForm()) submitForm();
+  });
 });
 </script>
+
+
+
 
 
 

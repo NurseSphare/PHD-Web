@@ -327,3 +327,332 @@ transform: translateY(-5px);box-shadow:0 12px 30px rgba(28,49,66,0.12)
     font-size: 14px; 
 
 }
+/* 📱 تنسيقات الهواتف */
+@media (max-width: 768px) {
+
+.sidebar {
+    display: block;       /* تأكد من ظهوره */
+    position: relative;   /* اجعله جزءًا من التدفق الطبيعي */
+    width: 100%;          /* خذ عرض الشاشة بالكامل */
+    height: auto;         /* ارتفاع تلقائي */
+    margin: 0 0 10px 0;   /* مسافة أسفل الشريط */
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  .main {
+    margin-left: 0;       /* ألغِ المسافة الجانبية */
+  }
+
+  .wrap {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+
+
+  /* الروابط في الشريط الجانبي بشكل صفوف صغيرة */
+  .nav a {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  /* شريط البحث */
+  .search {
+    width: 100%;
+    padding: 8px 10px;
+  }
+
+  /* البطاقات العلوية (4 إلى عمود واحد) */
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* بطاقات الكورسات (5 إلى عمودين) */
+  .cards1 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .card1 {
+    width: auto;
+    gap: 6px;
+  }
+
+  .card1 h3 {
+    font-size: 9px;
+  }
+
+  .card1-img, .E-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* الكارتات الخاصة بالجندر والجنسية */
+  .genderNationalityContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .cardGender, .cardNationality, .cardQualification {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .titlesRow {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* الجداول */
+  table {
+    font-size: 12px;
+  }
+  table th, table td {
+    padding: 6px;
+  }
+
+  /* أزرار الإجراءات */
+  .search-filters {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .actions {
+    margin-left: 0;
+    justify-content: space-between;
+  }
+
+  /* المعدات */
+  .cards .card {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -240px; /* مخفي في البداية */
+    width: 200px;
+    height: 100%;
+    background: url('Media/Blue and White Modern Gradient Weekly Meeting Agenda Instagram Post.png') center/cover no-repeat;
+    padding: 20px;
+    border-radius: 0;
+    box-shadow: var(--shadow);
+    transition: left 0.3s ease;
+    z-index: 1500;
+  }
+
+  .sidebar.active {
+    left: 0; /* يظهر عند التفعيل */
+  }
+
+  /* المساحة الرئيسية بدون هامش جانبي */
+  .main {
+    margin-left: 0;
+    padding-top: 60px; /* مساحة للهامبرجر */
+  }
+}
+/* زر الهامبرجر بتنسيق مشابه للمربع */
+.hamburger {
+  display: none !important; /* مخفي على الحاسوب */
+  position: fixed;
+  top: 7px;
+  left: 7px;
+  z-index: 2000;
+
+  /* 📏 الحجم والشكل */
+  width: 50px;
+  height: 50px;
+
+
+  /* 🎨 الألوان والخلفية */
+  background: rgba(42, 9, 9, 0.3);
+  color: white;
+  font-weight: 300;
+
+  /* 📐 محاذاة المحتوى بالوسط */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* 🖌 الظل */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+
+  /* 💡 المؤشر والانتقالات */
+  cursor: pointer;
+  font-size: 20px;
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* عند الفتح: لون مختلف أو تأثير إضافي */
+.hamburger.open {
+  font-size: 10px;
+  transform: rotate(180deg) scale(1.1); /* دوران بسيط وتكبير */
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.4);
+   font-weight: 400;
+   width: 0.2px;
+  height: 0.2px;  
+}
+
+/* إظهاره على الشاشات الصغيرة فقط */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex !important;
+  }
+}
+/* 📱 تنسيقات قسم PHDU Dashboard للهواتف */
+@media (max-width: 768px) {
+  /* تصغير الهوامش والنصوص */
+  #phdu-dashboard h3 {
+    font-size: 14px;
+    text-align: center;
+    margin: 6px 0;
+  }
+
+  /* جعل جميع البطاقات صفًا واحدًا */
+  #phdu-dashboard .cards {
+    grid-template-columns: 1fr; /* عمود واحد */
+    gap: 10px;
+  }
+
+  /* إعادة ترتيب العناوين */
+  #phdu-dashboard .titlesRow {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    align-items: center;
+  }
+
+  /* جعل كروت الجندر والجنسية تتكدّس عموديًا */
+  #phdu-dashboard .genderNationalityContainer {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+ /* ضمان بقاء الرسومات واضحة */
+  #maleChart,
+  #femaleChart,
+  #omaniChart,
+  #expatChart {
+    max-width: 150px;  /* حجم كافٍ */
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* اجعل الحاويات تسمح بعرض الصورة */
+  .chart-box {
+    position: relative;
+    overflow: visible; /* مهم حتى لا تُقص الأيقونة */
+  }
+  /* النسب أسفل الرسوم */
+  .percent {
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+
+  /* تصغير النصوص داخل القيم */
+  .value {
+    font-size: 16px;
+  }
+   /* تصغير عرض البطاقة نفسها */
+  .cardGender, .cardNationality{
+    max-width: px;    /* عرض أصغر */
+    max-height: 240px;
+    padding: 10px;       /* مسافة داخلية أقل */
+    margin: 0 auto;      /* توسيط */
+    border-radius: 10px; /* زوايا أصغر */
+  }
+  .cardQualification  {
+    max-width: px;    /* عرض أصغر */
+    max-height: 190px;
+    padding: 10px;       /* مسافة داخلية أقل */
+    margin: 0 auto;      /* توسيط */
+    border-radius: 10px; /* زوايا أصغر */
+  }
+  /* تصغير الرسومات داخل الكارت */
+  .cardQualification canvas {
+    width: 100% !important;
+    max-width: 280px;
+    height: auto !important;
+  }
+  .section {
+  padding-bottom: 100px; /* مسافة لتظهر آخر العناصر */
+}
+
+}
+/* إخفاء العناوين الداخلية على الشاشات الكبيرة */
+.mobile-title {
+  display: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: px!important;
+  margin-top: -1rem;
+  text-align: center;
+  color: #333;
+}
+/* إخفاء العناوين الداخلية على الشاشات الكبيرة */
+.mobile-title2 {
+  display: none;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: px!important;
+  margin-top: -0rem;
+  text-align: center;
+  color: #333;
+}
+
+/* على الهواتف: إخفاء titlesRow وإظهار العناوين الداخلية */
+@media (max-width: 768px) {
+  .titlesRow {
+    display: none !important;
+  }
+  .mobile-title, .mobile-title2 {
+    display: block;
+  }
+   #education-training .cards1 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  select#courseSelect {
+    width: 100%;                   /* استغلال العرض بالكامل */
+    min-height: 0px;              /* ارتفاع مناسب */
+    max-height: 50rem;
+  }
+  .some-container {
+    overflow: visible !important;  /* اسم الحاوية إذا كان لديها overflow */
+  }
+  /* ألغِ أي قصّ للمحتوى */
+.some-container,
+.parent-container {
+  overflow: visible !important;
+}
+#staff-data-dashboard h3, .h3{
+  text-align: center;      /* توسيط أفقي */
+  font-size: 15px;         /* حجم خط مناسب */
+  font-weight: bold;
+  margin: 0 auto 20px;     /* توسيط مع مسافة أسفل */
+}
+
+.bodyٍsearch h2, .section h2 {
+  text-align: center!important;      /* توسيط أفقي */
+  font-size: 15px!important;        /* حجم خط مناسب */
+  font-weight: bold!important;
+  margin: 0 auto 20px!important;    /* توسيط مع مسافة أسفل */
+}
+
+
+}

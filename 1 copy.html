@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Device Status</title>
+  <style>
+    .Equipmentform{
+      margin:0;
+      font-family:Arial,sans-serif;
+      background:linear-gradient(135deg,#5ee7df 0%,#584961 50%,#7b3625 100%);
+      display:flex;flex-direction:column;align-items:center;
+      padding:40px 10px;min-height:100vh;
+    }
+    h2{color:#fff;margin-bottom:25px;font-weight:700;text-align:center;}
+    .cards-container{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;margin-bottom:20px;max-width:900px;}
+    .field-card{background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,0.15);width:400px;padding:24px;transition:transform 0.2s,box-shadow 0.2s;}
+    .field-card:hover{transform:translateY(-4px);box-shadow:0 6px 14px rgba(0,0,0,0.2);}
+    .field-card label{font-weight:600;color:#374151;display:block;margin-bottom:8px;}
+    .field-card input{width:100%;padding:14px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:1.05rem;height:52px;box-sizing:border-box;transition:border-color 0.3s,box-shadow 0.3s;}
+    .field-card input:focus{outline:none;border-color:#3b82f6;box-shadow:0 0 8px rgba(59,130,246,0.3);}
+    button{background:#06b6d4;color:#fff;border:none;border-radius:25px;padding:12px 30px;font-weight:600;font-size:1rem;cursor:pointer;transition:background 0.3s;margin-top:10px;}
+    button:hover{background:#0891b2;}
+    .result{margin-top:15px;font-weight:bold;color:#fff;text-align:center;}
+    #lastSaved{margin-top:15px;font-weight:bold;color:#fff;text-align:center;}
+    .modalEquipClass{position:fixed;inset:0;background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7));display:flex;justify-content:center;align-items:center;z-index:1000;animation:fadeInBg 0.4s ease;}
+    .modal-box{background:#fff;border-radius:20px;padding:30px 25px;text-align:center;width:90%;max-width:360px;box-shadow:0 8px 24px rgba(0,0,0,0.25);animation:slideIn 0.4s ease;}
+    .modal-box h3{margin-bottom:20px;color:#3b82f6;font-size:1.3rem;font-weight:700;}
+    .modal-box input{width:70%;padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:1rem;margin-bottom:18px;}
+    .modal-box button{background:linear-gradient(135deg,#06b6d4,#3b82f6);color:#fff;border:none;border-radius:25px;padding:12px 28px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform 0.2s,box-shadow 0.2s;}
+    .modal-box button:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,0.2);}
+    .hidden{display:none!important;}
+    @keyframes fadeInBg{from{opacity:0;}to{opacity:1;}}
+    @keyframes slideIn{from{opacity:0;transform:translateY(-20px);}to{opacity:1;transform:translateY(0);}}
+    .saveeq:hover{background-color:#ce2020;}
+  </style>
+</head>
+<body>
+<section class="Equipmentform">
+
+  <!-- مودال إدخال الاسم -->
+  <div id="modalEquip" class="modalEquipClass">
+    <div class="modal-box">
+      <h3>Enter Your Name</h3>
+      <input id="deviceUserName" placeholder="Your name here">
+      <button onclick="saveDeviceUserName()">Enter</button>
+    </div>
+  </div>
+
+  <!-- مودال التنبيه -->
+  <div id="deviceAlertModal" class="modalEquipClass hidden">
+    <div class="modal-box">
+      <h3 id="deviceAlertTitle">Message</h3>
+      <p id="deviceAlertMessage"></p>
+      <button onclick="closeDeviceAlertModal()">OK</button>
+    </div>
+  </div>
+
+  <h2>Device Status</h2>
+  <p id="displayUser" style="background:linear-gradient(45deg,#5d5d5d);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:0.3px #fff;font-weight:600;font-size:larger;"></p>
+
+  <div class="cards-container">
+    <div class="field-card">
+      <label for="bioNumber">Bio Number</label>
+      <input id="bioNumber" placeholder="Enter or scan bio number" onblur="fetchEquipment()">
+    </div>
+    <div class="field-card">
+      <label for="equipment">Device Name</label>
+      <input id="equipment" placeholder="Will appear automatically" readonly>
+    </div>
+    <div class="field-card">
+      <label for="status">Status</label>
+      <input id="status" placeholder="Enter status">
+    </div>
+  </div>
+
+  <button class="saveeq" onclick="saveStatus()">Save</button>
+  <div class="result" id="result"></div>
+  <div id="lastSaved"></div>
+</section>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyvGXIl6LzYtdV0w1pGa0lz1OrLkCgrxmUxfdKyjI2LlReIk_bkWBjH2kX0PMGTBX4D0A/exec";
+let currentUser = "";
+
+function showDeviceAlertModal(title, message){
+  document.getElementById('deviceAlertTitle').innerText=title;
+  document.getElementById('deviceAlertMessage').innerText=message;
+  document.getElementById('deviceAlertModal').classList.remove('hidden');
+}
+function closeDeviceAlertModal(){
+  document.getElementById('deviceAlertModal').classList.add('hidden');
+}
+
+function saveDeviceUserName(){
+  const name=document.getElementById('deviceUserName').value.trim();
+  if(!name){
+    showDeviceAlertModal("⚠️ Warning","Please enter your name");
+    return;
+  }
+  currentUser=name;
+  document.getElementById('modalEquip').classList.add('hidden');
+  document.getElementById('displayUser').textContent=`Logged in as: ${currentUser}`;
+  showDeviceAlertModal("Welcome",`Welcome, ${currentUser}!`);
+}
+
+document.getElementById('deviceUserName').addEventListener('keydown',e=>{
+  if(e.key==="Enter")saveDeviceUserName();
+});
+
+async function fetchEquipment(){
+  const bioNumber=document.getElementById('bioNumber').value.trim();
+  if(!bioNumber)return;
+  try{
+    const res=await fetch(`${SCRIPT_URL}?bioNumber=${encodeURIComponent(bioNumber)}`);
+    const data=await res.json();
+    if(data.equipment){
+      document.getElementById('equipment').value=data.equipment;
+    }else{
+      document.getElementById('equipment').value="❌ Not found";
+      showDeviceAlertModal("⚠️ Not Found",`No device found for Bio Number: ${bioNumber}`);
+    }
+  }catch(err){
+    console.error(err);
+    showDeviceAlertModal("❌ Error","Error fetching data");
+  }
+}
+
+async function saveStatus(){
+  if(!currentUser){
+    document.getElementById('modalEquip').classList.remove('hidden');
+    return;
+  }
+  const bioNumber=document.getElementById('bioNumber').value.trim();
+  const deviceName=document.getElementById('equipment').value.trim();
+  const status=document.getElementById('status').value.trim();
+  if(!bioNumber||!status||!deviceName||deviceName==="❌ Not found"){
+    showDeviceAlertModal("⚠️ Warning","Enter valid bio number, fetch device, and status");
+    return;
+  }
+  try{
+    const params=new URLSearchParams();
+    params.append("bioNumber",bioNumber);
+    params.append("status",status);
+    params.append("checkedBy",currentUser);
+
+    const res=await fetch(SCRIPT_URL,{
+      method:"POST",
+      headers:{"Content-Type":"application/x-www-form-urlencoded;charset=UTF-8"},
+      body:params.toString()
+    });
+    const data=await res.json();
+
+    if(data.status==="success"){
+      const msg=`Saved by ${currentUser}\nDevice: ${deviceName}\nBio Number: ${bioNumber}`;
+      showDeviceAlertModal("✅ Success", msg);
+      document.getElementById('lastSaved').textContent=
+        `✔ Last saved: ${deviceName} (Bio: ${bioNumber}) by ${currentUser}`;
+      document.getElementById('bioNumber').value="";
+      document.getElementById('equipment').value="";
+      document.getElementById('status').value="";
+      document.getElementById('bioNumber').focus();
+    }else{
+      showDeviceAlertModal("⚠️ Warning",data.message||"Unknown error");
+    }
+  }catch(err){
+    console.error(err);
+    showDeviceAlertModal("❌ Error","Failed to connect to server!");
+  }
+}
+</script>
+</body>
+</html>
+
+
