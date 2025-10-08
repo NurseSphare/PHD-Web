@@ -13,7 +13,7 @@ const featureContents = [
       }
     ],
     image: "Media/IMG-20230314-WA0012.jpg",
-    buttonUrl: "#Education"
+    buttonUrl: "Education.html"
   },
   {
     heading: "Clinical Resources",
@@ -31,7 +31,7 @@ const featureContents = [
       }
     ],
     image: "Media/4.jpg",
-    buttonUrl: "#ClinicalResources"
+    buttonUrl: "Clinical Resources.html"
   },
   {
     heading: "Hospital Operations",
@@ -49,7 +49,7 @@ const featureContents = [
       }
     ],
     image: "Media/5.png",
-    buttonUrl: "#HospitalOperations"
+    buttonUrl: "Hospital Operations.html"
   },
   {
     heading: "Quality and Safety",
@@ -66,7 +66,7 @@ const featureContents = [
     }
     ],
     image: "Media/6.jpg",
-    buttonUrl: "#QualityandSafety"
+    buttonUrl: "Quality and Safety.html"
   },
   {
     heading: "Nursing HR",
@@ -82,7 +82,7 @@ const featureContents = [
     }
         ],
     image: "Media/7.jpg",
-    buttonUrl: "#NursingHR"
+    buttonUrl: "Nursing HR.html"
   }
 ];
 

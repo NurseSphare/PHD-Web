@@ -127,8 +127,10 @@ submitLogin?.addEventListener("click", () => {
 
     getStaffByNameOrEmail(username, (staffUser) => {
         if (!isAdmin && !staffUser) return;
-
+        // 👇 هنا عرّفت المتغير
+        const currentUser = isAdmin ? adminUser : staffUser.name;
         localStorage.setItem("loggedUser", isAdmin ? adminUser : staffUser.name);
+        localStorage.setItem("staffName", currentUser);   // 👈 الإضافة المهمة
         localStorage.setItem("isAdmin", isAdmin ? "true" : "false");
 
         loginModal.style.display = "none";
@@ -217,7 +219,8 @@ const adminOptions = [
   { text: "Add Staff (Web)", action: () => addStaffModal.style.display = "flex" },
   { text: "Add Staff (New)", action: () => window.location.href = "EnterDate.html" },
   { text: "Edit Staff", action: () => window.location.href = "EnterDate Edit.html" },
-  { text: "Dashboard", action: () => window.location.href = "Dashboard.html" } // نفس الرابط للجميع
+  { text: "Dashboard", action: () => window.location.href = "Dashboard.html" }, // نفس الرابط للجميع
+  { text: "Policy Readers", action: () => window.location.href = "Policy Reads Dashboard.html" },
 ];
 
     adminOptions.forEach(opt => {

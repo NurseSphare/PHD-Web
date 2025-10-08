@@ -1,0 +1,58 @@
+ .level-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;             /* ✅ دائمًا ظاهر */
+  visibility: visible;    /* ✅ دائمًا ظاهر */
+}
+.level-badge {
+  background: #000 !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+.card {
+  position: relative;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* تأكّد أن الشارة دائماً مرئية */
+.level-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #000;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  z-index: 1;
+  pointer-events: none;
+
+  /* 👇 هذان السطران يضمنان ظهورها دائمًا */
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* ❌ احذف أو علّق أي قواعد مثل: */
+/*
+.level-badge {
+  opacity: 0;
+  visibility: hidden;
+}
+.card:hover .level-badge {
+  opacity: 1;
+  visibility: visible;
+}
+*/

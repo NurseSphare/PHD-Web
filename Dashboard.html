@@ -1002,11 +1002,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   Papa.parse(csvUrl, {
     download: true,
-    header: false,
+    header: true, // ✅ نخليها true عشان نقدر نستخدم أسماء الأعمدة
     skipEmptyLines: true,
     complete: function(res){
-      const rows = res.data.slice(1); // تجاهل رأس الجدول
-      const currentStaff = rows.filter(r => r.some(cell => cell && cell.trim() !== "")).length;
+      const rows = res.data;
+
+      // نحسب الموظفين اللي ما عندهم قيمة في "Type of Exit"
+      const currentStaff = rows.filter(r => !r["Type of Exit"] || r["Type of Exit"].trim() === "").length;
 
       // الوصول لكل البطاقات بالترتيب كما هي في HTML
       const cards = document.querySelectorAll('#das');
@@ -1017,15 +1019,16 @@ document.addEventListener('DOMContentLoaded', function() {
       // تحديث Current Staff
       cards[2].querySelector('.value').textContent = currentStaff;
 
-      // حساب Deficit كـ Current − Total
+      // حساب Deficit = Current − Total
       const deficit = currentStaff - totalNeeded;
-      cards[3].querySelector('.value').textContent = deficit; // يمكن أن يكون سالب إذا Current أقل من Total
+      cards[3].querySelector('.value').textContent = deficit;
     },
     error: function(err){
       console.error("CSV load error:", err);
     }
   });
 });
+
 async function updateEquipmentCards() {
   const cards = [
     {selector:"#equipment-total .value", sheetUrl:"https://docs.google.com/spreadsheets/d/e/2PACX-1vT75GozhIV5rMqV8-V0tsISxAf9ItRHRpQWpfKeqxYGNko-ibcwR-Ete6tNCvKK20qTobdoZ4jaEudT/pub?gid=1439123664&single=true&output=csv", cell:"P6"},

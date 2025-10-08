@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>PHDU Gallery with Local Upload</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>    <link rel="stylesheet" href="STYLE2.CSS">
+            <link rel="stylesheet" href="StylesPhone.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+</head>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="Policies.html">Policies & Guidelines</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
+
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon20">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="Disaster Plan.html" >Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
+
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="Gallery PHDU.html">PHDU Gallery</a> 
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
+
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div>
+</li>
+
+
+    <li><a href="About.html">About Me</a></li>
+
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+</nav>
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
+});
+</script>
+  <style>
+    .video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 60%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -3;
+    object-fit: cover;
+}
+.dropdown-content, .dropdown-content2 {
+    z-index: 2;
+}
+
+
+  footer{ height: 22rem; margin-top: 5rem;}
+    .G {font-family: Arial, sans-serif;background:#f6f8fa;margin:0;padding:0;margin-bottom: -5rem;}
+    .H {text-align:center;padding:20px;background:linear-gradient(135deg,#2864db61 0%,#584961 100%);color:white;}
+    .controls {text-align:center;margin:20px;}
+    input[type="text"], input[type="date"], input[type="file"], select {
+      padding:8px;width:200px;margin:5px;border:1px solid #ccc;border-radius:8px;background:#fff;
+    }
+    button {padding:8px 15px;border:none;border-radius:8px;background:#584961;color:white;cursor:pointer;}
+    button:disabled{opacity:.6;cursor:not-allowed}
+
+    /* شريط الفلترة */
+    .filters {
+      display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center;
+      padding:10px 16px;margin:0 16px 10px;background:#fff;border-radius:12px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+    }
+    .filters .clear-btn{background:#e5e7eb;color:#111;border:1px solid #e5e7eb}
+
+    /* شبكة المعرض */
+    .gallery{
+      display:grid;grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap:18px;padding:20px;
+      transition:opacity .2s ease;
+    }
+    .gallery.is-changing{opacity:.65}
+
+    /* البطاقة المحسّنة */
+    .card{
+      position:relative;background:#fff;border-radius:16px;overflow:hidden;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      transition:transform .2s ease, box-shadow .2s ease;
+      opacity:0; transform:translateY(12px) scale(.985);
+      /* تبقي الأحجام كما هي */
+    }
+    .card.in{animation:fadeUp .45s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0) scale(1)}}
+
+    .card:hover{transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,0.16)}
+    .card .img-wrap{position:relative;aspect-ratio: 4 / 3;background:#f0f2f5;overflow:hidden}
+    .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease;cursor:pointer}
+    .card:hover img{ transform:scale(1.05) }
+
+    .badges{position:absolute;top:10px;left:10px;display:flex;gap:6px;z-index:2}
+    .badge{font-size:11px;line-height:1;color:#fff;background:rgba(0,0,0,.55);padding:6px 10px;border-radius:999px;backdrop-filter: blur(2px)}
+
+    .overlay{
+      position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+      background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.6) 90%);
+      color:#fff;display:flex;flex-direction:column;gap:4px;
+    }
+    .caption{margin:0;font-weight:700;font-size:clamp(14px,2vw,16px);color:#fff;}
+    .meta{font-size:12px;opacity:.9}
+
+    /* Skeleton */
+    .card.loading .img-wrap::before{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(90deg,#ececec 25%,#f5f5f5 37%,#ececec 63%);
+      background-size:400% 100%;animation:shimmer 1.2s infinite linear;
+    }
+    @keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+
+    /* Status / Spinner */
+    #status{ text-align:center; display:flex; align-items:center; justify-content:center; gap:8px; min-height:28px; font-weight:600; }
+    .loading-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:40px 0;color:#555;text-align:center}
+    .loader{width:44px;height:44px;border:4px solid #e5e7eb;border-top-color:#584961;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Lightbox */
+    .lightbox {
+      display:none;position:fixed;z-index:1000;inset:0;
+      background:rgba(0,0,0,0.85);justify-content:center;align-items:center;
+      padding:24px;
+    }
+    .lightbox.show{display:flex;}
+    .lightbox-inner{position:relative;max-width:92vw;max-height:86vh;display:flex;align-items:center;justify-content:center}
+    .lightbox img {max-width:100%;max-height:86vh;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.5);}
+
+    .lb-btn{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:46px;height:46px;border:none;border-radius:999px;cursor:pointer;
+      background:rgba(0,0,0,.5);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;
+      transition:background .2s ease;
+    }
+    .lb-btn:hover{background:rgba(0,0,0,.7)}
+    .lb-prev{left:-58px}
+    .lb-next{right:-58px}
+
+
+    .lb-caption{
+      position:absolute;left:50%;transform:translateX(-50%);
+      bottom:-54px;color:#fff;background:rgba(0,0,0,.45);
+      padding:8px 12px;border-radius:10px;font-size:14px;max-width:90vw;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+
+    /* Tooltip بسيط بدون مكتبات */
+    [data-tip]{position:relative}
+    [data-tip]::after{
+      content:attr(data-tip);position:absolute;left:50%;bottom:100%;transform:translate(-50%,-6px) scale(.95);
+      background:rgba(0,0,0,.8);color:#fff;padding:6px 8px;border-radius:8px;font-size:12px;white-space:nowrap;opacity:0;pointer-events:none;transition:.15s ease;
+    }
+    [data-tip]:hover::after,[data-tip]:focus::after{opacity:1;transform:translate(-50%,-6px) scale(1)}
+
+    @media (max-width:640px){
+      .lb-prev{left:8px} .lb-next{right:8px}
+      .lb-close{top:8px;right:8px}
+      .lb-caption{left:50%;bottom:8px;transform:translateX(-50%)}
+    }
+    .lb-slideshow{
+  position:absolute;top:-56px;left:0;
+  background:rgba(0,0,0,.5);color:#fff;
+  border:none;border-radius:8px;
+  padding:6px 10px;font-size:14px;cursor:pointer;
+}
+@media(max-width:640px){.lb-slideshow{top:8px;left:8px}  .swiper-button-prev,
+  .swiper-button-next {
+    width: 38px;
+    height: 38px;
+    font-size: 18px;
+  }
+footer{height: 35rem;}
+}
+/* حاوية المعاينات */
+#previewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;               /* مسافة أكبر بين الصور */
+  margin-top: 16px;
+  justify-content: center; /* تمركز الصور أفقيًا */
+}
+
+/* غلاف الصورة (لإضافة نص أو تأثيرات إضافية إن رغبت لاحقًا) */
+.thumb-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* الصورة المصغّرة نفسها */
+.thumb-preview {
+  width: 100px;           
+  height: 100px;
+  object-fit: cover;       
+  border-radius: 50%;      /* يجعل الصورة دائرية */
+  border: 3px dashed #2196f3; /* حد متقطع أزرق */
+  padding: 6px;            /* فراغ داخلي لإظهار الحد */
+  background: #f9f9f9;     /* خلفية فاتحة خلف الصورة */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+/* تأثير عند التحويم */
+.thumb-preview:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  border-color: #1565c0;   /* تغيّر لون الحد عند التحويم */
+}
+
+/* تأثير ضغط بسيط عند النقر */
+.thumb-preview:active {
+  transform: scale(0.98);
+}
+
+/* (اختياري) نص أسفل الصورة */
+.thumb-caption {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #555;
+  text-align: center;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lightbox img {
+  max-width: 100%;
+  max-height: 86vh;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  transition: transform 0.25s ease; /* 🆕 حركة سلسة عند التكبير/التصغير */
+  cursor: zoom-in;                 /* مؤشر عند التكبير */
+}
+.select-box {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 22px;
+  height: 22px;
+  z-index: 3;
+}
+.multi-select-active .select-box {
+  display: block;
+}
+.card.selected {
+  outline: 4px solid #2196f3;
+}
+#backToTop {
+  display: none;                 /* مخفي افتراضيًا */
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 999;
+  font-size: 18px;
+  background-color: #584961;
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+#backToTop:hover {
+  background-color: #402d4c;
+  transform: translateY(-2px);
+}
+/* حالة التكبير */
+.lightbox img.zoomed {
+  cursor: zoom-out;        /* يتغير شكل المؤشر عند التكبير */
+  transform: scale(1.8);   /* مستوى التكبير */
+  transition: transform 0.3s ease;
+}
+.lightbox img,
+.lightbox img.zoomed {
+  transition: transform 0.3s ease;
+}
+
+.swiper { width: 100%; max-width: 1500px; margin: 10px auto; border-radius: 50px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.2); } 
+.swiper-slide img { width: 100%; height: 100px; object-fit: cover; }
+/* الوضع الطبيعي */
+/* تأثير تلاشي عند تغيير الصورة في اللايت بوكس */
+#lightboxImg {
+  opacity: 1;
+  transition: opacity 0.5s ease; /* نصف ثانية */
+}
+
+#lightboxImg.fade-out {
+  opacity: 0;
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg,#7b68ee,#6a5acd);
+  border-radius: 8px;
+}
+.lightbox {
+  backdrop-filter: blur(8px);
+}
+.lightbox img {
+  transition: transform 0.35s ease;
+}
+.card img:hover {
+  transform: scale(1.08);
+  filter: brightness(1.1);
+}
+@keyframes fadeSlideUp {
+  0% {opacity:0; transform:translateY(20px) scale(.95);}
+  100% {opacity:1; transform:translateY(0) scale(1);}
+}
+.card.in {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+button {
+  background: linear-gradient(135deg, #6a5acd, #7b68ee);
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.15);
+  transition: all 0.3s ease;
+}
+button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #7b68ee, #9a7dff);
+}
+
+.lb-slideshow {
+  top:10px;
+  right:50px; /* بجانب زر ✕ */
+  left:auto;
+}
+    .lb-close{
+      position:absolute; width:33px;height:33px;top:50px; left:auto; right:50px;border-radius:8px;
+  padding:2px 2px !important;background:rgba(0,0,0,.5);color:#fff;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;
+    }
+    /* الحاوية المشتركة للأزرار */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);  /* خلفية شفافة */
+  color: #fff;                     /* لون الأيقونة */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px !important;                 /* حجم السهم */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);      /* تأثير زجاجي خفيف */
+}
+
+/* عند التحويم */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  background: rgba(106,90,205,0.85); /* أرجواني عند التحويم */
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  font-size: 18px;  /* أو أقل حسب رغبتك */
+}
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #e5e7eb;
+  border-top-color: #584961;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {to {transform: rotate(360deg)}}
+
+  </style>
+</head>
+
+<section class="G">
+<header class="H">
+  <h1>PHDU Department Gallery</h1>
+  <p>A gallery highlighting our department’s achievements, events, and initiatives</p>
+</header>
+
+<div class="swiper">
+  <div class="swiper-wrapper" id="swiperWrapper"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+</div>
+
+
+<!-- ✅ فلترة / بحث -->
+<div class="filters">
+  <input type="text" id="filterSearch" placeholder="Search (caption, name, number, category)" style="width:260px" data-tip="Search by caption, name, number, or category">
+  <select id="filterCategory" title="Filter by category" data-tip="Filter by category">
+    <option value="">All categories</option>
+  </select>
+  <span style="font-size: smaller;color:#555;">From:</span>
+  <input type="date" id="filterFrom" title="From date" data-tip="Start date">
+  <span style="font-size: smaller;color:#555;">To:</span>
+  <input type="date" id="filterTo" title="To date" data-tip="End date">
+
+
+  
+  <!-- ✅ ترتيب ذكي -->
+  <span style="font-size: smaller;color:#555;">Sort:</span>
+  <select id="sortBy" title="Sort images" data-tip="Sort results">
+    <option value="date_desc">Newest first</option>
+    <option value="date_asc">Oldest first</option>
+    <option value="cat_az">Category A → Z</option>
+    <option value="cat_za">Category Z → A</option>
+  </select>
+
+   <button class="clear-btn" id="clearFilters" type="button" data-tip="Clear all filters">Clear</button>
+</div>
+
+
+<!-- رفع -->
+<div class="controls" >
+  <input type="text" id="captionText" placeholder="Caption" data-tip="Image caption or employee number">
+  <select id="category" required data-tip="Choose a category">
+    <option value="" disabled selected>Choose category…</option>
+  </select>
+  <input type="file" id="photoInput" accept="image/*" multiple data-tip="Select one or more images"><br>
+  <button id="uploadBtn" style="margin-top: 1rem; margin-right: 20px;" onclick="guardedUpload()" data-tip="Upload selected images">Add Image(s)</button>
+<!-- ✅ أدوات التحديد المتعدد -->
+
+  <button id="toggleSelect"   data-tip="Enable or disable multi-selection of images">Enable Multi-Select</button>
+
+
+<div class="action-bar" id="actionBar" style="display:none;justify-content:center;gap:10px;margin:10px;">
+  <button id="deleteSelected">🗑 Delete Selected</button>
+  <button id="exportSelected">⬇ Export Selected</button>
+</div>
+<div id="previewContainer" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;"></div>
+
+<!-- سبينر انتظار عام -->
+<div id="globalSpinner" style="
+  display:none; position:fixed; inset:0;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter: blur(3px);
+  z-index:2000; 
+  align-items:center; justify-content:center;">
+  <div class="loader"></div>
+</div>
+
+</div>
+
+<p id="status"></p>
+<div class="gallery" id="gallery" style="margin-top: -2rem;"></div>
+
+<!-- ✅ أزرار الترقيم -->
+<div id="pagination" style="text-align:center; margin:20px;"></div>
+
+<!-- Lightbox (مُحسّن) -->
+<div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lightbox-inner">
+    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image" data-tip="Previous">‹</button>
+    <img id="lightboxImg" alt="preview">
+    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image" data-tip="Next">›</button>
+    <button class="lb-slideshow" id="lbSlideshow" aria-label="Slideshow" data-tip="Play/Pause slideshow">▶</button>
+
+    <button class="lb-close" id="lbClose" aria-label="Close" data-tip="Close">✕</button>
+    <div class="lb-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<!-- زر العودة للأعلى -->
+<button id="backToTop" title="Back to top">⬆</button>
+
+
+<!-- ✅ CompressorJS -->
+<script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbx742NGZYC5jXI2RbL-WMSA-gwSaAOzQTt6DdogLtuZ9p4a_cSb6aetlxKkTRIGjBHF/exec";
+const ADMIN_PASSWORD = "1234";
+
+// كلمة السر قبل الرفع
+async function checkPassword() {
+  const entered = prompt("🔒 Enter admin password:");
+  if (entered === null) return false;
+  if (entered.trim() === ADMIN_PASSWORD) return true;
+  alert("❌ Incorrect password.");
+  return false;
+}
+async function guardedUpload() {
+  const ok = await checkPassword();
+  if (!ok) return;
+  upload();
+}
+
+/* أيقونات وفئات */
+const ICONS = {
+  "Staff":"👥","Team":"👥","Portrait":"🧑‍💼",
+  "Training":"🎓","Workshop":"🛠️","Seminar":"🎤","Conference":"🏛️","Meeting":"🗂️","Presentation":"🖥️",
+  "Award":"🏆","Ceremony":"🎖️","Graduation":"🎓","Certification":"📜",
+  "Visit":"🚶","VIP Visit":"⭐","Inspection":"🔎","Community Outreach":"🤝","Volunteer":"👐","Campaign":"📣","Awareness":"🧠",
+  "Screening":"🧪","Vaccination":"💉","Patient Education":"👨‍⚕️","Health Education":"🏥",
+  "Equipment":"🧰","Installation":"🔧","Maintenance":"🛠️","Calibration":"📏","Facility":"🏥","Renovation":"🧱","Before/After":"🔁",
+  "Safety":"🦺","Emergency Drill":"🚨","Fire Drill":"🔥","Compliance":"✅","Audit":"🧾",
+  "Document":"📄","Poster":"🖼️","Infographic":"📊","Research":"🔬","Demo":"🧪","Pilot":"🛫",
+  "Event":"🎪","Celebration":"🎉","Other":"📁"
+};
+const CATEGORY_OPTIONS = Object.keys(ICONS);
+const fallbackIcon = "📁";
+const withIcon = l => `${ICONS[l]||fallbackIcon} ${l}`;
+
+// بناء القائمة الرئيسية للفئات
+function buildCategorySelect(){
+  const sel=document.getElementById('category');
+  sel.innerHTML=`<option value="" disabled selected>Choose category…</option>`+
+    CATEGORY_OPTIONS.map(c=>`<option value="${c}">${withIcon(c)}</option>`).join('');
+}
+
+/* Helpers */
+function showStatus(html){document.getElementById('status').innerHTML=html;}
+function showGallerySpinner(){
+  document.getElementById("gallery").innerHTML=`<div class="loading-center"><div class="loader"></div>Loading…</div>`;
+}
+const debounce=(fn,ms=200)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms);};};
+/* ================================
+   Lazy loading
+================================== */
+let IO = null, IOEnter = null;
+const PLACEHOLDER_1PX = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+function setupLazyLoading(){
+  if (IO) IO.disconnect();
+  const imgs=document.querySelectorAll('img[data-src]');
+  if (!('IntersectionObserver' in window)){
+    imgs.forEach(i=>{i.src=i.dataset.src;i.removeAttribute('data-src');});
+    return;
+  }
+  IO=new IntersectionObserver(entries=>{
+    entries.forEach(en=>{
+      if(en.isIntersecting){
+        const img=en.target;
+        img.src=img.dataset.src;
+        img.removeAttribute('data-src');
+        IO.unobserve(img);
+      }
+    });
+  },{root:null,rootMargin:'300px',threshold:.1});
+  imgs.forEach(i=>IO.observe(i));
+}
+
+function setupEnterAnimations(){
+  if(IOEnter)IOEnter.disconnect();
+  const cards=document.querySelectorAll('.card:not(.in)');
+  IOEnter=new IntersectionObserver(ents=>{
+    ents.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        IOEnter.unobserve(e.target);
+      }
+    });
+  },{root:null,rootMargin:'120px',threshold:.1});
+  cards.forEach(c=>IOEnter.observe(c));
+}
+
+/* ================================
+   Lightbox navigation
+================================== */
+let currentIndex = 0;
+function openLightboxAt(index) {
+  currentIndex = index;
+  const item = VIEW_ITEMS[currentIndex];
+  const mime = item.mime || 'image/png';
+  const src = `data:${mime};base64,${item.photo}`;
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lbCaption = document.getElementById('lbCaption');
+
+  // أضف كلاس التلاشي
+  lightboxImg.classList.add('fade-out');
+
+  // بعد 300ms غيّر الصورة وأزل كلاس التلاشي
+  setTimeout(() => {
+    lightboxImg.src = src;
+    lbCaption.textContent = item.caption || '';
+    lightboxImg.classList.remove('fade-out');
+  }, 300); // أقل من مدة transition (0.5s)
+
+  lightbox.style.display = 'flex';
+}
+
+
+
+document.getElementById('lbNext').addEventListener('click', e=>{
+  e.stopPropagation();
+  currentIndex = (currentIndex + 1) % VIEW_ITEMS.length;
+  openLightboxAt(currentIndex);
+});
+
+document.getElementById('lbPrev').addEventListener('click', e=>{
+  e.stopPropagation();
+  currentIndex = (currentIndex - 1 + VIEW_ITEMS.length) % VIEW_ITEMS.length;
+  openLightboxAt(currentIndex);
+});
+
+function closeLightbox(){
+  document.getElementById('lightbox').style.display='none';
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+
+document.getElementById('lightbox').addEventListener('click', e=>{
+  if(e.target.id === 'lightbox') closeLightbox();
+});
+
+document.addEventListener('keydown', e=>{
+  if(document.getElementById('lightbox').style.display === 'flex'){
+    if(e.key === 'ArrowRight') document.getElementById('lbNext').click();
+    if(e.key === 'ArrowLeft') document.getElementById('lbPrev').click();
+    if(e.key === 'Escape') closeLightbox();
+  }
+});
+
+/* ================================
+   بناء الكارت
+================================== */
+function buildCard(item,index){
+  const mime = item.mime || 'image/png';
+  const realSrc = `data:${mime};base64,${item.photo}`;
+  const card = document.createElement('div');
+  card.className='card loading';
+
+  const checkbox=document.createElement('input');
+  checkbox.type='checkbox';
+  checkbox.className='select-box';
+  checkbox.dataset.index=index;
+
+  card.addEventListener('click', e=>{
+    if(!multiSelect) return;
+    if(e.target !== checkbox) checkbox.checked=!checkbox.checked;
+    card.classList.toggle('selected', checkbox.checked);
+    updateActionBar();
+  });
+  card.appendChild(checkbox);
+
+  const wrap=document.createElement('div');
+  wrap.className='img-wrap';
+
+  const badges=document.createElement('div');
+  badges.className='badges';
+  if(item.category){
+    const b=document.createElement('span');
+    b.className='badge';
+    b.textContent=`${ICONS[item.category]||fallbackIcon} ${item.category}`;
+    badges.appendChild(b);
+  }
+
+  const img=document.createElement('img');
+  img.src=PLACEHOLDER_1PX;
+  img.setAttribute('data-src',realSrc);
+  img.alt=item.caption||'photo';
+
+  img.addEventListener('click', e=>{
+    e.stopPropagation();
+    openLightboxAt(index);
+  });
+
+  img.addEventListener('load',()=>{
+    if(!img.dataset.src) card.classList.remove('loading');
+  });
+
+  const overlay=document.createElement('div');
+  overlay.className='overlay';
+  const cap=document.createElement('div');
+  cap.className='caption';
+  cap.textContent=item.caption||'Untitled';
+  const meta=document.createElement('div');
+  meta.className='meta';
+  meta.textContent=[item.category,item.date].filter(Boolean).join(' • ');
+  overlay.append(cap,meta);
+
+  wrap.append(badges,img,overlay);
+  card.append(wrap);
+  return card;
+}
+
+/* ================================
+   بيانات المعرض
+================================== */
+let ALL_ITEMS=[], VIEW_ITEMS=[];
+
+function normalizeRow(r){
+  return { photo:r.photo, mime:r.mime, caption:r.captionText, date:r.dateField, category:r.category };
+}
+
+function renderGallery(list){
+  const g=document.getElementById('gallery');
+  if(!list.length){
+    g.innerHTML=`<div class="loading-center">No matches found.</div>`;
+    return;
+  }
+  g.innerHTML='';
+  const frag=document.createDocumentFragment();
+  list.forEach((it,idx)=>frag.appendChild(buildCard(it,idx)));
+  g.appendChild(frag);
+  setupLazyLoading();
+  setupEnterAnimations();
+}
+
+function populateCategoryFilter(items){
+  const sel=document.getElementById('filterCategory');
+  const cats=[...new Set(items.map(i=>(i.category||'').trim()).filter(Boolean))];
+  sel.innerHTML=`<option value="">All categories</option>`+
+    cats.map(c=>`<option value="${c}">${withIcon(c)}</option>`).join('');
+}
+
+/* ================================
+   بناء الشرائح للـSwiper
+================================== */
+function buildSwiperSlides(items){
+  const wrapper=document.getElementById('swiperWrapper');
+  if(!wrapper) return;
+  wrapper.innerHTML='';
+  items.forEach(it=>{
+    const mime=it.mime||'image/png';
+    const src=`data:${mime};base64,${it.photo}`;
+    const slide=document.createElement('div');
+    slide.className='swiper-slide';
+    slide.innerHTML=`<img src="${src}" alt="${it.caption||''}">`;
+    wrapper.appendChild(slide);
+  });
+  if(window.gallerySwiper){
+    gallerySwiper.update();
+  }else{
+    window.gallerySwiper=new Swiper('.swiper',{
+      slidesPerView:7,
+      spaceBetween:10,
+      centeredSlides:false,
+      loop:true,
+      autoplay:{delay:3000},
+      navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},
+      breakpoints:{0:{slidesPerView:1},640:{slidesPerView:2},1024:{slidesPerView:7}}
+    });
+  }
+}
+
+/* ================================
+   تحميل البيانات
+================================== */
+async function loadGallery(){  showSpinner();   // ← إظهار السبينر
+  
+  try{
+    const res=await fetch(WEBAPP_URL);
+    const data=await res.json();
+    ALL_ITEMS=data.map(normalizeRow);
+    VIEW_ITEMS=[...ALL_ITEMS];
+    populateCategoryFilter(ALL_ITEMS);
+    renderGallery(VIEW_ITEMS);
+    buildSwiperSlides(VIEW_ITEMS);
+  }catch(e){
+    console.error(e);
+    document.getElementById('gallery').innerHTML=`<div class="loading-center">❌ Failed to load images.</div>`;
+   } finally {
+    hideSpinner();  // ← إخفاء السبينر
+  }
+}
+
+/* رفع */
+async function upload(){
+  showSpinner();  // ← إظهار السبينر
+  const caption = document.getElementById('captionText').value.trim();
+  const category = document.getElementById('category').value.trim();
+  const files = [...document.getElementById('photoInput').files];
+  if (!caption || !category || !files.length) {
+    hideSpinner();
+    showStatus("⚠️ Fill all fields.");
+    setTimeout(() => showStatus(""), 2000);
+    return;
+  }
+  try {
+    for (let f of files) {
+      const b64 = await blobToBase64(f).then(r=>r.base64);
+      await fetch(WEBAPP_URL,{
+        method:"POST",
+        body:JSON.stringify({
+          captionText:caption,
+          category:category,
+          dateField:new Date().toISOString().slice(0,10),
+          photo:b64
+        })
+      });
+    }
+    await loadGallery();
+    document.getElementById('captionText').value = '';
+    document.getElementById('category').selectedIndex = 0;
+    document.getElementById('photoInput').value = '';
+    showStatus("✅ Added successfully, fields cleared.");
+    setTimeout(()=>showStatus(""),2000);
+  } catch(err){
+    console.error(err);
+    showStatus("❌ Upload failed");
+    setTimeout(()=>showStatus(""),2000);
+  } finally {
+    hideSpinner(); // ← إخفاء السبينر دائمًا
+  }
+}
+
+function blobToBase64(blob){return new Promise((res,rej)=>{const fr=new FileReader();fr.onload=e=>res({base64:e.target.result.split(',')[1]});fr.onerror=rej;fr.readAsDataURL(blob);});}
+
+/* Multi-select */
+let multiSelect=false;
+document.getElementById('toggleSelect').addEventListener('click',()=>{
+  multiSelect=!multiSelect;
+  document.body.classList.toggle('multi-select-active',multiSelect);
+  document.getElementById('toggleSelect').textContent=multiSelect?'Disable Multi-Select':'Enable Multi-Select';
+  if(!multiSelect){
+    document.querySelectorAll('.select-box').forEach(cb=>{cb.checked=false;cb.closest('.card').classList.remove('selected');});
+    updateActionBar();
+  }
+});
+function updateActionBar(){
+  const any=[...document.querySelectorAll('.select-box:checked')].length>0;
+  document.getElementById('actionBar').style.display=any?'flex':'none';
+}
+
+/* حذف */
+document.getElementById('deleteSelected').addEventListener('click',async()=>{
+  const checked=[...document.querySelectorAll('.select-box:checked')];
+  if(!checked.length)return;
+
+  // ✅ تحقق من كلمة المرور
+  const passOk = await checkPassword();
+  if(!passOk) return;
+
+  // ✅ تأكيد الحذف بعد التحقق من كلمة المرور
+  if(!confirm(`Delete ${checked.length} image(s)?`)) return;
+
+  const rows=checked.map(cb=>{
+    const it=VIEW_ITEMS[parseInt(cb.dataset.index)];
+    return{captionText:it.caption||'',category:it.category||'',photo:it.photo||''};
+  });
+
+  try{
+    showSpinner(); // ← إظهار السبينر
+    const res=await fetch(WEBAPP_URL,{method:"POST",body:JSON.stringify({action:"delete",rows})});
+    const result=await res.json();
+    if(result.status==="deleted"){
+      VIEW_ITEMS=VIEW_ITEMS.filter(x=>!rows.some(r=>(x.caption===r.captionText&&x.category===r.category&&x.photo===r.photo)));
+      renderGallery(VIEW_ITEMS);
+      updateActionBar();
+      await loadGallery();
+      multiSelect=false;
+      document.body.classList.remove('multi-select-active');
+      document.getElementById('toggleSelect').textContent='Enable Multi-Select';
+      showStatus("✅ Deleted");
+      setTimeout(()=>showStatus(""),2000);
+      alert("✅ Deleted");
+    } else {
+      alert("❌ Failed to delete");
+    }
+  } catch(e){
+    console.error(e);
+    alert("❌ Error deleting rows");
+  } finally {
+    hideSpinner(); // ← إخفاء السبينر
+  }
+});
+
+
+/* تصدير */
+document.getElementById('exportSelected').addEventListener('click',()=>{
+  const checked=[...document.querySelectorAll('.select-box:checked')];
+  if(!checked.length)return;
+  const selected=checked.map(cb=>VIEW_ITEMS[parseInt(cb.dataset.index)]);
+  const blob=new Blob([JSON.stringify(selected,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download='selected-images.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(url);
+  multiSelect=false;document.body.classList.remove('multi-select-active');
+  document.getElementById('toggleSelect').textContent='Enable Multi-Select';
+});
+
+/* فلاتر */
+document.getElementById('filterSearch').addEventListener('input',debounce(applyFilters,200));
+document.getElementById('filterCategory').addEventListener('change',applyFilters);
+document.getElementById('filterFrom').addEventListener('change', applyFilters);
+document.getElementById('filterTo').addEventListener('change', applyFilters);
+document.getElementById('sortBy').addEventListener('change', applyFilters);
+document.getElementById('clearFilters').addEventListener('click', ()=>{
+  document.getElementById('filterSearch').value='';
+  document.getElementById('filterCategory').value='';
+  document.getElementById('filterFrom').value='';
+  document.getElementById('filterTo').value='';
+  document.getElementById('sortBy').value='date_desc';
+  applyFilters();
+});
+
+function applyFilters() {
+  const q = (document.getElementById('filterSearch').value || '').trim().toLowerCase();
+  const cat = (document.getElementById('filterCategory').value || '').trim();
+  const fromVal = document.getElementById('filterFrom').value;
+  const toVal = document.getElementById('filterTo').value;
+  const sortVal = document.getElementById('sortBy').value;
+  const fromDate = fromVal ? new Date(fromVal) : null;
+  const toDate = toVal ? new Date(toVal + 'T23:59:59') : null;
+  VIEW_ITEMS = ALL_ITEMS.filter(item => {
+    if (cat && item.category !== cat) return false;
+    if (q) {
+      const haystack = [item.caption, item.category].filter(Boolean).join(' ').toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    if (fromDate || toDate) {
+      const itemDate = item.date ? new Date(item.date) : null;
+      if (!itemDate) return false;
+      if (fromDate && itemDate < fromDate) return false;
+      if (toDate && itemDate > toDate) return false;
+    }
+    return true;
+  });
+  VIEW_ITEMS.sort((a,b)=>{
+    switch(sortVal){
+      case 'date_desc': return new Date(b.date) - new Date(a.date);
+      case 'date_asc':  return new Date(a.date) - new Date(b.date);
+      case 'cat_az':    return (a.category||'').localeCompare(b.category||'');
+      case 'cat_za':    return (b.category||'').localeCompare(a.category||'');
+      default:          return 0;
+    }
+  });
+  renderGallery(VIEW_ITEMS);
+}
+
+/* تهيئة */
+buildCategorySelect();
+loadGallery();
+
+// زر العودة للأعلى
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    backToTop.style.display = "block";
+  } else {
+    backToTop.style.display = "none";
+  }
+});
+backToTop.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// تكبير الصورة في Lightbox
+const lightboxImg = document.getElementById("lightboxImg");
+let zoomed = false;
+lightboxImg.addEventListener("click", (e) => {
+  e.stopPropagation();
+  zoomed = !zoomed;
+  if (zoomed) {
+    lightboxImg.classList.add("zoomed");
+  } else {
+    lightboxImg.classList.remove("zoomed");
+  }
+});
+lightboxImg.addEventListener("wheel", (e) => {
+  e.preventDefault();
+  const currentScale = zoomed ? 1.8 : 1;
+  const direction = e.deltaY < 0 ? 0.2 : -0.2;
+  const newScale = Math.min(Math.max(currentScale + direction, 1), 3);
+  lightboxImg.style.transform = `scale(${newScale})`;
+  zoomed = newScale > 1;
+});
+/* ================================
+   Play / Pause Slideshow
+================================== */
+let slideshowInterval = null;
+const slideshowBtn = document.getElementById('lbSlideshow');
+
+function startSlideshow() {
+  // ابدأ التشغيل إذا لم يكن نشطًا
+  if (!slideshowInterval) {
+    slideshowInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % VIEW_ITEMS.length;
+      openLightboxAt(currentIndex);
+    }, 2000); // 3 ثواني لكل صورة
+    slideshowBtn.textContent = '⏸'; // غيّر الرمز للإيقاف
+  }
+}
+
+function stopSlideshow() {
+  clearInterval(slideshowInterval);
+  slideshowInterval = null;
+  slideshowBtn.textContent = '▶'; // غيّر الرمز للتشغيل
+}
+
+// زر التشغيل/الإيقاف
+slideshowBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  if (slideshowInterval) {
+    stopSlideshow();
+  } else {
+    startSlideshow();
+  }
+});
+
+// أوقف السلايد شو عند إغلاق اللايت بوكس
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  stopSlideshow();
+}
+document.getElementById('lbClose').addEventListener('click', closeLightbox);
+
+// إيقاف العرض عند النقر خارج الصورة
+document.getElementById('lightbox').addEventListener('click', (e) => {
+  if (e.target.id === 'lightbox') {
+    closeLightbox();
+  }
+});
+function showSpinner(){
+  document.getElementById('globalSpinner').style.display = 'flex';
+}
+function hideSpinner(){
+  document.getElementById('globalSpinner').style.display = 'none';
+}
+
+</script>
+
+</section>
+
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif;">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="Education.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="Clinical Resources.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+        <li style="width: 45%;"><a href="Hospital Operations.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="Quality and Safety.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="Nursing HR.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>

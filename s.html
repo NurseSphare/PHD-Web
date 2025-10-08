@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nursing HR — PHDU</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>    <link rel="stylesheet" href="STYLE2.CSS">
+            <link rel="stylesheet" href="StylesPhone.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+</head>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="Policies.html">Policies & Guidelines</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
+
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon15">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="Disaster Plan.html" >Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
+
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="Gallery PHDU.html">PHDU Gallery</a> 
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
+
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div>
+</li>
+
+
+    <li><a href="About.html">About Me</a></li>
+
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+</nav>
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
+});
+</script>
+  <style>
+       .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -3;
+    object-fit: cover;
+}
+ :root{
+    --primary:#0ea5e9;        /* teal */
+    --primary-dark:#0b7fc0;   /* darker teal */
+    --deep:#0b2e5b;           /* deep blue */
+    --ink:#0f172a;            /* dark text */
+    --muted:#64748b;          /* muted text */
+    --bg:#f5f8fb;             /* page bg */
+    --card:#ffffff;           /* cards */
+    --border:#e6eaf2;
+    --shadow:0 10px 28px rgba(2,29,61,.10);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:var(--bg); color:var(--ink)}
+  a{color:inherit}
+  .container{max-width:1200px; margin:0 auto; padding:0 20px}
+
+
+  /* Hero */
+.hero{
+  position:relative;
+  overflow:hidden;
+  color:#fff;
+  background: 
+    linear-gradient(to bottom, rgba(10,31,63,0.8) 0%, rgba(10,31,63,0.4) 30%, rgba(10,31,63,0.4) 70%, rgba(10,31,63,0.8) 100%),
+    url("Media/Screenshot 2025-10-06 082215.png");
+  background-size:cover;
+  background-position:center;
+}
+
+  .slider{position:relative}
+  .slide{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:26px; align-items:center;
+    min-height:520px; padding:54px 20px; margin-left: -6rem; 
+  }
+  .slide h1{margin:0 0 8px; font-size:clamp(2rem,2vw,2.6rem); font-weight:800; line-height:1.15}
+  .slide p{margin:0; opacity:.95}
+  .cta{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:12px 18px; border-radius:12px; border:1px solid transparent;
+    font-weight:700; cursor:pointer; transition:.2s; text-decoration:none;
+  }
+  .btn.primary{background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:#fff; box-shadow:0 12px 30px rgba(14,165,233,.28)}
+  .btn.ghost{background:transparent; color:#fff; border-color:rgba(255,255,255,.35)}
+  .btn:hover{transform:translateY(-1px)}
+  .hero-img{
+    background:#0e2446; border:1px solid rgba(255,255,255,.18); border-radius:20px; padding:10px; box-shadow:0 12px 28px rgba(0,0,0,.25); width: 630px; margin-right: -5rem;
+  }
+  .hero-img img{width:100%; height:360px; object-fit:cover; border-radius:14px;}
+
+  /* Hex badges */
+  .hex-wrap{position:absolute; right:40px; top:40px; display:grid; gap:12px}
+  .hex{
+    width:150px; aspect-ratio:1 / .866; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(6px); color:#fff; display:grid; place-items:center; text-align:center; border-radius:12px; padding:10px
+    ;clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);
+  }
+  .hex small{opacity:.9}
+/* تحسين تنسيق الرموز الجانبية */
+
+
+.hex.improved {
+
+  aspect-ratio: 1 / 0.866;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 14px;
+  clip-path: polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+  margin-right: -10rem;
+}
+
+.hex.improved:hover {
+  background: rgba(255,255,255,0.25);
+  transform: scale(1.05);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.35);
+}
+
+.hex.improved .icon {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+  color: #fff;
+}
+
+.hex.improved small {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  opacity: 0.95;
+}
+
+/* استجابة للشاشات الصغيرة */
+@media (max-width: 900px) {
+  .hex-wrap {
+    position: static;
+    transform: none;
+    justify-content: center;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    margin-top: 20px;
+  }
+}
+/* ====== General Layout ====== */
+.pd-section {
+  background: #f6f9fc;
+  padding: 80px 0;
+}
+.pd-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ====== Left Image Group ====== */
+.img-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: fit-content;
+  margin-left: 30px;
+}
+
+/* الشريط الأخضر العمودي */
+.side-bar {
+  position: absolute;
+  top: 0;
+  left: -30px;
+  width: 12px;
+  height: 48%;
+  background: #0ea5e9;
+  border-radius: 3px;
+}
+
+/* الصورة العليا */
+.img-top img {
+  width: 400px;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* الصورة السفلى */
+.img-bottom {
+  position: relative;
+  margin-left: -60px;
+  margin-top: -3rem;
+}
+.img-bottom img {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+/* البطاقة الصغيرة فوق الصورة السفلية */
+.info-card {
+  position: absolute;
+  right: -5px;
+  bottom: 40px;
+  background: #fff;
+  border-left: 5px solid #0ea5e9;
+  border-radius: 10px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.info-card i {
+  background: #0ea5e9;
+  color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+.info-card span {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+.info-card strong {
+  color: #0a1f3f;
+  font-size: 1rem;
+}
+
+/* ====== Right Text ====== */
+.pd-right h2 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: #0a1f3f;
+  margin-bottom: 12px;
+}
+.pd-right p {
+  color: #556070;
+  line-height: 1.7;
+  margin-bottom: 24px;
+  max-width: 1000px; 
+}
+.pd-points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 22px;  margin-right: -6rem;
+  margin-bottom: -1rem;
+}
+.pd-points li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0a1f3f;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 14px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.pd-points i {
+  color: #0ea5e9;
+}
+
+/* ====== Button ====== */
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0ea5e9, #0b7fc0);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.25);
+  transition: 0.3s; margin-top: 1rem; 
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 900px) {
+  .pd-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .img-wrapper {
+    margin-left: 0;
+    align-items: center;
+  }
+  .side-bar {
+    display: none;
+  }
+}
+/* ====== 💡 Benefits Section ====== */
+.benefits {
+  background: #ffffff;
+  border-left: 4px solid #0ea5e9;
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  margin-top: 35px; 
+  margin-right: -6rem;
+}
+.benefits h3 {
+  margin: 0 0 10px;
+  color: #0a1f3f;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #333;
+  line-height: 1.7;
+}
+.benefits li {
+  font-weight: 500;
+  color: #0a1f3f;
+  margin-bottom: 6px;
+}
+.dashboard-info {
+  background: linear-gradient(180deg, #edeeee 0%, #eef6ff 100%);
+  padding: 90px 20px;
+  font-family: "Inter", sans-serif; margin-top: -3rem;
+}
+
+.dash-flex {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 50px;
+  align-items: center;  margin-right: -15rem; margin-top: -2rem;
+}
+
+.dash-img img {
+  width: 80%;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+.dash-img img:hover {
+  transform: scale(1.02);
+}
+.dash-text .tag {
+  display: inline-block;
+  background: rgba(14,165,233,0.15);
+  color: #0b7fc0;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.dash-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0a1f3f;
+  margin-bottom: 12px;
+}
+
+.dash-text p {
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.benefits h4 {
+  margin-bottom: 8px;
+  color: #0a1f3f;
+  font-weight: 700;
+}
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 25px;
+}
+.benefits li {
+  margin: 6px 0;
+  color: #334155;
+  font-size: 0.95rem;
+}
+
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0ea5e9, #0b7fc0);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.25);
+  transition: 0.3s;
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .dash-flex {
+    grid-template-columns: 1fr;
+  }
+  .dash-text {
+    text-align: center;
+  }
+  .benefits ul {
+    text-align: left;
+    display: inline-block;
+  }
+}
+.key-benefits {
+  background: #f9fbff;
+  padding: 90px 20px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+.key-benefits h2 {
+  font-size: 1.9rem;
+  color: #0a1f3f;
+  font-weight: 800;
+  margin-bottom: 60px;
+}
+
+/* Benefits Line */
+.benefits-line {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+  margin-left: -4rem;
+}
+.benefits-line::before {
+  content: "";
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 4px;
+  background: linear-gradient(90deg, #0ea5e9, #0b7fc0);
+  z-index: 0;
+}
+.benefit {
+  flex: 1;
+  min-width: 100px;
+  position: relative;
+  z-index: 1;
+}
+.circle {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #0ea5e9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #0b7fc0;
+  transition: 0.3s ease;
+  box-shadow: 0 6px 15px rgba(14,165,233,0.25);
+}
+.circle:hover {
+  background: linear-gradient(135deg, #0ea5e9, #0b7fc0);
+  color: #fff;
+  transform: scale(1.08);
+}
+.benefit h4 {
+  margin: 8px 0 4px;
+  color: #0a1f3f; text-align: center;
+  font-weight: 700;font-size: small;
+}
+.benefit p {
+  color: #475569;
+  font-size: 0.7rem;
+  max-width: 200px;
+  margin: 0 auto;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .benefits-line {
+    flex-direction: column;
+    align-items: center;
+  }
+  .benefits-line::before {
+    display: none;
+  }
+}
+
+.simple-section {
+  background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+  padding: 70px 20px;
+  font-family: "Inter", sans-serif;
+}
+
+.simple-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.simple-img img {
+  width: 90%; 
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease; margin-left: -5rem;
+}
+.simple-img img:hover {
+  transform: scale(1.03);
+}
+
+.simple-text .tag {
+  display: inline-block;
+  background: rgba(14,165,233,0.15);
+  color: #0b7fc0;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+
+.simple-text h2 {
+  font-size: 1.7rem;
+  font-weight: 800;
+  color: #0a1f3f;
+  margin-bottom: 12px;
+}
+
+.simple-text p {
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 18px;
+  font-size: 0.95rem;
+}
+
+.points {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+}
+.points li {
+  margin: 6px 0;
+  color: #334155;
+  font-size: 0.92rem;
+}
+
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0ea5e9, #0b7fc0);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.25);
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .simple-flex {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .simple-img img {
+    max-width: 90%;
+    margin: 0 auto 20px;
+  }
+  .points {
+    text-align: left;
+    display: inline-block;
+  }
+}
+
+.gallery-section {
+  background: linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+  padding: 80px 20px;
+  font-family: "Inter", sans-serif;
+  text-align: center; margin-top: -2rem;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(14,165,233,0.15);
+  color: #0b7fc0;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 8px; 
+}
+
+.container h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0a1f3f;
+  margin: 10px 0;
+}
+
+.container p {
+  color: #475569;
+  font-size: 0.95rem;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* شبكة الصور */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-left: -10rem; margin-right: -10rem;
+}
+
+.g-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  cursor: pointer;
+}
+.g-item img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.g-item:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.7);
+}
+
+/* نص overlay */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  opacity: 0;
+  background: linear-gradient(180deg, rgba(10,31,63,0.4), rgba(10,31,63,0.7));
+  transition: opacity 0.4s ease;
+}
+.g-item:hover .overlay {
+  opacity: 1;
+}
+
+/* الزر */
+.gallery-btn {
+  margin-top: 20px;
+}
+.btn.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #0ea5e9, #0b7fc0);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(14,165,233,0.25);
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(14,165,233,0.4);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .gallery-head h2 {
+    font-size: 1.5rem;
+  }
+  .g-item img {
+    height: 180px;
+  }
+  .overlay {
+    font-size: 0.9rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== HERO / SLIDER ===================== -->
+<header class="hero">
+  <div class="container slider" id="slider">
+
+    <!-- Slide (واحد فقط) -->
+    <div class="slide">
+      <div>
+        <span class="tag">
+        <i class="fa-solid fa-user-nurse"></i> Nursing HR:</span>
+        <h1 >Integrating Data, Training, and Competency for Nursing Advancement</h1>
+        <p>
+          The Nursing HR system centralizes staff personal data, training records, competencies, and reports —
+          ensuring every nurse remains compliant, confident, and prepared for continuous growth.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="Personal Data list.html">
+            <i class="fa-solid fa-id-card-clip"></i> Personal Data & Training
+          </a>
+          <a class="btn primary"href="DashboardMain.html">
+            <i class="fa-solid fa-chart-line"></i> Dashboard
+          </a>
+          <a class="btn ghost" href="#PerformanceandCompetency" id="comingSoon19" onclick="toastSoon(event)">
+            <i class="fa-solid fa-stethoscope"></i> Performance & Competency
+          </a>
+          <a class="btn ghost" href="#ReportsandTracking" id="comingSoon20" onclick="toastSoon(event)">
+            <i class="fa-solid fa-file-lines"></i> Reports & Tracking
+          </a>
+          <a class="btn primary" href="Gallery PHDU.html">
+            <i class="fa-solid fa-image"></i> PHDU Gallery
+          </a>
+          <a class="btn ghost" href="#Other" id="comingSoon21" onclick="toastSoon(event)">
+            <i class="fa-solid fa-toolbox"></i> Other
+          </a>
+        </div>
+      </div>
+
+      <!-- صورة الخلفية -->
+      <div class="hero-img">
+        <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=1400&auto=format&fit=crop" alt="Nursing HR Overview">
+      </div>
+
+  <!-- 🔹 رموز جانبية بتصميم أفضل -->
+<div class="hex-wrap" aria-hidden="true">
+  <div class="hex improved">
+    <div class="icon"><i class="fa-solid fa-user-check"></i></div>
+    <small>Personal Data</small>
+  </div>
+
+  <div class="hex improved">
+    <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
+    <small>Training</small>
+  </div>
+
+  <div class="hex improved">
+    <div class="icon"><i class="fa-solid fa-certificate"></i></div>
+    <small>Competency</small>
+  </div>
+</div>
+    </div>
+  </div>
+</header>
+<section id="personalDataList" class="pd-section">
+  <div class="container">
+    <div class="pd-layout">
+      
+      <!-- ✅ الصورة اليسار مثل المثال -->
+      <div class="pd-left">
+        <div class="img-wrapper">
+          <div class="side-bar"></div> <!-- الشريط الأخضر العمودي -->
+          
+          <div class="img-top">
+            <img src="Media/Screenshot 2025-10-06 082053.png" alt="Nurse Research">
+          </div>
+
+          <div class="img-bottom">
+            <img src="Media/7.jpg" alt="Lab work">
+            <div class="info-card">
+              <i class="fa-solid fa-comments"></i>
+              <div>
+                <span>Call us anytime</span><br>
+                <strong>Ext. 9532</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ✅ النص اليمين -->
+      <div class="pd-right">
+        <h2><i class="fa-solid fa-id-card-clip"></i> Personal Data List</h2>
+        <p>
+          Manage all nursing staff information in one place — personal records, training, and licenses. 
+          Keep your data organized, audit-ready, and easily accessible for every HR need.
+        </p>
+
+        <ul class="pd-points">
+          <li><i class="fa-solid fa-user-check"></i> Centralized records</li>
+          <li><i class="fa-solid fa-bell"></i> Expiry alerts</li>
+          <li><i class="fa-solid fa-graduation-cap"></i> Training logs</li>
+          <li><i class="fa-solid fa-chart-line"></i> HR insights</li>
+        </ul>
+  <!-- 💡 NEW SECTION: Benefits -->
+        <div class="benefits">
+          <h3>💡 How Does It Benefit You?</h3>
+          <ul>
+            <li>✅ Easy access to staff data and training history anytime.</li>
+            <li>✅ Automatic alerts for license or course expiry dates.</li>
+            <li>✅ Transparency in HR and competency evaluations.</li>
+            <li>✅ Less paperwork and faster data retrieval.</li>
+            <li>✅ Builds a complete, professional staff profile for career development.</li>
+          </ul>
+        </div>
+        <a href="Personal Data list.html" class="btn primary">
+          <i class="fa-solid fa-id-card-clip"></i> Open Personal Data List
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===================== DASHBOARD SECTION ===================== -->
+<section id="Dashboard" class="dashboard-info">
+  <div class="container">
+
+    <div class="dash-flex">
+      
+      <!-- النص -->
+      <div class="dash-text" style="margin-left: -8rem;">
+        <span class="tag"><i class="fa-solid fa-gauge-high"></i> HR Dashboard</span>
+        <h2>Visualizing Nursing HR Insights for Better Decisions</h2>
+        <p>
+          The Nursing HR Dashboard transforms complex data into clear, actionable visuals.  
+          It helps nursing leaders and educators monitor staff competencies, training progress, 
+          and compliance trends — all in one place.
+        </p>
+
+        <!-- ===================== KEY BENEFITS SECTION ===================== -->
+
+    <h2 style="margin-left: -1rem;">💡 Key Benefits</h2>
+    <div class="benefits-line">
+      <div class="benefit">
+        <div class="circle"><i class="fa-solid fa-chart-line"></i></div>
+        <h4>Performance Overview</h4>
+        <p>Provides an overview of staff performance and learning progress.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="circle"><i class="fa-solid fa-brain"></i></div>
+        <h4>Smart Planning</h4>
+        <p>Supports planning and decision-making through data visualization.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="circle"><i class="fa-solid fa-bell"></i></div>
+        <h4>Early Alerts</h4>
+        <p>Highlights upcoming expiries, pending trainings, and HR gaps.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="circle"><i class="fa-solid fa-clock"></i></div>
+        <h4>Time Efficiency</h4>
+        <p>Reduces time spent on manual reporting and tracking.</p>
+      </div>
+
+      <div class="benefit">
+        <div class="circle"><i class="fa-solid fa-people-group"></i></div>
+        <h4>Transparency</h4>
+        <p>Encourages accountability and transparent performance monitoring.</p>
+      </div>
+    </div>
+  </div>
+
+      <!-- الصورة (نقلناها هنا على اليمين) -->
+      <div class="dash-img">
+        <img src="https://novaenursing.ie/wp-content/uploads/2021/10/dashboard.jpg" alt="Dashboard Analytics">
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- ===================== PERFORMANCE & COMPETENCY (INDEX SIMPLE) ===================== -->
+<section id="PerformanceandCompetency" class="simple-section">
+  <div class="container">
+    <div class="simple-flex">
+
+      <!-- الصورة -->
+      <div class="simple-img">
+        <img src="Media/IMG-20230111-WA0008.jpg" 
+             alt="Performance and Competency">
+      </div>
+
+      <!-- النص -->
+      <div class="simple-text">
+        <span class="tag"><i class="fa-solid fa-user-check"></i> Performance & Competency</span>
+        <h2>Empowering Nurses Through Skill and Performance Excellence</h2>
+        <p>
+          The Performance & Competency system helps nurses grow confidently by 
+          ensuring their skills meet professional standards. It focuses on practical validation, 
+          fair evaluation, and continuous development to improve care quality.
+        </p>
+
+        <ul class="points">
+          <li>✅ Continuous skill growth and development.</li>
+          <li>✅ Fair and transparent evaluations.</li>
+          <li>✅ Improves safety and care standards.</li>
+        </ul>
+
+        <a href="#PerformanceandCompetency" class="btn primary">
+          <i class="fa-solid fa-clipboard-check"></i> Learn More
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PHDU GALLERY SECTION ===================== -->
+<section id="GalleryPHDU" class="gallery-section">
+  <div class="container" style="margin-top: -2rem;">    
+      <span class="tag"><i class="fa-solid fa-image"></i> PHDU Gallery</span>    
+      <h2>Moments that Define Our Nursing Journey</h2>
+      <p style="white-space: nowrap; ">Explore snapshots of dedication, teamwork, and milestones that showcase the spirit of the Pediatric High Dependency Unit.</p>
+    </body>
+    
+    <!-- شبكة الصور -->
+    <div class="gallery-grid">
+      <div class="g-item">
+        <img src="Media/IMG-20240226-WA0079.jpg" alt="Teamwork">
+        <div class="overlay">🤝 Teamwork in Action</div>
+      </div>
+      <div class="g-item">
+        <img src="Media/٢٠٢٣٠٥٢٨_١٢٣٩٢٣.jpg" alt="Training">
+        <div class="overlay">🎓 Training Sessions</div>
+      </div>
+      <div class="g-item">
+        <img src="Media/Screenshot 2025-10-06 141839.png" alt="Nursing Care">
+        <div class="overlay">💉 Quality Nursing Care</div>
+      </div>
+      <div class="g-item">
+        <img src="Media/IMG-20240226-WA0144.jpg" alt="Workshop">
+        <div class="overlay">📚 Workshops & Growth</div>
+      </div>
+      <div class="g-item">
+        <img src="Media/IMG-20220512-WA0033.jpg" alt="Recognition">
+        <div class="overlay">🏅 Recognition Events</div>
+      </div>
+      <div class="g-item">
+        <img src="Media/IMG-20210423-WA0007.jpg" alt="PHDU Team">
+        <div class="overlay">👩‍⚕️ PHDU Nursing Team</div>
+      </div>
+    </div>
+
+    <!-- زر -->
+    <div class="gallery-btn">
+      <a href="Gallery PHDU.html" class="btn primary">
+        <i class="fa-solid fa-images"></i> View Full Gallery
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif; ">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="Education.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="Clinical Resources.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+        <li style="width: 45%;"><a href="Hospital Operations.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="Quality and Safety.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="Nursing HR.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
+

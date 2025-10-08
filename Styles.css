@@ -774,7 +774,6 @@ background-color: #1a97e7;
   #deviceModal button:hover {
     background-color: #0056b3;
   }
-
 /* زر القائمة افتراضياً مخفي على كل الأجهزة */
 .menu-btn {
   display: none; 
@@ -790,4 +789,3 @@ background-color: #1a97e7;
   top: 10px;
   z-index: 1000;
 }
-

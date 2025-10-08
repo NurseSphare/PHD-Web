@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>    <link rel="stylesheet" href="STYLE2.CSS">
+            <link rel="stylesheet" href="StylesPhone.css">
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Inter", sans-serif; -->
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" />   <!-- "Fredoka", sans-serif; -->
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  <!-- "Poppins", sans-serif; -->
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" /><!-- "Lilita One", sans-serif; -->
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" />    <!-- "Google Sans Code", monospace; -->
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />    <!-- "Playwrite CU", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />     <!-- "Kaushan Script", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" />  <!-- "Lobster", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />   <!-- "Nerko One", cursive; -->
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  <!-- "Agbalumo", system-ui; -->
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" />  <!-- "Sour Gummy", sans-serif; -->
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   <!-- "Slabo 27px", serif; -->
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" /><!-- </head>"Livvic", sans-serif; -->
+
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="Policies.html">Policies & Guidelines</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
+
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon20">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="Disaster Plan.html" >Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
+
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="Gallery PHDU.html">PHDU Gallery</a> 
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
+
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div>
+</li>
+
+
+    <li><a href="About.html">About Me</a></li>
+
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+</nav>
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
+});
+</script>
+<style>
+
+body{
+margin:0; font-family: 'Inter', 'Segoe UI', Tahoma, sans-serif; background:#ffffff; color:#333;
+}
+
+
+/* Header */
+.img-modern{    position: absolute;
+    top: 0;
+    left: 0;
+    height: 213%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -2;
+    object-fit: cover;}
+.header{padding:80px 20px; text-align:center; }
+.header h1{margin:0; font-size:2.6rem; font-weight:800; color:#ffffff; margin-top: -5rem;}
+.header p{margin-top:15px; font-size:1.15rem; color:#c1c3c5}
+.cta-btn{margin-top:25px; display:inline-block; padding:14px 34px; background:#10b981; color:#fff; font-weight:600; text-decoration:none; border-radius:8px; transition:.3s}
+.cta-btn:hover{background:#059669;}
+
+/* Sections */
+section{max-width:1100px; margin:50px auto; padding:0 20px}
+section h2{font-size:2rem; color:#111827; margin-bottom:5px; text-align:center}
+section p{line-height:1.7; color:#4b5563; font-size:1.05rem; text-align:center; max-width:700px; margin:0 auto 40px}
+
+
+/* Features grid */
+.features{display:grid; grid-template-columns:repeat(auto-fit, minmax(300px,1fr)); gap:32px}
+.feature{background:#ffffff; border:1px solid #e5e7eb; border-radius:12px; padding:28px; text-align:center; transition:.3s; box-shadow:0 4px 10px rgba(0,0,0,.04)}
+.feature:hover{box-shadow:0 8px 20px rgba(0,0,0,.08); transform:translateY(-3px)}
+.feature h3{margin:0 0 12px; color:#10b981; font-size:1.3rem}
+.feature p{margin:0; color:#374151; font-size:1rem; line-height:1.6}
+
+
+/* Footer */
+footer{margin-top:7rem}
+
+
+
+  .subtitle {
+    margin-bottom: 10px;
+  }
+
+  .education-desc {
+    font-size: 1.1rem;
+    color: #4b5563;
+    line-height: 1.6;
+    max-width: 100rem !important;  /* يحدد العرض حتى ما يتجزأ */
+    margin: 0 auto;
+    white-space: normal; /* يضمن الالتفاف فقط عند الحاجة */
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .closing-statement {
+  max-width: 800px;
+  margin: 50px auto 0;
+  text-align: center;
+}
+
+
+.closing-line {
+  width: 80px;
+  margin: 0 auto 20px;
+  border: 1.5px solid #10b981; /* نفس لون البورتال الأخضر */
+  border-radius: 3px;
+}
+.slider {
+  width: 100%;
+  max-width: 1200px;
+  height: auto;            /* يخلي الارتفاع يعتمد على الصورة */
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+
+    .slides {
+      display: flex;
+      transition: transform 0.7s ease-in-out;
+    }
+
+    .slides img {
+      width: calc(100% / 4); /* ثلاث صور بالعرض */
+      object-fit: cover;
+        height: 200px;          /* نفس ارتفاع السلايدر */
+    }
+
+  .more-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #059669;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+  }
+
+  .more-btn:hover {
+    background: #047857;
+  }
+  @media (max-width: 768px) {
+         .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
+    object-fit: cover;
+}   
+.header h1{ font-size: 1.8rem;}
+.header p{ font-size: 1rem;}
+}
+</style>
+<body>
+    
+
+
+<section class="header">
+  <div class="hero-content">
+    <h1>Nurse Education Portal-Continuous Growth for Every Nurse</h1>
+    <p class="tagline"> Empower nurses with structured learning, professional development tools, and up-to-date clinical knowledge.</p>
+        <a href="#Education" class="cta-btn">Get Started</a>
+  </div>
+  <div class="hero-image">
+    <img src="Media/Green and White Modern Medical Flyer.png" alt="Medical Flyer" class="img-modern">
+  </div>
+</section>
+
+<section id="Education">
+<h2>Our Education Hub</h2>
+  <div class="education-desc">
+    Discover interactive learning, one-stop resource for continuous growth, ensuring that every nurse can access reliable, evidence-based learning anytime, anywhere.
+  </div>
+  <div class="features">
+  <div class="feature" >
+    <h3>Learning</h3>
+    <p>
+      Access structured lessons, tutorials, and case studies designed to build and refresh essential nursing skills.
+    </p>
+    <a href="#learning" class="more-btn"  id="comingSoon22">More</a>
+  </div>
+
+  <div class="feature">
+    <h3>Competency Tools</h3>
+    <p>
+      Utilize advanced checklists and evaluation methods to measure, track, and improve nursing competencies.
+    </p>
+    <a href="#competency" class="more-btn"  id="comingSoon23">More</a>
+  </div>
+
+  <div class="feature">
+    <h3>Updates</h3>
+    <p>
+      Stay current with new policies, new healthcare practices, and important nursing-related announcements.
+    </p>
+    <a href="#updates" class="more-btn" id="comingSoon24">More</a>
+  </div>
+</div>
+
+  <!-- ✅ Closing Statement -->
+
+<div class="closing-statement">
+  <hr class="closing-line">
+  <p>
+    Through the Education Hub, nurses are empowered to pursue lifelong learning, 
+    maintain professional competence, and deliver excellence in every aspect of patient care.
+  </p>
+</div>
+ <div class="slider">
+    <div class="slides" id="slides">
+      <img src="Media/IMG-20230314-WA0012 (2).jpg" alt="1">
+      <img src="Media/IMG-20240226-WA0092.jpg" alt="2">
+      <img src="Media/IMG-20230314-WA0018.jpg" alt="3">
+      <img src="Media/IMG-20220512-WA0018.jpg" alt="4">
+      <img src="Media/IMG-20250331-WA0081.jpg" alt="5">
+      <img src="Media/IMG-20230907-WA0028.jpg" alt="6">
+      <img src="Media/IMG-20241101-WA0024.jpg" alt="7">
+            <img src="Media/IMG-20240226-WA0092.jpg" alt="2">
+      <img src="Media/IMG-20230314-WA0018.jpg" alt="3">
+      <img src="Media/IMG-20220512-WA0018.jpg" alt="4">
+      <img src="Media/IMG-20250331-WA0081.jpg" alt="5">
+      <img src="Media/IMG-20230907-WA0028.jpg" alt="6">
+      <img src="Media/IMG-20241101-WA0024.jpg" alt="7">
+    </div>
+  </div>
+  <hr class="closing-line" style="margin-top: 3rem;">
+  <script>
+    const slides = document.getElementById("slides");
+    const total = slides.children.length;
+    const visible =7; // كم صورة تظهر مع بعض
+    let index = 0;
+
+    function autoSlide() {
+      index++;
+      if (index > total - visible) {
+        index = 0; // يرجع للبداية
+      }
+      slides.style.transform = `translateX(${-index * (100/visible)}%)`;
+    }
+
+    setInterval(autoSlide, 3000); // يتحرك كل 3 ثواني
+  </script>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer style="background-color: #1f2937; color: #f3f4f6; padding: 40px 20px; font-family: Arial, sans-serif; ">
+  <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px;">
+    
+    <!-- About Section -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">About NurseSphere</h3>
+      <p style="line-height: 1.6; font-size: small;" class="AbP">
+        NurseSphere is your go-to platform for nursing <br>education, resources, and professional updates.<br> Empowering healthcare staff with knowledge <br>and tools for excellence in practice.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+<div style="flex: 1; min-width: 200px;">
+  <h3 style="margin-bottom: 10px;">Quick Links</h3>
+  <ul class="Footer"  style="list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px;">
+    <li style="width: 45%;"><a href="Education.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">ُEducation</a></li>
+    <li style="width: 45%;"><a href="Clinical Resources.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Clinical Resources</a></li>
+        <li style="width: 45%;"><a href="Hospital Operations.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Hospital Operations</a></li>
+    <li style="width: 45%;"><a href="Quality and Safety.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Quality and Safety</a></li>
+    <li style="width: 45%;"><a href="Nursing HR.html" style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">Nursing HR</a></li>
+    <li style="width: 45%;"><a href="About.html"  style="color: #3477ff; text-decoration: none; font-weight: bold; font-size: small;">About me</a></li>
+  </ul>
+</div>
+
+    <!-- Contact -->
+    <div style="flex: 1; min-width: 200px;">
+      <h3 style="margin-bottom: 10px;">Contact Us</h3>
+      <p>Email: <a href="mailto:info@nursesphere.com" style="color: #f3f4f6; text-decoration: none;">info@nursesphere.com</a></p>
+      <p>Phone: +968 1234 5678</p>
+      <p>Address: Royal Hospital, Oman</p>
+    </div>
+
+  </div>
+
+  <div style="text-align: center; margin-top: 30px; font-size: 14px; color: #9ca3af;">
+    &copy; 2025 NurseSphere. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
