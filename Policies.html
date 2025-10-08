@@ -714,6 +714,133 @@ footer{ height: 40rem;}
   </style>
 </head>
 <body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const loggedUser = localStorage.getItem("loggedUser");
+  const logoutMessage = localStorage.getItem("showLogoutMsg");
+  const logoutOption = document.getElementById("logoutOption"); // ✅ تعريفه هنا حتى يُستخدم لاحقًا
+
+  // 🔹 لو كان في رسالة خروج مخزنة، نعرضها مرة واحدة
+  if (logoutMessage === "true") {
+    localStorage.removeItem("showLogoutMsg"); // نحذفها حتى ما تتكرر
+    const toast = document.createElement("div");
+    toast.innerHTML = "You have been logged out successfully 👋";
+    Object.assign(toast.style, {
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      background: "#4caf50",
+      color: "white",
+      padding: "12px 20px",
+      borderRadius: "8px",
+      boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
+      fontFamily: "Poppins, sans-serif",
+      fontSize: "15px",
+      zIndex: "9999",
+      animation: "fadeInOut 3s ease forwards"
+    });
+    document.body.appendChild(toast);
+
+    // 🔸 نحذف التوست بعد 3 ثواني
+    setTimeout(() => toast.remove(), 3000);
+
+    // ✨ أنيميشن خفيفة
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(-10px); }
+        10% { opacity: 1; transform: translateY(0); }
+        90% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-10px); }
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
+  // 🚫 لو المستخدم مو داخل، نعرض رسالة الحماية
+  if (!loggedUser) {
+    document.body.innerHTML = `
+      <div style="
+        display:flex; 
+        flex-direction:column; 
+        align-items:center; 
+        justify-content:center; 
+        height:100vh; 
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #e0f2ff, #f8fbff);
+        color:#333;
+        text-align:center;">
+        <div style="background:white; padding:40px 50px; border-radius:12px; box-shadow:0 4px 16px rgba(0,0,0,0.1); max-width:400px;">
+          <h2 style="margin-bottom:10px; color:#007bff;">Access Restricted 🔒</h2>
+          <p style="font-size:15px; color:#555; line-height:1.5;">
+            You must log in to view this page.<br>
+            Please sign in to continue.
+          </p>
+          <button onclick="window.location.href='index.html'" 
+            style="margin-top:20px; background:#007bff; color:white; padding:10px 22px; border:none; border-radius:6px; cursor:pointer; font-size:15px;">
+            Go to Login
+          </button>
+        </div>
+      </div>
+    `;
+  }
+
+  // 🔹 ربط زر الـ Logout بالدالة
+  if (logoutOption) {
+    logoutOption.addEventListener("click", () => {
+      logout(); // استدعاء الدالة عند الضغط
+    });
+  }
+}); // ✅ تم إغلاق event listener بشكل صحيح
+
+
+// 🚪 دالة تسجيل الخروج
+function logout() {
+  console.log("Logging out...");
+
+  // حذف بيانات المستخدم
+  localStorage.removeItem("loggedUser");
+
+  // 🔸 عرض رسالة “يجب تسجيل الدخول لرؤية المحتوى”
+  const overlay = document.createElement("div");
+  overlay.innerHTML = `
+    <div style="
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      z-index: 9999;">
+      <div style="
+        background: white;
+        padding: 30px 40px;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
+        <h2 style="color: #007bff; margin-bottom: 10px;">Access Restricted 🔒</h2>
+        <p style="color: #555; font-size: 15px;">
+          You must log in to view this page.<br>Please sign in to continue.
+        </p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  // 🔹 بعد 5 ثوانٍ نحوله للصفحة الرئيسية
+  setTimeout(() => {
+    localStorage.setItem("showLogoutMsg", "true");
+    window.location.replace("index.html");
+  }, 5000);
+}
+</script>
+
+
+
+
+
+
+
   <section class="main">
     <h1>Pediatric Unit Policies</h1>
     <p>Royal Hospital</p>
