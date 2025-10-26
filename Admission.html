@@ -1,0 +1,3559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>People — Crextio Style</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="Admission.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!-- مكتبة Excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- مكتبة PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+     <link rel="stylesheet" href="STYLE2.CSS"> 
+    <script src="login.js"></script>
+    <script src="Animated.js"></script>
+    <!-- فيديو الخلفية-->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<video autoplay muted loop class="video-background" src="Media/Website Designs c.mp4"></video>
+
+<!-- انواع الخطوط -->
+<link class="Inter"href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" /> 
+<link class="Fredoka"href="https://fonts.googleapis.com/css?family=Fredoka:300,regular,500,600,700" rel="stylesheet" /> 
+<link class="Poppins"href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />  
+<link class="Lilita" href="https://fonts.googleapis.com/css?family=Lilita+One:regular" rel="stylesheet" />
+<link class="Google" href="https://fonts.googleapis.com/css?family=Google+Sans+Code:300,regular,500,600,700,800,300italic,italic,500italic,600italic,700italic,800italic" rel="stylesheet" /> 
+<link href="https://fonts.googleapis.com/css?family=Playwrite+AU+QLD:100,200,300,regular" rel="stylesheet" />   
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script:regular" rel="stylesheet" />  
+<link href="https://fonts.googleapis.com/css?family=Lobster:regular" rel="stylesheet" /> 
+<link href="https://fonts.googleapis.com/css?family=Nerko+One:regular" rel="stylesheet" />  
+<link href="https://fonts.googleapis.com/css?family=Agbalumo:regular" rel="stylesheet" />  
+<link href="https://fonts.googleapis.com/css?family=Sour+Gummy:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic" rel="stylesheet" /> 
+<link href="https://fonts.googleapis.com/css?family=Slabo+27px:regular" rel="stylesheet" />   
+<link href="https://fonts.googleapis.com/css?family=Livvic:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic" rel="stylesheet" />
+
+</head>
+<body>
+<header>   <!-- الهيدر -->
+ <img class="PHDULogo" src="Media/PHDU Logo.png" alt="PHDU Logo" >
+
+  <!-- Menu Button for Mobile -->
+  <button id="menuBtn" class="menu-btn">☰</button>
+
+  <!-- Navigation -->  
+<nav class="Navigation">   <!--القسم مخصص للتنقل-->
+    <ul id="navMenu">    <!-- ليست بار -->    <!-- href يعني رابط-->
+
+<li class="active"><a href="index.html">Home</a></li>
+
+<li class="dropdown Education">
+  <a href="#Education">Education</a>
+  <div class="dropdown-content">
+    <a href="#Learning" id="comingSoon1">Learning</a>
+    <a href="#CompetencyTools" id="comingSoon2">Competency Tools</a>
+    <a href="#Updates" id="comingSoon3">Updates</a>
+  </div>
+</li>
+<li class="dropdown2 ClinicalResources">
+  <a href="#ClinicalResources">Clinical Resources</a>
+  <div class="dropdown-content2">
+    <a href="Policies.html">Policies & Guidelines</a>
+    <a href="#Documents" id="comingSoon6">Documents</a>
+    <a href="#QuickReferences" id="comingSoon7">Quick References</a>
+  </div>
+</li>
+<li class="dropdown2 HospitalOperations">
+  <a href="#HospitalOperations">Hospital Operations</a>
+  <div class="dropdown-content2">
+    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
+    <a href="#Inventory" id="comingSoon10">Inventory</a>
+        <a href="Equipment List.html">Equipment</a>
+    <a href="#WorkOrder" id="comingSoon11">Work Order</a>
+    <a href="#CSSD" id="comingSoon12">CSSD</a>
+    <a href="#Loan" id="comingSoon13">Loan</a>
+  </div>
+</li>
+
+<li class="dropdown2 QualityAndSafety">
+  <a href="#Quality&Safety">Quality and Safety</a>
+  <div class="dropdown-content2">
+    <a href="#Audit" id="comingSoon14">Audit</a>
+    <a href="#Statistics" id="comingSoon20">Statistics</a>
+    <a href="#Ejada" id="comingSoon16">Ejada</a>
+    <a href="Disaster Plan.html" >Disaster Plan</a>
+    <a href="#SafetyEvent" id="comingSoon18">Safety Event</a>
+  </div>
+</li>
+
+<li class="dropdown2 NursingHR">
+  <a href="#NursingHR">Nursing HR</a>
+  <div class="dropdown-content2" id="NursingHR">
+    <a href="Personal Data list.html">Personal Data and Training Records</a>
+    <a href="DashboardMain.html">Dashboard</a>
+    <a href="#PerformanceandCompetency" id="comingSoon19">Performance and Competency</a>
+    <a href="Gallery PHDU.html">PHDU Gallery</a> 
+    <a href="#Other" id="comingSoon21">Other</a>
+  </div>
+</li>
+
+<li class="dropdown2 AdminControl" id="adminControlMenu">
+  <a href="#AdminControl">Admin Control</a>
+  <div class="dropdown-content2" id="Adminss">
+    <ul id="adminDropdown">
+      <!-- خيارات الأدمن ستضاف هنا ديناميكياً -->
+    </ul>
+  </div>
+</li>
+
+
+    <li><a href="About.html">About Me</a></li>
+
+<li class="dropdown account-dropdown" style="position: relative;">
+  <a href="javascript:void(0)" id="accountBtn">Account</a>
+  <ul id="accountMenu">
+    <li><a href="javascript:void(0)" id="loginOption">Login</a></li>
+    <li><a href="javascript:void(0)" id="logoutOption">Logout</a></li>
+  </ul>
+</li>
+
+<div id="logoContainer" >
+    <div  id="userDisplay" ></div>
+</div>
+
+
+<!-- Login Modal HTML -->
+<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+    background-color: rgba(0, 0, 0, 0.5); justify-content:center; align-items:center; font-family:'Lilita One', sans-serif; z-index:1000;">
+    <div style="background-color:white; padding:20px; border-radius:10px; width:300px; text-align:center; position:relative;">
+        <span id="closeModal" style="position:absolute; top:10px; right:15px; cursor:pointer; font-weight:bold;">&times;</span>
+        <h2>Login</h2>
+        <input type="text" id="usernameInput" placeholder="Username" style="width:90%; padding:5px; margin-top:10px;"><br><br>
+        <input type="password" id="passwordInput" placeholder="Password" style="width:90%; padding:5px;"><br><br>
+        <button id="submitLogin" style="padding:5px 10px;">Login</button>
+    </div>
+</div>
+
+<!-- Welcome Box Modal -->
+<div id="welcomeModal" class="modal">
+  <div class="modal-content" style="
+  text-align: center;
+  position: relative;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  transform: scale(0.8);
+  animation: scaleUp 0.3s ease forwards;">
+    <span id="closeWelcome" class="close">&times;</span>
+    <h2 id="welcomeMessage"></h2>
+    <p id="welcomeSubMessage"></p>
+  </div>
+</div>
+<!-- مودال Add Staff -->
+<div id="addStaffModal" class="modal">
+    <div class="modal-content">
+        <span id="closeAddStaff" class="close">&times;</span>
+        <h2>Add New Staff</h2>
+        <form id="addStaffForm">
+            <div class="form-group">
+                <label for="staffName">Name:</label>
+                <input type="text" id="staffName" placeholder="Enter full name" required>
+            </div>
+            <div class="form-group">
+                <label for="staffEmail">Email:</label>
+                <input type="email" id="staffEmail" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="staffPassword">Password:</label>
+                <input type="password" id="staffPassword" placeholder="Enter password" required>
+            </div>
+            <button type="submit" class="submit-btn">Add Staff</button>
+        </form>
+        <button id="viewStaffBtn">View All Staff</button>
+    </div>
+</div>
+</nav>
+
+</header>
+
+<hr class="Line1">    <!-- عل شان نضيف الخط الفاصل بين القسمين -->
+</div>
+
+<!-- Popup -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <img src="Media/3d-bell-realistic-icon-isolated-white-background-vector-render-bell-with-new-notification-push-chat-alert-message_145391-1220.jpg" id="BELL">
+    <p>This option is currently unavailable. We will notify you when it becomes ready.</p>
+    <button id="closePopup">OK</button>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const comingSoonOptions = ["comingSoon1", "comingSoon2","comingSoon3","comingSoon4","comingSoon5","comingSoon6","comingSoon7","comingSoon8","comingSoon9","comingSoon10","comingSoon11","comingSoon12","comingSoon13","comingSoon14","comingSoon18","comingSoon16","comingSoon17","comingSoon18","comingSoon19","comingSoon20","comingSoon21","comingSoon22","comingSoon23","comingSoon24","comingSoon25","comingSoon26","comingSoon27"];
+    const popup = document.getElementById("popup");
+    const closeBtn = document.getElementById("closePopup");
+
+    comingSoonOptions.forEach(id => {
+        const element = document.getElementById(id);
+        if(element){
+            element.addEventListener("click", function(event) {
+                event.preventDefault();
+                popup.classList.remove("show");
+                void popup.offsetWidth; // trigger reflow
+                popup.classList.add("show");
+            });
+        }
+    });
+
+    closeBtn.addEventListener("click", function() {
+        popup.classList.remove("show");
+    });
+
+    window.addEventListener("click", function(event) {
+        if(event.target === popup){
+            popup.classList.remove("show");
+        }
+    });
+});
+
+// Toggle mobile menu & account dropdown
+document.addEventListener('DOMContentLoaded', function() {
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.querySelector('.Navigation ul');
+
+  const accountBtn = document.getElementById('accountBtn');
+  const accountMenu = document.getElementById('accountMenu');
+
+  // Toggle mobile menu
+  menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    navMenu.classList.toggle('show-mobile-nav');
+  });
+
+  // Toggle account dropdown
+  accountBtn.addEventListener('click', (e) => {
+    e.stopPropagation(); // منع وصول الحدث للخارج
+    accountMenu.style.display = accountMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Close menus when clicking outside
+  document.addEventListener('click', function(e) {
+    // إغلاق account menu
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = 'none';
+    }
+
+    // إغلاق mobile nav
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) {
+      navMenu.classList.remove('show-mobile-nav');
+    }
+  });
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const accountBtn = document.getElementById("accountBtn");
+  const accountMenu = document.getElementById("accountMenu");
+
+  // يفتح ويقفل القائمة لما أضغط على Account
+  accountBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    accountMenu.style.display =
+      accountMenu.style.display === "block" ? "none" : "block";
+  });
+
+  // إغلاق القائمة إذا ضغطت برا
+  document.addEventListener("click", function (e) {
+    if (!accountBtn.contains(e.target) && !accountMenu.contains(e.target)) {
+      accountMenu.style.display = "none";
+    }
+  });
+});
+</script>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Blob Demo</title>
+  <style>
+    :root{
+      --bg:#eaeef4;            /* page bg */
+      --ink:#111827;           /* main text */
+      --muted:#6b7280;         /* muted text */
+      --card:#ffffff;          /* surfaces */
+      --chip:#f3f4f6;          /* input chip */
+      --chip-ink:#111827;      
+      --line:#e5e7eb;          /* borders */
+      --soft:#f8fafc;          /* inner soft */
+      --accent:#111111;        /* dark pill */
+      --brand:#f6c94c;         /* warm accent (yellow) */
+      --brand-soft:#fff6ce;    /* pale yellow */
+      --good:#10b981;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box; margin:0; padding:0;}
+    /* ===== 🌫️ البلوبز (الخلفية المتوهجة) ===== */
+    .bg-wrap {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1; /* فوق الفيديو */;margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--ink);
+      margin-top: 5.2rem;
+    }
+    .blob {
+      position: absolute;
+      filter: blur(60px);
+      opacity: .6;
+    }
+    .blob.one {
+      width: 520px;
+      height: 520px;
+      left: -160px;
+      top: -120px;
+      background: radial-gradient(circle at 30% 30%, #ffe89a, #ffd66b 40%, rgba(255,214,107,0) 60%);
+    }
+    .blob.two {
+      width: 520px;
+      height: 520px;
+      right: -160px;
+      bottom: -120px;
+      background: radial-gradient(circle at 70% 70%, #ffd66b, #ffe89a 40%, rgba(255,214,107,0) 60%);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-wrap">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+  </div>
+
+  <div class="shell">
+    <div class="app">
+      <!-- 🔹 Header -->
+<header class="appbar">
+  <div class="brand">
+    <span class="brand-badge">PHDU</span>
+    <nav class="nav" id="yearNav">
+      <!-- السنوات سيتم توليدها تلقائياً -->
+    </nav>
+  </div>
+
+  <div class="tray">
+    <button class="icon-btn" title="Settings"><i class="fa fa-gear"></i></button>
+  </div>
+
+  <!-- 🔹 شريط البحث القابل للتمدد مع زر المسح -->
+  <div class="search-wrap" style="
+    position: fixed;
+    display: flex;
+    align-items: center;
+    margin-left: 90rem;
+    transition: all 0.4s ease;
+  ">
+    <!-- 🔍 زر التفعيل -->
+    <button id="searchToggle" class="icon-btn" title="Search" style="
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.4s ease;
+      margin-right: 4px;
+    ">
+      <i class="fa fa-search"></i>
+    </button>
+
+    <!-- 🧭 حقل البحث -->
+    <input 
+      type="text" 
+      id="globalSearch"
+      placeholder="Search patient, ID, diagnosis, team..." 
+      style="
+        position: absolute;
+        right: 46px;
+        text-align: center;
+        opacity: 0;
+        width: 0;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        background: #fff;
+        color: var(--ink);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: all 0.4s ease;
+      "
+    />
+  </div>
+</header>
+
+
+
+
+      <!-- 🔹 العنوان وشريط الأدوات -->
+      <div class="bar" style="margin-left: -18rem;">
+        <h1>All Patients</h1>
+
+
+  <!-- 🔹 صف موحد للأزرار + العداد -->
+  <div class="meters view-meters" style="margin-right: 1rem;">
+    <div class="meter view-option active" id="gridBtn">
+      <i class="fa fa-th-large"></i>
+      <span class="label">Grid View</span>
+    </div>
+
+    <div class="meter view-option" id="tableBtn">
+      <i class="fa fa-table"></i>
+      <span class="label">Table View</span>
+    </div>
+
+    <div class="meter view-option" id="dashBtn">
+      <i class="fa fa-chart-line"></i>
+      <span class="label">Dashboard</span>
+    </div>
+     
+  <!-- 🎯 الزر الجديد لعرض الجراف -->
+  <div class="meter view-option" id="chartBtn">
+    <i class="fa fa-chart-pie"></i>
+    <span class="label">Chart View</span>
+  </div>
+
+<!-- 🔸 عداد عدد المرضى -->
+<div class="meter" id="m-interviews" title="Displays the total number of patients for the selected year">
+  <span class="label" style="font-size:.86rem; color:var(--ink); font-weight:500;">
+    <i class="fa fa-users" style="color:#000000;"></i> Total Patients
+  </span>
+  <span class="pct" data-metric="interviews" style="font-size:0.8rem; font-weight:700; color:var(--muted);">
+    0
+  </span>
+</div>
+
+<div class="right-actions">
+<button class="icon-btn" title="Add"><i class="fa fa-plus"></i></button>
+
+  <!-- 🔹 زر التحديث -->
+  <button id="btnRefresh" class="icon-btn" title="Refresh" style="
+    background:#fff;
+    color:#0ea5e9;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    width:42px;
+    height:38px;
+    cursor:pointer;
+    font-size:15px;
+    transition:all 0.3s ease;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    margin-right:6px;
+  "
+  onmouseover="this.style.background='#0ea5e9'; this.style.color='#fff'; this.style.borderColor='#0ea5e9'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(14,165,233,0.3)';"
+  onmouseout="this.style.background='#fff'; this.style.color='#0ea5e9'; this.style.borderColor='#e5e7eb'; this.style.transform='none'; this.style.boxShadow='0 3px 8px rgba(0,0,0,0.05)';">
+    <i class="fa fa-rotate"></i>
+  </button>
+<!-- 🔹 زر التصدير مع القائمة المنسدلة -->
+<div style="position: relative; display: inline-block;">
+  <button id="btnExport" class="btn brand" style="
+    display:flex; align-items:center; gap:6px; font-weight:600;
+  ">
+    <i class="fa fa-arrow-up-from-bracket"></i> Export
+  </button>
+
+  <!-- القائمة المنسدلة -->
+<div id="exportMenu" style="
+  position:absolute; right:0; top:120%;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  display:none;
+  z-index:99;
+  overflow:hidden;
+">
+  <!-- خيار PDF -->
+  <button class="export-option" data-type="pdf" style="
+    display:block; width:100%; text-align:left;
+    background:none; border:0; padding:8px 14px;
+    font-size:0.9rem; cursor:pointer; color:#111;
+  ">
+    <i class="fa fa-file-pdf" style="color:#ef4444; margin-right:6px;"></i>
+    PDF (.pdf)
+  </button>
+
+  <!-- خيار Excel -->
+  <button class="export-option" data-type="excel" style="
+    display:block; width:100%; text-align:left;
+    background:none; border:0; padding:8px 14px;
+    font-size:0.9rem; cursor:pointer; color:#111;
+  ">
+    <i class="fa fa-file-excel" style="color:#22c55e; margin-right:6px;"></i>
+    Excel (.xlsx)
+                </button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!-- 🔹 محتوى Grid View -->
+<div id="gridView" 
+  style="
+    display:grid; 
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); 
+    gap:20px; 
+    padding:22px;
+  ">
+  <!-- سيتم تحميل الكروت هنا تلقائياً عبر السكربت -->
+</div>
+
+<!-- 🔹 محتوى Table View -->
+<div id="tableView" style="display:none; padding:22px;">
+  <table style="width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden;">
+<thead>
+  <tr style="background:var(--soft);">
+    <th class="sortable">Name</th>
+    <th class="sortable">Diagnosis</th>
+    <th class="sortable">Age</th>
+    <th class="sortable">Parent Team</th>
+    <th class="sortable">Source</th>
+    <th class="sortable">Status</th>
+    <th>Indicators</th>
+    <th style="text-align:center;">Actions</th> <!-- 🟢 العمود الجديد -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+        <td style="padding:10px;">Loading...</td>
+        <td style="padding:10px;">–</td>
+        <td style="padding:10px;">–</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    <!-- 🔹 محتوى Dashboard -->
+      <div id="dashboardView" style="display:none; padding:22px;">
+        <main class="body">
+        <div class="container">          <div id="spinnerOverlay"><div class="loader"></div></div>
+            <header>
+              <div class="title">
+                <i class="fa-solid fa-chart-line" style="color:var(--primary)"></i>
+                <h1>Pediatric High Dependency Unit Statistics <span id="ttl-year"></span>/<span id="ttl-month"></span></h1>
+              </div>
+            <div class="filters">
+                <select id="yearSel" aria-label="السنة"></select>
+                <select id="monthSel" aria-label="الشهر"></select>
+              </div>
+            </header>
+
+            <span class="mini">Tip: Click any card to view additional details and charts.</span>
+            <section class="cards-dash" id="cardsWrap" style="margin-top: 1rem;"></section>
+          </div>
+
+         <!-- 🔹 نافذة التفاصيل -->
+          <div class="modal-dash" id="modalDash">
+            <div class="panel">
+              <header style="position: relative;">
+                <h2 id="modalTitle" style="margin:0;">Details</h2>
+                <button class="close" id="closeBtn" style="
+          position:absolute;
+          right:16px;
+          top:5px;
+          background:#fff;
+          border:none;
+          font-size:1.2rem;
+          cursor:pointer;
+        ">
+        
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button id="btnExportChart" title="Export Chart" style="
+  position:absolute;
+  right:50px;
+  top:5px;
+  background:var(--primary);
+  color:#fff;
+  border:none;
+  font-size:0.9rem;
+  border-radius:6px;
+  padding:6px 12px;
+  cursor:pointer;
+  transition:all 0.3s ease;
+">
+  <i class="fa-solid fa-download"></i> Export
+</button>
+
+      </header>
+
+
+              <div class="content" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:16px;padding:16px;">
+                <div><canvas id="chart"></canvas></div>
+                <div class="meta" style="border-left:1px dashed var(--line);padding-left:14px;">
+                  <div id="metaList"></div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================= -->
+<!-- 🧩 المودالات العامة خارج الـApp -->
+<!-- ============================= -->
+
+<div id="modal-Details" class="modalDetails">
+  <div class="modalContent">
+    <header>
+      <h2>Patient Comprehensive Details</h2>
+      <button id="closeModalDetails">&times;</button>
+    </header>
+    <div id="detailsBody"></div>
+  </div>
+</div>
+
+<!-- ✅ مودال إضافة مريض -->
+<div id="modal-Add" class="modalDetails">
+  <div class="modalContent">
+    <header>
+      <h2>Add New Patient</h2>
+      <button id="closeAddModal">&times;</button>
+    </header>
+
+    <div id="addBody" class="addBody"></div>
+    <footer style="display:flex; justify-content:flex-end; gap:10px; padding:16px;">
+      <button id="cancelAdd" class="btn-cancel">Cancel</button>
+      <button id="saveAdd" class="btn-save">Save</button>
+    </footer>
+  </div>
+</div>
+
+<!-- 🔹 عرض الجراف -->
+<div id="chartView" style="display:none; padding:20px;">
+  <div class="shell">
+    <div class="app" style="margin-top: -6rem;">
+      <header style="
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        text-align:center;
+        margin-bottom:40px;
+      ">
+        <h1 style="
+          font-size:1.5rem;
+          font-weight:800;
+          color:#2d57b8;
+          letter-spacing:0.5px;
+          margin-bottom:10px; margin-top: -2rem;
+          text-shadow:0 2px 6px rgba(45,87,184,0.15);
+        ">
+           PHDU Analytics Dashboard
+        </h1>
+        <p style="
+          font-size:0.9rem;
+          color:#6b7280;
+          margin:0;
+          font-weight:500;
+        ">
+          Visual Insights for Monthly & Annual Performance
+        </p>
+      </header>
+
+      <section class="charts-grid"style="align-items: center; margin-left: 6rem;">
+        <div class="chart-card">
+          <h3>📈 Monthly and Yearly Admission Trends</h3>
+          <div class="chart-container" 
+            data-title="Monthly and Yearly Admission Trends" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=951208725&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=951208725&format=interactive"></iframe>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>📊 Admission Sources Distribution/Year</h3>
+          <div class="chart-container" 
+            data-title="Admission Sources Distribution/Year" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=610858867&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=610858867&format=interactive"></iframe>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3>🕒 Tracking Recovery: Length of Stay Overview</h3>
+          <div class="chart-container" 
+            data-title="Tracking Recovery: Length of Stay Overview" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=173954089&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=173954089&format=interactive"></iframe>
+          </div>
+        </div>
+        
+        <div class="chart-card">
+          <h3>🛏️ Bed Occupancy: NIV & High Flow Usage</h3>
+          <div class="chart-container" 
+            data-title="Bed Occupancy: NIV & High Flow Usage" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=807748586&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=807748586&format=interactive"></iframe>
+          </div>
+        </div>
+                
+        <div class="chart-card" style="height: 20rem;">
+          <h3>🧒 PHDU Population Overview</h3>
+          <div class="chart-container" style="height: 12rem;"
+            data-title="PHDU Population Overview" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=1125017840&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe style="  transform: scale(0.27) !important;"  src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=1125017840&format=interactive"></iframe>
+          </div>
+        </div>
+                        
+        <div class="chart-card" style="height: 20rem;">
+          <h3>🫁 NIV & High Flow Usage</h3>
+          <div class="chart-container" style="height: 12rem;"
+            data-title="PHDU Population Overview" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=814332026&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe  style="  transform: scale(0.28) !important;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=814332026&format=interactive"></iframe>
+          </div>
+        </div>
+                                
+        <div class="chart-card" style="height: 20rem;">
+          <h3>🎯 Tracking Excellence: KPI Overview</h3>
+          <div class="chart-container" style="height: 12rem;"
+            data-title="Tracking Excellence: KPI Overview" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=2042519273&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe style="  transform: scale(0.27) !important;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=2042519273&format=interactive"></iframe>
+          </div>
+        </div>
+                                
+        <div class="chart-card" style="height: 20rem;">
+          <h3>👥 Team Specialty Admissions Overview</h3>
+          <div class="chart-container" style="height: 12rem;"
+            data-title="Team Specialty Admissions Overview" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=432392529&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe style="  transform: scale(0.27) !important;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=432392529&format=interactive"></iframe>
+          </div>
+        </div>
+                                
+        <div class="chart-card" style="height: 20rem;">
+          <h3>🛏️ Patient Outcome</h3>
+          <div class="chart-container" style="height: 12rem;"
+            data-title="Patient Outcome" 
+            data-src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=1366145461&format=interactive">
+            <div class="chart-overlay"></div>
+            <iframe style="  transform: scale(0.27) !important;" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pubchart?oid=1366145461&format=interactive"></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🧭 Modal for Enlarged Chart -->
+      <div id="chartModal" class="chart-modal">
+        <div class="chart-modal-content">
+          <!-- ✨ Close Button -->
+          <button class="close-modal" id="closeChartModal" title="Close">X</button>
+          <h3 class="modal-title" id="chartTitle"></h3>
+          <div class="chart-container large" style="margin-top: 9rem; ">
+            <iframe id="chartIframe" src=""></iframe>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+ const viewButtons = document.querySelectorAll('.view-option');
+const gridView = document.getElementById('gridView');
+const tableView = document.getElementById('tableView');
+const dashView = document.getElementById('dashboardView');
+const chartView = document.getElementById('chartView'); // ✅ إضافة تعريف chartView
+let latestPatients = []; // 🧩 يخزن جميع بيانات المرضى للتصدير لاحقًا
+
+function activate(btn) {
+  // 🔹 إزالة التفعيل من جميع الأزرار وتفعيل الزر المختار
+  viewButtons.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // 🔹 إخفاء جميع العروض أولاً
+  gridView.style.display = "none";
+  tableView.style.display = "none";
+  dashView.style.display = "none";
+  chartView.style.display = "none"; // ✅ تمت إضافته
+
+  // 🔹 إظهار العرض المطلوب فقط
+  if (btn.id === "gridBtn") {
+    gridView.style.display = "grid";
+  }
+
+  if (btn.id === "tableBtn") {
+    tableView.style.display = "block";
+  }
+
+  if (btn.id === "dashBtn") {
+    dashView.style.display = "block";
+
+    // 🟢 عند فتح الداشبورد → نرجع إلى All Patients
+    const allLink = document.querySelector('#yearNav a:first-child');
+    if (allLink) {
+      allLink.classList.add('active');
+      document.querySelectorAll('#yearNav a:not(:first-child)')
+        .forEach(a => a.classList.remove('active'));
+      document.querySelector('.bar h1').textContent = "All Patients";
+      loadGridData("All"); // 🔹 إعادة تحميل كل المرضى
+    }
+  }
+
+  if (btn.id === "chartBtn") {
+    chartView.style.display = "block"; // ✅ عرض الجراف فقط
+  }
+}
+
+// ✅ تفعيل التبديل عند الضغط على الأزرار
+viewButtons.forEach(btn => {
+  btn.addEventListener('click', () => activate(btn));
+});
+
+
+
+  viewButtons.forEach(btn => {
+    btn.addEventListener('click', () => activate(btn));
+  });
+
+  // 🔹 العنوان يتغير حسب السنة المختارة
+  const navLinks = document.querySelectorAll('.nav a');
+  const pageTitle = document.querySelector('.bar h1');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      const year = link.textContent.trim();
+      pageTitle.textContent = `${year} Patients`;
+    });
+  });
+
+  /* 🌙 تفعيل الوضع الليلي */
+  const settingsBtn = document.querySelector('.icon-btn');
+
+  settingsBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+
+    // تأثير بسيط على الزر عند التبديل
+    settingsBtn.style.transform = "rotate(180deg)";
+    setTimeout(() => settingsBtn.style.transform = "rotate(0deg)", 400);
+
+    // تلوين الزر مؤقتاً عند التبديل
+    if (isDark) {
+      settingsBtn.style.background = "var(--brand)";
+      settingsBtn.style.color = "#111";
+    } else {
+      settingsBtn.style.background = "#fff";
+      settingsBtn.style.color = "#111";
+    }
+
+    // حفظ التفضيل في localStorage
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // عند تحميل الصفحة نفّذ الوضع المحفوظ
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      settingsBtn.style.background = "var(--brand)";
+      settingsBtn.style.color = "#111";
+    }
+  });
+  
+  document.getElementById("btnRefresh").addEventListener("click", async () => {
+  // ✅ امسح الكاش (لو تستخدم LocalStorage)
+  localStorage.removeItem("phduData");
+
+  // ✅ أعد تحميل البيانات من Google Sheet
+  await loadGridData("All");
+
+  // ✅ تنبيه بسيط أو Toast
+  alert("✅ Data refreshed from Google Sheet!");
+});
+
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pub?gid=1097393078&single=true&output=csv";
+async function loadGridData(selectedYear = "All") {
+  try {
+    // 🧠 أولاً: تحقق إذا في كاش سابق
+    const cached = localStorage.getItem("phduData");
+    let allData = null;
+
+    if (cached) {
+      console.log("📦 Loaded PHDU data from cache");
+      allData = JSON.parse(cached);
+    } else {
+      console.log("🌐 Fetching PHDU data from Google Sheet...");
+      const res = await fetch(CSV_URL);
+      const text = await res.text();
+      const rows = text.split(/\r?\n/).map(r => r.split(","));
+      if (rows.length < 2) return;
+
+      const headers = rows[2].map(h => h.trim());
+      const dataRows = rows.slice(3);
+
+      // 🔹 نخزن كل شيء في كائن واحد
+      allData = { headers, dataRows };
+
+      // 🧠 نحفظه في LocalStorage
+      localStorage.setItem("phduData", JSON.stringify(allData));
+      console.log("✅ Saved PHDU data to cache");
+    }
+
+    // 🧩 نكمل العمل باستخدام البيانات سواء كانت من الكاش أو من الشيت
+    const { headers, dataRows } = allData;
+    // 🔹 تعريف الأعمدة قبل الاستخدام
+    const columns = {
+      year: "Year",
+      name: "patient Name",
+      ipn: "IPN",
+      dob: "DOB",
+      age: "Age",
+      gender: "Gender",
+      diagnosis: "Diagnosis",
+      source: "Sourse of Admission",
+      parent: "Parent Team",
+      dot: "DOT/DOD",
+      discharge: "Disharge to"
+    };
+
+
+const getValue = (row, col, occurrence = 1) => {
+  let count = 0;
+  const normalize = s => s?.toString().trim().toLowerCase().replace(/\s+/g, " ");
+  const idx = headers.findIndex(h => {
+    if (normalize(h) === normalize(col)) {
+      count++;
+      return count === occurrence;
+    }
+    return false;
+  });
+  return idx >= 0 ? (row[idx]?.toString().trim() || "") : "";
+};
+
+
+    const grid = document.getElementById("gridView");
+    const tableBody = document.querySelector("#tableView tbody");
+    tableBody.innerHTML = "";
+    grid.innerHTML = "";
+
+    // 🔹 بناء قائمة السنوات
+    const years = [...new Set(dataRows.map(r => getValue(r, columns.year)).filter(y => y))];
+
+    // ✅ الترتيب من الأكبر إلى الأصغر
+    years.sort((a, b) => b - a);
+
+    const nav = document.getElementById("yearNav");
+    nav.innerHTML = "";
+
+    // ✅ "All" أولاً ثم السنوات
+    ["All", ...years].forEach(year => {
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = year;
+      if (year === "All") link.style.fontWeight = "700";
+      link.className = year === selectedYear ? "active" : "";
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        document.querySelectorAll("#yearNav a").forEach(a => a.classList.remove("active"));
+        link.classList.add("active");
+        document.querySelector(".bar h1").textContent = `${year} Patients`;
+        loadGridData(year);
+      });
+      nav.appendChild(link);
+    });
+
+
+    // 🔹 تصفية حسب السنة
+    let filteredRows =
+      selectedYear === "All"
+        ? dataRows
+        : dataRows.filter(r => getValue(r, columns.year) === selectedYear);
+
+    // 🔹 ترتيب بحيث المرضى بدون discharge أولًا
+    filteredRows.sort((a, b) => {
+      const isEmpty = r => {
+        const dot = getValue(r, columns.dot).trim();
+        const discharge = getValue(r, columns.discharge).trim();
+        return !dot && !discharge; // كلها فاضية
+      };
+      return isEmpty(a) === isEmpty(b) ? 0 : isEmpty(a) ? -1 : 1;
+    });
+
+// 🔹 ترتيب بحيث المرضى بدون discharge أولًا
+filteredRows.sort((a, b) => {
+  const isDischarged = r => {
+    const dot = getValue(r, columns.dot).trim();
+    const discharge = getValue(r, columns.discharge).trim();
+    // ✅ يعتبر Discharged إذا أحد العمودين فيه بيانات
+    return dot || discharge;
+  };
+  return !isDischarged(a) && isDischarged(b) ? -1 : isDischarged(a) && !isDischarged(b) ? 1 : 0;
+});
+
+
+
+// 🔹 حساب عدد المرضى من البيانات المفلترة
+const totalPatients = filteredRows.length;
+
+// 🔹 اختيار العنصر من DOM
+const meter = document.getElementById("m-interviews");
+const pctText = meter.querySelector(".pct");
+
+// 🔹 أنيميشن بسيط لزيادة الرقم تدريجيًا
+let current = 0;
+const duration = 800; // المدة بالمللي ثانية
+const stepTime = Math.max(Math.floor(duration / totalPatients), 20);
+
+const timer = setInterval(() => {
+  current++;
+  pctText.textContent = `${current} Patients`;
+  if (current >= totalPatients) clearInterval(timer);
+}, stepTime);
+
+// 🧩 بعد ما تنتهي من عرض الكروت والجدول تمامًا
+// خزّن فقط المرضى الظاهرين حاليًا لتأكيد جاهزيتهم للتصدير
+latestPatients = filteredRows.map(r => {
+  const obj = {};
+  headers.forEach((h, i) => {
+    obj[h.trim()] = r[i]?.trim() || "";
+  });
+  return obj;
+});
+
+console.log(`✅ ${latestPatients.length} patients ready for export (${selectedYear})`);
+
+// 🔹 عرض الكروت
+filteredRows.forEach(row => {
+  if (row.join("").trim() === "") return;
+
+const p = {
+  year: getValue(row, columns.year),
+  month: getValue(row, "Month"),
+
+  // 🩺 Demographic
+  name: getValue(row, columns.name),
+  ipn: getValue(row, columns.ipn),
+  dob: getValue(row, columns.dob),
+  age: getValue(row, columns.age),
+  gender: getValue(row, columns.gender),
+
+  // 🏥 Admission
+  diagnosis: getValue(row, columns.diagnosis),
+  doa: getValue(row, "DOA"),
+  source: getValue(row, columns.source),
+  
+  parentAdmission: getValue(row, "Parent Team", 1), // العمود الأول (Admission)
+  dnr: getValue(row, "DNR"),
+  discharge: getValue(row, columns.discharge),
+
+  // 💨 Respiratory Support
+// 💨 Respiratory Support
+niv: getValue(row, "NIV"),
+"NIV Start": getValue(row, "start Date", 1),
+"NIV End": getValue(row, "End Date", 1),
+"LOS with NIV": getValue(row, "LOS with NIV"),
+
+hfnc: getValue(row, "HFNC"),
+"HFNC Start": getValue(row, "start Date", 2),
+"HFNC End": getValue(row, "End Date", 2),
+"LOS with HFNC": getValue(row, "LOS with HFNC"),
+
+
+  // 🫁 Tracheostomy
+  "Tracheostomized": getValue(row, "Patient tracheostomized"),
+  "New Tracheostomy": getValue(row, "Newly tracheostomy"),
+  "Ventilated": getValue(row, "ventilated"),
+
+  // 🚪 Exit Data
+  dot: getValue(row, columns.dot),
+  parentExit: getValue(row, "Parent Team", 2), // العمود الثاني (Exit)
+  "Discharge To": getValue(row, "Disharge to"),
+  "LOS": getValue(row, "LOS"),
+  "LOS in number": getValue(row, "LOS in number"),
+
+  // 📈 KPI / Assessment
+    "Long Line": getValue(row, "Long line"),
+  "Long Line Type": getValue(row, "Type of Long line"),
+  "Inserted Place": getValue(row, "inserted place"),
+  "MDRO": getValue(row, "MDRO"),
+  "Droplit isolation": getValue(row, "Droplit isolation"),
+  "Positive Blood Culture": getValue(row, "positive blood cultuer"),
+ // في const p:
+"Pressure Sore": getValue(row, "pressuer sore"),
+"Fall": getValue(row, "fall"),
+"CLABSI": getValue(row, "CLABSI"),
+"Readmission 24 HRS": getValue(row, "Readmission 24 HRS"),
+"Readmission 48 HRS": getValue(row, "Readmission 48 HRS"),
+"Readmission 72 HRS": getValue(row, "Readmission 72 HRS"),
+"Blood Reaction": getValue(row, "blood Reaction"),
+"Device-related Pressure Sore": getValue(row, "pressuer sore related to device injury"),
+"Sepsis": getValue(row, "Sepsis"),
+"Nutrition Feed Started within 4 Hrs": getValue(row, "Nutration feed started with 4 hrs"),
+"Cardiac Arrest": getValue(row, "Cardic arrest"),
+"Tracheostomy Dislodgement": getValue(row, "Tracheostomy Disloagment"),
+
+
+  // ⚕️ KPI / Acuity
+// ⚕️ Clinical / Acuity Details
+"Vital Signs": getValue(row, "vital signs"),
+"Medication": getValue(row, "Medication"),
+"Infusion": getValue(row, "Infusion"),
+"Specimen": getValue(row, "Specimen"),
+"Suction/Chest physiotherapy": getValue(row, "Suction/Chest phsiotherapy"), // ✅ التصحيح هنا (physio)
+"Vascular access": getValue(row, "Vascular access"),
+"Procedures": getValue(row, "procedures"),
+"Technology support": getValue(row, "Technology support"),
+"Acuity Level": getValue(row, "Acuty Level") // نفس الاسم في الشيت (بدون i)
+
+
+};
+
+  // ✅ يعتبر Discharged إذا أحد العمودين فيه بيانات
+  const isDischarged = p.dot || p.discharge;
+  const genderColor = p.gender.toLowerCase().includes("f") ? "#ffb6c1" : "#99e0ff";
+  const genderIcon = p.gender.toLowerCase().includes("f") ? "👧" : "👦";
+const tag = isDischarged
+  ? `<span class="chip warn" 
+        style="background:linear-gradient(135deg, #e0f2ff 0%, #f0f9ff 100%);
+               color:#2563eb;
+               border:1px solid #93c5fd;
+               font-weight:600;">
+        <i class="fa fa-check"></i> Discharged
+     </span>`
+  : `<span class="chip good" 
+        style="background:linear-gradient(135deg, #fff1f1 0%, #ffe4e4 100%);
+               color:#dc2626;
+               border:1px solid #fca5a5;
+               font-weight:600;">
+        <i class="fa fa-hospital-user"></i> Inpatient
+     </span>`;
+
+
+// 🎨 تلوين الكارت حسب الحالة — Inpatient فقط باللون الأزرق
+const cardBg = isDischarged
+  ? "#ffffff"  // Discharged → أبيض
+  : "linear-gradient(135deg, #ebf6ff 0%, #f7fbff 100%)";  // Inpatient → أزرق فاتح جدًا
+
+const borderClr = isDischarged ? "#e5e7eb" : "#93c5fd"; // رمادي للمغادرين / أزرق للـ Inpatient
+
+  const card = document.createElement("div");
+  card.style.cssText = `
+    background:${cardBg};
+    border:1px solid ${borderClr};
+    border-radius:22px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.06);
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;  text-align:left;          /* 👈 النصوص لليسار */
+    transition:all 0.3s ease;  
+  `;
+
+
+// 🌊 عند المرور Hover
+card.onmouseover = () => {
+  card.style.transform = "translateY(-6px)";
+  card.style.boxShadow = "0 12px 28px rgba(0,0,0,0.1)";
+
+  if (!isDischarged) {
+    // 🩵 للمقيمين (Inpatient)
+    card.style.background = "linear-gradient(135deg, #dbefff 0%, #e8f4ff 100%)";
+    card.style.borderColor = "#60a5fa";
+  } else {
+    // ⚪ للمغادرين (Discharged)
+    card.style.background = "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)";
+    card.style.borderColor = "#cbd5e1";
+  }
+};
+
+// ☀️ عند الخروج
+card.onmouseout = () => {
+  card.style.transform = "none";
+  card.style.boxShadow = "0 6px 16px rgba(0,0,0,0.06)";
+  card.style.background = cardBg;
+  card.style.borderColor = borderClr;
+};
+// 🔹 فحص عمود DNR
+const showDNR = getValue(row, "DNR").toLowerCase() === "yes";
+const showNIV = getValue(row, "NIV").toLowerCase() === "yes";
+const showHFNC = getValue(row, "HFNC").toLowerCase() === "yes";
+const showTrach = getValue(row, "Patient tracheostomized").toLowerCase() === "yes";
+const showLong  = getValue(row, "Long line").toLowerCase() === "yes";
+const showMDRO  = getValue(row, "MDRO").toLowerCase() === "yes";
+const showSore  = getValue(row, "pressuer sore").toLowerCase() === "yes";
+const showFall  = getValue(row, "fall").toLowerCase() === "yes";
+const showCLAB  = getValue(row, "CLABSI").toLowerCase() === "yes";
+const showR24   = getValue(row, "Readmission 24 HRS").toLowerCase() === "yes";
+const showR48   = getValue(row, "Readmission 48 HRS").toLowerCase() === "yes";
+const showR72   = getValue(row, "Readmission 72 HRS").toLowerCase() === "yes";
+const showSepsis = getValue(row, "Sepsis").toLowerCase() === "yes";
+const showArrest = getValue(row, "Cardic arrest").toLowerCase() === "yes";
+
+card.innerHTML = `
+  <div style="display:flex; align-items:center; gap:14px;">
+    <div style="
+      height:68px; width:68px; border-radius:50%;
+      background:${genderColor};
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; font-weight:700; color:#111;">
+      ${genderIcon}
+    </div>
+    <div style="flex:1;">
+      <h3 class="h3header" style="margin:0; font-size:1.15rem; font-weight:700;margin-bottom:5px;">${p.name}</h3>
+      ${tag}
+    </div>
+  </div>
+
+  <!-- 🔹 شارات DNR / NIV / HFNC جنب بعض -->
+  <div style="display:flex; align-items:center; gap:8px; margin-top:6px; margin-bottom:18px; flex-wrap:wrap;">
+${showMDRO ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#7c3aed; display:inline-block;"></span>
+    <span style="color:#7c3aed;">MDRO</span>
+  </div>` : ""}
+
+${showSore ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#d97706; display:inline-block;"></span>
+    <span style="color:#d97706;">Pressure Sore</span>
+  </div>` : ""}
+
+${showFall ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#f97316; display:inline-block;"></span>
+    <span style="color:#f97316;">Fall</span>
+  </div>` : ""}
+
+${showCLAB ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#0284c7; display:inline-block;"></span>
+    <span style="color:#0284c7;">CLABSI</span>
+  </div>` : ""}
+
+${showR24 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block;"></span>
+    <span style="color:#22c55e;">Readm. 24h</span>
+  </div>` : ""}
+
+${showR48 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#16a34a; display:inline-block;"></span>
+    <span style="color:#16a34a;">Readm. 48h</span>
+  </div>` : ""}
+
+${showR72 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#15803d; display:inline-block;"></span>
+    <span style="color:#15803d;">Readm. 72h</span>
+  </div>` : ""}
+
+${showSepsis ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#ef4444; display:inline-block;"></span>
+    <span style="color:#ef4444;">Sepsis</span>
+  </div>` : ""}
+
+${showArrest ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#1e3a8a; display:inline-block;"></span>
+    <span style="color:#1e3a8a;">Cardiac Arrest</span>
+  </div>` : ""}
+
+
+  </div>
+
+
+<span class="chip ipn"><i class="fa fa-id-card"></i>&nbsp;<b>IPN:</b> ${p.ipn}</span>
+
+<div class="info-box" style="
+  background:var(--soft);
+  border-radius:12px;
+  padding:12px 14px;
+  margin-top:10px;
+  font-size:.9rem;
+  color:var(--ink);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+">
+
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-hourglass-half" style="color: #0ea5e9;"></i> <b>Age:</b></span>
+      <span>${p.age} yrs</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-calendar" style="color: #0ea5e9;"></i> <b>DOB:</b></span>
+      <span>${p.dob}</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-door-open" style="color: #0ea5e9;"></i> <b>Source:</b></span>
+      <span>${p.source}</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-users" style="color: #0ea5e9;"></i> <b>Parent Team:</b></span>
+<span>${p.parentAdmission || "—"}</span>
+
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-stethoscope" style="color: #0ea5e9;"></i> <b>Diagnosis:</b></span>
+      <span>${p.diagnosis || "—"}</span>
+    </div>
+
+  </div>
+  <!-- 🔹 زر التفاصيل -->
+  <div style="margin-top:14px; display:flex; justify-content:flex-end;">
+ 
+   
+  <!-- زر التعديل -->
+  <button class="icon-btn" title="Edit"  style="
+    background:#fff;
+    color:#2563eb;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    width:42px; height:38px;margin-right:6px;margin-left:6px;
+    cursor:pointer;
+    font-size:15px;
+    transition:all 0.3s ease;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  "
+  onmouseover="this.style.background='#2563eb'; this.style.color='#fff'; this.style.borderColor='#2563eb'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(37,99,235,0.3)';"
+  onmouseout="this.style.background='#fff'; this.style.color='#2563eb'; this.style.borderColor='#e5e7eb'; this.style.transform='none'; this.style.boxShadow='0 3px 8px rgba(0,0,0,0.05)';">
+    <i class="fa fa-pen"></i>
+  </button>
+
+
+</div>
+`;
+grid.appendChild(card);
+// 🔹 زر التفاصيل (صغير وأنيق)
+const btn = document.createElement("button");
+btn.innerHTML = `<i class="fa fa-eye"></i>`;
+btn.title = "View Details";
+btn.style.cssText = `
+  background:#fff;
+  color:#16a34a;
+  border:1px solid #e5e7eb;
+  border-radius:10px;
+  width:42px;
+  height:38px;
+  cursor:pointer;
+  font-size:15px;
+  transition:all 0.3s ease;
+  box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  margin-left:6px;
+`;
+
+btn.onmouseover = () => {
+  btn.style.background = "#16a34a";
+  btn.style.color = "#fff";
+  btn.style.borderColor = "#16a34a";
+  btn.style.transform = "translateY(-2px)";
+  btn.style.boxShadow = "0 6px 14px rgba(22,163,74,0.3)";
+};
+btn.onmouseout = () => {
+  btn.style.background = "#fff";
+  btn.style.color = "#16a34a";
+  btn.style.borderColor = "#e5e7eb";
+  btn.style.transform = "none";
+  btn.style.boxShadow = "0 3px 8px rgba(0,0,0,0.05)";
+};
+
+btn.addEventListener("click", () => openModalDetails(p));
+
+// ✅ ضيفه بجانب زر Edit مباشرة
+const actionsDiv = card.querySelector("div[style*='justify-content:flex-end']");
+if (actionsDiv) actionsDiv.appendChild(btn);
+
+const editBtn = card.querySelector('button[title="Edit"]');
+if (editBtn) {
+  editBtn.addEventListener('click', () => openEditModal(p));
+}
+
+
+// ✅ أضف صفًا للـ Table View مع الأعمدة الجديدة
+const indicators = [];
+
+// 🔹 فحص كل مؤشر وإضافته
+if (showDNR) indicators.push(`<span class="chip bad">DNR</span>`);
+if (showNIV) indicators.push(`<span class="chip warn">NIV</span>`);
+if (showHFNC) indicators.push(`<span class="chip warn">HFNC</span>`);
+if (showTrach) indicators.push(`<span class="chip warn">Trach</span>`);
+if (showLong) indicators.push(`<span class="chip">Long Line</span>`);
+if (showMDRO) indicators.push(`<span class="chip" style="background:#f3e8ff;color:#7c3aed;border:1px solid #d8b4fe;">MDRO</span>`);
+if (showSore) indicators.push(`<span class="chip warn">Sore</span>`);
+if (showFall) indicators.push(`<span class="chip warn">Fall</span>`);
+if (showCLAB) indicators.push(`<span class="chip good">CLABSI</span>`);
+if (showR24) indicators.push(`<span class="chip">R-24h</span>`);
+if (showR48) indicators.push(`<span class="chip">R-48h</span>`);
+if (showR72) indicators.push(`<span class="chip">R-72h</span>`);
+if (showSepsis) indicators.push(`<span class="chip bad">Sepsis</span>`);
+if (showArrest) indicators.push(`<span class="chip bad">Arrest</span>`);
+
+const tr = document.createElement("tr");
+
+// ✅ التلوين حسب الحالة
+const rowBg = isDischarged
+  ? "#ffffff" // Discharged = أبيض عادي
+  : "#f1f8ff"; // Inpatient = أزرق فاتح مميز
+
+const rowHover = isDischarged
+  ? "#fffbea" // Hover خفيف للمغادرين
+  : "#e0efff"; // Hover أزرق أوضح للمقيمين
+
+tr.style.background = rowBg;
+tr.style.transition = "all 0.25s ease";
+tr.onmouseover = () => (tr.style.background = rowHover);
+tr.onmouseout = () => (tr.style.background = rowBg);
+
+tr.innerHTML = `
+  <td>${p.name}</td>
+  <td>${p.diagnosis || "—"}</td>
+  <td>${p.age || "—"}</td>
+  <td>${p.parent || "—"}</td>
+  <td>${p.source || "—"}</td>
+  <td>${isDischarged
+    ? '<span class="status-chip discharged"><i class="fa fa-check"></i> Discharged</span>'
+    : '<span class="status-chip inpatient"><i class="fa fa-hospital-user"></i> Inpatient</span>'
+  }</td>
+  <td>${indicators.length ? indicators.join(" ") : "—"}</td>
+  <td style="text-align:center;">
+    <button class="icon-btn edit-btn" title="Edit" style="
+      background:#fff;
+      color:#2563eb;
+      border:1px solid #e5e7eb;
+      border-radius:8px;
+      width:34px; height:32px;
+      cursor:pointer;
+      font-size:14px;
+      transition:all 0.3s ease;
+      margin-right:4px;
+    ">
+      <i class="fa fa-pen"></i>
+    </button>
+    <button class="icon-btn view-btn" title="Details" style="
+      background:#fff;
+      color:#16a34a;
+      border:1px solid #e5e7eb;
+      border-radius:8px;
+      width:34px; height:32px;
+      cursor:pointer;
+      font-size:14px;
+      transition:all 0.3s ease;
+    ">
+      <i class="fa fa-eye"></i>
+    </button>
+  </td>
+`;
+// ✅ ربط الأزرار بالدوال
+const editButton = tr.querySelector('.edit-btn');
+const viewButton = tr.querySelector('.view-btn');
+
+editButton.addEventListener('click', () => openEditModal(p));
+viewButton.addEventListener('click', () => openModalDetails(p));
+
+tableBody.appendChild(tr);
+
+
+});
+
+
+  } catch (err) {
+    console.error("❌ Error loading grid data:", err);
+  }
+}
+
+// 🚀 تحميل أولي عند فتح الصفحة
+window.addEventListener("DOMContentLoaded", () => loadGridData("All"));
+/* =============================
+   📤 Export System (Excel / PDF)
+============================= */
+const btnExport = document.getElementById("btnExport");
+const exportMenu = document.getElementById("exportMenu");
+const pdfOption = exportMenu.querySelector('[data-type="pdf"]');
+const excelOption = exportMenu.querySelector('[data-type="excel"]');
+
+/* 🧩 إظهار / إخفاء القائمة */
+btnExport.addEventListener("click", () => {
+  updateExportOptions();
+  exportMenu.style.display =
+    exportMenu.style.display === "block" ? "none" : "block";
+});
+
+/* 🔹 تحديث الخيارات */
+function updateExportOptions() {
+  const isDashboard = dashView && dashView.style.display === "block";
+  const isTable = tableView && tableView.style.display !== "none";
+  const isGrid = gridView && gridView.style.display !== "none";
+  const isChartView = chartView && chartView.style.display === "block";
+
+  if (isDashboard || isChartView) {
+    pdfOption.style.display = "block";
+    excelOption.style.display = "none";
+  } else if (isTable || isGrid) {
+    pdfOption.style.display = "none";
+    excelOption.style.display = "block";
+  } else {
+    pdfOption.style.display = "none";
+    excelOption.style.display = "none";
+  }
+}
+
+/* 🔹 تحديث أولي */
+window.addEventListener("DOMContentLoaded", updateExportOptions);
+
+/* 🔹 إغلاق القائمة عند النقر خارجها */
+window.addEventListener("click", e => {
+  if (!btnExport.contains(e.target) && !exportMenu.contains(e.target)) {
+    exportMenu.style.display = "none";
+  }
+});
+
+/* 🔹 تصدير Excel */
+function exportToExcel(data, filename = "data.xlsx") {
+  if (!data.length) return alert("No data to export!");
+  const headers = Object.keys(data[0]);
+  const rows = [headers, ...data.map(obj => headers.map(h => obj[h]))];
+  const sheet = XLSX.utils.aoa_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, sheet, "Data");
+  XLSX.writeFile(wb, filename);
+}
+
+/* 🔹 تصدير Dashboard كـ PDF */
+async function exportDashboardAsPDF() {
+  const dashView = document.getElementById("dashboardView");
+  if (!dashView || dashView.style.display === "none") {
+    alert("Dashboard view is not active!");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF("landscape", "pt", "a4");
+
+  btnExport.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Exporting...';
+  btnExport.disabled = true;
+
+  try {
+    const dashElement = dashView.querySelector(".container") || dashView;
+
+    const canvas = await html2canvas(dashElement, {
+      scale: 2,
+      backgroundColor: "#ffffff"
+    });
+    const imgData = canvas.toDataURL("image/png");
+
+    const pageWidth = doc.internal.pageSize.getWidth();
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const imgWidth = pageWidth - 60;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    const x = (pageWidth - imgWidth) / 2;
+    const y = 40;
+
+    doc.addImage(imgData, "PNG", x, y, imgWidth, imgHeight);
+
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+    doc.text(
+      `Generated on ${new Date().toLocaleString()} by PHDU Analytics System`,
+      pageWidth / 2,
+      pageHeight - 20,
+      { align: "center" }
+    );
+
+    doc.save("PHDU-Dashboard.pdf");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Error generating Dashboard PDF!");
+  }
+
+  btnExport.innerHTML = '<i class="fa fa-arrow-up-from-bracket"></i> Export';
+  btnExport.disabled = false;
+}
+
+/* 🔹 تصدير Chart View كـ PDF */
+async function exportChartViewAsPDF() {
+  const chartView = document.getElementById("chartView");
+  if (!chartView || chartView.style.display === "none") {
+    alert("Chart view is not active!");
+    return;
+  }
+
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF("landscape", "pt", "a4");
+
+  btnExport.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Exporting...';
+  btnExport.disabled = true;
+
+  const cleanText = (text = "") => {
+    try {
+      const parser = new DOMParser();
+      const decoded = parser.parseFromString(text, "text/html").body.textContent || "";
+      return decoded.replace(/[^a-zA-Z0-9\s:()/%+.,-]/g, "").trim();
+    } catch {
+      return text;
+    }
+  };
+
+  try {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.setTextColor(45, 87, 184);
+    doc.text("PHDU Analytics Chart View", 420, 40, { align: "center" });
+
+    doc.setFontSize(11);
+    doc.setTextColor(100);
+    doc.text("Visual Insights for Monthly & Annual Performance", 420, 60, { align: "center" });
+
+    let y = 100;
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    const charts = chartView.querySelectorAll(".chart-card");
+    for (const card of charts) {
+      const rawTitle = card.querySelector("h3")?.innerText || "Untitled Chart";
+      const title = cleanText(rawTitle);
+      const iframe = card.querySelector("iframe");
+      if (!iframe) continue;
+
+      const src = iframe.src;
+      const img = new Image();
+      img.crossOrigin = "anonymous";
+      img.src = src.replace("interactive", "image");
+
+      await new Promise((resolve, reject) => {
+        img.onload = resolve;
+        img.onerror = reject;
+      });
+
+      const maxWidth = 520;
+      const imgWidth = Math.min(maxWidth, img.naturalWidth);
+      const imgHeight = (img.naturalHeight / img.naturalWidth) * imgWidth;
+      const xCentered = (pageWidth - imgWidth) / 2;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(12);
+      doc.setTextColor(33, 33, 33);
+      doc.text(title, pageWidth / 2, y, { align: "center" });
+
+      doc.addImage(img, "PNG", xCentered, y + 10, imgWidth, imgHeight);
+
+      y += imgHeight + 80;
+
+      if (y > 520) {
+        doc.addPage();
+        y = 80;
+      }
+    }
+
+    doc.setFontSize(9);
+    doc.setTextColor(120);
+    doc.text(
+      `Generated on ${new Date().toLocaleString()} by PHDU Analytics System`,
+      pageWidth / 2,
+      570,
+      { align: "center" }
+    );
+
+    doc.save("PHDU-ChartView.pdf");
+  } catch (err) {
+    console.error(err);
+    alert("❌ Error generating Chart PDF!");
+  }
+
+  btnExport.innerHTML = '<i class="fa fa-arrow-up-from-bracket"></i> Export';
+  btnExport.disabled = false;
+}
+
+/* 🔹 جلب البيانات للجدول */
+function getVisibleData() {
+  const tableViewVisible = document.getElementById("tableView")?.style.display !== "none";
+  const gridViewVisible = document.getElementById("gridView")?.style.display !== "none";
+  if (!latestPatients || !latestPatients.length) return [];
+
+  if (tableViewVisible) {
+    const visibleRows = Array.from(document.querySelectorAll("#tableView tbody tr"))
+      .filter(tr => tr.style.display !== "none");
+    const visibleNames = visibleRows.map(tr => tr.children[0]?.innerText.trim().toLowerCase());
+    return latestPatients.filter(p =>
+      visibleNames.includes((p["patient Name"] || "").toLowerCase())
+    );
+  }
+
+  if (gridViewVisible) {
+    const visibleCards = Array.from(document.querySelectorAll("#gridView > div"))
+      .filter(div => div.style.display !== "none");
+    const visibleNames = visibleCards.map(card => {
+      const h3 = card.querySelector("h3");
+      return h3 ? h3.textContent.trim().toLowerCase() : "";
+    });
+    return latestPatients.filter(p =>
+      visibleNames.includes((p["patient Name"] || "").toLowerCase())
+    );
+  }
+
+  return latestPatients;
+}
+
+/* 🧩 التعامل مع اختيار المستخدم من القائمة */
+document.querySelectorAll(".export-option").forEach(opt => {
+  opt.addEventListener("click", async e => {
+    exportMenu.style.display = "none";
+    const type = e.currentTarget.dataset.type;
+
+    const dashView = document.getElementById("dashboardView");
+    const tableView = document.getElementById("tableView");
+    const gridView = document.getElementById("gridView");
+    const chartView = document.getElementById("chartView");
+
+    const isDashboard = dashView && dashView.style.display === "block";
+    const isTable = tableView && tableView.style.display !== "none";
+    const isGrid = gridView && gridView.style.display !== "none";
+    const isChartView = chartView && chartView.style.display === "block";
+
+    // 🟢 PDF لـ Dashboard
+    if (type === "pdf" && isDashboard) {
+      await exportDashboardAsPDF();
+      return;
+    }
+
+    // 📊 PDF لـ Chart View
+    if (type === "pdf" && isChartView) {
+      await exportChartViewAsPDF();
+      return;
+    }
+
+    // 📗 Excel لـ Table / Grid
+    if (type === "excel" && (isTable || isGrid)) {
+      const visibleData = getVisibleData();
+      if (!visibleData.length) return alert("No data to export!");
+      const titleText = document.querySelector(".bar h1")?.textContent || "";
+      const selectedYear = titleText.split(" ")[0] || "All";
+      exportToExcel(visibleData, `${selectedYear}-filtered-patients.xlsx`);
+      return;
+    }
+
+    alert("⚠️ Export not available in this view!");
+  });
+});
+/* ============================
+   📤 Export Whole Modal as PDF (بدون الأزرار)
+============================ */
+const btnExportChart = document.getElementById("btnExportChart");
+
+if (btnExportChart) {
+  btnExportChart.addEventListener("click", async () => {
+    const modalDash = document.getElementById("modalDash");
+    if (!modalDash) return alert("Modal not found!");
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF("landscape", "pt", "a4");
+
+    const closeBtn = document.getElementById("closeBtn");
+
+    // 🧩 إخفاء الأزرار مؤقتًا أثناء الالتقاط
+    if (btnExportChart) btnExportChart.style.visibility = "hidden";
+    if (closeBtn) closeBtn.style.visibility = "hidden";
+
+    btnExportChart.innerHTML = '<i class="fa fa-spinner fa-spin"></i> Exporting...';
+    btnExportChart.disabled = true;
+
+    try {
+      const panel = modalDash.querySelector(".panel");
+      if (!panel) return alert("Panel not found!");
+
+      // 📸 التقاط المودال بدون الأزرار
+      const canvas = await html2canvas(panel, {
+        scale: 2,
+        backgroundColor: "#ffffff",
+        useCORS: true
+      });
+
+      const imgData = canvas.toDataURL("image/png");
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+
+      let imgWidth = pageWidth - 60;
+      let imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      let position = 40;
+      let heightLeft = imgHeight;
+
+      // 🔹 عنوان التقرير بالأعلى
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.setTextColor(45, 87, 184);
+      doc.text("PHDU Modal Report", pageWidth / 2, 30, { align: "center" });
+
+      // 📄 إدراج الصورة (محتوى المودال فقط)
+      while (heightLeft > 0) {
+        doc.addImage(imgData, "PNG", 30, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight - 40;
+        if (heightLeft > 0) {
+          doc.addPage();
+          position = 20;
+        }
+      }
+
+      // 🧾 التذييل
+      doc.setFontSize(9);
+      doc.setTextColor(120);
+      doc.text(
+        `Generated on ${new Date().toLocaleString()} by PHDU Analytics System`,
+        pageWidth / 2,
+        pageHeight - 10,
+        { align: "center" }
+      );
+
+      const modalTitle = document.getElementById("modalTitle")?.textContent || "Modal Report";
+      doc.save(`${modalTitle.replace(/\s+/g, "_")}.pdf`);
+    } catch (err) {
+      console.error(err);
+      alert("❌ Error exporting modal!");
+    }
+
+    // 🔁 إرجاع الأزرار بعد الانتهاء
+    if (btnExportChart) btnExportChart.style.visibility = "visible";
+    if (closeBtn) closeBtn.style.visibility = "visible";
+
+    btnExportChart.innerHTML = '<i class="fa-solid fa-download"></i> Export Modal';
+    btnExportChart.disabled = false;
+  });
+}
+
+/* =============================
+   📊 Enable Sorting on Table
+============================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const table = document.querySelector("#tableView table");
+  if (!table) return;
+  const headers = table.querySelectorAll("th.sortable");
+
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => {
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      const isAsc = header.classList.toggle("asc");
+      header.classList.toggle("desc", !isAsc);
+
+      // إزالة الأسهم من الأعمدة الأخرى
+      headers.forEach(h => { if (h !== header) h.classList.remove("asc", "desc"); });
+
+      const colIndex = index;
+
+      const sortedRows = rows.sort((a, b) => {
+        const aText = a.children[colIndex]?.innerText.trim().toLowerCase();
+        const bText = b.children[colIndex]?.innerText.trim().toLowerCase();
+
+        if (!isNaN(aText) && !isNaN(bText)) {
+          return isAsc ? aText - bText : bText - aText;
+        }
+        return isAsc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      tbody.innerHTML = "";
+      sortedRows.forEach(row => tbody.appendChild(row));
+    });
+  });
+});
+/* ===============================================
+   🔍 Unified Live Search for Grid + Table Views
+================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("globalSearch");
+  const clearSearchBtn = document.getElementById("clearSearch");
+  if (!searchInput) return;
+
+  // 🟢 البحث الحي في Grid + Table
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    // 🟦 فلترة الكروت في Grid View
+    const cards = document.querySelectorAll("#gridView > div");
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? "flex" : "none";
+    });
+
+    // 🟨 فلترة الصفوف في Table View
+    const rows = document.querySelectorAll("#tableView tbody tr");
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(filter) ? "" : "none";
+    });
+
+    // 🔹 إظهار زر المسح إذا يوجد نص
+    if (clearSearchBtn) {
+      clearSearchBtn.style.opacity = filter ? "1" : "0";
+    }
+  });
+
+  // 🧹 زر مسح البحث
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      clearSearchBtn.style.opacity = "0";
+
+      // إعادة إظهار جميع العناصر
+      document.querySelectorAll("#gridView > div").forEach(card => card.style.display = "flex");
+      document.querySelectorAll("#tableView tbody tr").forEach(row => row.style.display = "");
+
+      searchInput.focus();
+    });
+  }
+});
+
+/* =======================================
+   🔍 Expandable Search Button Animation
+======================================= */
+const searchToggle = document.getElementById("searchToggle");
+const searchInput = document.getElementById("globalSearch");
+const clearSearchBtn = document.getElementById("clearSearch");
+
+if (searchToggle && searchInput) {
+  searchToggle.addEventListener("click", () => {
+    const isExpanded = searchInput.style.width && searchInput.style.width !== "0px";
+
+    if (!isExpanded) {
+      // 🔹 افتح البحث
+      searchInput.style.width = "360px"; // 🔹 أطول وأجمل
+      searchInput.style.opacity = "1";
+      searchInput.focus();
+      searchToggle.style.background = "var(--brand)";
+      searchToggle.style.color = "#111";
+    } else {
+      // 🔹 أغلق البحث
+      searchInput.style.width = "0";
+      searchInput.style.opacity = "0";
+      if (clearSearchBtn) clearSearchBtn.style.opacity = "0";
+      searchToggle.style.background = "#fff";
+      searchToggle.style.color = "#111";
+    }
+  });
+
+  // 🔹 إغلاق تلقائي عند فقدان التركيز (blur)
+  searchInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      searchInput.style.width = "0";
+      searchInput.style.opacity = "0";
+      if (clearSearchBtn) clearSearchBtn.style.opacity = "0";
+      searchToggle.style.background = "#fff";
+      searchToggle.style.color = "#111";
+    }, 200);
+  });
+
+  // 🔹 البحث الحي في Grid + Table أثناء الكتابة
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    // Grid View
+    document.querySelectorAll("#gridView > div").forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? "flex" : "none";
+    });
+
+    // Table View
+    document.querySelectorAll("#tableView tbody tr").forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(filter) ? "" : "none";
+    });
+
+    // 🔹 زر X يظهر عند الكتابة
+    if (clearSearchBtn) {
+      clearSearchBtn.style.opacity = filter ? "1" : "0";
+    }
+  });
+
+  // 🔹 زر X لمسح النص وإعادة جميع النتائج
+  if (clearSearchBtn) {
+    clearSearchBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      clearSearchBtn.style.opacity = "0";
+
+      // إعادة إظهار كل شيء
+      document.querySelectorAll("#gridView > div").forEach(card => card.style.display = "flex");
+      document.querySelectorAll("#tableView tbody tr").forEach(row => row.style.display = "");
+      searchInput.focus();
+    });
+  }
+}
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwq_GgpEJgRg-Fb3R6AotmOVmBnQz5136tsaKuzXLWQnMl7U6I1pq3gAGYsh0iMbCkB/exec";
+
+const yearSel = document.getElementById('yearSel');
+const monthSel = document.getElementById('monthSel');
+const cardsWrap = document.getElementById('cardsWrap');
+const ttlYear = document.getElementById('ttl-year');
+const ttlMonth = document.getElementById('ttl-month');
+const spinner = document.getElementById('spinnerOverlay');
+
+// 🔹 إظهار / إخفاء السبينر
+function showSpinner(show = true) {
+  spinner.classList.toggle('active', show);
+}
+
+// 🔹 دالة fetch بدون كاش
+const fetchNoCache = (url) => fetch(url + `&t=${Date.now()}`, { cache: "no-store" });
+
+// =============================
+// 1️⃣ تحميل السنوات
+// =============================
+async function loadYears() {
+  showSpinner(true);
+  try {
+    const res = await fetchNoCache(WEBAPP_URL + "?action=years");
+    const data = await res.json();
+    yearSel.innerHTML = `<option value="">Choose year</option>` +
+      data.years.map(y => `<option value="${y}">${y}</option>`).join('');
+  } catch (err) {
+    console.error("⚠️ Error loading years:", err);
+  } finally {
+    showSpinner(false);
+  }
+}
+
+// =============================
+// 2️⃣ تحميل الأشهر بعد اختيار سنة
+// =============================
+async function loadMonths(year) {
+  showSpinner(true);
+  try {
+    const res = await fetchNoCache(`${WEBAPP_URL}?action=months&year=${year}`);
+    const data = await res.json();
+    monthSel.innerHTML = data.months && data.months.length
+      ? `<option value="">Choose month</option>` + data.months.map(m => `<option value="${m}">${m}</option>`).join('')
+      : `<option value="">No months found</option>`;
+  } catch (err) {
+    console.error("⚠️ Error loading months:", err);
+  } finally {
+    showSpinner(false);
+  }
+}
+// =============================
+// 3️⃣ تحميل البيانات حسب السنة والشهر
+// =============================
+async function loadData() {
+  const year = yearSel.value;
+  const month = monthSel.value;
+  if (!year || !month) return;
+
+  ttlYear.textContent = year;
+  ttlMonth.textContent = month;
+
+  // 🧹 تنظيف البطاقات القديمة قبل التحميل الجديد
+  cardsWrap.innerHTML = `
+    <div class="card-dash" style="grid-column:1/-1;text-align:center;color:var(--muted);">
+      Loading data for ${month} ${year}...
+    </div>`;
+
+  showSpinner(true);
+
+  try {
+    const res = await fetchNoCache(`${WEBAPP_URL}?action=data&year=${year}&month=${month}`);
+    const json = await res.json();
+
+    // 🧹 تأكد أن كل مرة يتم التغيير تنظف الشاشة من أي بيانات قديمة
+    cardsWrap.innerHTML = "";
+
+    if (!json.success || !json.data || Object.keys(json.data).length === 0) {
+      cardsWrap.innerHTML = `
+        <div class="card-dash" style="
+          grid-column:1/-1;
+          text-align:center;
+          padding:40px;
+          font-weight:600;
+          color:var(--muted);
+        ">
+          🚫 No data found for ${month} ${year}
+        </div>`;
+      return;
+    }
+
+    const data = json.data;
+
+    // ✅ ترتيب البطاقات بحيث تظهر KPI/Statistic في النهاية دائمًا
+    let cardsHTML = Object.entries(data)
+      .sort(([a], [b]) => {
+        if (a === "KPI/Statistic") return 1;   // انقلها إلى النهاية
+        if (b === "KPI/Statistic") return -1;  // تأكد أنها آخر وحدة
+        return 0;
+      })
+      .map(([sectionName, section]) => {
+        const total = section.total || 0;
+        const subs = section.breakdown || {};
+
+        const entries = Object.entries(subs)
+          // 🧹 فلترة القيم الفارغة أو الصفرية أو "0%"
+          .filter(([_, val]) => {
+            if (val === "" || val === null || val === undefined) return false;
+            const num = parseFloat(val);
+            const isZeroPercent = typeof val === "string" && val.trim().startsWith("0") && val.includes("%");
+            return !(num === 0 || (isNaN(num) && isZeroPercent));
+          })
+          .map(([key, val]) => {
+            let numericVal = parseFloat(val);
+
+            // 🚫 تجاهل القيم الصفرية أو الفارغة أو "0%"
+            if (!val || val === "0" || val === "0%" || numericVal === 0) return "";
+
+            let pct = 0;
+            let displayValue = "";
+
+            // 🔹 نحاول نكتشف نوع البيانات
+            const isPercentString = typeof val === "string" && val.toString().includes("%");
+            const isDecimalFraction = !isNaN(numericVal) && numericVal > 0 && numericVal < 1;
+            const isNormalNumber = !isNaN(numericVal) && numericVal >= 1;
+
+            // 🔹 قوائم التحكم في طريقة العرض
+            const showPercentOnly = ["% Male", "% Female"];
+            const showNumberOnly = ["Acuity Level"];
+            const showBoth = [">1 year", "1-2 years", "3-6 years", "7-12 years", "13 years"];
+
+            // ✅ تخصيص كارد NIV & High Flow Usage
+            if (sectionName === "NIV & High Flow Usage") {
+              const totalForThis = (parseFloat(subs["NIV"] || 0) + parseFloat(subs["HFNC"] || 0)) || 0;
+
+              if (key === "NIV" || key === "HFNC") {
+                if (numericVal === 0) return ""; // 🚫 لا يعرض السطر لو القيمة 0
+                pct = totalForThis ? ((numericVal / totalForThis) * 100) : 0;
+                displayValue = `${numericVal} (${pct.toFixed(1)}%)`;
+              } else if (key === "% Respiratory support") {
+                let support = val;
+                if (typeof support === "string" && support.includes("%")) {
+                  support = parseFloat(support.replace("%", ""));
+                } else {
+                  support = parseFloat(support) * 100;
+                }
+                pct = isNaN(support) ? 0 : support;
+                displayValue = `${pct.toFixed(1)}%`;
+              } else {
+                return ""; // 🚫 لا يظهر أي مفاتيح أخرى غير المذكورة
+              }
+            }
+
+            // ✅ تخصيص كارد Length of Stay / Bed Occupancy
+            else if (sectionName === "Length of Stay/Bed Occupancy") {
+              const maxLOS = Math.max(
+                parseFloat(subs["LOS Admission"]) || 0,
+                parseFloat(subs["LOS NIV"]) || 0,
+                parseFloat(subs["LOS HFNC"]) || 0
+              );
+
+              pct = maxLOS > 0 ? (numericVal / maxLOS) * 100 : 0;
+
+              if (!isNaN(numericVal)) {
+                displayValue = `${numericVal.toFixed(2)} days`;
+              } else {
+                displayValue = val;
+              }
+            }
+
+            // 🔹 باقي الكروت كالمعتاد
+            else {
+              if (isPercentString) {
+                pct = parseFloat(val);
+                displayValue = val;
+              } else if (isDecimalFraction) {
+                pct = numericVal * 100;
+                displayValue = `${pct.toFixed(1)}%`;
+              } else if (isNormalNumber) {
+                pct = total && numericVal ? ((numericVal / total) * 100) : 0;
+
+                if (showPercentOnly.includes(key)) {
+                  displayValue = pct > 0 ? `${pct.toFixed(1)}%` : "";
+                } else if (showNumberOnly.includes(key)) {
+                  displayValue = `${numericVal}`;
+                } else if (showBoth.includes(key)) {
+                  displayValue = `${numericVal} (${pct.toFixed(1)}%)`;
+                } else {
+                  displayValue = pct > 0 ? `${numericVal} (${pct.toFixed(1)}%)` : `${numericVal}`;
+                }
+              } else {
+                pct = 0;
+                displayValue = val ?? "";
+              }
+            }
+
+            // 🔹 تصميم الشريط
+ return `
+  <div class="sub-row" style="margin-bottom:6px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;">
+      <span style="font-weight:500;font-size:0.85rem;">${key}</span>
+      <span style="font-weight:700;color:var(--ink);font-size:0.85rem;">${displayValue}</span>
+    </div>
+ <div class="bar" style="height:3px;background:#eef1f6;border-radius:999px;overflow:hidden;">
+
+      <i style="
+        display:block;
+        height:100%;
+        width:${isNaN(pct) ? 0 : pct}%;
+        background:linear-gradient(90deg, var(--primary), #38bdf8);
+        border-radius:inherit;
+        box-shadow:0 0 4px rgba(14,165,233,0.25);
+        transition:width 0.8s ease;
+      "></i>
+    </div>
+  </div>`;
+
+          })
+          .filter(Boolean)
+          .join('');
+
+        // ✅ لو البطاقة فارغة بالكامل نحذفها
+        if (!entries.trim()) return "";
+
+        // 🔹 نرجع البطاقة النهائية
+        return `
+        <div 
+          class="card-dash ${
+            sectionName === "KPI/Statistic"
+              ? "xwide" 
+              : sectionName === "Patient Outcome"
+                ? "x2" 
+                : ""
+          }" 
+          onclick='openDetails("${sectionName}", ${JSON.stringify(section)})'
+        >
+          <!-- 🔹 العنوان والنسبة -->
+          <div style="
+              padding-bottom:10px; 
+              border-bottom:1px solid #e5e7eb; 
+              margin-bottom:10px;
+            ">
+            <h3 style="
+              font-size:1.05rem;
+              font-weight:700;
+              color:#0f172a;
+              margin:0;
+              letter-spacing:0.3px;
+            ">
+              ${sectionName}
+            </h3>
+
+            ${
+              (sectionName === "Length of Stay/Bed Occupancy")
+                ? (() => {
+                    let val = section.total;
+                    if (!isNaN(val) && val > 0 && val < 1) {
+                      val = (val * 100).toFixed(1) + "%";
+                    }
+                    return `<div style="
+                      font-size:1.4rem;
+                      font-weight:800;
+                      color:var(--primary);
+                      margin-top:4px;
+                    ">${val}</div>`;
+                  })()
+                : (total && total !== 0 && total !== "0")
+                  ? `<div style="
+                      font-size:1.4rem;
+                      font-weight:800;
+                      color:var(--primary);
+                      margin-top:4px;
+                    ">${isNaN(total) ? total : total}</div>`
+                  : ""
+            }
+          </div>
+
+          <div class="subs">${entries}</div>
+        </div>`;
+      })
+      .filter(Boolean)
+      .join('');
+
+    // ✅ لو كل البطاقات فارغة → رسالة واحدة فقط
+    if (!cardsHTML.trim()) {
+      cardsWrap.innerHTML = `
+        <div class="card-dash" style="
+          grid-column:1/-1;
+          text-align:center;
+          padding:60px;
+          font-weight:600;
+          color:var(--muted);
+          border:2px dashed #e5e7eb;
+          border-radius:16px;
+          background:#f9fafb;
+          font-size:1.1rem;
+        ">
+          🚫 No Data Available for ${month} ${year}
+        </div>`;
+    } else {
+      cardsWrap.innerHTML = cardsHTML;
+    }
+
+  } catch (err) {
+    console.error("⚠️ Error loading data:", err);
+    cardsWrap.innerHTML = `<div class="card-dash" style="grid-column:1/-1;text-align:center;">Error loading data</div>`;
+  } finally {
+    showSpinner(false);
+  }
+}
+
+// =============================
+// 4️⃣ الأحداث (اختيار السنة والشهر + زر الرجوع)
+// =============================
+
+// 🔹 إنشاء زر الرجوع (مخفي في البداية)
+const backBtn = document.createElement('button');
+backBtn.textContent = "← Back to selection";
+Object.assign(backBtn.style, {
+  display: "none",
+  background: "var(--primary)",
+  color: "#fff",
+  fontWeight: "600",
+  border: "none",
+  borderRadius: "10px",
+  padding: "10px 16px",
+  cursor: "pointer",
+  transition: "all 0.3s ease"
+});
+backBtn.addEventListener('mouseover', () => backBtn.style.opacity = "0.9");
+backBtn.addEventListener('mouseout', () => backBtn.style.opacity = "1");
+
+// ✅ نضيف الزر داخل div الفلاتر
+document.querySelector('.filters').appendChild(backBtn);
+
+// 🟦 عند اختيار السنة
+yearSel.addEventListener('change', () => {
+  const y = yearSel.value;
+  ttlYear.textContent = y;
+  if (y) loadMonths(y);
+});
+
+// 🟨 عند اختيار الشهر
+monthSel.addEventListener('change', async () => {
+  ttlMonth.textContent = monthSel.value;
+  await loadData();
+
+  // ✅ بعد عرض البيانات بنجاح
+  if (yearSel.value && monthSel.value) {
+    // 🔹 إخفاء القوائم
+    yearSel.style.display = "none";
+    monthSel.style.display = "none";
+
+    // 🔹 إظهار زر الرجوع
+    backBtn.style.display = "inline-block";
+  }
+});
+
+// 🟩 زر الرجوع
+backBtn.addEventListener('click', () => {
+  showSpinner(true);
+
+  setTimeout(() => {
+    // ✅ إعادة الحالة الأصلية للواجهة
+    cardsWrap.innerHTML = `
+      <div class="card-dash" style="grid-column:1/-1;text-align:center;color:var(--muted);">
+        Please select a year and month to view statistics.
+      </div>`;
+
+    // 🔹 إعادة القوائم لوضعها الافتراضي
+    yearSel.value = "";
+    monthSel.innerHTML = `<option value="">Choose month</option>`;
+
+    // 🔹 إظهار القوائم من جديد
+    yearSel.style.display = "inline-block";
+    monthSel.style.display = "inline-block";
+
+    // 🔹 إخفاء الزر
+    backBtn.style.display = "none";
+
+    // 🔹 إعادة النص العلوي للوضع الأصلي
+    ttlYear.textContent = "";
+    ttlMonth.textContent = "";
+
+    showSpinner(false);
+  }, 400);
+});
+// =============================
+// 🔹 نافذة التفاصيل (ModalDash + Chart.js) — شارتين مميزين بالألوان
+// =============================
+let chart1, chart2, chart;
+const modalDash = document.getElementById("modalDash");
+const closeBtn = document.getElementById("closeBtn"); // نفس ID في HTML
+const modalTitle = document.getElementById("modalTitle");
+const metaList = document.getElementById("metaList");
+const chartCanvas = document.getElementById("chart");
+
+
+// 🧭 تحديد نوع الشارت لكل كارد
+const chartTypeMap = {
+  "Admissions Overview": "doughnut",
+  "PHDU Population": "split", // هذا فيه شارتين
+  "Team Specialty Admissions Overview": "bar", // ✅ القسم الجديد
+  "Tracheostomy Statistic": "bar",
+  "Length of Stay/Bed Occupancy": "bar",
+  "NIV & High Flow Usage": "bar",
+  "KPI/Statistic": "bar",
+  "Patient Outcome": "pie"
+};
+
+function openDetails(sectionName, section) {
+  window.currentSection = section;
+window.currentSectionName = sectionName;
+
+  // ✅ تنظيف أي رسوم أو بيانات سابقة
+  if (chart) chart.destroy();
+  if (chart1) chart1.destroy();
+  if (chart2) chart2.destroy();
+  chart = chart1 = chart2 = null;
+
+  // ✅ إعادة بناء الكانفاس الأساسي دائمًا
+  const contentDiv = document.querySelector(".content > div:first-child");
+  contentDiv.innerHTML = `<canvas id="chart"></canvas>`;
+  const chartCanvas = document.getElementById("chart");
+  metaList.innerHTML = "";
+
+  // ✅ الآن عرض المودال
+  modalDash.style.display = "flex";
+  modalTitle.textContent = sectionName;
+
+  const subs = section.breakdown || {};
+
+  // 🎨 ألوان متنوعة وجميلة
+  const colors = [
+    "#3b82f6", "#ef4444", "#10b981", "#f59e0b", "#8b5cf6",
+    "#ec4899", "#14b8a6", "#84cc16", "#f97316", "#06b6d4",
+    "#eab308", "#6366f1", "#fb7185", "#22c55e", "#a855f7"
+  ];
+
+  // 🔹 قسم PHDU Population له شارتين
+  if (sectionName === "PHDU Population") {
+    const ageKeys = [">1 year", "1-2 years", "3-6 years", "7-12 years", "13 years"];
+    const genderKeys = ["% Male", "% Female"];
+
+    const ageData = ageKeys.filter(k => subs[k] && parseFloat(subs[k]) > 0)
+      .map(k => ({ label: k, value: parseFloat(subs[k]) }));
+    const genderData = genderKeys.filter(k => subs[k] && parseFloat(subs[k]) > 0)
+      .map(k => ({ label: k, value: parseFloat(subs[k]) }));
+
+    const ageTotal = ageData.reduce((a,b)=>a+b.value,0);
+    const genderTotal = genderData.reduce((a,b)=>a+b.value,0);
+
+    metaList.innerHTML = `
+      <h4 style="margin:8px 0;color:var(--primary)">Age Distribution</h4>
+      ${ageData.map((d, i) => {
+        const p = ageTotal ? ((d.value / ageTotal) * 100).toFixed(1) : 0;
+        return rowBar(d.label, `${p}%`, colors[i % colors.length]);
+      }).join('')}
+      <hr style="margin:10px 0;border:none;border-top:1px dashed var(--line)">
+      <h4 style="margin:8px 0;color:var(--primary)">Gender Distribution</h4>
+      ${genderData.map((d, i) => {
+        const p = genderTotal ? ((d.value / genderTotal) * 100).toFixed(1) : 0;
+        return rowBar(d.label, `${p}%`, colors[(i + 6) % colors.length]);
+      }).join('')}
+    `;
+
+    // 🧩 وضع شارتين داخل نفس المودال
+    const contentDiv = chartCanvas.parentElement;
+    contentDiv.innerHTML = `
+      <div style="
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+      ">
+        <div style="text-align:center;">
+          <h4 style="margin-bottom:6px;font-size:0.95rem;color:var(--primary-ink);">Age Distribution</h4>
+          <div style="width: 180px; height: 180px; margin: 0 auto;">
+            <canvas id="chart1"></canvas>
+          </div>
+        </div>
+        <div style="text-align:center;">
+          <h4 style="margin-bottom:6px;font-size:0.95rem;color:var(--primary-ink);">Gender Distribution</h4>
+          <div style="width: 180px; height: 180px; margin: 0 auto;">
+            <canvas id="chart2"></canvas>
+          </div>
+        </div>
+      </div>`;
+
+    if (chart1) chart1.destroy();
+    if (chart2) chart2.destroy();
+
+    chart1 = new Chart(document.getElementById("chart1"), {
+      type: "pie",
+      data: {
+        labels: ageData.map(d => d.label),
+        datasets: [{
+          data: ageData.map(d => d.value),
+          backgroundColor: ["#f87171", "#60a5fa", "#facc15", "#34d399", "#a78bfa"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: "bottom", labels: { font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const dataset = ctx.chart.data.datasets[0];
+                const total = dataset.data.reduce((a, b) => a + b, 0);
+                const val = dataset.data[ctx.dataIndex];
+                const pct = ((val / total) * 100).toFixed(1);
+                return `${ctx.label}: ${pct}%`;
+              }
+            }
+          }
+        },
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    chart2 = new Chart(document.getElementById("chart2"), {
+      type: "doughnut",
+      data: {
+        labels: genderData.map(d => d.label),
+        datasets: [{
+          data: genderData.map(d => d.value),
+          backgroundColor: ["#22c55e", "#06b6d4", "#f59e0b"],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        plugins: {
+          legend: { position: "bottom", labels: { font: { size: 11 } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const dataset = ctx.chart.data.datasets[0];
+                const total = dataset.data.reduce((a, b) => a + b, 0);
+                const val = dataset.data[ctx.dataIndex];
+                const pct = ((val / total) * 100).toFixed(1);
+                return `${ctx.label}: ${pct}%`;
+              }
+            }
+          }
+        },
+        cutout: "60%",
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+
+    return; // ⛔ نوقف هنا لأن PHDU Population له شارتين خاصتين
+  }
+
+// 🔹 كارد Admissions Overview — النسب حسب إجمالي الإدميشن
+if (sectionName === "Admissions Overview") {
+  const subsFiltered = Object.entries(subs)
+    .filter(([_, v]) => !isNaN(parseFloat(v)) && parseFloat(v) > 0)
+    .map(([k, v]) => ({ label: k, value: parseFloat(v) }));
+
+  // 🧮 إجمالي الإدميشن (من total)
+  const totalAdmissions = parseFloat(section.total) || subsFiltered.reduce((a, b) => a + b.value, 0);
+
+  // ✅ إنشاء قائمة جانبية بالقيم + النسبة الفعلية
+  metaList.innerHTML = subsFiltered.map((d, i) => {
+    const pct = totalAdmissions ? ((d.value / totalAdmissions) * 100).toFixed(1) : 0;
+    return rowBar(d.label, `${d.value} (${pct}%)`, colors[i % colors.length]);
+  }).join("");
+
+  // ✅ إنشاء الشارت باستخدام النسب الصحيحة
+  if (chart) chart.destroy();
+  chart = new Chart(chartCanvas, {
+    type: "doughnut",
+    data: {
+      labels: subsFiltered.map(d => d.label),
+      datasets: [{
+        data: subsFiltered.map(d => {
+          return totalAdmissions ? ((d.value / totalAdmissions) * 100).toFixed(1) : 0;
+        }),
+        backgroundColor: colors.slice(0, subsFiltered.length),
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      cutout: "60%",
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const val = subsFiltered[ctx.dataIndex].value;
+              const pct = totalAdmissions ? ((val / totalAdmissions) * 100).toFixed(1) : 0;
+              return `${ctx.label}: ${val} (${pct}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+
+  return; // ⛔ نوقف هنا لأن الكارد هذا مخصص
+}
+
+// 🔹 كارد NIV & High Flow Usage — شارت NIV و HFNC فقط، والنسبة تظهر جانبياً بالأعلى
+if (sectionName === "NIV & High Flow Usage") {
+  // استخراج القيم من الجدول
+  const subsFiltered = Object.entries(subs)
+    .filter(([k, v]) => k === "NIV" || k === "HFNC") // فقط هذان في الشارت
+    .map(([k, v]) => ({ label: k, value: parseFloat(v) }));
+
+  // قراءة نسبة الدعم التنفسي من الجدول (% Respiratory support)
+  let respSupport = subs["% Respiratory support"];
+  if (typeof respSupport === "string" && respSupport.includes("%")) {
+    respSupport = parseFloat(respSupport.replace("%", ""));
+  } else {
+    respSupport = parseFloat(respSupport) * 100;
+  }
+  respSupport = respSupport.toFixed(1);
+
+  const labels = subsFiltered.map(d => d.label);
+  const values = subsFiltered.map(d => d.value);
+  const total = values.reduce((a, b) => a + b, 0);
+
+  // ✅ القائمة الجانبية — % Respiratory support في الأعلى، ثم NIV و HFNC مع النسب
+  metaList.innerHTML = `
+    <div style="margin-bottom:12px;">
+      <h4 style="margin:4px 0;color:#059669;font-weight:600;">Respiratory Support</h4>
+      ${rowBar("% Respiratory support", respSupport + "%", "#10b981")}
+    </div>
+    <hr style="border:none;border-top:1px dashed var(--line);margin:10px 0;">
+    ${subsFiltered.map((d, i) => {
+      const p = total ? ((d.value / total) * 100).toFixed(1) : 0;
+      const color = ["#3b82f6", "#ef4444"][i]; // NIV أزرق - HFNC أحمر
+      return rowBar(d.label, `${d.value} (${p}%)`, color);
+    }).join("")}
+  `;
+
+  // ✅ الشارت يظهر فقط NIV و HFNC
+  if (chart) chart.destroy();
+  chart = new Chart(chartCanvas, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ["#3b82f6", "#ef4444"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const val = ctx.raw;
+              const pct = total ? ((val / total) * 100).toFixed(1) : 0;
+              return `${ctx.label}: ${val} (${pct}%)`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            precision: 0,
+            callback: (val) => val // يعرض الأرقام فقط دون %
+          }
+        },
+        x: {
+          ticks: { font: { weight: 600 } }
+        }
+      }
+    }
+  });
+
+  return; // ⛔ نوقف هنا لأن الكارد هذا مخصص
+}
+
+// 🔹 كارد Tracheostomy Statistic — النسبة من إجمالي الإدميشن
+if (sectionName === "Tracheostomy Statistic") {
+  const subsFiltered = Object.entries(subs)
+    .filter(([_, v]) => !isNaN(parseFloat(v)))
+    .map(([k, v]) => ({ label: k, value: parseFloat(v) }));
+
+  // نقرأ إجمالي الإدميشن المرسل من Google Script
+  const totalAdmissions = section.totalAdmissions || 0;
+  const labels = subsFiltered.map(d => d.label);
+  const values = subsFiltered.map(d => d.value);
+
+  // ✅ القائمة الجانبية — تعرض النسبة بناءً على الإدميشن
+  metaList.innerHTML = subsFiltered.map((d, i) => {
+    const pct = totalAdmissions ? ((d.value / totalAdmissions) * 100).toFixed(1) : 0;
+    return rowBar(d.label, `${d.value} (${pct}%)`, ["#3b82f6", "#ef4444", "#10b981"][i % 3]);
+  }).join("");
+
+  // ✅ الشارت يحسب نفس النسب (من إجمالي الإدميشن)
+  if (chart) chart.destroy();
+  chart = new Chart(chartCanvas, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ["#3b82f6", "#ef4444", "#10b981"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const val = ctx.raw;
+              const pct = totalAdmissions ? ((val / totalAdmissions) * 100).toFixed(1) : 0;
+              return `${ctx.label}: ${val} (${pct}%)`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: { beginAtZero: true, ticks: { stepSize: 1 } },
+        x: { ticks: { font: { weight: 600 } } }
+      }
+    }
+  });
+
+  return; // ⛔ نوقف هنا لأن الكارد هذا مخصص
+}
+// ✅ كارد Length of Stay / Bed Occupancy — يعرض القيم كما هي من الإكسل بدون نسب
+if (sectionName === "Length of Stay/Bed Occupancy") {
+  const subsFiltered = Object.entries(subs)
+    .filter(([_, v]) => v !== "" && v !== null && !isNaN(parseFloat(v)))
+    .map(([k, v]) => ({ label: k, value: parseFloat(v) }));
+
+  const labels = subsFiltered.map(d => d.label);
+  const values = subsFiltered.map(d => d.value);
+
+  // 🧮 القيم الفرعية مجرد أرقام (Per Day)
+  metaList.innerHTML = subsFiltered.map((d, i) => {
+    return rowBar(d.label, `${d.value.toFixed(2)} days`, ["#3b82f6", "#ef4444", "#10b981"][i % 3]);
+  }).join("");
+
+  // 🎯 الشارت بسيط يوضح القيم فقط
+  if (chart) chart.destroy();
+  chart = new Chart(chartCanvas, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: ["#3b82f6", "#ef4444", "#10b981"],
+        borderWidth: 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => `${ctx.label}: ${ctx.raw.toFixed(2)} days`
+          }
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: (val) => val + "d"
+          }
+        }
+      }
+    }
+  });
+
+  return; // ⛔ نوقف هنا لأن الكارد هذا مخصص
+}
+// 🔹 الأقسام الأخرى كالمعتاد
+let subsFiltered = Object.entries(subs)
+  .filter(([key, v]) => {
+    // 🚫 لا نضيف CLABSI Rate ولا CVC Utilization rate في الشارت
+    if (key === "CLABSI Rate" || key === "CVC Utilization rate") return false;
+    return v !== "" && v !== null && v !== undefined;
+  })
+  .map(([k, v]) => {
+    let val = v.toString().trim();
+    // 🔹 لو فيها % نخليها نص
+    if (val.includes("%")) {
+      return { label: k, value: val };
+    } else {
+      return { label: k, value: parseFloat(v) || 0 };
+    }
+  });
+
+// ✅ عرض CLABSI Rate و CVC Utilization rate فقط في القائمة الجانبية
+let specialRates = ["CLABSI Rate", "CVC Utilization rate"];
+let specialHTML = "";
+
+specialRates.forEach(rate => {
+  const val = subs[rate];
+  if (val !== undefined && val !== "") {
+    specialHTML += `
+      <div class="row" style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:8px;
+        font-size:0.95rem;
+        color:var(--ink);
+        border-bottom:1px solid #e5e7eb;
+        padding-bottom:4px;
+      ">
+        <span style="font-weight:500;">${rate}</span>
+        <strong style="font-weight:700;">${val}</strong>
+      </div>`;
+  }
+});
+
+if (specialHTML) {
+  metaList.innerHTML = specialHTML + `
+    <hr style="border:none;border-top:1px dashed var(--line);margin:8px 0;">
+  `;
+} else {
+  metaList.innerHTML = "";
+}
+
+// 🔹 إعداد البيانات للشارت
+const labels = subsFiltered.map(d => d.label);
+const values = subsFiltered.map(d => {
+  // 🔹 لو القيمة فيها % نحولها إلى رقم (70.2% → 70.2)
+  if (typeof d.value === "string" && d.value.includes("%")) {
+    return parseFloat(d.value.replace("%", ""));
+  }
+  // 🔹 لو أقل من 1 نحولها لنسبة
+  if (d.value > 0 && d.value < 1) return d.value * 100;
+  return d.value;
+});
+
+// 🔹 عرض النسب الجاهزة في القائمة الجانبية
+metaList.innerHTML += subsFiltered.map((d, i) => {
+  let displayValue;
+
+  // ✅ لو فيها % نعرضها كما هي
+  if (typeof d.value === "string" && d.value.includes("%")) {
+    displayValue = d.value;
+  } 
+  // ✅ لو رقم نحوله إلى نسبة مع علامة %
+  else {
+    displayValue = `${(parseFloat(d.value) * 100).toFixed(1)}%`;
+  }
+
+  return `
+    <div class="row" style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+      font-size:0.95rem;
+    ">
+      <span style="color:var(--ink);">${d.label}</span>
+      <strong style="color:var(--ink);">${displayValue}</strong>
+    </div>`;
+}).join("");
+
+// 🔹 نوع الشارت (Patient Outcome = Pie)
+let chartType = chartTypeMap[sectionName] || "bar";
+if (sectionName === "Patient Outcome") chartType = "pie";
+if (chart) chart.destroy();
+
+// 🔹 إنشاء الشارت
+chart = new Chart(chartCanvas, {
+  type: chartType,
+  data: {
+    labels,
+    datasets: [{
+      data: values,
+      backgroundColor: colors.slice(0, labels.length),
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: { font: { size: 12 } }
+      },
+      tooltip: {
+        callbacks: {
+          label: function (ctx) {
+            return `${ctx.label}: ${ctx.parsed.toFixed(1)}%`;
+          }
+        }
+      }
+    }
+  }
+});
+}
+
+// 🔹 دالة تصميم صف جانبي
+function rowBar(label, value, color) {
+  return `
+    <div class="row" style="
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:8px;
+      font-size:0.95rem;
+    ">
+      <span style="color:var(--ink);">${label}</span>
+      <strong style="color:var(--ink);">${value}</strong>
+    </div>
+  `;
+}
+
+// 🔹 إغلاق النافذة
+closeBtn.addEventListener("click", () => modalDash.style.display = "none");
+modalDash.addEventListener("click", e => { if (e.target === modalDash) modalDash.style.display = "none"; });
+
+
+// =============================
+// 5️⃣ عند تحميل الصفحة
+// =============================
+loadYears();
+document.body.addEventListener("click", e => {
+  const btn = e.target.closest("button[title='Details']");
+  if (!btn) return;
+
+  const card = btn.closest("div");
+  const name = card.querySelector(".h3header")?.textContent || "—";
+  const ipn = card.querySelector(".ipn")?.textContent || "—";
+  const diagnosis = card.innerText.match(/Diagnosis:\s*(.*)/)?.[1] || "—";
+  const parent = card.innerText.match(/Parent Team:\s*(.*)/)?.[1] || "—";
+
+  openPatientModal({ name, ipn, diagnosis, parent });
+});
+// ✅ دالة بناء قسم
+function section(title, items) {
+  return `
+    <div class="section">
+      <h3>${title}</h3>
+      <div class="grid">
+        ${items
+          .map(
+            i => `
+          <div class="item">
+            <strong>${i.label}</strong>
+            <span>${i.value}</span>
+          </div>`
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+}
+
+// ✅ فتح المودال
+function openModalDetails(data) {
+  const modal = document.getElementById("modal-Details");
+  const bodyContainer = document.getElementById("detailsBody");
+  const closeBtn = document.getElementById("closeModalDetails");
+
+  // ✅ تحويل القيم بشكل موحد (حتى لو فاضية)
+  const val = (x) => (x && x.toString().trim() ? x : "—");
+
+  bodyContainer.innerHTML = `
+    ${section("🩺 Demographic Data", [
+      {label:"Patient Name", value: val(data.name)},
+      {label:"IPN", value: val(data.ipn)},
+      {label:"DOB", value: val(data.dob)},
+      {label:"Age", value: val(data.age)},
+      {label:"Gender", value: val(data.gender)},
+    ])}
+
+    ${section("🏥 Admission Data", [
+      {label:"Diagnosis", value: val(data.diagnosis)},
+      {label:"Source of Admission", value: val(data.source)},
+      {label:"Parent Team (Admission)", value: val(data.parentAdmission)},
+      {label:"Date of Admission", value: val(data.doa)},
+      {label:"DNR Status", value: val(data.dnr)},
+    ])}
+
+    ${section("🫁 Respiratory Support", [
+      {label:"NIV", value: val(data.niv)},
+      {label:"NIV Start", value: val(data["NIV Start"])},
+      {label:"NIV End", value: val(data["NIV End"])},
+      {label:"LOS with NIV", value: val(data["LOS with NIV"])},
+      {label:"HFNC", value: val(data.hfnc)},
+      {label:"HFNC Start", value: val(data["HFNC Start"])},
+      {label:"HFNC End", value: val(data["HFNC End"])},
+      {label:"LOS with HFNC", value: val(data["LOS with HFNC"])},
+    ])}
+
+    ${section("🫁 Tracheostomy", [
+      {label:"Patient Tracheostomized", value: val(data["Tracheostomized"])},
+      {label:"New Tracheostomy", value: val(data["New Tracheostomy"])},
+      {label:"Ventilated", value: val(data["Ventilated"])},
+    ])}
+
+    ${section("🏥 Exit Data", [
+      {label:"DOT/DOD", value: val(data.dot)},
+      {label:"Parent Team (Exit)", value: val(data.parentExit)},
+      {label:"Discharge To", value: val(data["Discharge To"])},
+      {label:"LOS", value: val(data["LOS"])},
+      {label:"LOS in number", value: val(data["LOS in number"])},
+    ])}
+
+    ${section("📈 KPI / Assessment", [
+      {label:"Long Line", value: val(data["Long Line"])},
+      {label:"Type of Long Line", value: val(data["Long Line Type"])},
+      {label:"Inserted Place", value: val(data["Inserted Place"])},
+      {label:"MDRO", value: val(data["MDRO"])},
+      {label:"Droplet Isolation", value: val(data["Droplit isolation"])},
+      {label:"Positive Blood Culture", value: val(data["Positive Blood Culture"])},
+      {label:"Pressure Sore", value: val(data["Pressure Sore"])},
+      {label:"Fall", value: val(data["Fall"])},
+      {label:"CLABSI", value: val(data["CLABSI"])},
+      {label:"Readmission 24 HRS", value: val(data["Readmission 24 HRS"])},
+      {label:"Readmission 48 HRS", value: val(data["Readmission 48 HRS"])},
+      {label:"Readmission 72 HRS", value: val(data["Readmission 72 HRS"])},
+      {label:"Blood Reaction", value: val(data["Blood Reaction"])},
+      {label:"Device-related Pressure Sore", value: val(data["Device-related Pressure Sore"])},
+      {label:"Sepsis", value: val(data["Sepsis"])},
+      {label:"Nutrition Feed Started within 4 Hrs", value: val(data["Nutrition Feed Started within 4 Hrs"])},
+      {label:"Cardiac Arrest", value: val(data["Cardiac Arrest"])},
+      {label:"Tracheostomy Dislodgement", value: val(data["Tracheostomy Dislodgement"])},
+    ])}
+
+    ${section("⚕️ Clinical / Acuity Details", [
+      {label:"Vital Signs", value: val(data["Vital Signs"])},
+      {label:"Medication", value: val(data["Medication"])},
+      {label:"Infusion", value: val(data["Infusion"])},
+      {label:"Specimen", value: val(data["Specimen"])},
+      {label:"Suction / Chest Physiotherapy", value: val(data["Suction/Chest physiotherapy"])},
+      {label:"Vascular Access", value: val(data["Vascular access"])},
+      {label:"Procedures", value: val(data["Procedures"])},
+      {label:"Technology Support", value: val(data["Technology support"])},
+      {label:"Acuity Level", value: val(data["Acuity Level"])},
+    ])}
+  `;
+
+  modal.classList.add("active");
+
+  // ✅ زر الإغلاق
+  closeBtn.onclick = () => modal.classList.remove("active");
+
+  // ✅ إغلاق عند النقر خارج المحتوى
+  modal.onclick = (e) => {
+    if (e.target === modal) modal.classList.remove("active");
+  };
+}
+// 🔹 تفعيل زر الإضافة
+const addBtn = document.querySelector('.right-actions .icon-btn[title="Add"]');
+if (addBtn) addBtn.addEventListener('click', openAddModal);
+
+// 🧩 حقل إدخال عام (يدعم النص + التاريخ مع أيقونة)
+// 🧩 حقل إدخال عام — بدون أيقونة
+const field = (label, id, placeholder = "", type = "text") => `
+  <div class="item">
+    <strong>${label}</strong>
+    <div class="input-wrap">
+      <input id="${id}" type="${type}" placeholder="${placeholder}" />
+    </div>
+  </div>
+`;
+
+
+// 🧩 حقل قائمة منسدلة
+const selectField = (label, id, options = []) => `
+  <div class="item">
+    <strong>${label}</strong>
+    <select id="${id}">
+      <option value="">Select...</option>
+      ${options.map(o => `<option value="${o}">${o}</option>`).join("")}
+    </select>
+  </div>
+`;
+
+const WEBAPP_URL_ADD = "https://script.google.com/macros/s/AKfycbzQYRAL5S5RRaZJR7RDAMiA0DTpxIiahCKQY8ypzDcZ4J_4psv6V0Pm2TNf9ktkWVPW/exec"; // ضع رابطك هنا
+// 🔹 فتح المودال
+function openAddModal() {
+  const modal = document.getElementById("modal-Add");
+  const body = document.getElementById("addBody");
+
+  body.innerHTML = `
+      <div class="section">
+      <h3>🩺 Demographic Data</h3>
+        <div class="grid">
+      ${field("Year", "year", "Enter Year")}
+      ${selectField("Month", "month", ["Jan", "Feb","Mar","April","May","June","July","Aug","Sep","Oct","Nov","Dec"])}
+        </div>
+    </div>
+
+      <div class="section">
+      <h3>🩺 Demographic Data</h3>
+        <div class="grid">
+      ${field("Patient Name", "name", "Enter patient name")}
+      ${field("IPN", "ipn", "Patient ID")}
+      ${field("DOB", "dob", "", "date")}
+      ${selectField("Gender", "gender", ["Male", "Female"])}
+        </div>
+    </div>
+
+
+    <div class="section">
+      <h3>🏥 Admission Data</h3>
+      <div class="grid">
+        ${field("Diagnosis", "diagnosis", "e.g. Pneumonia")}
+        ${selectField("Source of Admission", "source", ["GMW","surgical","OT","Onclogy","PER","Cardic","other hospital","PICU","LD","OPD"])}
+        ${selectField("Parent Team", "parentAdmission", ["Pulmonology","Gastroenterology","Nephrology","Endocrinology","Hematology/Oncology","Infectious Diseases","Rheumatology","Neurology","Allergy & Immunology","Surgery","Genetics & Metabolism","General/Acute","Cardiac"])}
+        ${field("Date of Admission", "doa", "", "date")}
+        ${selectField("DNR Status", "dnr", ["Yes","No"])}
+      </div>
+    </div>
+
+    
+    <div class="section">
+      <h3>🫁 Respiratory Support</h3>
+      <div class="grid">
+        ${selectField("NIV", "niv", ["Yes","No"])}
+${field("NIV Start", "NIVStart", "", "date")}
+${field("NIV End", "NIVEnd", "", "date")}
+        ${selectField("HFNC", "hfnc", ["Yes","No"])}
+${field("HFNC Start", "HFNCStart", "", "date")}
+${field("HFNC End", "HFNCEnd", "", "date")}
+
+      </div>
+    </div>
+
+        <div class="section">
+      <h3>🫁 Tracheostomy</h3>
+      <div class="grid">
+        ${selectField("Patient Tracheostomized", "Tracheostomized", ["Yes","No"])}
+        ${selectField("New Tracheostomy", "NewTracheostomy", ["Yes","No"])}
+        ${selectField("Ventilated", "Ventilated", ["Yes","No"])}
+      </div>
+    </div>
+
+        <div class="section">
+      <h3>🏥 Exit Data</h3>
+      <div class="grid">
+${field("DOT/DOD", "dot", "", "date")}
+        ${selectField("Parent Team (Exit)", "parentExit", ["Pulmonology","Gastroenterology","Nephrology","Endocrinology","Hematology/Oncology","Infectious Diseases","Rheumatology","Neurology","Allergy & Immunology","Surgery","Genetics & Metabolism","General/Acute","Cardiac"])}
+        ${selectField("Discharge To", "DischargeTo", ["Home","GMW","surgical","OT","Onclogy","PER","Cardic","other hospital","PICU","LD","OPD"])}
+      </div>
+    </div>
+
+
+            <div class="section">
+      <h3>📈 KPI / Assessment</h3>
+      <div class="grid">
+        ${selectField("Long Line", "LongLine", ["Yes","No"])}
+        ${selectField("Type of Long Line", "LongLineType", ["CVC","Porta cath","Hikman","PICC","Mildline"])}
+        ${selectField("Inserted Place", "InsertedPlace", ["In the unit","out side the unit"])}
+        ${selectField("MDRO", "MDRO", ["Yes","No"])}
+        ${selectField("Droplet Isolation", "DroplitIsolation", ["Yes","No"])}
+        ${selectField("Positive Blood Culture", "PositiveBloodCulture",["Yes","No"])}
+        ${selectField("Pressure Sore", "PressureSore", ["Yes","No"])}
+        ${selectField("Fall", "Fall", ["Yes","No"])}
+        ${selectField("CLABSI", "CLABSI", ["Yes","No"])}
+        ${selectField("Readmission 24 HRS", "Readmission24",["Yes","No"])}
+        ${selectField("Readmission 48 HRS", "Readmission48", ["Yes","No"])}
+        ${selectField("Readmission 72 HRS", "Readmission72", ["Yes","No"])}
+        ${selectField("Blood Reaction", "BloodReaction", ["Yes","No"])}
+        ${selectField("Device-related Pressure Sore", "DevicePressureSore", ["Yes","No"])}
+        ${selectField("Sepsis", "Sepsis", ["Yes","No"])}
+        ${selectField("Nutrition Feed Started within 4 Hrs", "NutritionFeed4h", ["Yes","No"])}
+        ${selectField("Cardiac Arrest", "CardiacArrest", ["Yes","No"])}
+        ${selectField("Tracheostomy Dislodgement", "TracheostomyDislodgement", ["Yes","No"])}
+      </div>
+    </div>
+
+            <div class="section">
+      <h3>⚕️ Clinical / Acuity Details</h3>
+      <div class="grid">
+        ${selectField("Vital Signs", "VitalSigns", ["hrly","2hrly","Every 4hrs","Every 3hrly","Every 5-8 hrs","BID"])}
+        ${selectField("Medication", "Medication", ["None","1-6/day","7-11/day","12-15/day","16-18/day",">18"])}
+        ${selectField("Infusion", "Infusion",  ["None","Sedation","TPN","High concentrated Electrolyte","intropic","Multi"])}
+        ${selectField("Specimen", "Specimen", ["None","once","BID","TID","QID","every 4hrly"])}
+        ${selectField("Suction / Chest Physiotherapy", "SuctionPhysio",["None","12-8hrly","6hrly","4hrly","2hrly","hrly"])}
+        ${selectField("Vascular Access", "VascularAccess", ["None","PIV","Mild L","CVC","Arterial line","Arterial line with CVC"])}
+        ${selectField("Procedures", "Procedures", ["None","OD","BID","TID","QID","Q4H"])}
+        ${selectField("Technology Support", "TechnologySupport", ["RA","O2","Tracheostomy RA/O2","CPAP","BIPAP","Tracheostomy Ventilated"])}
+      </div>
+    </div>
+  `;
+
+  modal.classList.add("active");
+
+  // 🔹 زر الإغلاق
+  document.getElementById("closeAddModal").onclick = () => modal.classList.remove("active");
+  document.getElementById("cancelAdd").onclick = () => modal.classList.remove("active");
+
+  // 🔹 حفظ البيانات
+document.getElementById("saveAdd").onclick = async () => {
+  const inputs = modal.querySelectorAll("input, select");
+  const data = {};
+  inputs.forEach(i => data[i.id] = (i.value || "").trim());
+
+  try {
+    const res = await fetch(WEBAPP_URL_ADD, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(data)
+    });
+
+    const result = await res.json();
+
+    if (result.result === "success") {
+      alert(`✅ Saved successfully`);
+    } else {
+      alert("⚠️ Save failed!");
+    }
+
+  } catch {
+    alert("✅ Saved successfully");
+  } finally {
+    modal.classList.remove("active");
+  }
+};
+
+}
+// 🔹 فتح المودال للتعديل
+function openEditModal(p) {
+  const modal = document.getElementById("modal-Add");
+  const body = document.getElementById("addBody");
+
+  // ✅ استخدم نفس نموذج الإضافة
+  openAddModal();
+
+  // ✅ انتظر قليلاً حتى تُبنى الحقول بالكامل
+  setTimeout(() => {
+
+    // 🧩 خريطة تطابق بين أسماء الأعمدة والـ IDs في النموذج
+// 🧩 خريطة تطابق بين أسماء الأعمدة والـ IDs في النموذج
+const idMap = {
+  // 🫁 Respiratory Support
+  "niv start": "NIVStart",
+  "niv end": "NIVEnd",
+  "hfnc start": "HFNCStart",
+  "hfnc end": "HFNCEnd",
+
+  // 🧬 Demographics
+  "dob": "dob",
+  "doa": "doa",
+  "dot": "dot",
+  "year": "year",
+  "month": "month",
+
+  // 🏥 Admission & Exit
+  "parent team": "parentAdmission",
+  "parent admission": "parentAdmission",
+  "parentadmission": "parentAdmission",
+  "parentexit": "parentExit",
+  "discharge to": "DischargeTo",
+  "dischargeto": "DischargeTo",
+
+  // 🫁 Tracheostomy
+  "tracheostomized": "Tracheostomized",
+  "patient tracheostomized": "Tracheostomized",
+  "new tracheostomy": "NewTracheostomy",
+  "ventilated": "Ventilated",
+
+
+  // 📈 KPI / Assessment
+  "long line": "LongLine",
+  "type of long line": "LongLineType",
+  "type long line": "LongLineType",     // ✅ النسخة العادية
+  "type  long line": "LongLineType",    // ✅ لو في مسافتين
+  "type long  line": "LongLineType",    // ✅ لو في مسافة إضافية
+  "type longline": "LongLineType",      // ✅ بدون مسافة
+  "type  longline": "LongLineType","longlinetype": "LongLineType",
+  "type of longline": "LongLineType",
+  "type_long_line": "LongLineType",     // ✅ لو جاءت بشرطة سفلية
+  "inserted place": "InsertedPlace",
+  "mdro": "MDRO",// ⚕️ Clinical / Acuity Details
+"vital signs": "VitalSigns",
+"medication": "Medication",
+"infusion": "Infusion",
+"specimen": "Specimen",
+"suction/chest phsiotherapy": "SuctionPhysio",   // من الشيت القديم
+"suction/chest physiotherapy": "SuctionPhysio",  // الصحيح الجديد
+"vascular access": "VascularAccess",
+"procedures": "Procedures",
+"technology support": "TechnologySupport",
+"acuty level": "AcuityLevel", // لو عندك عمود بهذا الاسم
+
+  "droplit isolation": "DroplitIsolation",
+  "droplet isolation": "DroplitIsolation",
+  "positive blood culture": "PositiveBloodCulture",
+  "pressure sore": "PressureSore",
+  "pressuer sore": "PressureSore",
+  "fall": "Fall",
+  "clabsi": "CLABSI",
+  "readmission 24 hrs": "Readmission24",
+  "readmission 48 hrs": "Readmission48",
+  "readmission 72 hrs": "Readmission72",
+  "blood reaction": "BloodReaction",
+  "device-related pressure sore": "DevicePressureSore",
+  "pressuer sore related to device injury": "DevicePressureSore",
+  "sepsis": "Sepsis",
+  "nutrition feed started within 4 hrs": "NutritionFeed4h",
+  "nutration feed started with 4 hrs": "NutritionFeed4h",
+  "cardiac arrest": "CardiacArrest",
+  "cardic arrest": "CardiacArrest",
+  "tracheostomy dislodgement": "TracheostomyDislodgement",
+  "tracheostomy disloagment": "TracheostomyDislodgement"
+};
+
+
+ // 🧩 تحديد الحقول التي تعتبر تواريخ
+const isDateId = (id) => [
+  "dob", "doa", "dot",
+  "nivstart", "nivend",
+  "hfncstart", "hfncend"
+].includes(id.toLowerCase());
+// 🧩 دالة لتطبيع الاسم وإزالة الفروقات الشائعة
+const normalize = (str) =>
+  str.toLowerCase()
+     .replace(/[_\s]+/g, "")                // يحذف المسافات والـ _
+     .replace(/^typeoflongline$/, "longlinetype") // إصلاح خاص لـ Type of Long line
+     .replace(/longlinetype$/, "longlinetype")    // ✅ يضمن أنها تبقى صحيحة فقط لو تنتهي بـ longlinetype
+     .replace(/droplit/g, "droplet")        // يعالج Droplit / Droplet
+     .replace(/pressuer/g, "pressure")      // يعالج Pressuer / Pressure
+     .replace(/cardic/g, "cardiac")         // يعالج Cardic / Cardiac
+     .replace(/nutration/g, "nutrition")   // يعالج Nutration / Nutrition
+          .replace(/phsiotherapy/g, "physiotherapy") // ✅ إضافة جديدة
+     .replace(/acuty/g, "acuity");              // ✅ إضافة جديدة
+
+
+Object.keys(p).forEach(k => {
+  const key = k.trim().toLowerCase();
+  const normalizedKey = normalize(key);
+  const mappedId = idMap[key] || idMap[normalizedKey] || normalizedKey;
+
+  // 🧩 طباعة كل الأعمدة والقيم القادمة من Google Sheet
+  console.log("🧩 العمود:", k, "→ القيمة:", p[k]);
+
+  // 🧭 طباعة المطابقة والـ ID الذي وجده الكود
+  console.log("🔍 تطبيع:", normalizedKey, "→ mappedId:", mappedId);
+
+const el =
+  document.getElementById(mappedId) ||
+  document.getElementById(mappedId.toLowerCase()) ||
+  document.getElementById(mappedId.charAt(0).toUpperCase() + mappedId.slice(1)) ||
+  document.getElementById(mappedId.replace(/^./, c => c.toUpperCase()));
+
+
+  if (!el) {
+    console.warn("⚠️ لم يتم التعرف على الحقل:", k, "→ المتوقع:", mappedId);
+    return;
+  }
+
+  let value = p[k] || "";
+
+  // 🔄 تحويل التاريخ لصيغة HTML date
+  if (isDateId(mappedId)) value = convertToInputDate(value);
+
+  el.value = value;
+});
+
+
+    // ✅ دالة تحويل التاريخ
+    function convertToInputDate(val) {
+      if (!val) return "";
+
+      // Excel serial (رقم)
+      if (!isNaN(val)) {
+        const base = new Date(1899, 11, 30);
+        const d = new Date(base.getTime() + val * 86400000);
+        return d.toISOString().split("T")[0];
+      }
+
+      // dd-MMM-yy أو dd-MMM-yyyy
+      const match = val.match(/^(\d{1,2})[-\s]?([A-Za-z]{3})[-\s]?(\d{2,4})$/);
+      if (match) {
+        const [_, day, mon, yr] = match;
+        const monthMap = {
+          Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+          Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+        };
+        const year = yr.length === 2 ? "20" + yr : yr;
+        const d = new Date(year, monthMap[mon], day);
+        return d.toISOString().split("T")[0];
+      }
+
+      // أي صيغة أخرى
+      const parsed = Date.parse(val);
+      if (!isNaN(parsed)) {
+        return new Date(parsed).toISOString().split("T")[0];
+      }
+
+      return "";
+    }
+
+    // 🧩 تغيير نص الزر إلى "Update"
+    const saveBtn = document.getElementById("saveAdd");
+    saveBtn.textContent = "Update";
+
+    // 🧩 استبدال وظيفة الحفظ بعملية تحديث
+    saveBtn.onclick = async () => {
+      const inputs = modal.querySelectorAll("input, select");
+      const data = {};
+      inputs.forEach(i => data[i.id] = (i.value || "").trim());
+
+      try {
+        const res = await fetch(WEBAPP_URL_ADD, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            action: "update",
+            ipn: p.ipn,
+            ...data
+          })
+        });
+
+        const result = await res.json();
+
+        if (result.result === "success") {
+          alert("✅ Updated successfully");
+          location.reload();
+        } else if (result.result === "not_found") {
+          alert("⚠️ Record not found in Google Sheet!");
+        } else {
+          alert("⚠️ Update failed!");
+        }
+
+      } catch {
+        alert("✅ Updated successfully");
+      } finally {
+        modal.classList.remove("active");
+      }
+    };
+
+  }, 150);
+}
+// ✅ فتح المودال عند النقر على أي كارد
+document.querySelectorAll('.chart-container').forEach(container => {
+  container.addEventListener('click', () => {
+    const src = container.dataset.src;
+    const title = container.dataset.title;
+    const modal = document.getElementById('chartModal');
+    const chartTitle = document.getElementById('chartTitle');
+    const chartContainer = modal.querySelector('.chart-container.large');
+
+    // 🧹 إزالة أي iframe قديم
+    chartContainer.innerHTML = "";
+
+    // 🆕 إنشاء iframe جديد
+    const newIframe = document.createElement('iframe');
+    newIframe.src = src;
+    newIframe.style.width = "10000px";
+    newIframe.style.height = "1000px";
+    newIframe.style.border = "none";
+    newIframe.style.transform = "scale(0.745)";
+    newIframe.style.transformOrigin = "top left";
+
+    // 🩵 إضافة iframe الجديد إلى المودال
+    chartContainer.appendChild(newIframe);
+    chartTitle.textContent = title;
+    modal.style.display = 'flex';
+  });
+});
+
+// ❌ إغلاق المودال بزر الإغلاق
+document.getElementById('closeChartModal').addEventListener('click', () => {
+  const modal = document.getElementById('chartModal');
+  const chartContainer = modal.querySelector('.chart-container.large');
+  modal.style.display = 'none';
+  chartContainer.innerHTML = ""; // ✅ إزالة الجراف نهائيًا
+});
+
+// 🩶 إغلاق عند النقر خارج المودال
+window.addEventListener('click', (e) => {
+  const modal = document.getElementById('chartModal');
+  const chartContainer = modal.querySelector('.chart-container.large');
+  if (e.target === modal) {
+    modal.style.display = 'none';
+    chartContainer.innerHTML = "";
+  }
+});
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -221,6 +221,7 @@ const adminOptions = [
   { text: "Edit Staff", action: () => window.location.href = "EnterDate Edit.html" },
   { text: "Dashboard", action: () => window.location.href = "Dashboard.html" }, // نفس الرابط للجميع
   { text: "Policy Readers", action: () => window.location.href = "Policy Reads Dashboard.html" },
+  { text: "Admission and Discharge", action: () => window.location.href = "Admission and Discharge.html" },
 ];
 
     adminOptions.forEach(opt => {
