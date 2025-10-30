@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PHDU Patient Details Modal</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" /><!-- مكتبة Excel -->
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- مكتبة PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<style>
+     :root{
+      --bg:#eaeef4;            /* page bg */
+      --ink:#111827;           /* main text */
+      --muted:#6b7280;         /* muted text */
+      --card:#ffffff;          /* surfaces */
+      --chip:#f3f4f6;          /* input chip */
+      --chip-ink:#111827;      
+      --line:#e5e7eb;          /* borders */
+      --soft:#f8fafc;          /* inner soft */
+      --accent:#111111;        /* dark pill */
+      --brand:#f6c94c;         /* warm accent (yellow) */
+      --brand-soft:#fff6ce;    /* pale yellow */
+      --good:#10b981;
+      --warn:#f59e0b;
+      --bad:#ef4444;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial; background:var(--bg); color:var(--ink)}
+
+    /* ===== background blobs ===== */
+    .bg-wrap{position:fixed; inset:0; pointer-events:none; z-index:-1}
+    .blob{position:absolute; filter:blur(60px); opacity:.6}
+    .blob.one{width:520px; height:520px; left:-160px; top:-120px; background:radial-gradient(circle at 30% 30%, #ffe89a, #ffd66b 40%, rgba(255,214,107,0) 60%)}
+    .blob.two{width:520px; height:520px; right:-160px; bottom:-120px; background:radial-gradient(circle at 70% 70%, #ffd66b, #ffe89a 40%, rgba(255,214,107,0) 60%)}
+
+    /* ===== shell ===== */
+    .shell{max-width:1600px; margin:32px auto; padding:16px}
+
+    .app{background:linear-gradient(135deg, rgba(255,255,255,.85), rgba(255,255,255,.7)); border:1px solid var(--line); box-shadow:var(--shadow); border-radius:28px; overflow:hidden}
+
+    header.appbar{display:flex; align-items:center; justify-content:space-between; padding:18px 22px; background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.55)); backdrop-filter: blur(10px)}
+    .brand{display:flex; align-items:center; gap:10px}
+    .brand-badge{background:#111; color:#fff; border-radius:18px; padding:6px 10px; font-weight:700; font-size:.9rem}
+    .nav{display:flex; gap:8px; align-items:center}
+    .nav a{padding:8px 12px; border-radius:999px; text-decoration:none; color:#000; opacity:.7}
+    .nav a.active{background:#111; color:#fff; opacity:1}
+
+    .tray{display:flex; align-items:center; gap:10px}
+    .icon-btn{height:38px; width:38px; display:grid; place-items:center; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.05);}
+
+    /* ===== title + stats row ===== */
+    .bar{ display:flex; flex-wrap:wrap; gap:16px; align-items:center}
+    .bar h1{flex:1 1 auto; margin-left: 2rem;}
+
+    .meters{display:flex; gap:14px; align-items:center}
+    .meter{background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:8px 12px; display:flex; align-items:center; gap:10px; min-width:190px}
+    .meter .label{font-size:.86rem; color:var(--muted)}
+    .progress{flex:1; height:12px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:2px}
+    .progress > span{display:block; height:100%; border-radius:999px; background:linear-gradient(90deg, #ffe8a1, #ffd35a)}
+    .pct{font-weight:700; font-size:.9rem}
+
+    .toggles{display:flex; gap:10px}
+    .seg{background:var(--soft); border:1px solid var(--line); border-radius:999px; padding:4px; display:flex; align-items:center; gap:4px}
+    .seg button{border:0; background:transparent; padding:6px 10px; border-radius:999px; font-weight:600; color:#374151}
+    .seg button.active{background:#111; color:#fff}
+
+    /* ===== toolbar ===== */
+    .toolbar{padding:10px 22px 18px; display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pill{background:#fff; border:1px dashed var(--line); color:#374151; border-radius:999px; padding:10px 12px; display:flex; align-items:center; gap:8px}
+    .pill .fa{opacity:.7}
+    .spacer{flex:1}
+    .btn{background:#fff; border:1px solid var(--line); padding:9px 12px; border-radius:12px; display:flex; align-items:center; gap:8px; font-weight:600}
+    .btn.ghost{background:transparent}
+    .btn.brand{background:linear-gradient(180deg, #fff7d6, #ffe99f); border-color:#f7de92}
+
+    .search{flex:1 1 360px; display:flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:10px 12px}
+    .search input{border:0; outline:0; flex:1; font-size:.98rem; background:transparent}
+
+    /* ===== table card ===== */
+    .card{margin:0 22px 22px; padding:12px; background:linear-gradient(180deg, rgba(255,255,255,.9), rgba(255,255,255,.8)); border:1px solid var(--line); border-radius:24px; box-shadow:var(--shadow)}
+
+    table{width:100%; border-collapse:separate; border-spacing:0 10px}
+    thead th{font-size:.82rem; color:#6b7280; font-weight:600; text-align:left; padding:10px 14px}
+    tbody td{background:#fff; border-top:1px solid var(--line); border-bottom:1px solid var(--line); padding:14px}
+    tbody tr{transition:transform .06s ease}
+    tbody tr:hover{transform:translateY(-1px)}
+    tbody tr td:first-child{border-left:1px solid var(--line); border-radius:14px 0 0 14px}
+    tbody tr td:last-child{border-right:1px solid var(--line); border-radius:0 14px 14px 0}
+
+    .row-highlight{background:linear-gradient(90deg, #fff7d4, #fff);}
+
+    .avatar{display:flex; align-items:center; gap:10px}
+    .avatar .ph{height:32px; width:32px; border-radius:50%; display:grid; place-items:center; color:#fff; font-weight:700}
+
+    .flag{font-size:18px;}
+
+    .chip{display:inline-flex; align-items:center; gap:6px; padding:6px 10px; border-radius:999px; font-size:.82rem; border:1px solid var(--line); background:var(--chip); color:#374151}
+    .chip.good{border-color:#bbf7d0; background:#ecfdf5; color:#065f46}
+    .chip.warn{border-color:#fde68a; background:#fffbeb; color:#92400e}
+    .chip.bad{border-color:#fecaca; background:#fef2f2; color:#991b1b}
+
+    .status-dot{display:inline-block; width:8px; height:8px; border-radius:50%}
+
+    .btn-mini{border:1px solid var(--line); background:#fff; padding:8px 12px; border-radius:10px; font-weight:600}
+    .btn-mini.brand{background:linear-gradient(180deg,#fff7d6,#ffe99f); border-color:#f7de92}
+
+    /* dropdowns */
+    .menu{position:relative}
+    .menu-list{position:absolute; top:calc(100% + 6px); left:0; min-width:220px; background:#fff; border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow); padding:8px; display:none; z-index:5}
+    .menu.open .menu-list{display:block}
+    .menu-list .row{display:flex; align-items:center; justify-content:space-between; padding:8px 10px; border-radius:8px; cursor:pointer}
+    .menu-list .row:hover{background:#f3f4f6}
+
+    .cols{display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:6px}
+    .switch{--h:20px; width:36px; height:var(--h); border-radius:999px; border:1px solid var(--line); background:#f3f4f6; position:relative}
+    .switch i{position:absolute; top:1px; left:1px; height:calc(var(--h) - 2px); width:calc(var(--h) - 2px); background:#fff; border:1px solid var(--line); border-radius:50%; transition:left .2s}
+    .switch.on{background:#111}
+    .switch.on i{left:calc(100% - var(--h) + 1px); background:#fff}
+
+    .right-actions{display:flex; gap:8px; align-items:center}
+
+    .hint{color:#6b7280; font-size:.85rem}
+
+    @media (max-width:900px){
+      .nav{display:none}
+      .meters{flex:1 1 100%}
+      .search{flex:1 1 100%}
+      .toolbar{gap:8px}
+      thead{display:none}
+      table{border-spacing:0}
+      tbody td{display:block; border:0; border-bottom:1px solid var(--line)}
+      tbody tr td:first-child, tbody tr td:last-child{border-radius:0}
+    }
+/* 🔸 تصميم الأزرار بأسلوب meter */
+.view-meters {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.view-option {
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 150px;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.view-option i {
+  font-size: 1.1rem;
+  color: #111;
+  opacity: 0.85;
+  transition: transform 0.2s ease;
+}
+
+.view-option .label {
+  font-weight: 600;
+  color: #111;
+}
+
+.view-option:hover {
+  background: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 14px rgba(0,0,0,0.08);
+}
+
+.view-option.active {
+  background: linear-gradient(180deg, #fff7d6, #ffe99f);
+  border-color: #f7de92;
+  box-shadow: 0 3px 10px rgba(255, 230, 120, 0.3);
+}
+/* 🌙 ====== DARK MODE ====== */
+body {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* الوضع الليلي */
+body.dark {
+  --bg:#111827;
+  --ink:#f9fafb;
+  --muted:#9ca3af;
+  --card:#1f2937;
+  --soft:#374151;
+  --line:#4b5563;
+  --chip:#2d3748;
+  --chip-ink:#e5e7eb;
+  --shadow:0 8px 24px rgba(0,0,0,.6);
+  --brand:#f6c94c;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* الخلفيات والبطاقات */
+body.dark .app {
+  background:linear-gradient(135deg, rgba(31,41,55,0.9), rgba(17,24,39,0.9));
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);
+}
+
+body.dark .nav a {
+  color:var(--muted);
+}
+body.dark .nav a.active {
+  background:var(--brand);
+  color:#111;
+}
+
+body.dark .icon-btn {
+  background:var(--soft);
+  color:var(--ink);
+  border-color:var(--line);
+  transition:all 0.3s ease;
+}
+
+body.dark #gridView > div,
+body.dark table,
+body.dark .card {
+  background:var(--card);
+  border-color:var(--line);
+  color:var(--ink);
+}
+
+/* الأزرار */
+body.dark .btn,
+body.dark button {
+  background:linear-gradient(180deg,#2d3748,#1f2937);
+  color:#f9fafb;
+  border-color:var(--line);
+}
+
+/* الشيبس */
+body.dark .chip {
+  background:var(--chip);
+  color:var(--chip-ink);
+}
+
+/* تأثير التبديل */
+html, body, .app {
+  transition: all 0.4s ease;
+}
+/* 🌑 ====== DARK MODE — FULL REFINEMENT ====== */
+
+/* 🔹 الخلفية العامة */
+body.dark .bg-wrap {
+  display: none; /* إزالة الخلفيات الصفراء الفاتحة */
+}
+body.dark {
+  background: radial-gradient(circle at top left, #1e1e2f 0%, #111827 70%);
+  color: var(--ink);
+}
+
+/* 🔹 الهيدر العلوي */
+body.dark header.appbar {
+  background: linear-gradient(180deg, rgba(31,41,55,0.85), rgba(17,24,39,0.8));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(8px);
+}
+body.dark .brand-badge {
+  background: var(--brand);
+  color: #111;
+}
+body.dark .nav a:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+/* 🔹 زر الإعدادات */
+body.dark .icon-btn:hover {
+  background: var(--brand);
+  color: #111;
+  transform: rotate(45deg);
+}
+
+/* 🔹 عناوين الأقسام */
+body.dark .bar h1 {
+  color: var(--brand);
+}
+body.dark .meter .label {
+  color: var(--muted);
+}
+
+/* 🔹 الميترز (العدادات الصغيرة) */
+body.dark .meter {
+  background: rgba(255,255,255,0.05);
+  border-color: var(--line);
+}
+body.dark .progress {
+  background: var(--soft);
+}
+body.dark .progress > span {
+  background: linear-gradient(90deg, #f6c94c, #ffe48a);
+}
+
+/* 🔹 الأزرار العامة */
+body.dark .view-option {
+  background: var(--soft);
+  border-color: var(--line);
+  color: var(--ink);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.4);
+}
+body.dark .view-option.active {
+  background: linear-gradient(180deg, #f6c94c, #ffe48a);
+  color: #111;
+  box-shadow: 0 3px 14px rgba(255,230,120,0.4);
+}
+
+/* 🔹 الجداول */
+body.dark table {
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+body.dark thead th {
+  background: rgba(255,255,255,0.05);
+  color: var(--brand);
+  border-bottom: 1px solid var(--line);
+}
+body.dark tbody td {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+body.dark tbody tr:hover td {
+  background: rgba(255,255,255,0.05);
+}
+
+/* 🔹 الكروت (البطاقات في Grid View) */
+body.dark #gridView > div {
+  background: var(--card);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+}
+body.dark #gridView > div:hover {
+  box-shadow: 0 12px 32px rgba(0,0,0,0.6);
+}
+
+/* 🔹 التفاصيل داخل الكروت */
+body.dark #gridView h3 {
+  color: var(--ink);
+}
+body.dark #gridView p {
+  color: var(--muted);
+}
+body.dark #gridView button {
+  background: linear-gradient(180deg, #f6c94c, #ffe99f);
+  color: #111;
+  border-color: #f7de92;
+}
+
+/* 🔹 الشيبس (Tags) */
+body.dark .chip {
+  background: rgba(255,255,255,0.08);
+  color: var(--chip-ink);
+  border-color: rgba(255,255,255,0.1);
+}
+body.dark .chip.good {
+  background: rgba(16,185,129,0.15);
+  color: #a7f3d0;
+}
+body.dark .chip.warn {
+  background: rgba(245,158,11,0.15);
+  color: #fde68a;
+}
+body.dark .chip.bad {
+  background: rgba(239,68,68,0.15);
+  color: #fecaca;
+}
+
+/* 🔹 النصوص الثانوية */
+body.dark .hint,
+body.dark .muted {
+  color: var(--muted);
+}
+
+/* 🔹 الأزرار المصغّرة */
+body.dark .btn-mini {
+  background: var(--soft);
+  border-color: var(--line);
+  color: var(--ink);
+}
+body.dark .btn-mini.brand {
+  background: linear-gradient(180deg, #f6c94c, #ffe99f);
+  color: #111;
+}
+
+/* 🔹 التبديلات والأنيميشن */
+body.dark .seg {
+  background: var(--soft);
+  border-color: var(--line);
+}
+body.dark .seg button.active {
+  background: var(--brand);
+  color: #111;
+}
+
+/* 🔹 الفوتر أو أي عناصر لاحقًا */
+body.dark footer {
+  background: #111827;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+body .h3header {
+  color: #111827; /* أسود في الوضع الفاتح */
+}
+
+/* 🌟 لون h3header في الوضع الليلي */
+body.dark .h3header {
+  background: #010101;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+body.dark tbody td {
+  color: #030304; /* النص داخل الصفوف أفتح */
+  background: rgba(255,255,255,0.03); /* خلفية خفيفة تفصل الصفوف */
+  transition: background 0.3s ease;
+}
+
+body.dark tbody tr:hover td {
+  background: rgba(73, 203, 255, 0.281); /* تمييز الصف عند المرور */
+  color: #ff0000;
+}tbody tr:hover td {
+  background: rgba(255, 234, 0, 0.182); /* تمييز الصف عند المرور */
+  color: #ff0000;
+}
+#tableView .chip {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  margin: 2px;
+  display: inline-block;
+}
+/* 🌟 Professional Table View Enhancement */
+#tableView table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  font-size: 0.9rem;
+  border: none;
+}
+
+#tableView thead th {
+  text-align: left;
+  font-weight: 700;
+  color: #374151;
+  background: linear-gradient(90deg, #f9fafb, #f3f4f6);
+  padding: 12px 16px;
+  border-bottom: 2px solid #e5e7eb;
+  letter-spacing: 0.3px;
+}
+
+#tableView tbody tr {
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  transition: all 0.2s ease;
+}
+
+#tableView tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+#tableView tbody tr:hover {
+  background: #fff7d6;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+#tableView tbody td {
+  padding: 14px 16px;
+  border-top: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+  color: #111827;
+}
+
+#tableView tbody td:first-child {
+  border-left: 3px solid #f6c94c;
+  border-radius: 10px 0 0 10px;
+  font-weight: 600;
+}
+
+#tableView tbody td:last-child {
+  border-radius: 0 10px 10px 0;
+}
+
+/* ✨ مؤشرات الحالة */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #e5e7eb;
+}
+
+.status-chip i {
+  font-size: 0.8rem;
+}
+
+.status-chip.inpatient {
+  background: #dbeafe;
+  border-color: #93c5fd;
+  color: #1d4ed8;
+}
+
+.status-chip.discharged {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+/* ✨ مؤشرات الـIndicators */
+#tableView .chip {
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  margin: 2px;
+  display: inline-block;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+#tableView .chip.bad {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+#tableView .chip.warn {
+  background: #fff7d6;
+  color: #92400e;
+  border: 1px solid #fcd34d;
+}
+
+#tableView .chip.good {
+  background: #dcfce7;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+/* 🌙 الوضع الليلي */
+body.dark #tableView table {
+  background: var(--card);
+}
+
+body.dark #tableView thead th {
+  background: linear-gradient(90deg, #1f2937, #111827);
+  color: var(--brand);
+}
+
+body.dark #tableView tbody tr {
+  background: #1f2937;
+  border: 1px solid #374151;
+}
+
+body.dark #tableView tbody tr:hover {
+  background: rgba(255,230,120,0.08);
+  transform: translateY(-3px);
+}
+
+body.dark #tableView tbody td {
+  color: #f9fafb;
+  border-color: #374151;
+}
+/* 📊 Sorting Enhancements */
+th.sortable {
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+th.sortable:hover {
+  background: #fffbe6;
+  color: #111;
+}
+
+th.sortable::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #9ca3af;
+  border-bottom: 2px solid #9ca3af;
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.3;
+  transition: all 0.3s ease;
+}
+
+th.sortable.asc::after {
+  transform: translateY(-50%) rotate(-135deg);
+  opacity: 0.7;
+  border-color: #111;
+}
+
+th.sortable.desc::after {
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.7;
+  border-color: #111;
+}
+
+/* الوضع الليلي */
+body.dark th.sortable:hover {
+  background: rgba(255,230,120,0.1);
+}
+body.dark #globalSearch {
+  color: #f9fafb;
+}
+
+body.dark div[style*="border-radius:999px"] input {
+  color: #f9fafb;
+}
+
+body.dark div[style*="border-radius:999px"] {
+  background: #1f2937 !important;
+  border-color: #374151 !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+body.dark .fa-search {
+  color: #9ca3af !important;
+}
+body.dark #globalSearch {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+body.dark #searchToggle {
+  background: var(--soft);
+  color: var(--ink);
+}
+body.dark #searchToggle:hover {
+  background: var(--brand);
+  color: #111;
+}
+/* 🌙 تصحيح ألوان الجدول في الوضع الليلي */
+body.dark #tableView th,
+body.dark #tableView td {
+  color: #f9fafb !important; /* نص أبيض فاتح */
+}
+
+body.dark #tableView tbody tr:hover td {
+  color: #facc15 !important; /* عند المرور يصبح أصفر فاتح متناسق */
+}
+
+/* تأكد أيضًا أن الخلفية تبقى غامقة */
+body.dark #tableView tbody tr {
+  background: #1f2937 !important; /* أزرق رمادي داكن */
+}
+/* 🖋️ تعديل لون الكتابة في البحث بالوضع الليلي */
+body.dark #globalSearch {
+  color: #000 !important; /* النص أسود واضح */
+  background: #f9fafb !important; /* خلفية فاتحة */
+  border-color: #e5e7eb !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}  
+:root {
+  --primary:#0284c7;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --text:#0f172a;
+  --muted:#64748b;
+  --line:#e2e8f0;
+}
+
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  text-align:center;
+  padding-top:80px;
+}
+
+/* زر التفاصيل */
+.details-btn {
+  background:#fff;
+  border:1px solid #e5e7eb;
+  color:#111;
+  font-weight:600;
+  border-radius:10px;
+  padding:10px 20px;
+  cursor:pointer;
+  box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  transition:all 0.3s ease;
+}
+.details-btn:hover {
+  background:#0284c7;
+  color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 6px 14px rgba(2,132,199,0.3);
+}
+
+/* المودال */
+.modalDetails {
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.65);
+  justify-content:center;
+  align-items:center; /* ✅ يجعلها في منتصف الصفحة عموديًا */
+  z-index:9999;
+  backdrop-filter:blur(6px);
+  animation:fadeIn .3s ease;
+}
+.modalDetails.active {display:flex;}
+
+.modalContent {
+  background:var(--card);
+  border-radius:20px;
+  width:90%;
+  max-width:1000px;
+  height:90vh; /* ✅ يعطي ارتفاع ثابت مع تمرير داخلي */
+  padding:24px 30px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.25);
+  animation:pop .3s ease;
+  position:relative;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+}
+.modalContent header {
+  flex-shrink:0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+  margin-bottom:20px;
+}
+.modalContent header h2 {
+  font-size:1.4rem;
+  font-weight:700;
+}
+.modalContent header button {
+  background:none;
+  border:none;
+  font-size:1.8rem;
+  cursor:pointer;
+  color:#94a3b8;
+}
+.modalContent header button:hover {color:#ef4444;}
+
+/* ✅ تمرير داخلي فقط داخل محتوى البيانات */
+#detailsBody {
+  flex:1;
+  overflow-y:auto;
+  padding-right:10px;
+  scrollbar-width:thin;
+  scrollbar-color:#cbd5e1 transparent;
+}
+
+/* تصميم الأقسام */
+.section {
+  margin-bottom:1.5rem;
+}
+.section h3 {
+  color:var(--primary);
+  font-size:1.1rem;
+  border-left:4px solid var(--primary);
+  padding-left:8px;
+  margin-bottom:.7rem;
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:10px 16px;
+}
+.item {
+  background:var(--bg);
+  padding:10px 14px;
+  border-radius:10px;
+  border:1px solid #e5e7eb;
+}
+.item strong {
+  display:block;
+  font-size:.8rem;
+  color:var(--muted);
+  margin-bottom:3px;
+}
+.item span {
+  font-weight:600;
+  font-size:.95rem;
+  color:var(--text);
+}
+
+/* أنيميشن */
+@keyframes pop {from{transform:scale(0.9);opacity:0;}to{transform:scale(1);opacity:1;}}
+@keyframes fadeIn {from{opacity:0;}to{opacity:1;}}
+</style>
+</head>
+<body>
+
+<body>
+  <div class="bg-wrap">
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+  </div>
+
+  <div class="shell">
+    <div class="app">
+      <header class="appbar">
+        <div class="brand">
+          <span class="brand-badge">PHDU</span>
+<nav class="nav" id="yearNav">
+  <!-- السنوات سيتم توليدها تلقائياً -->
+</nav>
+
+        </div>
+  
+        <div class="tray">
+          <button class="icon-btn" title="Settings"><i class="fa fa-gear"></i></button>
+        </div>
+                     <!-- 🔹 زر البحث القابل للتمدد -->
+  <div class="search-wrap" style="
+    position: fixed;
+    display: flex;
+    align-items: center;margin-left:90rem;
+    transition: all 0.4s ease;
+  ">
+    <button id="searchToggle" class="icon-btn" title="Search" style="
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.4s ease;
+    ">
+      <i class="fa fa-search"></i>
+    </button>
+
+    <input 
+      type="text" 
+      id="globalSearch"
+      placeholder="Search patient, ID, diagnosis, team..." 
+      style="
+        position: absolute;
+        right: 46px; text-align: center;
+        opacity: 0;
+        width: 0;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
+        background: #fff;
+        color: var(--ink);
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: all 0.4s ease;
+      "
+    />
+  </div>
+      </header>
+
+      <div class="bar">
+        <h1>All Patients</h1>
+
+
+  <!-- 🔹 صف موحد للأزرار + العداد -->
+  <div class="meters view-meters" style="margin-right: 1rem;">
+    <div class="meter view-option active" id="gridBtn">
+      <i class="fa fa-th-large"></i>
+      <span class="label">Grid View</span>
+    </div>
+
+    <div class="meter view-option" id="tableBtn">
+      <i class="fa fa-table"></i>
+      <span class="label">Table View</span>
+    </div>
+
+    <div class="meter view-option" id="dashBtn">
+      <i class="fa fa-chart-line"></i>
+      <span class="label">Dashboard</span>
+    </div>
+     
+<!-- 🔸 عداد عدد المرضى -->
+<div class="meter" id="m-interviews" title="Displays the total number of patients for the selected year">
+  <span class="label" style="font-size:.86rem; color:var(--ink); font-weight:500;">
+    <i class="fa fa-users" style="color:#000000;"></i> Total Patients
+  </span>
+  <span class="pct" data-metric="interviews" style="font-size:0.8rem; font-weight:700; color:var(--muted);">
+    0
+  </span>
+</div>
+
+    <div class="right-actions">
+          <button class="icon-btn" title="Add"><i class="fa fa-plus"></i></button>
+<!-- 🔹 زر التصدير مع القائمة المنسدلة -->
+<div style="position: relative; display: inline-block;">
+  <button id="btnExport" class="btn brand" style="
+    display:flex; align-items:center; gap:6px; font-weight:600;
+  ">
+    <i class="fa fa-arrow-up-from-bracket"></i> Export
+  </button>
+
+  <!-- القائمة المنسدلة -->
+<div id="exportMenu" style="
+  position:absolute; right:0; top:120%;
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:8px;
+  box-shadow:0 4px 14px rgba(0,0,0,0.08);
+  display:none;
+  z-index:99;
+  overflow:hidden;
+">
+  <!-- خيار PDF -->
+  <button class="export-option" data-type="pdf" style="
+    display:block; width:100%; text-align:left;
+    background:none; border:0; padding:8px 14px;
+    font-size:0.9rem; cursor:pointer; color:#111;
+  ">
+    <i class="fa fa-file-pdf" style="color:#ef4444; margin-right:6px;"></i>
+    PDF (.pdf)
+  </button>
+
+  <!-- خيار Excel -->
+  <button class="export-option" data-type="excel" style="
+    display:block; width:100%; text-align:left;
+    background:none; border:0; padding:8px 14px;
+    font-size:0.9rem; cursor:pointer; color:#111;
+  ">
+    <i class="fa fa-file-excel" style="color:#22c55e; margin-right:6px;"></i>
+    Excel (.xlsx)
+  </button>
+</div>
+
+</div>
+
+        </div>
+  </div>
+</div>
+<!-- 🔹 محتوى Grid View -->
+<div id="gridView" 
+  style="
+    display:grid; 
+    grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); 
+    gap:20px; 
+    padding:22px;
+  ">
+  <!-- سيتم تحميل الكروت هنا تلقائياً عبر السكربت -->
+</div>
+
+<!-- 🔹 محتوى Table View -->
+<div id="tableView" style="display:none; padding:22px;">
+  <table style="width:100%; border-collapse:collapse; background:#fff; border-radius:14px; overflow:hidden;">
+<thead>
+  <tr style="background:var(--soft);">
+    <th class="sortable">Name</th>
+    <th class="sortable">Diagnosis</th>
+    <th class="sortable">Age</th>
+    <th class="sortable">Parent Team</th>
+    <th class="sortable">Source</th>
+    <th class="sortable">Status</th>
+    <th>Indicators</th>
+  </tr>
+</thead>
+
+    <tbody>
+      <tr>
+        <td style="padding:10px;">Loading...</td>
+        <td style="padding:10px;">–</td>
+        <td style="padding:10px;">–</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 🔹 محتوى Dashboard -->
+<div id="dashboardView" style="display:none; padding:22px;">
+  <div>
+<main class="body">
+  <!-- 🔹 سبينر تحميل -->
+  <div id="spinnerOverlay">
+    <div class="loader"></div>
+  </div>
+
+  <div class="container">
+    <header>
+      <div class="title">
+        <i class="fa-solid fa-chart-line" style="color:var(--primary)"></i>
+        <h1>Pediatric High Dependency Unit Statistics <span id="ttl-year"></span>/<span id="ttl-month"></span></h1>
+      </div>
+      <div class="filters">
+        <select id="yearSel" aria-label="السنة"></select>
+        <select id="monthSel" aria-label="الشهر"></select>
+      </div>
+    </header>
+
+    <span class="mini">Tip: Click any card to view additional details and charts.</span>
+    <section class="cards-dash" id="cardsWrap" style="margin-top: 1rem;"></section>
+  </div>
+
+  <!-- 🔹 نافذة التفاصيل -->
+  <div class="modal-dash" id="modalDash">
+    <div class="panel">
+      <header style="position: relative;">
+        <h2 id="modalTitle" style="margin:0;">Details</h2>
+        <button class="close" id="closeBtn" style="
+          position:absolute;
+          right:16px;
+          top:5px;
+          background:#fff;
+          border:none;
+          font-size:1.2rem;
+          cursor:pointer;
+        ">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </header>
+
+      <div class="content" style="display:grid;grid-template-columns:1.3fr 0.7fr;gap:16px;padding:16px;">
+        <div><canvas id="chart"></canvas></div>
+        <div class="meta" style="border-left:1px dashed var(--line);padding-left:14px;">
+          <div id="metaList"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+  </div>
+</div>
+
+</div>
+
+<!-- المودال -->
+<div id="modal-Details" class="modalDetails">
+  <div class="modalContent">
+    <header>
+      <h2>Patient Comprehensive Details</h2>
+      <button id="closeModalDetails">&times;</button>
+    </header>
+    <div id="detailsBody"></div>
+  </div>
+</div>
+<script>
+  const viewButtons = document.querySelectorAll('.view-option');
+  const gridView = document.getElementById('gridView');
+  const tableView = document.getElementById('tableView');
+  const dashView = document.getElementById('dashboardView');
+  let latestPatients = []; // 🧩 يخزن جميع بيانات المرضى للتصدير لاحقًا
+
+  function activate(btn) {
+    viewButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // 🔹 إخفاء جميع العروض
+    gridView.style.display = "none";
+    tableView.style.display = "none";
+    dashView.style.display = "none";
+
+    // 🔹 إظهار العرض المختار
+    if (btn.id === "gridBtn") gridView.style.display = "grid";
+    if (btn.id === "tableBtn") tableView.style.display = "block";
+    if (btn.id === "dashBtn") dashView.style.display = "block";
+  }
+
+  viewButtons.forEach(btn => {
+    btn.addEventListener('click', () => activate(btn));
+  });
+
+  // 🔹 العنوان يتغير حسب السنة المختارة
+  const navLinks = document.querySelectorAll('.nav a');
+  const pageTitle = document.querySelector('.bar h1');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+      const year = link.textContent.trim();
+      pageTitle.textContent = `${year} Patients`;
+    });
+  });
+
+  /* 🌙 تفعيل الوضع الليلي */
+  const settingsBtn = document.querySelector('.icon-btn');
+
+  settingsBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+
+    // تأثير بسيط على الزر عند التبديل
+    settingsBtn.style.transform = "rotate(180deg)";
+    setTimeout(() => settingsBtn.style.transform = "rotate(0deg)", 400);
+
+    // تلوين الزر مؤقتاً عند التبديل
+    if (isDark) {
+      settingsBtn.style.background = "var(--brand)";
+      settingsBtn.style.color = "#111";
+    } else {
+      settingsBtn.style.background = "#fff";
+      settingsBtn.style.color = "#111";
+    }
+
+    // حفظ التفضيل في localStorage
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+
+  // عند تحميل الصفحة نفّذ الوضع المحفوظ
+  window.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark");
+      settingsBtn.style.background = "var(--brand)";
+      settingsBtn.style.color = "#111";
+    }
+  });
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0tZxJwpXt80KiuZq7uAx_2i4S-UHBk0N-KP0U9c_DS_pMqPsyZ6b-q9sFhkhIzx3BUhUaW5xpi5_3/pub?gid=1097393078&single=true&output=csv";
+
+async function loadGridData(selectedYear = "All") {
+  try {
+    const res = await fetch(CSV_URL);
+    const text = await res.text();
+    const rows = text.split(/\r?\n/).map(r => r.split(","));
+    if (rows.length < 2) return;
+
+    const headers = rows[2].map(h => h.trim());
+    const dataRows = rows.slice(3);
+
+    // 🔹 تعريف الأعمدة قبل الاستخدام
+    const columns = {
+      year: "Year",
+      name: "patient Name",
+      ipn: "IPN",
+      dob: "DOB",
+      age: "Age",
+      gender: "Gender",
+      diagnosis: "Diagnosis",
+      source: "Sourse of Admission",
+      parent: "Parent Team",
+      dot: "DOT/DOD",
+      discharge: "Disharge to"
+    };
+
+
+const getValue = (row, col, occurrence = 1) => {
+  let count = 0;
+  const normalize = s => s?.toString().trim().toLowerCase().replace(/\s+/g, " ");
+  const idx = headers.findIndex(h => {
+    if (normalize(h) === normalize(col)) {
+      count++;
+      return count === occurrence;
+    }
+    return false;
+  });
+  return idx >= 0 ? (row[idx]?.toString().trim() || "") : "";
+};
+
+
+
+
+    const grid = document.getElementById("gridView");
+    const tableBody = document.querySelector("#tableView tbody");
+    tableBody.innerHTML = "";
+    grid.innerHTML = "";
+
+    // 🔹 بناء قائمة السنوات
+    const years = [...new Set(dataRows.map(r => getValue(r, columns.year)).filter(y => y))];
+
+    // ✅ الترتيب من الأكبر إلى الأصغر
+    years.sort((a, b) => b - a);
+
+    const nav = document.getElementById("yearNav");
+    nav.innerHTML = "";
+
+    // ✅ "All" أولاً ثم السنوات
+    ["All", ...years].forEach(year => {
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = year;
+      if (year === "All") link.style.fontWeight = "700";
+      link.className = year === selectedYear ? "active" : "";
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        document.querySelectorAll("#yearNav a").forEach(a => a.classList.remove("active"));
+        link.classList.add("active");
+        document.querySelector(".bar h1").textContent = `${year} Patients`;
+        loadGridData(year);
+      });
+      nav.appendChild(link);
+    });
+
+
+    // 🔹 تصفية حسب السنة
+    let filteredRows =
+      selectedYear === "All"
+        ? dataRows
+        : dataRows.filter(r => getValue(r, columns.year) === selectedYear);
+
+    // 🔹 ترتيب بحيث المرضى بدون discharge أولًا
+    filteredRows.sort((a, b) => {
+      const isEmpty = r => {
+        const dot = getValue(r, columns.dot).trim();
+        const discharge = getValue(r, columns.discharge).trim();
+        return !dot && !discharge; // كلها فاضية
+      };
+      return isEmpty(a) === isEmpty(b) ? 0 : isEmpty(a) ? -1 : 1;
+    });
+
+// 🔹 ترتيب بحيث المرضى بدون discharge أولًا
+filteredRows.sort((a, b) => {
+  const isDischarged = r => {
+    const dot = getValue(r, columns.dot).trim();
+    const discharge = getValue(r, columns.discharge).trim();
+    // ✅ يعتبر Discharged إذا أحد العمودين فيه بيانات
+    return dot || discharge;
+  };
+  return !isDischarged(a) && isDischarged(b) ? -1 : isDischarged(a) && !isDischarged(b) ? 1 : 0;
+});
+
+
+
+// 🔹 حساب عدد المرضى من البيانات المفلترة
+const totalPatients = filteredRows.length;
+
+// 🔹 اختيار العنصر من DOM
+const meter = document.getElementById("m-interviews");
+const pctText = meter.querySelector(".pct");
+
+// 🔹 أنيميشن بسيط لزيادة الرقم تدريجيًا
+let current = 0;
+const duration = 800; // المدة بالمللي ثانية
+const stepTime = Math.max(Math.floor(duration / totalPatients), 20);
+
+const timer = setInterval(() => {
+  current++;
+  pctText.textContent = `${current} Patients`;
+  if (current >= totalPatients) clearInterval(timer);
+}, stepTime);
+
+// 🧩 بعد ما تنتهي من عرض الكروت والجدول تمامًا
+// خزّن فقط المرضى الظاهرين حاليًا لتأكيد جاهزيتهم للتصدير
+latestPatients = filteredRows.map(r => {
+  const obj = {};
+  headers.forEach((h, i) => {
+    obj[h.trim()] = r[i]?.trim() || "";
+  });
+  return obj;
+});
+
+console.log(`✅ ${latestPatients.length} patients ready for export (${selectedYear})`);
+
+// 🔹 عرض الكروت
+filteredRows.forEach(row => {
+  if (row.join("").trim() === "") return;
+
+const p = {
+  // 🩺 Demographic
+  name: getValue(row, columns.name),
+  ipn: getValue(row, columns.ipn),
+  dob: getValue(row, columns.dob),
+  age: getValue(row, columns.age),
+  gender: getValue(row, columns.gender),
+
+  // 🏥 Admission
+  diagnosis: getValue(row, columns.diagnosis),
+  doa: getValue(row, "DOA"),
+  source: getValue(row, columns.source),
+  parentAdmission: getValue(row, "Parent Team", 1), // العمود الأول (Admission)
+  dnr: getValue(row, "DNR"),
+  discharge: getValue(row, columns.discharge),
+
+  // 💨 Respiratory Support
+  niv: getValue(row, "NIV"),
+  "NIV Start": getValue(row, "start Date"),
+  "NIV End": getValue(row, "End Date"),
+  "LOS with NIV": getValue(row, "LOS with NIV"),
+  hfnc: getValue(row, "HFNC"),
+  "HFNC Start": getValue(row, "start Date"),
+  "HFNC End": getValue(row, "End Date"),
+  "LOS with HFNC": getValue(row, "LOS with HFNC"),
+
+  // 🫁 Tracheostomy
+  "Tracheostomized": getValue(row, "Patient tracheostomized"),
+  "New Tracheostomy": getValue(row, "Newly tracheostomy"),
+  "Ventilated": getValue(row, "ventilated"),
+
+  // 🚪 Exit Data
+  dot: getValue(row, columns.dot),
+  parentExit: getValue(row, "Parent Team", 2), // العمود الثاني (Exit)
+  "Discharge To": getValue(row, "Disharge to"),
+  "LOS": getValue(row, "LOS"),
+  "LOS in number": getValue(row, "LOS in number"),
+
+  // 📈 KPI / Assessment
+    "Long Line": getValue(row, "Long line"),
+  "Long Line Type": getValue(row, "Type of Long line"),
+  "Inserted Place": getValue(row, "inserted place"),
+  "MDRO": getValue(row, "MDRO"),
+  "Droplit isolation": getValue(row, "Droplit isolation"),
+  "Positive Blood Culture": getValue(row, "positive blood cultuer"),
+ // في const p:
+"Pressure Sore": getValue(row, "pressuer sore"),
+"Fall": getValue(row, "fall"),
+"CLABSI": getValue(row, "CLABSI"),
+"Readmission 24 HRS": getValue(row, "Readmission 24 HRS"),
+"Readmission 48 HRS": getValue(row, "Readmission 48 HRS"),
+"Readmission 72 HRS": getValue(row, "Readmission 72 HRS"),
+"Blood Reaction": getValue(row, "blood Reaction"),
+"Device-related Pressure Sore": getValue(row, "pressuer sore related to device injury"),
+"Sepsis": getValue(row, "Sepsis"),
+"Nutrition Feed Started within 4 Hrs": getValue(row, "Nutration feed started with 4 hrs"),
+"Cardiac Arrest": getValue(row, "Cardic arrest"),
+"Tracheostomy Dislodgement": getValue(row, "Tracheostomy Disloagment"),
+
+
+  // ⚕️ KPI / Acuity
+// ⚕️ Clinical / Acuity Details
+"Vital Signs": getValue(row, "vital signs"),
+"Medication": getValue(row, "Medication"),
+"Infusion": getValue(row, "Infusion"),
+"Specimen": getValue(row, "Specimen"),
+"Suction/Chest physiotherapy": getValue(row, "Suction/Chest phsiotherapy"), // ✅ التصحيح هنا (physio)
+"Vascular access": getValue(row, "Vascular access"),
+"Procedures": getValue(row, "procedures"),
+"Technology support": getValue(row, "Technology support"),
+"Acuity Level": getValue(row, "Acuty Level") // نفس الاسم في الشيت (بدون i)
+
+
+};
+
+
+
+
+
+
+  // ✅ يعتبر Discharged إذا أحد العمودين فيه بيانات
+  const isDischarged = p.dot || p.discharge;
+  const genderColor = p.gender.toLowerCase().includes("f") ? "#ffb6c1" : "#99e0ff";
+  const genderIcon = p.gender.toLowerCase().includes("f") ? "👧" : "👦";
+const tag = isDischarged
+  ? `<span class="chip warn" 
+        style="background:linear-gradient(135deg, #e0f2ff 0%, #f0f9ff 100%);
+               color:#2563eb;
+               border:1px solid #93c5fd;
+               font-weight:600;">
+        <i class="fa fa-check"></i> Discharged
+     </span>`
+  : `<span class="chip good" 
+        style="background:linear-gradient(135deg, #fff1f1 0%, #ffe4e4 100%);
+               color:#dc2626;
+               border:1px solid #fca5a5;
+               font-weight:600;">
+        <i class="fa fa-hospital-user"></i> Inpatient
+     </span>`;
+
+
+// 🎨 تلوين الكارت حسب الحالة — Inpatient فقط باللون الأزرق
+const cardBg = isDischarged
+  ? "#ffffff"  // Discharged → أبيض
+  : "linear-gradient(135deg, #ebf6ff 0%, #f7fbff 100%)";  // Inpatient → أزرق فاتح جدًا
+
+const borderClr = isDischarged ? "#e5e7eb" : "#93c5fd"; // رمادي للمغادرين / أزرق للـ Inpatient
+
+  const card = document.createElement("div");
+  card.style.cssText = `
+    background:${cardBg};
+    border:1px solid ${borderClr};
+    border-radius:22px;
+    box-shadow:0 6px 16px rgba(0,0,0,0.06);
+    padding:22px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    transition:all 0.3s ease;  
+  `;
+
+
+// 🌊 عند المرور Hover
+card.onmouseover = () => {
+  card.style.transform = "translateY(-6px)";
+  card.style.boxShadow = "0 12px 28px rgba(0,0,0,0.1)";
+
+  if (!isDischarged) {
+    // 🩵 للمقيمين (Inpatient)
+    card.style.background = "linear-gradient(135deg, #dbefff 0%, #e8f4ff 100%)";
+    card.style.borderColor = "#60a5fa";
+  } else {
+    // ⚪ للمغادرين (Discharged)
+    card.style.background = "linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%)";
+    card.style.borderColor = "#cbd5e1";
+  }
+};
+
+// ☀️ عند الخروج
+card.onmouseout = () => {
+  card.style.transform = "none";
+  card.style.boxShadow = "0 6px 16px rgba(0,0,0,0.06)";
+  card.style.background = cardBg;
+  card.style.borderColor = borderClr;
+};
+// 🔹 فحص عمود DNR
+const showDNR = getValue(row, "DNR").toLowerCase() === "yes";
+const showNIV = getValue(row, "NIV").toLowerCase() === "yes";
+const showHFNC = getValue(row, "HFNC").toLowerCase() === "yes";
+const showTrach = getValue(row, "Patient tracheostomized").toLowerCase() === "yes";
+const showLong  = getValue(row, "Long line").toLowerCase() === "yes";
+const showMDRO  = getValue(row, "MDRO").toLowerCase() === "yes";
+const showSore  = getValue(row, "pressuer sore").toLowerCase() === "yes";
+const showFall  = getValue(row, "fall").toLowerCase() === "yes";
+const showCLAB  = getValue(row, "CLABSI").toLowerCase() === "yes";
+const showR24   = getValue(row, "Readmission 24 HRS").toLowerCase() === "yes";
+const showR48   = getValue(row, "Readmission 48 HRS").toLowerCase() === "yes";
+const showR72   = getValue(row, "Readmission 72 HRS").toLowerCase() === "yes";
+const showSepsis = getValue(row, "Sepsis").toLowerCase() === "yes";
+const showArrest = getValue(row, "Cardic arrest").toLowerCase() === "yes";
+
+card.innerHTML = `
+  <div style="display:flex; align-items:center; gap:14px;">
+    <div style="
+      height:68px; width:68px; border-radius:50%;
+      background:${genderColor};
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; font-weight:700; color:#111;">
+      ${genderIcon}
+    </div>
+    <div style="flex:1;">
+      <h3 class="h3header" style="margin:0; font-size:1.15rem; font-weight:700;margin-bottom:5px;">${p.name}</h3>
+      ${tag}
+    </div>
+  </div>
+
+  <!-- 🔹 شارات DNR / NIV / HFNC جنب بعض -->
+  <div style="display:flex; align-items:center; gap:8px; margin-top:6px; margin-bottom:18px; flex-wrap:wrap;">
+${showMDRO ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#7c3aed; display:inline-block;"></span>
+    <span style="color:#7c3aed;">MDRO</span>
+  </div>` : ""}
+
+${showSore ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#d97706; display:inline-block;"></span>
+    <span style="color:#d97706;">Pressure Sore</span>
+  </div>` : ""}
+
+${showFall ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#f97316; display:inline-block;"></span>
+    <span style="color:#f97316;">Fall</span>
+  </div>` : ""}
+
+${showCLAB ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#0284c7; display:inline-block;"></span>
+    <span style="color:#0284c7;">CLABSI</span>
+  </div>` : ""}
+
+${showR24 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#22c55e; display:inline-block;"></span>
+    <span style="color:#22c55e;">Readm. 24h</span>
+  </div>` : ""}
+
+${showR48 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#16a34a; display:inline-block;"></span>
+    <span style="color:#16a34a;">Readm. 48h</span>
+  </div>` : ""}
+
+${showR72 ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#15803d; display:inline-block;"></span>
+    <span style="color:#15803d;">Readm. 72h</span>
+  </div>` : ""}
+
+${showSepsis ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#ef4444; display:inline-block;"></span>
+    <span style="color:#ef4444;">Sepsis</span>
+  </div>` : ""}
+
+${showArrest ? `
+  <div style="
+    display:inline-flex; align-items:center; gap:5px;
+    background:#f9fafb; border:1px solid #e5e7eb;
+    border-radius:999px; padding:2px 8px;
+    font-size:0.78rem; font-weight:600; width:fit-content;
+  ">
+    <span style="width:8px; height:8px; border-radius:50%; background:#1e3a8a; display:inline-block;"></span>
+    <span style="color:#1e3a8a;">Cardiac Arrest</span>
+  </div>` : ""}
+
+
+  </div>
+
+
+<span class="chip ipn"><i class="fa fa-id-card"></i>&nbsp;<b>IPN:</b> ${p.ipn}</span>
+
+<div class="info-box" style="
+  background:var(--soft);
+  border-radius:12px;
+  padding:12px 14px;
+  margin-top:10px;
+  font-size:.9rem;
+  color:var(--ink);
+  border:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+">
+
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-hourglass-half" style="color: #0ea5e9;"></i> <b>Age:</b></span>
+      <span>${p.age} yrs</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-calendar" style="color: #0ea5e9;"></i> <b>DOB:</b></span>
+      <span>${p.dob}</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-door-open" style="color: #0ea5e9;"></i> <b>Source:</b></span>
+      <span>${p.source}</span>
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-users" style="color: #0ea5e9;"></i> <b>Parent Team:</b></span>
+<span>${p.parentAdmission || "—"}</span>
+
+    </div>
+
+    <div style="display:flex; justify-content:space-between;">
+      <span><i class="fa fa-stethoscope" style="color: #0ea5e9;"></i> <b>Diagnosis:</b></span>
+      <span>${p.diagnosis || "—"}</span>
+    </div>
+
+  </div>
+
+  <!-- 🔹 زر التفاصيل -->
+  <div style="margin-top:14px; display:flex; justify-content:flex-end;">
+ <!-- 🔹 زر التفاصيل -->
+<button 
+  title="Details"
+  onclick='openModalDetails(${JSON.stringify(p)})'
+  style="
+    background:#fff;
+    border:1px solid #e5e7eb;
+    color:#111;
+    font-weight:600;
+    border-radius:10px;
+    padding:8px 18px;
+    cursor:pointer;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+    transition:all 0.3s ease;
+  "
+  onmouseover="this.style.background='#ef4444'; this.style.color='#fff'; this.style.borderColor='#ef4444'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(239,68,68,0.3)';"
+  onmouseout="this.style.background='#fff'; this.style.color='#111'; this.style.borderColor='#e5e7eb'; this.style.transform='none'; this.style.boxShadow='0 3px 8px rgba(0,0,0,0.05)';">
+  <i class="fa fa-info-circle" style="margin-right:6px;"></i> Details
+</button>
+
+   
+  <!-- زر التعديل -->
+  <button class="icon-btn" title="Edit" style="
+    background:#fff;
+    color:#2563eb;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    width:42px; height:38px;margin-right:6px;margin-left:6px;
+    cursor:pointer;
+    font-size:15px;
+    transition:all 0.3s ease;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  "
+  onmouseover="this.style.background='#2563eb'; this.style.color='#fff'; this.style.borderColor='#2563eb'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(37,99,235,0.3)';"
+  onmouseout="this.style.background='#fff'; this.style.color='#2563eb'; this.style.borderColor='#e5e7eb'; this.style.transform='none'; this.style.boxShadow='0 3px 8px rgba(0,0,0,0.05)';">
+    <i class="fa fa-pen"></i>
+  </button>
+
+  <!-- زر الحذف -->
+  <button class="icon-btn" title="Delete" style="
+    background:#fff;
+    color:#ef4444;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    width:42px; height:38px;
+    cursor:pointer;
+    font-size:15px;
+    transition:all 0.3s ease;
+    box-shadow:0 3px 8px rgba(0,0,0,0.05);
+  "
+  onmouseover="this.style.background='#ef4444'; this.style.color='#fff'; this.style.borderColor='#ef4444'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 14px rgba(239,68,68,0.3)';"
+  onmouseout="this.style.background='#fff'; this.style.color='#ef4444'; this.style.borderColor='#e5e7eb'; this.style.transform='none'; this.style.boxShadow='0 3px 8px rgba(0,0,0,0.05)';">
+    <i class="fa fa-trash"></i>
+  </button>
+
+</div>
+`;
+grid.appendChild(card);
+
+// ✅ أضف صفًا للـ Table View مع الأعمدة الجديدة
+const indicators = [];
+
+// 🔹 فحص كل مؤشر وإضافته
+if (showDNR) indicators.push(`<span class="chip bad">DNR</span>`);
+if (showNIV) indicators.push(`<span class="chip warn">NIV</span>`);
+if (showHFNC) indicators.push(`<span class="chip warn">HFNC</span>`);
+if (showTrach) indicators.push(`<span class="chip warn">Trach</span>`);
+if (showLong) indicators.push(`<span class="chip">Long Line</span>`);
+if (showMDRO) indicators.push(`<span class="chip" style="background:#f3e8ff;color:#7c3aed;border:1px solid #d8b4fe;">MDRO</span>`);
+if (showSore) indicators.push(`<span class="chip warn">Sore</span>`);
+if (showFall) indicators.push(`<span class="chip warn">Fall</span>`);
+if (showCLAB) indicators.push(`<span class="chip good">CLABSI</span>`);
+if (showR24) indicators.push(`<span class="chip">R-24h</span>`);
+if (showR48) indicators.push(`<span class="chip">R-48h</span>`);
+if (showR72) indicators.push(`<span class="chip">R-72h</span>`);
+if (showSepsis) indicators.push(`<span class="chip bad">Sepsis</span>`);
+if (showArrest) indicators.push(`<span class="chip bad">Arrest</span>`);
+
+// ✅ إنشاء صف الجدول مع تفعيل النقر المزدوج
+const tr = document.createElement("tr");
+
+// ✅ التلوين حسب الحالة
+const rowBg = isDischarged ? "#ffffff" : "#f1f8ff";
+const rowHover = isDischarged ? "#fffbea" : "#e0efff";
+
+tr.style.background = rowBg;
+tr.style.transition = "all 0.25s ease";
+tr.onmouseover = () => (tr.style.background = rowHover);
+tr.onmouseout = () => (tr.style.background = rowBg);
+
+// ✅ عند الضغط مرتين على الصف، افتح مودال التفاصيل
+tr.ondblclick = () => openModalDetails(p);
+
+tr.innerHTML = `
+  <td>${p.name}</td>
+  <td>${p.diagnosis || "—"}</td>
+  <td>${p.age || "—"}</td>
+  <td>${p.parent || "—"}</td>
+  <td>${p.source || "—"}</td>
+  <td>${
+    isDischarged
+      ? '<span class="status-chip discharged"><i class="fa fa-check"></i> Discharged</span>'
+      : '<span class="status-chip inpatient"><i class="fa fa-hospital-user"></i> Inpatient</span>'
+  }</td>
+  <td>${indicators.length ? indicators.join(" ") : "—"}</td>
+`;
+
+tableBody.appendChild(tr);
+
+
+
+});
+
+
+  } catch (err) {
+    console.error("❌ Error loading grid data:", err);
+  }
+}
+
+// 🚀 تحميل أولي عند فتح الصفحة
+window.addEventListener("DOMContentLoaded", () => loadGridData("All"));
+
+/* =============================
+   📤 Export System (Excel / PDF)
+============================= */
+const btnExport = document.getElementById("btnExport");
+const exportMenu = document.getElementById("exportMenu");
+const pdfOption = exportMenu.querySelector('[data-type="pdf"]');
+const excelOption = exportMenu.querySelector('[data-type="excel"]');
+
+/* 🧩 إظهار / إخفاء القائمة عند الضغط */
+btnExport.addEventListener("click", () => {
+  // قبل عرض القائمة نتأكد من تحديث الخيارات حسب العرض الحالي
+  updateExportOptions();
+
+  exportMenu.style.display =
+    exportMenu.style.display === "block" ? "none" : "block";
+});
+
+/* 🔹 دالة لتحديث خيارات التصدير */
+function updateExportOptions() {
+  const isDashboard = dashView && dashView.style.display === "block";
+  const isTable = tableView && tableView.style.display !== "none";
+  const isGrid = gridView && gridView.style.display !== "none";
+
+  if (isDashboard) {
+    pdfOption.style.display = "block";
+    excelOption.style.display = "none";
+  } else if (isTable || isGrid) {
+    pdfOption.style.display = "none";
+    excelOption.style.display = "block";
+  } else {
+    pdfOption.style.display = "none";
+    excelOption.style.display = "none";
+  }
+}
+
+/* 🔹 كلما نغيّر العرض (Grid/Table/Dashboard) نحدث القائمة */
+viewButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    activate(btn);
+    updateExportOptions();
+  });
+});
+
+/* 🔹 تحديث أولي عند تحميل الصفحة */
+window.addEventListener("DOMContentLoaded", () => {
+  updateExportOptions();
+});
+
+// إغلاق القائمة عند النقر خارجها
+window.addEventListener("click", e => {
+  if (!btnExport.contains(e.target) && !exportMenu.contains(e.target)) {
+    exportMenu.style.display = "none";
+  }
+});
+
+// 🔹 دالة تصدير Excel
+function exportToExcel(data, filename = "data.xlsx") {
+  if (!data.length) return alert("No data to export!");
+  const headers = Object.keys(data[0]);
+  const rows = [headers, ...data.map(obj => headers.map(h => obj[h]))];
+  const sheet = XLSX.utils.aoa_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, sheet, "Data");
+  XLSX.writeFile(wb, filename);
+}
+
+// 🔹 دالة تصدير PDF
+function exportToPDF(data, filename = "data.pdf") {
+  if (!data.length) return alert("No data to export!");
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ orientation: "landscape" });
+  const headers = Object.keys(data[0]);
+  const rows = data.map(obj => headers.map(h => obj[h]));
+  doc.autoTable({
+    head: [headers],
+    body: rows,
+    theme: "striped",
+    headStyles: { fillColor: [33, 150, 243] },
+    styles: { fontSize: 9 },
+    margin: { top: 20 },
+  });
+  doc.save(filename);
+}
+
+// 🔹 دالة لجلب البيانات الظاهرة فقط من Grid أو Table بعد الفلترة
+function getVisibleData() {
+  const tableViewVisible = document.getElementById("tableView")?.style.display !== "none";
+  const gridViewVisible = document.getElementById("gridView")?.style.display !== "none";
+
+  if (!latestPatients || !latestPatients.length) return [];
+
+  if (tableViewVisible) {
+    const visibleRows = Array.from(document.querySelectorAll("#tableView tbody tr"))
+      .filter(tr => tr.style.display !== "none");
+    const visibleNames = visibleRows.map(tr => tr.children[0]?.innerText.trim().toLowerCase());
+    return latestPatients.filter(p => visibleNames.includes((p["patient Name"] || "").toLowerCase()));
+  }
+
+  if (gridViewVisible) {
+    const visibleCards = Array.from(document.querySelectorAll("#gridView > div"))
+      .filter(div => div.style.display !== "none");
+    const visibleNames = visibleCards.map(card => {
+      const h3 = card.querySelector("h3");
+      return h3 ? h3.textContent.trim().toLowerCase() : "";
+    });
+    return latestPatients.filter(p => visibleNames.includes((p["patient Name"] || "").toLowerCase()));
+  }
+
+  return latestPatients;
+}
+// 🧩 التعامل مع اختيار المستخدم من القائمة (Excel / PDF)
+document.querySelectorAll(".export-option").forEach(opt => {
+  opt.addEventListener("click", async e => {
+    exportMenu.style.display = "none";
+    const type = e.currentTarget.dataset.type;
+
+    const dashView = document.getElementById("dashboardView");
+    const tableView = document.getElementById("tableView");
+    const gridView = document.getElementById("gridView");
+
+    const isDashboard = dashView && dashView.style.display === "block";
+    const isTable = tableView && tableView.style.display !== "none";
+    const isGrid = gridView && gridView.style.display !== "none";
+
+    // 🟢 PDF فقط للـ Dashboard
+    if (type === "pdf" && isDashboard) {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF("landscape", "pt", "a4");
+
+      // نأخذ صورة من عنصر الداشبورد
+      const dashElement = dashView.querySelector(".container");
+      if (!dashElement) return alert("Dashboard not found!");
+
+      const canvas = await html2canvas(dashElement, { scale: 2 });
+      const imgData = canvas.toDataURL("image/png");
+
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const imgWidth = pageWidth - 60;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      doc.addImage(imgData, "PNG", 30, 30, imgWidth, imgHeight);
+      doc.save("PHDU-Dashboard.pdf");
+      return;
+    }
+
+    // 🟨 Excel فقط للـ Grid أو Table
+    if (type === "excel" && (isTable || isGrid)) {
+      const visibleData = getVisibleData();
+      if (!visibleData.length) return alert("No data to export!");
+
+      const titleText = document.querySelector(".bar h1")?.textContent || "";
+      const selectedYear = titleText.split(" ")[0] || "All";
+      exportToExcel(visibleData, `${selectedYear}-filtered-patients.xlsx`);
+      return;
+    }
+
+    alert("⚠️ Export not available in this view!");
+  });
+});
+
+/* =============================
+   📊 Enable Sorting on Table
+============================= */
+document.addEventListener("DOMContentLoaded", () => {
+  const table = document.querySelector("#tableView table");
+  if (!table) return;
+  const headers = table.querySelectorAll("th.sortable");
+
+  headers.forEach((header, index) => {
+    header.addEventListener("click", () => {
+      const tbody = table.querySelector("tbody");
+      const rows = Array.from(tbody.querySelectorAll("tr"));
+      const isAsc = header.classList.toggle("asc");
+      header.classList.toggle("desc", !isAsc);
+
+      // إزالة الأسهم من الأعمدة الأخرى
+      headers.forEach(h => { if (h !== header) h.classList.remove("asc", "desc"); });
+
+      const colIndex = index;
+
+      const sortedRows = rows.sort((a, b) => {
+        const aText = a.children[colIndex]?.innerText.trim().toLowerCase();
+        const bText = b.children[colIndex]?.innerText.trim().toLowerCase();
+
+        if (!isNaN(aText) && !isNaN(bText)) {
+          return isAsc ? aText - bText : bText - aText;
+        }
+        return isAsc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      tbody.innerHTML = "";
+      sortedRows.forEach(row => tbody.appendChild(row));
+    });
+  });
+});
+
+/* ===============================================
+   🔍 Unified Live Search for Grid + Table Views
+================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  const searchInput = document.getElementById("globalSearch");
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    // 🟦 فلترة الكروت في Grid View
+    const cards = document.querySelectorAll("#gridView > div");
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? "flex" : "none";
+    });
+
+    // 🟨 فلترة الصفوف في Table View
+    const rows = document.querySelectorAll("#tableView tbody tr");
+    rows.forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(filter) ? "" : "none";
+    });
+  });
+});
+/* =======================================
+   🔍 Expandable Search Button Animation
+======================================= */
+const searchToggle = document.getElementById("searchToggle");
+const searchInput = document.getElementById("globalSearch");
+
+if (searchToggle && searchInput) {
+  searchToggle.addEventListener("click", () => {
+    const isExpanded = searchInput.style.width && searchInput.style.width !== "0px";
+
+    if (!isExpanded) {
+      // 🔹 افتح البحث
+searchInput.style.width = "360px"; // 🔹 أطول وأجمل
+      searchInput.style.opacity = "1";
+      searchInput.focus();
+      searchToggle.style.background = "var(--brand)";
+      searchToggle.style.color = "#111";
+    } else {
+      // 🔹 أغلق البحث
+      searchInput.style.width = "0";
+      searchInput.style.opacity = "0";
+      searchToggle.style.background = "#fff";
+      searchToggle.style.color = "#111";
+    }
+  });
+
+  // 🔹 إغلاق تلقائي عند فقدان التركيز
+  searchInput.addEventListener("blur", () => {
+    setTimeout(() => {
+      searchInput.style.width = "0";
+      searchInput.style.opacity = "0";
+      searchToggle.style.background = "#fff";
+      searchToggle.style.color = "#111";
+    }, 200);
+  });
+
+  // 🔹 البحث الحي في Grid + Table
+  searchInput.addEventListener("input", () => {
+    const filter = searchInput.value.toLowerCase();
+
+    // Grid
+    document.querySelectorAll("#gridView > div").forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(filter) ? "flex" : "none";
+    });
+
+    // Table
+    document.querySelectorAll("#tableView tbody tr").forEach(row => {
+      const text = row.innerText.toLowerCase();
+      row.style.display = text.includes(filter) ? "" : "none";
+    });
+  });
+}
+
+const modal=document.getElementById("modal-Details");
+const closeBtn=document.getElementById("closeModalDetails");
+const bodyContainer=document.getElementById("detailsBody");
+
+// دالة لتوليد الأقسام
+function section(title, items) {
+  const rows=items.map(i=>`
+    <div class="item">
+      <strong>${i.label}</strong>
+      <span>${i.value || "-"}</span>
+    </div>`).join("");
+  return `
+  <div class="section">
+    <h3>${title}</h3>
+    <div class="grid">${rows}</div>
+  </div>`;
+}
+
+// فتح المودال
+function openModalDetails(data){
+  const modal = document.getElementById("modal-Details");
+  const bodyContainer = document.getElementById("detailsBody");
+
+  // ✅ تحويل القيم بشكل موحد (حتى لو فاضية)
+  const val = (x) => (x && x.trim() ? x : "—");
+
+  bodyContainer.innerHTML = `
+    ${section("🩺 Demographic Data", [
+      {label:"Patient Name", value: val(data.name)},
+      {label:"IPN", value: val(data.ipn)},
+      {label:"DOB", value: val(data.dob)},
+      {label:"Age", value: val(data.age)},
+      {label:"Gender", value: val(data.gender)},
+    ])}
+    ${section("🏥 Admission Data", [
+      {label:"Diagnosis", value: val(data.diagnosis)},
+      {label:"Source of Admission", value: val(data.source)},
+{label:"Parent Team (Admission)", value: val(data.parentAdmission)},
+
+      {label:"Date of Admission", value: val(data.doa)},
+      {label:"DNR Status", value: val(data.dnr)}, // ✅ تمت الإضافة هنا
+      {label:"Discharge", value: val(data.discharge)},
+    ])}
+
+    ${section("🫁 Respiratory Support", [
+     {label:"NIV", value: val(data.niv)},
+      {label:"NIV Start",value:data["NIV Start"]},
+      {label:"NIV End",value:data["NIV End"]},
+      {label:"LOS with NIV",value:data["LOS with NIV"]},
+      {label:"HFNC", value: val(data.hfnc)},
+      {label:"HFNC Start",value:data["HFNC Start"]},
+      {label:"HFNC End",value:data["HFNC End"]},
+      {label:"LOS with HFNC",value:data["LOS with HFNC"]},
+    ])}
+    ${section("🫁 Tracheostomy", [
+      {label:"Patient Tracheostomized",value:data["Tracheostomized"]},
+      {label:"New Tracheostomy",value:data["New Tracheostomy"]},
+      {label:"Ventilated",value:data["Ventilated"]},
+    ])}
+    ${section("🏥 Exit Data", [
+      {label:"DOT/DOD",value:data["dot"]},   {label:"Parent Team (Exit)", value: val(data.parentExit)},
+      {label:"Discharge To",value:data["Discharge To"]},
+      {label:"LOS",value:data["LOS"]},
+      {label:"LOS in number",value:data["LOS in number"]},     
+    ])}
+    ${section("📈 KPI / Assessment", [
+  {label:"Long Line", value: val(data["Long Line"])},
+  {label:"Type of Long Line", value: val(data["Long Line Type"])},
+  {label:"Inserted Place", value: val(data["Inserted Place"])},
+  {label:"MDRO", value: val(data["MDRO"])},
+  {label:"Droplet Isolation", value: val(data["Droplit isolation"])},
+  {label:"Positive Blood Culture", value: val(data["Positive Blood Culture"])},
+{label:"Pressure Sore", value: val(data["Pressure Sore"])},
+{label:"Fall", value: val(data["Fall"])},
+{label:"CLABSI", value: val(data["CLABSI"])},
+{label:"Readmission 24 HRS", value: val(data["Readmission 24 HRS"])},
+{label:"Readmission 48 HRS", value: val(data["Readmission 48 HRS"])},
+{label:"Readmission 72 HRS", value: val(data["Readmission 72 HRS"])},
+{label:"Blood Reaction", value: val(data["Blood Reaction"])},
+{label:"Device-related Pressure Sore", value: val(data["Device-related Pressure Sore"])},
+{label:"Sepsis", value: val(data["Sepsis"])},
+{label:"Nutrition Feed Started within 4 Hrs", value: val(data["Nutrition Feed Started within 4 Hrs"])},
+{label:"Cardiac Arrest", value: val(data["Cardiac Arrest"])},
+{label:"Tracheostomy Dislodgement", value: val(data["Tracheostomy Dislodgement"])},
+])}
+
+${section("⚕️ Clinical / Acuity Details", [
+  {label:"Vital Signs", value: val(data["Vital Signs"])},
+  {label:"Medication", value: val(data["Medication"])},
+  {label:"Infusion", value: val(data["Infusion"])},
+  {label:"Specimen", value: val(data["Specimen"])},
+  {label:"Suction / Chest Physiotherapy", value: val(data["Suction/Chest physiotherapy"])},
+  {label:"Vascular Access", value: val(data["Vascular access"])},
+  {label:"Procedures", value: val(data["Procedures"])},
+  {label:"Technology Support", value: val(data["Technology support"])},
+  {label:"Acuity Level", value: val(data["Acuity Level"])},
+])}
+
+
+  `;
+  modal.classList.add("active");
+}
+
+// إغلاق
+closeBtn.onclick=()=>modal.classList.remove("active");
+modal.onclick=(e)=>{if(e.target===modal)modal.classList.remove("active");};
+
+
+
+</script>
+</body>
+</html>
