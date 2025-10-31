@@ -65,7 +65,7 @@
 <li class="dropdown2 HospitalOperations">
   <a href="#HospitalOperations">Hospital Operations</a>
   <div class="dropdown-content2">
-    <a href="#AdmissionTransfer" id="comingSoon8">Admission and Transfer</a>
+    <a href="#AdmissionTransfer" id="AdmissionTransferLink">Admission and Transfer</a>
     <a href="#DutyRoster" id="comingSoon9">Duty Roster</a>
     <a href="#Inventory" id="comingSoon10">Inventory</a>
         <a href="Equipment List.html">Equipment</a>
@@ -170,6 +170,108 @@
         <button id="viewStaffBtn">View All Staff</button>
     </div>
 </div>
+
+<!-- 🔒 Access Restricted Modal -->
+<div id="authModal" style="
+  display:none; position:fixed; inset:0;
+  background:rgba(0,0,0,0.55);
+  justify-content:center; align-items:center;
+  z-index:2000; backdrop-filter:blur(6px);
+  font-family:'Poppins', sans-serif;">
+  
+  <div style="
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:30px 25px;
+    width:360px;
+    text-align:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.15);
+    color:#1e293b;
+    position:relative;
+    transition:all .3s ease;">
+    
+    <span id="closeAuthModal" style="
+      position:absolute; top:10px; right:15px;
+      cursor:pointer; font-size:22px; color:#64748b;">&times;</span>
+    
+    <h2 style="font-weight:700; color:#2563eb; margin-bottom:8px;">
+      Access Restricted <span style="font-size:20px;">🔒</span>
+    </h2>
+    <p style="font-size:15px; color:#475569; margin-bottom:20px;">
+      You must log in to view this page.<br>
+      Please sign in to continue.
+    </p>
+
+    <input type="text" id="authUser" placeholder="Username" style="
+      width:90%; padding:10px; margin-bottom:10px;
+      border:1px solid #cbd5e1; border-radius:8px; font-size:15px;
+      outline:none; transition:0.3s;">
+    <input type="password" id="authPass" placeholder="Password" style="
+      width:90%; padding:10px; margin-bottom:15px;
+      border:1px solid #cbd5e1; border-radius:8px; font-size:15px;
+      outline:none; transition:0.3s;">
+    
+    <button id="authSubmit" style="
+      background:#2563eb;
+      color:#fff;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      cursor:pointer;
+      font-size:15px;
+      transition:all 0.3s ease;">
+      Go to Login
+    </button>
+
+    <p id="authError" style="
+      color:#dc2626;
+      display:none;
+      margin-top:12px;
+      font-weight:500;">
+      Invalid username or password ❌
+    </p>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const link = document.querySelector('#AdmissionTransferLink');
+  const modal = document.getElementById("authModal");
+  const closeBtn = document.getElementById("closeAuthModal");
+  const loginBtn = document.getElementById("authSubmit");
+  const errorMsg = document.getElementById("authError");
+
+  // ✅ بيانات الدخول الصحيحة
+  const VALID_USER = "AdminPHDU";
+  const VALID_PASS = "PHDUAdmin-2025";
+
+  // فتح المودال عند الضغط على الرابط
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
+  });
+
+  // إغلاق المودال
+  closeBtn.onclick = () => modal.style.display = "none";
+  window.onclick = (e) => { if (e.target === modal) modal.style.display = "none"; };
+
+  // التحقق من بيانات الدخول
+  loginBtn.addEventListener("click", () => {
+    const user = document.getElementById("authUser").value.trim();
+    const pass = document.getElementById("authPass").value.trim();
+
+    if (user === VALID_USER && pass === VALID_PASS) {
+      errorMsg.style.display = "none";
+      modal.style.display = "none";
+      window.location.href = "Admission and Discharge.html"; // ← غيّرها حسب الصفحة المطلوبة
+    } else {
+      errorMsg.style.display = "block";
+    }
+  });
+});
+</script>
+
 </nav>
 
 </header>

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const adminUser = "Asma";
-    const adminPass = "1234";
+    const adminUser = "AdminPHDU";
+    const adminPass = "PHDUAdmin-2025";
 
     const loginModal = document.getElementById("loginModal");
     const closeModal = document.getElementById("closeModal");
@@ -108,8 +108,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     logoutOption?.addEventListener("click", () => {
-        localStorage.removeItem("loggedUser");
-        localStorage.removeItem("isAdmin");
+        sessionStorage.removeItem("loggedUser");
+        sessionStorage.removeItem("isAdmin");
         userDisplay.innerText = "";
         adminControlMenu.style.display = "none";
         adminDropdown.innerHTML = "";
@@ -129,9 +129,9 @@ submitLogin?.addEventListener("click", () => {
         if (!isAdmin && !staffUser) return;
         // 👇 هنا عرّفت المتغير
         const currentUser = isAdmin ? adminUser : staffUser.name;
-        localStorage.setItem("loggedUser", isAdmin ? adminUser : staffUser.name);
-        localStorage.setItem("staffName", currentUser);   // 👈 الإضافة المهمة
-        localStorage.setItem("isAdmin", isAdmin ? "true" : "false");
+        sessionStorage.setItem("loggedUser", isAdmin ? adminUser : staffUser.name);
+        sessionStorage.setItem("staffName", currentUser);   // 👈 الإضافة المهمة
+        sessionStorage.setItem("isAdmin", isAdmin ? "true" : "false");
 
         loginModal.style.display = "none";
         usernameInput.value = "";
@@ -186,8 +186,8 @@ submitLogin?.addEventListener("click", () => {
     // ------------------ Account Menu & Admin Dropdown ------------------
 // ------------------ Account Menu & Admin Dropdown ------------------
 function updateAccountMenu() {
-    const currentUser = localStorage.getItem("loggedUser");
-    const currentIsAdmin = localStorage.getItem("isAdmin") === "true";
+    const currentUser = sessionStorage.getItem("loggedUser");
+    const currentIsAdmin = sessionStorage.getItem("isAdmin") === "true";
 
     if (currentUser) {
         userDisplay.innerText = `(Welcome ${currentIsAdmin ? "Admin " + currentUser : currentUser})`;
@@ -221,7 +221,6 @@ const adminOptions = [
   { text: "Edit Staff", action: () => window.location.href = "EnterDate Edit.html" },
   { text: "Dashboard", action: () => window.location.href = "Dashboard.html" }, // نفس الرابط للجميع
   { text: "Policy Readers", action: () => window.location.href = "Policy Reads Dashboard.html" },
-  { text: "Admission and Discharge", action: () => window.location.href = "Admission and Discharge.html" },
 ];
 
     adminOptions.forEach(opt => {
@@ -262,5 +261,7 @@ if (!adminControlMenu.dataset.eventsAdded) {
 
 // تهيئة القائمة عند تحميل الصفحة
 updateAccountMenu();
+
+
 
 });
