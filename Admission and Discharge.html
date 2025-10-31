@@ -2805,7 +2805,7 @@ function buildCardHTML(p, idx) {
     <div class="info-box" style="
       background:var(--soft);border-radius:12px;padding:12px 14px;font-size:.9rem;color:var(--ink);
       border:1px solid var(--line);display:flex;flex-direction:column;gap:8px;">
-      ${row("Age:", `${p.age || "—"} yrs`, "hourglass-half")}
+      ${row("Age:", `${p.age || "—"}`, "hourglass-half")}
       ${row("DOB:", p.dob || "—", "calendar")}
       ${row("Source:", p.source || "—", "door-open")}
       ${row("Parent Team:", (p.parentAdmission || p.team || "—"), "users")}
@@ -3482,7 +3482,7 @@ ${showArrest ? `
 
     <div style="display:flex; justify-content:space-between;">
       <span><i class="fa fa-hourglass-half" style="color: #0ea5e9;"></i> <b>Age:</b></span>
-      <span>${p.age} yrs</span>
+      <span>${p.age}</span>
     </div>
 
     <div style="display:flex; justify-content:space-between;">
