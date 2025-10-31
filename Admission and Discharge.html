@@ -3062,16 +3062,14 @@ const totalPatients = filteredRows.length;
 const meter = document.getElementById("m-interviews");
 const pctText = meter.querySelector(".pct");
 
-// 🔹 أنيميشن بسيط لزيادة الرقم تدريجيًا
 let current = 0;
-const duration = 800; // المدة بالمللي ثانية
-const stepTime = Math.max(Math.floor(duration / totalPatients), 20);
-
+const jump = Math.ceil(totalPatients /200); // ← يعدّ بـ 100 خطوة تقريبًا
 const timer = setInterval(() => {
-  current++;
+  current += jump;
+  if (current >= totalPatients) current = totalPatients;
   pctText.textContent = `${current} Patients`;
   if (current >= totalPatients) clearInterval(timer);
-}, stepTime);
+}, 10);
 
 // 🧩 بعد ما تنتهي من عرض الكروت والجدول تمامًا
 // خزّن فقط المرضى الظاهرين حاليًا لتأكيد جاهزيتهم للتصدير
@@ -5629,13 +5627,13 @@ document.getElementById("saveAdd").onclick = async () => {
     const result = await res.json();
 
     if (result.result === "success") {
-      alert(`✅ Saved successfully`);
+      alert(`✅ Saved successfully`);      location.reload(); // 🔁 تحديث الصفحة بعد الإضافة
     } else {
       alert("⚠️ Save failed!");
     }
 
   } catch {
-    alert("✅ Saved successfully");
+    alert("✅ Saved successfully");      location.reload(); // 🔁 تحديث الصفحة بعد الإضافة
   } finally {
     modal.classList.remove("active");
   }
@@ -5840,7 +5838,7 @@ const el =
         const result = await res.json();
 
         if (result.result === "success") {
-          alert("✅ Updated successfully");
+          alert("✅ Updated successfully");      location.reload(); // 🔁 تحديث الصفحة بعد الإضافة
           location.reload();
         } else if (result.result === "not_found") {
           alert("⚠️ Record not found in Google Sheet!");
@@ -5849,7 +5847,7 @@ const el =
         }
 
       } catch {
-        alert("✅ Updated successfully");
+        alert("✅ Updated successfully");      location.reload(); // 🔁 تحديث الصفحة بعد الإضافة
       } finally {
         modal.classList.remove("active");
       }
@@ -5902,6 +5900,7 @@ window.addEventListener('click', (e) => {
     chartContainer.innerHTML = "";
   }
 });
+
 
 
 </script>
