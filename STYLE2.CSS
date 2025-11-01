@@ -131,7 +131,12 @@ header {
 .menu-btn {
     display: none;
 }
-
+.dropdown-content a {
+  white-space: nowrap;   /* يمنع نزول النص للسطر الثاني */
+}
+.dropdown2 a {
+  white-space: nowrap;   /* يمنع نزول النص للسطر الثاني */
+}
 /* ===========================================
    Body Sections
 =========================================== */
