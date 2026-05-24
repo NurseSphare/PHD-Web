@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Respiratory Care Weekly Challenge</title>
+  <style>
+    :root{
+      --bg:#080914;
+      --bg2:#101327;
+      --card:rgba(255,255,255,.09);
+      --card2:rgba(255,255,255,.13);
+      --stroke:rgba(255,255,255,.16);
+      --stroke2:rgba(255,255,255,.26);
+      --text:#f7f8ff;
+      --muted:#aeb4d6;
+      --muted2:#7980a6;
+      --primary:#7c5cff;
+      --primary2:#a78bfa;
+      --cyan:#32d4ff;
+      --orange:#ffb05c;
+      --green:#34d399;
+      --red:#fb7185;
+      --yellow:#facc15;
+      --shadow:0 30px 90px rgba(0,0,0,.42);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 12% 10%, rgba(124,92,255,.35), transparent 36%),
+        radial-gradient(circle at 88% 18%, rgba(50,212,255,.18), transparent 34%),
+        radial-gradient(circle at 50% 100%, rgba(255,176,92,.16), transparent 34%),
+        linear-gradient(135deg, var(--bg), var(--bg2));
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.35;
+      background-image:
+        linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size:56px 56px;
+      mask-image:linear-gradient(to bottom, #000, transparent 85%);
+    }
+
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+
+    .app{
+      width:min(1220px, calc(100% - 32px));
+      margin:0 auto;
+      padding:22px 0 50px;
+      position:relative;
+      z-index:2;
+    }
+
+    .topbar{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px 12px 18px;
+      border:1px solid var(--stroke);
+      border-radius:24px;
+      background:rgba(255,255,255,.07);
+      backdrop-filter:blur(22px);
+      box-shadow:0 16px 50px rgba(0,0,0,.18);
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,1), rgba(50,212,255,.82));
+      box-shadow:0 16px 35px rgba(124,92,255,.38);
+      font-size:23px;
+      flex:0 0 auto;
+    }
+
+    .brand h1{
+      font-size:18px;
+      line-height:1.05;
+      letter-spacing:-.3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:4px;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--stroke);
+      color:#e9ebff;
+      background:rgba(255,255,255,.08);
+      padding:10px 13px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      backdrop-filter:blur(16px);
+    }
+
+    .btn{
+      border:0;
+      outline:0;
+      color:white;
+      font-weight:900;
+      letter-spacing:-.1px;
+      padding:12px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--primary), #b669ff);
+      box-shadow:0 14px 30px rgba(124,92,255,.34);
+      transition:.22s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover{transform:translateY(-2px);filter:saturate(1.08)}
+    .btn:active{transform:translateY(0)}
+    .btn.ghost{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid var(--stroke);
+    }
+    .btn.soft{
+      background:rgba(124,92,255,.16);
+      border:1px solid rgba(167,139,250,.28);
+      box-shadow:none;
+    }
+    .btn.danger{
+      background:linear-gradient(135deg, #fb7185, #ef4444);
+      box-shadow:0 14px 30px rgba(251,113,133,.22);
+    }
+    .btn.green{
+      background:linear-gradient(135deg, #34d399, #10b981);
+      box-shadow:0 14px 30px rgba(52,211,153,.22);
+    }
+    .btn.small{padding:9px 12px;border-radius:13px;font-size:13px}
+
+    .hero{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
+      align-items:stretch;
+      margin-top:24px;
+    }
+
+    .glass{
+      border:1px solid var(--stroke);
+      background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.065));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(24px);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-card{
+      padding:36px;
+      min-height:520px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      width:320px;
+      height:320px;
+      border-radius:50%;
+      right:-90px;
+      top:-90px;
+      background:radial-gradient(circle, rgba(50,212,255,.2), transparent 68%);
+      pointer-events:none;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:9px;
+      width:max-content;
+      max-width:100%;
+      padding:10px 13px;
+      border:1px solid rgba(50,212,255,.23);
+      border-radius:999px;
+      background:rgba(50,212,255,.09);
+      color:#dff8ff;
+      font-weight:900;
+      font-size:13px;
+      margin-bottom:18px;
+    }
+
+    .hero h2{
+      font-size:clamp(38px, 5vw, 76px);
+      line-height:.94;
+      letter-spacing:-3px;
+      max-width:740px;
+    }
+
+    .gradient-text{
+      background:linear-gradient(135deg,#fff 0%,#c7d2fe 35%,#8be8ff 72%,#ffcf95 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      margin-top:18px;
+      color:var(--muted);
+      line-height:1.7;
+      font-size:16px;
+      max-width:620px;
+    }
+
+    .stats-row{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .stat{
+      padding:16px;
+      border-radius:20px;
+      border:1px solid var(--stroke);
+      background:rgba(255,255,255,.07);
+    }
+
+    .stat b{font-size:24px;display:block;letter-spacing:-1px}
+    .stat span{font-size:12px;color:var(--muted);font-weight:800}
+
+    .entry-card{
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    .panel-title{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .panel-title h3{
+      font-size:25px;
+      letter-spacing:-.7px;
+    }
+
+    .panel-title p{
+      color:var(--muted);
+      margin-top:6px;
+      line-height:1.5;
+      font-size:14px;
+    }
+
+    .input-group{display:grid;gap:8px;margin-top:8px}
+    label{font-size:12px;color:#cfd3f5;font-weight:900;letter-spacing:.2px;text-transform:uppercase}
+    input,select,textarea{
+      width:100%;
+      border:1px solid rgba(255,255,255,.16);
+      background:rgba(7,9,22,.48);
+      color:var(--text);
+      border-radius:17px;
+      padding:14px 14px;
+      outline:0;
+      transition:.18s ease;
+    }
+    textarea{min-height:112px;resize:vertical;line-height:1.5}
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(124,92,255,.9);
+      box-shadow:0 0 0 4px rgba(124,92,255,.15);
+    }
+    input::placeholder,textarea::placeholder{color:rgba(174,180,214,.56)}
+
+    .challenge-rules{
+      display:grid;
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .rule{
+      display:flex;
+      gap:11px;
+      align-items:flex-start;
+      padding:12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.1);
+      background:rgba(255,255,255,.055);
+      color:#dfe3ff;
+      font-size:13px;
+      line-height:1.45;
+    }
+
+    .rule i{
+      width:28px;
+      height:28px;
+      border-radius:11px;
+      display:grid;
+      place-items:center;
+      background:rgba(124,92,255,.17);
+      font-style:normal;
+      flex:0 0 auto;
+    }
+
+    .screen{display:none;animation:fadeUp .36s ease both}
+    .screen.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+    .challenge-shell{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:22px;
+      align-items:start;
+    }
+
+    .question-card{
+      padding:28px;
+      min-height:610px;
+    }
+
+    .game-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+      margin-bottom:20px;
+    }
+
+    .week-tag{
+      color:#e9dcff;
+      border:1px solid rgba(167,139,250,.28);
+      background:rgba(124,92,255,.16);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:900;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .timer-wrap{
+      min-width:126px;
+      padding:12px;
+      border-radius:22px;
+      background:rgba(0,0,0,.2);
+      border:1px solid var(--stroke);
+      text-align:center;
+    }
+
+    .timer-label{font-size:11px;color:var(--muted);font-weight:900;text-transform:uppercase;letter-spacing:.4px}
+    .timer{font-size:31px;font-weight:1000;letter-spacing:-1px;margin-top:3px}
+    .timer.danger{color:var(--red);animation:pulse 1s ease infinite}
+    @keyframes pulse{50%{transform:scale(1.04);filter:brightness(1.25)}}
+
+    .progress-line{
+      width:100%;
+      height:11px;
+      border-radius:99px;
+      background:rgba(255,255,255,.09);
+      overflow:hidden;
+      margin:16px 0 24px;
+      border:1px solid rgba(255,255,255,.09);
+    }
+    .progress-line span{
+      display:block;
+      width:100%;
+      height:100%;
+      border-radius:99px;
+      background:linear-gradient(90deg, var(--green), var(--cyan), var(--primary));
+      transition:width .3s linear;
+    }
+
+    .secure-question{
+      position:relative;
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(180deg, rgba(255,255,255,.095), rgba(255,255,255,.05));
+      border-radius:26px;
+      padding:24px;
+      overflow:hidden;
+      user-select:none;
+      -webkit-user-select:none;
+    }
+
+    .secure-question::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(135deg, transparent 0 36%, rgba(255,255,255,.045) 36% 37%, transparent 37% 100%);
+      background-size:22px 22px;
+      opacity:.45;
+      pointer-events:none;
+    }
+
+    .watermark{
+      position:absolute;
+      inset:auto -24px 16px auto;
+      transform:rotate(-18deg);
+      font-size:26px;
+      font-weight:1000;
+      color:rgba(255,255,255,.055);
+      white-space:nowrap;
+      pointer-events:none;
+      letter-spacing:1px;
+      text-transform:uppercase;
+    }
+
+    .question-text{
+      position:relative;
+      z-index:1;
+      font-size:25px;
+      line-height:1.35;
+      letter-spacing:-.55px;
+      font-weight:950;
+      margin-top:10px;
+    }
+
+    .question-image{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-height:270px;
+      object-fit:cover;
+      border-radius:22px;
+      margin-top:18px;
+      border:1px solid rgba(255,255,255,.16);
+      display:none;
+    }
+
+    .options{
+      display:grid;
+      gap:13px;
+      margin-top:22px;
+    }
+
+    .option{
+      width:100%;
+      border:1px solid rgba(255,255,255,.15);
+      background:rgba(255,255,255,.07);
+      color:var(--text);
+      border-radius:20px;
+      padding:16px;
+      text-align:left;
+      display:flex;
+      align-items:center;
+      gap:13px;
+      transition:.18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .option:hover{
+      transform:translateY(-2px);
+      background:rgba(255,255,255,.11);
+      border-color:rgba(167,139,250,.45);
+    }
+    .option.selected{
+      border-color:rgba(50,212,255,.8);
+      background:rgba(50,212,255,.13);
+      box-shadow:0 0 0 4px rgba(50,212,255,.09);
+    }
+    .option.disabled{opacity:.68;pointer-events:none}
+    .option .letter{
+      width:34px;
+      height:34px;
+      border-radius:13px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,.1);
+      font-weight:1000;
+      flex:0 0 auto;
+      color:#e9ebff;
+    }
+    .option.selected .letter{background:linear-gradient(135deg, var(--cyan), var(--primary));}
+    .option .text{font-weight:800;line-height:1.4}
+
+    .side-card{
+      padding:22px;
+      display:grid;
+      gap:14px;
+    }
+
+    .mini-card{
+      padding:16px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.11);
+      background:rgba(255,255,255,.06);
+    }
+    .mini-card h4{font-size:14px;margin-bottom:9px;color:#f0f2ff}
+    .mini-card p,.mini-card li{color:var(--muted);line-height:1.55;font-size:13px}
+    .mini-card ul{padding-left:18px;display:grid;gap:5px}
+
+    .rank-list{display:grid;gap:9px;margin-top:8px}
+    .rank-row{
+      display:grid;
+      grid-template-columns:34px 1fr auto;
+      align-items:center;
+      gap:10px;
+      padding:10px;
+      border-radius:15px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .rank-no{
+      width:30px;height:30px;border-radius:11px;display:grid;place-items:center;
+      background:rgba(124,92,255,.18);font-weight:1000;
+    }
+    .rank-name{font-size:13px;font-weight:900;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .rank-score{font-size:12px;color:var(--green);font-weight:1000}
+
+    .result-card{
+      margin-top:24px;
+      padding:34px;
+      text-align:center;
+    }
+    .result-icon{
+      width:84px;height:84px;border-radius:30px;display:grid;place-items:center;
+      margin:0 auto 18px;
+      background:linear-gradient(135deg, rgba(52,211,153,.95), rgba(50,212,255,.85));
+      font-size:40px;
+      box-shadow:0 20px 60px rgba(52,211,153,.25);
+    }
+    .result-card h2{font-size:34px;letter-spacing:-1px;margin-bottom:10px}
+    .result-card p{color:var(--muted);line-height:1.7;max-width:650px;margin:0 auto}
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:24px;
+      transform:translateX(-50%) translateY(20px);
+      padding:13px 16px;
+      border-radius:18px;
+      color:white;
+      font-weight:900;
+      background:rgba(16,19,39,.9);
+      border:1px solid var(--stroke);
+      box-shadow:0 18px 60px rgba(0,0,0,.34);
+      backdrop-filter:blur(16px);
+      opacity:0;
+      pointer-events:none;
+      transition:.25s ease;
+      z-index:100;
+      text-align:center;
+      max-width:min(520px, calc(100% - 24px));
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+    .modal{
+      position:fixed;
+      inset:0;
+      z-index:60;
+      display:none;
+      place-items:center;
+      padding:18px;
+      background:rgba(0,0,0,.64);
+      backdrop-filter:blur(14px);
+    }
+    .modal.show{display:grid;animation:fade .2s ease both}
+    @keyframes fade{from{opacity:0}to{opacity:1}}
+    .modal-card{
+      width:min(480px,100%);
+      border:1px solid var(--stroke);
+      border-radius:28px;
+      background:linear-gradient(180deg, rgba(24,27,52,.98), rgba(14,16,33,.98));
+      box-shadow:var(--shadow);
+      padding:24px;
+    }
+    .modal-card h3{font-size:25px;letter-spacing:-.7px;margin-bottom:7px}
+    .modal-card p{color:var(--muted);line-height:1.6;font-size:14px;margin-bottom:14px}
+
+    .admin-layout{
+      margin-top:24px;
+      display:grid;
+      grid-template-columns:310px 1fr;
+      gap:22px;
+      align-items:start;
+    }
+
+    .admin-nav{
+      padding:18px;
+      display:grid;
+      gap:10px;
+      position:sticky;
+      top:104px;
+    }
+    .admin-nav button{
+      width:100%;
+      border:1px solid transparent;
+      background:transparent;
+      color:#dce0ff;
+      padding:13px 14px;
+      border-radius:17px;
+      text-align:left;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      transition:.18s ease;
+    }
+    .admin-nav button:hover,.admin-nav button.active{
+      background:rgba(124,92,255,.16);
+      border-color:rgba(167,139,250,.22);
+    }
+
+    .admin-page{display:none}
+    .admin-page.active{display:block;animation:fadeUp .28s ease both}
+    .admin-content{padding:24px}
+
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+    .table-wrap{overflow:auto;border-radius:22px;border:1px solid var(--stroke);margin-top:15px}
+    table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(0,0,0,.12)}
+    th,td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;vertical-align:top}
+    th{color:#d7dbff;background:rgba(255,255,255,.055);font-size:12px;text-transform:uppercase;letter-spacing:.35px}
+    td{color:#eef0ff}
+    .muted{color:var(--muted)!important}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);
+      color:#eef0ff;font-size:12px;font-weight:900;white-space:nowrap;
+    }
+    .badge.green{color:#b7ffe4;border-color:rgba(52,211,153,.25);background:rgba(52,211,153,.11)}
+    .badge.red{color:#ffd1da;border-color:rgba(251,113,133,.25);background:rgba(251,113,133,.11)}
+    .badge.yellow{color:#fff3b8;border-color:rgba(250,204,21,.25);background:rgba(250,204,21,.1)}
+
+    .question-list{display:grid;gap:12px;margin-top:16px}
+    .q-item{
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      border-radius:22px;
+      padding:16px;
+      display:grid;
+      gap:11px;
+    }
+    .q-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .q-title{font-weight:1000;line-height:1.35}
+    .q-meta{display:flex;gap:8px;flex-wrap:wrap}
+    .q-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+    .empty{
+      text-align:center;
+      padding:34px;
+      color:var(--muted);
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius:24px;
+      background:rgba(255,255,255,.035);
+    }
+
+    .confetti{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:80;
+      overflow:hidden;
+    }
+    .confetti span{
+      position:absolute;
+      width:10px;
+      height:16px;
+      border-radius:4px;
+      top:-20px;
+      animation:fall 1.65s linear forwards;
+      opacity:.95;
+    }
+    @keyframes fall{
+      to{transform:translateY(110vh) rotate(560deg);opacity:0}
+    }
+
+    .hidden{display:none!important}
+
+    @media (max-width:980px){
+      .hero,.challenge-shell,.admin-layout{grid-template-columns:1fr}
+      .admin-nav{position:relative;top:auto;grid-template-columns:repeat(2,1fr)}
+      .side-card{order:-1}
+    }
+    @media (max-width:680px){
+      .app{width:min(100% - 20px,1220px);padding-top:10px}
+      .topbar{align-items:flex-start;position:relative;top:auto}
+      .brand h1{font-size:15px;white-space:normal}
+      .top-actions{width:100%;justify-content:flex-start}
+      .hero-card,.entry-card,.question-card,.admin-content,.result-card{padding:20px}
+      .hero-card{min-height:auto}
+      .stats-row,.grid-2,.grid-3{grid-template-columns:1fr}
+      .question-text{font-size:21px}
+      .game-header{flex-direction:column}
+      .timer-wrap{width:100%}
+      .admin-nav{grid-template-columns:1fr}
+      .q-top{flex-direction:column}
+    }
+
+    /* ===== Creative NCLEX-style Question Interface - added only ===== */
+    body.challenge-mode{
+      background:
+        radial-gradient(circle at 10% 18%, rgba(30,144,255,.34), transparent 34%),
+        radial-gradient(circle at 90% 12%, rgba(255,219,77,.18), transparent 30%),
+        linear-gradient(135deg, #eaf4ff 0%, #d9eaff 38%, #f7fbff 100%);
+    }
+
+    body.challenge-mode::before{
+      opacity:.28;
+      background-image:
+        linear-gradient(rgba(4,61,130,.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(4,61,130,.08) 1px, transparent 1px);
+    }
+
+    body.challenge-mode .topbar{
+      background:rgba(255,255,255,.72);
+      border-color:rgba(0,74,160,.16);
+      box-shadow:0 18px 46px rgba(0,59,130,.16);
+    }
+
+    body.challenge-mode .brand h1,
+    body.challenge-mode .brand p,
+    body.challenge-mode .pill{color:#07245c}
+
+    body.challenge-mode .challenge-shell{
+      grid-template-columns:minmax(0, 1fr) 315px;
+    }
+
+    body.challenge-mode .question-card{
+      padding:24px;
+      border:0;
+      border-radius:34px;
+      color:#061a3d;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255,255,255,.98), rgba(255,255,255,.72) 36%, rgba(219,237,255,.58) 76%),
+        linear-gradient(135deg, #f8fcff 0%, #e7f3ff 58%, #d5eaff 100%);
+      box-shadow:0 28px 80px rgba(0,81,170,.22);
+      overflow:hidden;
+    }
+
+    body.challenge-mode .question-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 94% 12%, rgba(0,92,190,.14), transparent 24%),
+        radial-gradient(circle at 4% 95%, rgba(0,155,221,.13), transparent 28%),
+        linear-gradient(135deg, rgba(255,255,255,.72), transparent 58%);
+    }
+
+    body.challenge-mode .question-card::after{
+      content:"NCLEX CHALLENGE";
+      position:absolute;
+      left:22px;
+      right:22px;
+      top:18px;
+      height:82px;
+      border-radius:32px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#ffffff;
+      font-size:clamp(32px, 5vw, 68px);
+      font-weight:1000;
+      letter-spacing:2px;
+      text-shadow:0 5px 16px rgba(0,0,0,.38);
+      background:linear-gradient(135deg, #003b8f 0%, #075eb8 55%, #0b8ee8 100%);
+      box-shadow:0 18px 36px rgba(0,74,160,.28), inset 0 1px 0 rgba(255,255,255,.35);
+      z-index:1;
+      pointer-events:none;
+    }
+
+    body.challenge-mode .game-header{
+      position:relative;
+      z-index:2;
+      margin-top:92px;
+      margin-bottom:18px;
+      display:grid;
+      grid-template-columns:1fr auto;
+      align-items:center;
+      padding:12px 18px;
+      border-radius:24px;
+      background:linear-gradient(135deg, #08245c, #063f91);
+      border:1px solid rgba(255,255,255,.45);
+      box-shadow:0 16px 34px rgba(0,57,130,.18);
+      overflow:hidden;
+    }
+
+    body.challenge-mode .game-header::before{
+      content:"Test Your Nursing Brain! 🧠";
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%,-50%);
+      padding:8px 26px;
+      border-radius:999px;
+      background:rgba(4,18,60,.58);
+      color:#fff;
+      font-weight:1000;
+      letter-spacing:2px;
+      font-size:19px;
+      white-space:nowrap;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.22);
+    }
+
+    body.challenge-mode .game-header::after{
+      content:"🩺";
+      position:absolute;
+      right:18px;
+      top:-10px;
+      font-size:74px;
+      opacity:.2;
+      transform:rotate(-15deg);
+    }
+
+    body.challenge-mode .game-header > div:first-child{
+      opacity:0;
+      pointer-events:none;
+    }
+
+    body.challenge-mode .week-tag{
+      color:#09214c;
+      background:linear-gradient(135deg, #ffe85f, #ffc233);
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:0 10px 22px rgba(255,196,35,.25);
+      font-weight:1000;
+    }
+
+    body.challenge-mode .timer-wrap{
+      position:relative;
+      z-index:2;
+      min-width:128px;
+      background:rgba(255,255,255,.16);
+      border:1px solid rgba(255,255,255,.42);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+    }
+
+    body.challenge-mode .timer-label{color:rgba(255,255,255,.8)}
+    body.challenge-mode .timer{color:#fff;text-shadow:0 3px 12px rgba(0,0,0,.28)}
+
+    body.challenge-mode .progress-line{
+      position:relative;
+      z-index:2;
+      height:12px;
+      background:rgba(4,54,120,.12);
+      border-color:rgba(0,91,184,.18);
+      box-shadow:inset 0 1px 4px rgba(7,26,61,.13);
+    }
+
+    body.challenge-mode .progress-line span{
+      background:linear-gradient(90deg, #22c55e, #06b6d4, #7c3aed);
+      box-shadow:0 0 18px rgba(6,182,212,.35);
+    }
+
+    body.challenge-mode .secure-question{
+      position:relative;
+      z-index:2;
+      min-height:292px;
+      display:grid;
+      grid-template-columns:310px minmax(0,1fr);
+      gap:26px;
+      align-items:center;
+      padding:24px;
+      border-radius:36px;
+      border:4px solid rgba(0,91,184,.72);
+      background:linear-gradient(135deg, #ffffff, #edf7ff);
+      box-shadow:0 18px 44px rgba(0,77,155,.18), inset 0 1px 0 rgba(255,255,255,.9);
+    }
+
+    body.challenge-mode .secure-question::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 18% 50%, rgba(0,88,184,.12), transparent 25%),
+        linear-gradient(135deg, rgba(255,255,255,.66), transparent 60%);
+      opacity:1;
+      background-size:auto;
+      pointer-events:none;
+    }
+
+    body.challenge-mode .secure-question::after{
+      content:"Q.";
+      position:absolute;
+      left:306px;
+      top:34px;
+      width:78px;
+      height:78px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:white;
+      font-size:36px;
+      font-weight:1000;
+      background:linear-gradient(135deg, #075eb8, #003b88);
+      border:3px solid rgba(255,255,255,.9);
+      box-shadow:0 14px 28px rgba(0,73,150,.28), inset 0 1px 0 rgba(255,255,255,.32);
+      z-index:4;
+    }
+
+    body.challenge-mode .secure-question > .badge{
+      position:absolute;
+      left:25px;
+      top:21px;
+      z-index:5;
+      color:#6b4e00;
+      background:linear-gradient(135deg,#fff7cc,#ffe066);
+      border-color:rgba(255,198,38,.5);
+    }
+
+    .med-illustration{
+      position:relative;
+      z-index:2;
+      grid-column:1;
+      width:100%;
+      aspect-ratio:1.08/1;
+      border-radius:999px;
+      border:8px solid rgba(255,255,255,.98);
+      outline:4px solid rgba(0,91,184,.62);
+      background:
+        radial-gradient(circle at 43% 39%, #f7c7aa 0 10%, transparent 11%),
+        radial-gradient(circle at 58% 38%, #f7c7aa 0 9%, transparent 10%),
+        radial-gradient(circle at 50% 54%, #2b67a7 0 26%, transparent 27%),
+        linear-gradient(135deg, #dff1ff, #9bc5ee 48%, #4a88c6);
+      box-shadow:0 22px 42px rgba(0,75,150,.22);
+      overflow:hidden;
+    }
+
+    .med-illustration::before{
+      content:"";
+      position:absolute;
+      left:38px;
+      bottom:48px;
+      width:160px;
+      height:74px;
+      border-radius:42px 42px 18px 18px;
+      background:linear-gradient(135deg, #2d6fad, #0f3e78);
+      box-shadow:118px -74px 0 -27px #092f60;
+      transform:rotate(-2deg);
+    }
+
+    .med-illustration::after{
+      content:"98  SpO2   28";
+      position:absolute;
+      right:25px;
+      top:55px;
+      width:116px;
+      height:64px;
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:8px;
+      background:#061d3e;
+      color:#91ffb7;
+      font-size:17px;
+      line-height:1.08;
+      font-weight:1000;
+      box-shadow:0 10px 22px rgba(0,0,0,.24);
+    }
+
+    body.challenge-mode .secure-question.has-image .med-illustration{display:none}
+    body.challenge-mode .secure-question:not(.has-image) .question-image{display:none!important}
+
+    body.challenge-mode .question-image{
+      position:relative;
+      z-index:2;
+      grid-column:1;
+      grid-row:1;
+      width:100%;
+      aspect-ratio:1.08/1;
+      max-height:250px;
+      object-fit:cover;
+      border-radius:999px;
+      margin:0;
+      border:8px solid rgba(255,255,255,.98);
+      outline:4px solid rgba(0,91,184,.62);
+      box-shadow:0 22px 42px rgba(0,75,150,.22);
+      background:#dbeafe;
+    }
+
+    body.challenge-mode .question-text{
+      position:relative;
+      z-index:3;
+      grid-column:2;
+      margin:0;
+      padding:46px 8px 10px 54px;
+      color:#071a3d;
+      font-size:clamp(24px, 3vw, 38px);
+      line-height:1.17;
+      letter-spacing:-1px;
+      font-weight:1000;
+      text-wrap:balance;
+    }
+
+    body.challenge-mode .question-text::first-letter{color:#075eb8}
+
+    body.challenge-mode .watermark{
+      color:rgba(0,60,130,.08);
+      z-index:5;
+      font-size:22px;
+    }
+
+    body.challenge-mode .options{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+      margin-top:18px;
+    }
+
+    body.challenge-mode .option{
+      min-height:112px;
+      border:4px solid rgba(0,91,184,.58);
+      border-radius:30px;
+      padding:18px 19px;
+      color:#071a3d;
+      background:linear-gradient(135deg, rgba(255,255,255,.99), rgba(239,247,255,.95));
+      box-shadow:0 16px 34px rgba(0,71,150,.14), inset 0 1px 0 rgba(255,255,255,.9);
+      gap:18px;
+    }
+
+    body.challenge-mode .option::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(110deg, transparent, rgba(255,255,255,.58), transparent);
+      transform:translateX(-125%);
+      transition:.45s ease;
+    }
+
+    body.challenge-mode .option:hover{
+      transform:translateY(-4px) scale(1.01);
+      background:linear-gradient(135deg, #ffffff, #ecf7ff);
+      border-color:#075eb8;
+      box-shadow:0 22px 44px rgba(0,75,150,.22), inset 0 1px 0 rgba(255,255,255,1);
+    }
+
+    body.challenge-mode .option:hover::after{transform:translateX(125%)}
+
+    body.challenge-mode .option.selected{
+      border-color:#ffbd2f;
+      background:linear-gradient(135deg, #fff9df, #e9f6ff);
+      box-shadow:0 0 0 5px rgba(255,189,47,.24), 0 22px 44px rgba(0,75,150,.22);
+    }
+
+    body.challenge-mode .option .letter{
+      width:72px;
+      height:72px;
+      border-radius:50%;
+      color:#ffffff;
+      background:linear-gradient(135deg, #075eb8, #003b88);
+      font-size:36px;
+      font-weight:1000;
+      border:2px solid rgba(255,255,255,.85);
+      box-shadow:0 13px 24px rgba(0,73,150,.26), inset 0 1px 0 rgba(255,255,255,.35);
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode .option.selected .letter{
+      background:linear-gradient(135deg, #ffcf43, #f59e0b);
+      color:#08214d;
+    }
+
+    body.challenge-mode .option .text{
+      color:#071a3d;
+      font-weight:1000;
+      line-height:1.18;
+      font-size:clamp(18px,2.15vw,25px);
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode #securityNote{color:#41567e!important;font-weight:800}
+
+    @media (max-width:980px){
+      body.challenge-mode .challenge-shell{grid-template-columns:1fr}
+      body.challenge-mode .secure-question{grid-template-columns:1fr;text-align:center}
+      body.challenge-mode .secure-question::after{left:50%;top:calc(50% - 18px);transform:translateX(-50%)}
+      body.challenge-mode .question-text{grid-column:1;padding:54px 8px 8px}
+      body.challenge-mode .question-image,
+      body.challenge-mode .med-illustration{grid-column:1;max-width:330px;margin:0 auto}
+    }
+
+    @media (max-width:680px){
+      body.challenge-mode .question-card::after{height:62px;font-size:34px;border-radius:24px}
+      body.challenge-mode .game-header{margin-top:72px;grid-template-columns:1fr}
+      body.challenge-mode .game-header::before{font-size:13px;letter-spacing:1px;padding:7px 12px}
+      body.challenge-mode .options{grid-template-columns:1fr}
+      body.challenge-mode .option{min-height:92px;border-radius:24px}
+      body.challenge-mode .option .letter{width:58px;height:58px;font-size:28px}
+      body.challenge-mode .secure-question{border-radius:28px;padding:18px}
+    }
+
+
+    /* ===== Premium Healthcare Game UI Theme - final override ===== */
+    :root{
+      --bg:#060b1f;
+      --bg2:#111a3a;
+      --text:#f8fbff;
+      --muted:#b9c4e6;
+      --primary:#6d5dfc;
+      --primary2:#9b7cff;
+      --cyan:#22d3ee;
+      --teal:#14b8a6;
+      --orange:#ffb454;
+      --green:#28d99b;
+      --red:#ff5d7a;
+      --yellow:#ffd166;
+      --stroke:rgba(255,255,255,.14);
+      --shadow:0 30px 90px rgba(2,8,23,.38);
+      --radius:30px;
+    }
+
+    body{
+      color:var(--text);
+      background:
+        radial-gradient(circle at 8% 8%, rgba(109,93,252,.42), transparent 32%),
+        radial-gradient(circle at 88% 10%, rgba(34,211,238,.24), transparent 30%),
+        radial-gradient(circle at 50% 96%, rgba(255,180,84,.18), transparent 36%),
+        linear-gradient(145deg, #050817 0%, #0b1230 46%, #101b3f 100%);
+    }
+
+    body::before{
+      opacity:.42;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size:68px 68px;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(120deg, transparent 0 30%, rgba(255,255,255,.045) 31%, transparent 32% 100%),
+        radial-gradient(circle at 75% 75%, rgba(20,184,166,.13), transparent 34%);
+      z-index:0;
+    }
+
+    .app{width:min(1240px, calc(100% - 34px));}
+
+    .topbar{
+      min-height:78px;
+      padding:14px 16px 14px 18px;
+      border-radius:28px;
+      background:linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.065));
+      border:1px solid rgba(255,255,255,.16);
+      box-shadow:0 18px 60px rgba(0,0,0,.24), inset 0 1px 0 rgba(255,255,255,.14);
+    }
+
+    .logo{
+      width:54px;
+      height:54px;
+      border-radius:21px;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.42), transparent 30%),
+        linear-gradient(135deg, #6d5dfc, #22d3ee 58%, #14b8a6);
+      box-shadow:0 18px 42px rgba(34,211,238,.24), 0 8px 24px rgba(109,93,252,.24);
+    }
+
+    .brand h1{font-size:19px;font-weight:950;letter-spacing:-.45px}
+    .brand p{color:#c8d2f5;font-weight:650}
+
+    .pill{
+      color:#f7fbff;
+      background:rgba(255,255,255,.095);
+      border-color:rgba(255,255,255,.16);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .btn{
+      border-radius:18px;
+      padding:13px 17px;
+      background:linear-gradient(135deg, #6d5dfc, #8b5cf6 48%, #d946ef);
+      box-shadow:0 16px 34px rgba(109,93,252,.30), inset 0 1px 0 rgba(255,255,255,.16);
+    }
+
+    .btn.green{
+      background:linear-gradient(135deg, #12c2a0, #28d99b);
+      box-shadow:0 16px 34px rgba(20,184,166,.25), inset 0 1px 0 rgba(255,255,255,.18);
+    }
+
+    .btn.ghost{
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      color:#f7fbff;
+    }
+
+    .btn.danger{background:linear-gradient(135deg, #ff5d7a, #ef4444)}
+
+    .glass{
+      border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(145deg, rgba(255,255,255,.125), rgba(255,255,255,.055));
+      box-shadow:var(--shadow), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .hero{
+      grid-template-columns:1.13fr .87fr;
+      gap:24px;
+      margin-top:28px;
+    }
+
+    .hero-card{
+      min-height:560px;
+      padding:42px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(34,211,238,.22), transparent 30%),
+        radial-gradient(circle at 12% 92%, rgba(255,180,84,.16), transparent 32%),
+        linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.06));
+    }
+
+    .hero-card::before{
+      content:"";
+      position:absolute;
+      right:30px;
+      bottom:28px;
+      width:190px;
+      height:190px;
+      border-radius:48px;
+      background:
+        linear-gradient(135deg, rgba(34,211,238,.18), rgba(109,93,252,.10));
+      transform:rotate(12deg);
+      filter:blur(.2px);
+      pointer-events:none;
+    }
+
+    .hero-card::after{
+      width:360px;
+      height:360px;
+      right:-120px;
+      top:-110px;
+      background:radial-gradient(circle, rgba(34,211,238,.26), transparent 67%);
+    }
+
+    .eyebrow{
+      padding:11px 15px;
+      color:#eaffff;
+      background:linear-gradient(135deg, rgba(34,211,238,.14), rgba(109,93,252,.13));
+      border:1px solid rgba(34,211,238,.26);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    .hero h2{
+      font-size:clamp(44px, 5.8vw, 82px);
+      letter-spacing:-3.5px;
+    }
+
+    .gradient-text{
+      background:linear-gradient(135deg, #ffffff 0%, #dbe6ff 25%, #78e8ff 56%, #bda7ff 79%, #ffd38a 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{color:#c4ccec;font-size:17px;max-width:660px}
+
+    .stat{
+      padding:18px;
+      border-radius:24px;
+      border-color:rgba(255,255,255,.13);
+      background:linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+    }
+
+    .stat b{font-size:30px;color:#fff}
+    .stat span{color:#bfc9ee;letter-spacing:.2px}
+
+    .entry-card{
+      padding:30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.15), rgba(255,255,255,.07));
+    }
+
+    .panel-title h3{font-size:29px;font-weight:950;color:#fff}
+    .panel-title p{color:#bec8ea}
+
+    label{color:#dbe5ff;font-size:11px;letter-spacing:.75px}
+
+    input,select,textarea{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(5,10,28,.52);
+      color:#f8fbff;
+      border-radius:18px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.04);
+    }
+
+    input:focus,select:focus,textarea:focus{
+      border-color:rgba(34,211,238,.72);
+      box-shadow:0 0 0 4px rgba(34,211,238,.13), inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .rule{
+      border-radius:20px;
+      background:linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+      border-color:rgba(255,255,255,.12);
+    }
+
+    .rule i{
+      background:linear-gradient(135deg, rgba(34,211,238,.18), rgba(109,93,252,.18));
+    }
+
+    .mini-card{
+      border-radius:24px;
+      background:linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.045));
+      border-color:rgba(255,255,255,.12);
+    }
+
+    .mini-card h4{color:#ffffff;font-weight:950}
+    .mini-card p,.mini-card li{color:#c0caed}
+
+    .side-card{
+      background:
+        radial-gradient(circle at 80% 10%, rgba(34,211,238,.12), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+    }
+
+    .rank-row{
+      border-radius:17px;
+      background:rgba(255,255,255,.075);
+      border-color:rgba(255,255,255,.10);
+    }
+
+    .rank-no{background:linear-gradient(135deg, rgba(109,93,252,.32), rgba(34,211,238,.18))}
+    .rank-score{color:#28d99b}
+
+    .badge{
+      border-color:rgba(255,255,255,.14);
+      background:rgba(255,255,255,.08);
+    }
+
+    .badge.green{color:#b8ffe9;background:rgba(40,217,155,.13);border-color:rgba(40,217,155,.25)}
+    .badge.yellow{color:#fff1b8;background:rgba(255,209,102,.13);border-color:rgba(255,209,102,.24)}
+    .badge.red{color:#ffd1dc;background:rgba(255,93,122,.13);border-color:rgba(255,93,122,.24)}
+
+    .admin-nav button:hover,
+    .admin-nav button.active{
+      background:linear-gradient(135deg, rgba(109,93,252,.18), rgba(34,211,238,.08));
+      border-color:rgba(34,211,238,.18);
+    }
+
+    .table-wrap{border-color:rgba(255,255,255,.12)}
+    table{background:rgba(5,10,28,.28)}
+    th{background:rgba(255,255,255,.06);color:#dce7ff}
+    td{color:#f3f6ff}
+
+    /* Challenge screen redesigned: polished game arena, not poster-like */
+    body.challenge-mode{
+      color:#f8fbff;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(34,211,238,.25), transparent 30%),
+        radial-gradient(circle at 88% 12%, rgba(109,93,252,.36), transparent 32%),
+        radial-gradient(circle at 52% 96%, rgba(255,180,84,.16), transparent 34%),
+        linear-gradient(145deg, #050817 0%, #0a1331 46%, #0e1a3c 100%);
+    }
+
+    body.challenge-mode .topbar{
+      background:linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.07));
+      border-color:rgba(255,255,255,.15);
+      box-shadow:0 18px 60px rgba(0,0,0,.22);
+    }
+
+    body.challenge-mode .brand h1,
+    body.challenge-mode .brand p,
+    body.challenge-mode .pill{color:#f8fbff}
+
+    body.challenge-mode .challenge-shell{
+      grid-template-columns:minmax(0, 1fr) 330px;
+      gap:24px;
+    }
+
+    body.challenge-mode .question-card{
+      padding:26px;
+      min-height:640px;
+      color:#f8fbff;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(34,211,238,.18), transparent 28%),
+        radial-gradient(circle at 92% 18%, rgba(109,93,252,.24), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.055));
+      box-shadow:0 30px 90px rgba(2,8,23,.38), inset 0 1px 0 rgba(255,255,255,.12);
+    }
+
+    body.challenge-mode .question-card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      opacity:.72;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.08), transparent 46%),
+        radial-gradient(circle at 9% 88%, rgba(255,180,84,.10), transparent 28%);
+    }
+
+    body.challenge-mode .question-card::after{display:none!important;content:none!important}
+
+    body.challenge-mode .game-header{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:18px;
+      align-items:center;
+      margin:0 0 18px;
+      padding:18px;
+      border-radius:28px;
+      background:
+        linear-gradient(135deg, rgba(109,93,252,.28), rgba(34,211,238,.13)),
+        rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.15);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.13);
+      overflow:hidden;
+    }
+
+    body.challenge-mode .game-header::before{
+      content:"Clinical Sprint";
+      position:absolute;
+      right:170px;
+      top:18px;
+      transform:none;
+      padding:7px 12px;
+      border-radius:999px;
+      color:#dffbff;
+      background:rgba(34,211,238,.12);
+      border:1px solid rgba(34,211,238,.20);
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.6px;
+      text-transform:uppercase;
+      white-space:nowrap;
+      box-shadow:none;
+    }
+
+    body.challenge-mode .game-header::after{
+      content:"";
+      position:absolute;
+      right:-40px;
+      bottom:-60px;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(34,211,238,.20), transparent 68%);
+      opacity:1;
+      transform:none;
+    }
+
+    body.challenge-mode .game-header > div:first-child{
+      opacity:1;
+      pointer-events:auto;
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode .game-header h2{
+      color:#fff!important;
+      font-size:31px!important;
+      line-height:1.05;
+      margin-top:12px!important;
+    }
+
+    body.challenge-mode .game-header .muted{
+      color:#c6d2f6!important;
+    }
+
+    body.challenge-mode .week-tag{
+      color:#fff;
+      background:linear-gradient(135deg, rgba(255,209,102,.28), rgba(255,180,84,.17));
+      border:1px solid rgba(255,209,102,.24);
+      box-shadow:none;
+      font-size:12px;
+      text-transform:none;
+      letter-spacing:.2px;
+    }
+
+    body.challenge-mode .timer-wrap{
+      min-width:138px;
+      padding:14px 16px;
+      border-radius:24px;
+      background:rgba(5,10,28,.46);
+      border:1px solid rgba(255,255,255,.13);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode .timer-label{color:#aebbe3}
+    body.challenge-mode .timer{color:#ffffff;text-shadow:none}
+
+    body.challenge-mode .progress-line{
+      position:relative;
+      z-index:2;
+      height:12px;
+      margin:16px 0 20px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.09);
+    }
+
+    body.challenge-mode .progress-line span{
+      background:linear-gradient(90deg, #28d99b, #22d3ee, #9b7cff);
+      box-shadow:0 0 24px rgba(34,211,238,.28);
+    }
+
+    body.challenge-mode .secure-question{
+      position:relative;
+      z-index:2;
+      min-height:250px;
+      display:block;
+      padding:26px;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,.13);
+      color:#f8fbff;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(255,209,102,.10), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.055));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 18px 48px rgba(0,0,0,.17);
+    }
+
+    body.challenge-mode .secure-question::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.48;
+      background:
+        linear-gradient(135deg, transparent 0 36%, rgba(255,255,255,.045) 36% 37%, transparent 37% 100%);
+      background-size:24px 24px;
+      pointer-events:none;
+    }
+
+    body.challenge-mode .secure-question::after{
+      content:"Q";
+      position:absolute;
+      right:24px;
+      top:24px;
+      left:auto;
+      width:58px;
+      height:58px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      color:#071a3d;
+      font-size:28px;
+      font-weight:1000;
+      background:linear-gradient(135deg, #22d3ee, #ffd166);
+      border:0;
+      box-shadow:0 18px 34px rgba(34,211,238,.18);
+      z-index:3;
+    }
+
+    body.challenge-mode .secure-question > .badge{
+      position:relative;
+      left:auto;
+      top:auto;
+      z-index:4;
+      color:#ffeeb0;
+      background:rgba(255,209,102,.12);
+      border-color:rgba(255,209,102,.24);
+    }
+
+    body.challenge-mode .med-illustration,
+    body.challenge-mode .question-image{display:none!important}
+
+    body.challenge-mode .question-text{
+      position:relative;
+      z-index:2;
+      grid-column:auto;
+      margin-top:20px;
+      padding:0 76px 0 0;
+      color:#f8fbff;
+      font-size:clamp(25px, 3vw, 38px);
+      line-height:1.24;
+      letter-spacing:-1.05px;
+      font-weight:950;
+      text-wrap:balance;
+    }
+
+    body.challenge-mode .question-text::first-letter{color:#22d3ee}
+
+    body.challenge-mode .watermark{
+      color:rgba(255,255,255,.055);
+      font-size:24px;
+      z-index:3;
+    }
+
+    body.challenge-mode .options{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    body.challenge-mode .option{
+      min-height:96px;
+      padding:17px;
+      border-radius:25px;
+      border:1px solid rgba(255,255,255,.14);
+      color:#f8fbff;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.055));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.10), 0 14px 30px rgba(0,0,0,.12);
+    }
+
+    body.challenge-mode .option::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(110deg, transparent, rgba(255,255,255,.12), transparent);
+      transform:translateX(-120%);
+      transition:.45s ease;
+    }
+
+    body.challenge-mode .option:hover{
+      transform:translateY(-3px);
+      border-color:rgba(34,211,238,.32);
+      background:linear-gradient(145deg, rgba(34,211,238,.13), rgba(109,93,252,.09));
+      box-shadow:0 18px 42px rgba(34,211,238,.10), inset 0 1px 0 rgba(255,255,255,.13);
+    }
+
+    body.challenge-mode .option:hover::after{transform:translateX(120%)}
+
+    body.challenge-mode .option.selected{
+      border-color:rgba(255,209,102,.62);
+      background:linear-gradient(145deg, rgba(255,209,102,.18), rgba(34,211,238,.08));
+      box-shadow:0 0 0 4px rgba(255,209,102,.13), 0 18px 42px rgba(255,209,102,.08);
+    }
+
+    body.challenge-mode .option .letter{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      color:#071a3d;
+      background:linear-gradient(135deg, #22d3ee, #9b7cff);
+      font-size:20px;
+      font-weight:1000;
+      border:0;
+      box-shadow:0 12px 24px rgba(34,211,238,.16);
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode .option.selected .letter{
+      background:linear-gradient(135deg, #ffd166, #ffb454);
+      color:#071a3d;
+    }
+
+    body.challenge-mode .option .text{
+      color:#f8fbff;
+      font-weight:850;
+      line-height:1.3;
+      font-size:16px;
+      position:relative;
+      z-index:2;
+    }
+
+    body.challenge-mode #securityNote{color:#b7c3e6!important}
+
+    body.challenge-mode .side-card{
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,209,102,.10), transparent 28%),
+        linear-gradient(145deg, rgba(255,255,255,.12), rgba(255,255,255,.055));
+    }
+
+    @media (max-width:980px){
+      body.challenge-mode .challenge-shell{grid-template-columns:1fr}
+      body.challenge-mode .game-header::before{display:none}
+      body.challenge-mode .question-text{padding-right:0}
+      body.challenge-mode .secure-question::after{display:none}
+    }
+
+    @media (max-width:680px){
+      .hero{grid-template-columns:1fr}
+      .hero-card{padding:26px}
+      .hero h2{font-size:42px;letter-spacing:-2px}
+      body.challenge-mode .game-header{grid-template-columns:1fr}
+      body.challenge-mode .options{grid-template-columns:1fr}
+      body.challenge-mode .question-text{font-size:23px}
+      body.challenge-mode .option{min-height:84px}
+    }
+
+
+    /* ===== Light Professional Healthcare Theme - final light override ===== */
+    :root{
+      --bg:#f7fbff;
+      --bg2:#eef6ff;
+      --card:#ffffff;
+      --card2:#f8fbff;
+      --stroke:rgba(25,86,155,.14);
+      --stroke2:rgba(25,86,155,.22);
+      --text:#0d2344;
+      --muted:#5f6f89;
+      --muted2:#7d8aa3;
+      --primary:#5b6cff;
+      --primary2:#8b7cff;
+      --cyan:#18b7d8;
+      --teal:#12b8a6;
+      --orange:#ff9f43;
+      --green:#16b981;
+      --red:#ef476f;
+      --yellow:#ffd166;
+      --shadow:0 24px 70px rgba(52,105,170,.14);
+      --radius:30px;
+    }
+
+    body,
+    body.challenge-mode{
+      color:#0d2344;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(91,108,255,.13), transparent 30%),
+        radial-gradient(circle at 90% 12%, rgba(24,183,216,.16), transparent 28%),
+        radial-gradient(circle at 48% 96%, rgba(255,159,67,.12), transparent 34%),
+        linear-gradient(145deg, #fbfdff 0%, #eef7ff 48%, #f8fbff 100%) !important;
+    }
+
+    body::before,
+    body.challenge-mode::before{
+      opacity:.75;
+      background-image:
+        linear-gradient(rgba(35,105,180,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(35,105,180,.06) 1px, transparent 1px) !important;
+      background-size:64px 64px;
+    }
+
+    body::after,
+    body.challenge-mode::after{
+      background:
+        radial-gradient(circle at 82% 72%, rgba(24,183,216,.10), transparent 34%),
+        linear-gradient(120deg, transparent 0 32%, rgba(91,108,255,.035) 33%, transparent 34% 100%);
+    }
+
+    .topbar,
+    body.challenge-mode .topbar{
+      background:rgba(255,255,255,.78) !important;
+      border:1px solid rgba(25,86,155,.13) !important;
+      box-shadow:0 18px 46px rgba(52,105,170,.12), inset 0 1px 0 rgba(255,255,255,.9) !important;
+      backdrop-filter:blur(22px);
+    }
+
+    .brand h1,
+    .brand p,
+    .pill,
+    body.challenge-mode .brand h1,
+    body.challenge-mode .brand p,
+    body.challenge-mode .pill{
+      color:#0d2344 !important;
+    }
+
+    .brand p,
+    body.challenge-mode .brand p{color:#687a96 !important;}
+
+    .logo{
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.72), transparent 32%),
+        linear-gradient(135deg, #5b6cff, #18b7d8 58%, #12b8a6) !important;
+      box-shadow:0 16px 38px rgba(91,108,255,.22) !important;
+    }
+
+    .pill{
+      background:rgba(255,255,255,.72) !important;
+      border-color:rgba(25,86,155,.13) !important;
+      box-shadow:0 8px 20px rgba(52,105,170,.08) !important;
+    }
+
+    .glass,
+    .hero-card,
+    .entry-card,
+    .side-card,
+    .admin-content,
+    .admin-nav,
+    .result-card,
+    .modal-card,
+    body.challenge-mode .question-card,
+    body.challenge-mode .side-card{
+      color:#0d2344 !important;
+      background:rgba(255,255,255,.78) !important;
+      border:1px solid rgba(25,86,155,.13) !important;
+      box-shadow:0 24px 70px rgba(52,105,170,.13), inset 0 1px 0 rgba(255,255,255,.92) !important;
+      backdrop-filter:blur(18px);
+    }
+
+    .hero-card{
+      background:
+        radial-gradient(circle at 85% 12%, rgba(24,183,216,.15), transparent 30%),
+        radial-gradient(circle at 12% 90%, rgba(255,159,67,.12), transparent 32%),
+        rgba(255,255,255,.82) !important;
+    }
+
+    .entry-card{
+      background:
+        radial-gradient(circle at 92% 5%, rgba(91,108,255,.10), transparent 30%),
+        rgba(255,255,255,.84) !important;
+    }
+
+    .hero-card::before,
+    .hero-card::after{
+      opacity:.85;
+    }
+
+    .eyebrow{
+      color:#0a6c82 !important;
+      background:rgba(24,183,216,.10) !important;
+      border-color:rgba(24,183,216,.22) !important;
+    }
+
+    .hero h2,
+    .panel-title h3,
+    .mini-card h4,
+    .result-card h2,
+    .admin-content h3,
+    .q-title{
+      color:#0d2344 !important;
+    }
+
+    .gradient-text{
+      background:linear-gradient(135deg, #3042d8 0%, #18a6c4 46%, #12a38f 72%, #ff9f43 100%) !important;
+      -webkit-background-clip:text !important;
+      background-clip:text !important;
+      color:transparent !important;
+    }
+
+    .lead,
+    .panel-title p,
+    .mini-card p,
+    .mini-card li,
+    .rule,
+    .muted,
+    .result-card p{
+      color:#61718c !important;
+    }
+
+    .stat,
+    .mini-card,
+    .rule,
+    .rank-row,
+    .q-item{
+      background:rgba(255,255,255,.72) !important;
+      border-color:rgba(25,86,155,.12) !important;
+      box-shadow:0 12px 28px rgba(52,105,170,.08) !important;
+    }
+
+    .stat b{color:#0d2344 !important;}
+    .stat span{color:#6b7c97 !important;}
+
+    label{color:#365170 !important;}
+
+    input,
+    select,
+    textarea{
+      color:#0d2344 !important;
+      background:rgba(255,255,255,.86) !important;
+      border:1px solid rgba(25,86,155,.16) !important;
+      box-shadow:0 10px 24px rgba(52,105,170,.06), inset 0 1px 0 rgba(255,255,255,.92) !important;
+    }
+
+    input::placeholder,
+    textarea::placeholder{color:#9aa8bb !important;}
+
+    input:focus,
+    select:focus,
+    textarea:focus{
+      border-color:rgba(91,108,255,.55) !important;
+      box-shadow:0 0 0 4px rgba(91,108,255,.12), 0 12px 28px rgba(52,105,170,.08) !important;
+    }
+
+    .btn{
+      color:#ffffff !important;
+      background:linear-gradient(135deg, #5b6cff, #8b7cff) !important;
+      box-shadow:0 14px 28px rgba(91,108,255,.20) !important;
+    }
+
+    .btn.green{
+      background:linear-gradient(135deg, #12b8a6, #16b981) !important;
+      box-shadow:0 14px 28px rgba(18,184,166,.18) !important;
+    }
+
+    .btn.ghost,
+    .btn.soft{
+      color:#3042d8 !important;
+      background:rgba(91,108,255,.08) !important;
+      border:1px solid rgba(91,108,255,.16) !important;
+      box-shadow:none !important;
+    }
+
+    .btn.danger{
+      color:#ffffff !important;
+      background:linear-gradient(135deg, #ef476f, #f97373) !important;
+    }
+
+    .badge{
+      color:#28435f !important;
+      background:rgba(255,255,255,.76) !important;
+      border-color:rgba(25,86,155,.13) !important;
+    }
+
+    .badge.green{color:#087f63 !important;background:rgba(22,185,129,.11) !important;border-color:rgba(22,185,129,.22) !important;}
+    .badge.yellow{color:#9a6400 !important;background:rgba(255,209,102,.20) !important;border-color:rgba(255,209,102,.30) !important;}
+    .badge.red{color:#b42345 !important;background:rgba(239,71,111,.10) !important;border-color:rgba(239,71,111,.20) !important;}
+
+    .admin-nav button{
+      color:#35506f !important;
+    }
+
+    .admin-nav button:hover,
+    .admin-nav button.active{
+      color:#3042d8 !important;
+      background:rgba(91,108,255,.09) !important;
+      border-color:rgba(91,108,255,.16) !important;
+    }
+
+    .table-wrap{
+      border-color:rgba(25,86,155,.13) !important;
+      background:#ffffff !important;
+    }
+
+    table{background:#ffffff !important;}
+    th{color:#365170 !important;background:#f1f6ff !important;border-bottom-color:rgba(25,86,155,.12) !important;}
+    td{color:#0d2344 !important;border-bottom-color:rgba(25,86,155,.09) !important;}
+
+    .rank-no{
+      color:#3042d8 !important;
+      background:rgba(91,108,255,.11) !important;
+    }
+
+    .rank-score{color:#087f63 !important;}
+
+    .modal{background:rgba(218,232,248,.72) !important;}
+
+    .toast{
+      color:#0d2344 !important;
+      background:rgba(255,255,255,.94) !important;
+      border-color:rgba(25,86,155,.13) !important;
+      box-shadow:0 18px 48px rgba(52,105,170,.18) !important;
+    }
+
+    /* Light challenge screen */
+    body.challenge-mode .question-card{
+      background:
+        radial-gradient(circle at 12% 0%, rgba(24,183,216,.12), transparent 28%),
+        radial-gradient(circle at 96% 16%, rgba(91,108,255,.12), transparent 30%),
+        rgba(255,255,255,.86) !important;
+    }
+
+    body.challenge-mode .game-header{
+      background:
+        linear-gradient(135deg, rgba(91,108,255,.11), rgba(24,183,216,.10)),
+        rgba(255,255,255,.78) !important;
+      border:1px solid rgba(25,86,155,.13) !important;
+      box-shadow:0 16px 38px rgba(52,105,170,.10), inset 0 1px 0 rgba(255,255,255,.9) !important;
+    }
+
+    body.challenge-mode .game-header h2{
+      color:#0d2344 !important;
+    }
+
+    body.challenge-mode .game-header .muted,
+    body.challenge-mode .timer-label,
+    body.challenge-mode #securityNote{
+      color:#61718c !important;
+    }
+
+    body.challenge-mode .game-header::before{
+      color:#0a6c82 !important;
+      background:rgba(24,183,216,.10) !important;
+      border-color:rgba(24,183,216,.22) !important;
+    }
+
+    body.challenge-mode .week-tag{
+      color:#7a4b00 !important;
+      background:rgba(255,209,102,.22) !important;
+      border-color:rgba(255,209,102,.30) !important;
+    }
+
+    body.challenge-mode .timer-wrap{
+      background:#ffffff !important;
+      border-color:rgba(25,86,155,.13) !important;
+      box-shadow:0 12px 28px rgba(52,105,170,.08) !important;
+    }
+
+    body.challenge-mode .timer{
+      color:#3042d8 !important;
+    }
+
+    body.challenge-mode .progress-line{
+      background:#e6eefb !important;
+      border-color:rgba(25,86,155,.10) !important;
+    }
+
+    body.challenge-mode .secure-question{
+      color:#0d2344 !important;
+      background:
+        radial-gradient(circle at 88% 10%, rgba(255,209,102,.12), transparent 28%),
+        linear-gradient(145deg, #ffffff, #f5faff) !important;
+      border:1px solid rgba(25,86,155,.13) !important;
+      box-shadow:0 18px 44px rgba(52,105,170,.10), inset 0 1px 0 rgba(255,255,255,.95) !important;
+    }
+
+    body.challenge-mode .secure-question::before{
+      opacity:.55;
+      background:
+        linear-gradient(135deg, transparent 0 36%, rgba(91,108,255,.035) 36% 37%, transparent 37% 100%) !important;
+      background-size:24px 24px !important;
+    }
+
+    body.challenge-mode .secure-question::after{
+      color:#ffffff !important;
+      background:linear-gradient(135deg, #5b6cff, #18b7d8) !important;
+      box-shadow:0 16px 30px rgba(91,108,255,.18) !important;
+    }
+
+    body.challenge-mode .secure-question > .badge{
+      color:#9a6400 !important;
+      background:rgba(255,209,102,.18) !important;
+      border-color:rgba(255,209,102,.28) !important;
+    }
+
+    body.challenge-mode .question-text{
+      color:#0d2344 !important;
+    }
+
+    body.challenge-mode .question-text::first-letter{color:#3042d8 !important;}
+
+    body.challenge-mode .watermark{
+      color:rgba(45,72,110,.08) !important;
+    }
+
+    body.challenge-mode .option{
+      color:#0d2344 !important;
+      background:linear-gradient(145deg, #ffffff, #f7fbff) !important;
+      border:1px solid rgba(25,86,155,.13) !important;
+      box-shadow:0 14px 30px rgba(52,105,170,.09), inset 0 1px 0 rgba(255,255,255,.95) !important;
+    }
+
+    body.challenge-mode .option:hover{
+      background:linear-gradient(145deg, #ffffff, #eef9ff) !important;
+      border-color:rgba(24,183,216,.30) !important;
+      box-shadow:0 18px 42px rgba(52,105,170,.13) !important;
+    }
+
+    body.challenge-mode .option.selected{
+      background:linear-gradient(145deg, #fff8df, #f3fbff) !important;
+      border-color:rgba(255,159,67,.62) !important;
+      box-shadow:0 0 0 4px rgba(255,159,67,.14), 0 18px 42px rgba(52,105,170,.12) !important;
+    }
+
+    body.challenge-mode .option .letter{
+      color:#ffffff !important;
+      background:linear-gradient(135deg, #5b6cff, #18b7d8) !important;
+      box-shadow:0 12px 24px rgba(91,108,255,.18) !important;
+    }
+
+    body.challenge-mode .option.selected .letter{
+      color:#ffffff !important;
+      background:linear-gradient(135deg, #ff9f43, #ffbd59) !important;
+    }
+
+    body.challenge-mode .option .text{
+      color:#0d2344 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="confetti" id="confetti"></div>
+  <div class="toast" id="toast"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🫁</div>
+        <div>
+          <h1>Respiratory Care Weekly Challenge</h1>
+          <p>One team. One question. One clinical pearl.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill" id="activeWeekPill">✨ Challenge Ready</span>
+        <button class="btn ghost small" id="staffHomeBtn">Staff View</button>
+        <button class="btn small" id="adminBtn">Admin</button>
+      </div>
+    </header>
+
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <div class="glass hero-card">
+          <div>
+            <div class="eyebrow">⚡ Weekly Clinical Game</div>
+            <h2><span class="gradient-text">Respiratory Spark</span><br/>Challenge</h2>
+            <p class="lead">
+              A modern weekly activity for nurses: one short clinical scenario, a live timer, randomized options, fair scoring, and a learning point after each challenge closes.
+            </p>
+            <div class="stats-row">
+              <div class="stat"><b id="homeParticipants">0</b><span>Participants</span></div>
+              <div class="stat"><b id="homeQuestions">0</b><span>Questions</span></div>
+              <div class="stat"><b id="homeAvg">0%</b><span>Average Score</span></div>
+            </div>
+          </div>
+          <div class="challenge-rules">
+            <div class="rule"><i>🔐</i><span>One attempt per staff number for each weekly challenge.</span></div>
+            <div class="rule"><i>🎲</i><span>Answer options are shuffled for every participant to reduce answer sharing.</span></div>
+            <div class="rule"><i>⏱️</i><span>Short timer encourages quick clinical thinking, not searching.</span></div>
+            <div class="rule"><i>💧</i><span>Personal watermark appears on the question screen to discourage screenshots.</span></div>
+          </div>
+        </div>
+
+        <div class="glass entry-card">
+          <div class="panel-title">
+            <div>
+              <h3>Enter the Arena</h3>
+              <p>Fill your details to start this week’s challenge.</p>
+            </div>
+            <span class="badge green">Live</span>
+          </div>
+
+          <div class="input-group">
+            <label for="staffName">Full Name</label>
+            <input id="staffName" placeholder="e.g. Aisha Al-Harthy" autocomplete="name" />
+          </div>
+          <div class="input-group">
+            <label for="staffNo">Staff Number</label>
+            <input id="staffNo" placeholder="e.g. 12345" inputmode="numeric" autocomplete="off" />
+          </div>
+          <div class="input-group">
+            <label for="unitName">Unit / Department</label>
+            <input id="unitName" placeholder="e.g. Pediatric High Dependency" />
+          </div>
+
+          <button class="btn green" id="startBtn">Start This Week’s Challenge 🚀</button>
+          <button class="btn ghost" id="viewLeaderboardBtn">View Leaderboard 🏆</button>
+
+          <div class="mini-card">
+            <h4>Fair Play Note</h4>
+            <p>This is a learning challenge, not a formal exam. Please answer independently and enjoy the competition.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="challengeScreen" class="screen">
+      <div class="challenge-shell">
+        <div class="glass question-card">
+          <div class="game-header">
+            <div>
+              <span class="week-tag" id="challengeWeekTag">Week Challenge</span>
+              <h2 id="challengeTitle" style="margin-top:14px;font-size:32px;letter-spacing:-1px">Question</h2>
+              <p class="muted" id="challengeSubtitle" style="margin-top:7px;line-height:1.55">Answer before the timer ends.</p>
+            </div>
+            <div class="timer-wrap">
+              <div class="timer-label">Time Remaining</div>
+              <div class="timer" id="timer">00:45</div>
+            </div>
+          </div>
+
+          <div class="progress-line"><span id="timerProgress"></span></div>
+
+          <div class="secure-question" id="secureQuestion">
+            <div class="med-illustration" aria-hidden="true"></div>
+            <span class="badge yellow">Protected View</span>
+            <div class="watermark" id="watermark">STAFF</div>
+            <div class="question-text" id="questionText">Loading question...</div>
+            <img class="question-image" id="questionImage" alt="Question visual" />
+          </div>
+
+          <div class="options" id="options"></div>
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;justify-content:space-between;align-items:center">
+            <span class="muted" id="securityNote" style="font-size:13px">Copy, right-click and text selection are disabled during challenge.</span>
+            <button class="btn" id="submitBtn">Submit Answer</button>
+          </div>
+        </div>
+
+        <aside class="glass side-card">
+          <div class="mini-card">
+            <h4>Participant</h4>
+            <p><b id="sideName">-</b></p>
+            <p id="sideStaff" class="muted">Staff No: -</p>
+            <p id="sideUnit" class="muted">Unit: -</p>
+          </div>
+          <div class="mini-card">
+            <h4>Anti-Cheating Signals</h4>
+            <ul>
+              <li>One attempt only</li>
+              <li>Randomized options</li>
+              <li>Watermarked screen</li>
+              <li>Tab-switch tracking</li>
+              <li>Copy/right-click tracking</li>
+            </ul>
+          </div>
+          <div class="mini-card">
+            <h4>Top Performers</h4>
+            <div class="rank-list" id="sideRanks"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="resultScreen" class="screen">
+      <div class="glass result-card">
+        <div class="result-icon">✓</div>
+        <h2 id="resultTitle">Submitted Successfully</h2>
+        <p id="resultText">Your answer has been submitted. The correct answer and learning point can be shared after the challenge closes.</p>
+        <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px">
+          <button class="btn" id="backHomeFromResult">Back to Home</button>
+          <button class="btn ghost" id="resultLeaderboardBtn">View Leaderboard</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="leaderboardScreen" class="screen">
+      <div class="glass admin-content" style="margin-top:24px">
+        <div class="panel-title">
+          <div>
+            <h3>Leaderboard</h3>
+            <p>Top 3 for the active weekly question only: correct answers, no cheating signals, fastest time first.</p>
+          </div>
+          <button class="btn ghost small" onclick="showScreen('homeScreen')">Back</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Name</th>
+                <th>Staff No.</th>
+                <th>Unit</th>
+                <th>Score</th>
+                <th>Time</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboardTable"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="adminScreen" class="screen">
+      <div class="admin-layout">
+        <nav class="glass admin-nav">
+          <button class="admin-tab active" data-page="adminDashboard">📊 Dashboard</button>
+          <button class="admin-tab" data-page="adminQuestions">➕ Questions</button>
+          <button class="admin-tab" data-page="adminResults">🏆 Results</button>
+          <button class="admin-tab" data-page="adminSettings">⚙️ Settings</button>
+          <button id="adminLogout" class="btn danger small" style="justify-content:center;margin-top:8px">Logout</button>
+        </nav>
+
+        <div class="glass admin-content">
+          <div id="adminDashboard" class="admin-page active">
+            <div class="panel-title">
+              <div>
+                <h3>Admin Dashboard</h3>
+                <p>Manage weekly questions, monitor participation and detect suspicious activity.</p>
+              </div>
+              <span class="badge green">Admin Mode</span>
+            </div>
+            <div class="grid-3" style="margin-top:18px">
+              <div class="stat"><b id="adminTotalAttempts">0</b><span>Total Attempts</span></div>
+              <div class="stat"><b id="adminCorrectRate">0%</b><span>Correct Rate</span></div>
+              <div class="stat"><b id="adminSuspicious">0</b><span>Suspicious Signals</span></div>
+            </div>
+            <div class="mini-card" style="margin-top:16px">
+              <h4>Active Weekly Question</h4>
+              <p id="activeQuestionSummary">No active question yet.</p>
+            </div>
+          </div>
+
+          <div id="adminQuestions" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Create Weekly Question</h3>
+                <p>Add scenario-based questions, images, choices, timer and explanation.</p>
+              </div>
+              <button class="btn ghost small" id="resetQuestionForm">Clear Form</button>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Week Title</label>
+                <input id="qTitle" placeholder="Week 1: Tracheostomy Basics" />
+              </div>
+              <div class="input-group">
+                <label>Timer</label>
+                <select id="qTimer">
+                  <option value="30">30 seconds</option>
+                  <option value="45" selected>45 seconds</option>
+                  <option value="60">60 seconds</option>
+                  <option value="90">90 seconds</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Question / Scenario</label>
+              <textarea id="qText" placeholder="A child with tracheostomy suddenly develops respiratory distress. What should be your first nursing action?"></textarea>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group"><label>Option 1</label><input id="opt1" placeholder="Assess the child and check airway patency" /></div>
+              <div class="input-group"><label>Option 2</label><input id="opt2" placeholder="Call biomedical team first" /></div>
+              <div class="input-group"><label>Option 3</label><input id="opt3" placeholder="Wait for the doctor" /></div>
+              <div class="input-group"><label>Option 4</label><input id="opt4" placeholder="Increase feeding rate" /></div>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Correct Answer</label>
+                <select id="correctOpt">
+                  <option value="0">Option 1</option>
+                  <option value="1">Option 2</option>
+                  <option value="2">Option 3</option>
+                  <option value="3">Option 4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Question Image</label>
+                <input id="qImage" type="file" accept="image/*" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Clinical Pearl / Explanation</label>
+              <textarea id="qExplain" placeholder="Always assess the patient first, check airway patency, call for help, and follow the emergency tracheostomy algorithm."></textarea>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Start Date</label>
+                <input id="qStart" type="date" />
+              </div>
+              <div class="input-group">
+                <label>End Date</label>
+                <input id="qEnd" type="date" />
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn green" id="saveQuestionBtn">Save Question</button>
+              <button class="btn" id="saveActivateQuestionBtn">Save & Activate</button>
+            </div>
+
+            <h3 style="margin-top:28px;letter-spacing:-.5px">Question Bank</h3>
+            <div id="questionList" class="question-list"></div>
+          </div>
+
+          <div id="adminResults" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Results & Monitoring</h3>
+                <p>Review submissions, response time, tab switching and copy attempts.</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button class="btn ghost small" id="exportCsvBtn">Export PDF</button>
+                <button class="btn danger small" id="clearAttemptsBtn">Clear Attempts</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Staff No.</th>
+                    <th>Unit</th>
+                    <th>HD WEEK</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                    <th>Signals</th>
+                  </tr>
+                </thead>
+                <tbody id="adminResultsTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="adminSettings" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Settings</h3>
+                <p>Customize admin password and participation rules.</p>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Admin Password</label>
+                <input id="adminPasswordInput" type="password" placeholder="New password" />
+              </div>
+              <div class="input-group">
+                <label>Show Correct Answer After Submission</label>
+                <select id="showAnswerSetting">
+                  <option value="no">No - show after closing only</option>
+                  <option value="yes">Yes - show immediately</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn green" id="saveSettingsBtn">Save Settings</button>
+              <button class="btn danger" id="factoryResetBtn">Factory Reset Demo</button>
+            </div>
+            <div class="mini-card" style="margin-top:18px">
+              <h4>Prototype Note</h4>
+              <p>This single HTML file uses localStorage. For hospital-wide use, connect it to a secure backend such as Firebase, Supabase, MySQL or a hospital server to truly protect attempts and staff identity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="adminLoginModal">
+    <div class="modal-card">
+      <h3>Admin Login</h3>
+      <p>Enter the admin password to manage questions and results.</p>
+      <div class="input-group">
+        <label>Password</label>
+        <input id="adminLoginPassword" type="password" placeholder="Default: admin123" />
+      </div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap">
+        <button class="btn ghost" id="closeAdminModal">Cancel</button>
+        <button class="btn" id="loginAdminBtn">Login</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const LS = {
+      questions:'rcwc_questions_v1',
+      attempts:'rcwc_attempts_v1',
+      settings:'rcwc_settings_v1',
+      admin:'rcwc_admin_in_v1'
+    };
+
+    const DEFAULT_SETTINGS = {
+      adminPassword:'admin1234',
+      showAnswerAfterSubmit:'no'
+    };
+
+    const SEED_QUESTION = {
+      id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+      title:'Week 1: Tracheostomy Emergency Basics',
+      text:'A child with a tracheostomy suddenly becomes cyanosed and oxygen saturation drops to 75%. The ventilator is alarming. What should be the nurse’s first priority?',
+      options:[
+        'Assess the child and check airway patency',
+        'Call biomedical team before touching the child',
+        'Wait for the doctor before doing anything',
+        'Increase feeding rate and observe'
+      ],
+      correctIndex:0,
+      explanation:'In any emergency, assess the child first, check airway patency, call for help, and follow the emergency tracheostomy algorithm.',
+      timer:45,
+      startDate:new Date().toISOString().slice(0,10),
+      endDate:'2030-12-31',
+      active:true,
+      image:'',
+      createdAt:new Date().toISOString()
+    };
+
+    let state = {
+      currentStaff:null,
+      currentQuestion:null,
+      shuffledOptions:[],
+      selected:null,
+      startTime:null,
+      timerId:null,
+      remaining:0,
+      totalTime:0,
+      signals:{tabSwitches:0, copyAttempts:0, rightClicks:0},
+      imageDraft:''
+    };
+
+    const $ = id => document.getElementById(id);
+    const qs = sel => document.querySelector(sel);
+    const qsa = sel => [...document.querySelectorAll(sel)];
+
+    function getJSON(key, fallback){
+      try{return JSON.parse(localStorage.getItem(key)) ?? fallback}catch{return fallback}
+    }
+    function setJSON(key, value){localStorage.setItem(key, JSON.stringify(value))}
+    function settings(){return {...DEFAULT_SETTINGS, ...getJSON(LS.settings,{})}}
+    function questions(){return getJSON(LS.questions, [])}
+    function attempts(){return getJSON(LS.attempts, [])}
+    function saveQuestions(list){setJSON(LS.questions, list)}
+    function saveAttempts(list){setJSON(LS.attempts, list)}
+
+    function init(){
+      if(!localStorage.getItem(LS.settings)) setJSON(LS.settings, DEFAULT_SETTINGS);
+      if(!localStorage.getItem(LS.questions)) saveQuestions([]);
+      removeDefaultDemoDataOnce();
+      bindEvents();
+      renderEverything();
+    }
+
+    function removeDefaultDemoDataOnce(){
+      const cleanupKey = 'rcwc_default_cleanup_done_v1';
+      if(localStorage.getItem(cleanupKey)==='yes') return;
+      const demoTitle = 'Week 1: Tracheostomy Emergency Basics';
+      const remainingQuestions = questions().filter(q => q.title !== demoTitle);
+      const remainingIds = new Set(remainingQuestions.map(q=>q.id));
+      saveQuestions(remainingQuestions);
+      saveAttempts(attempts().filter(a => !a.questionTitle || a.questionTitle !== demoTitle || remainingIds.has(a.questionId)));
+      localStorage.setItem(cleanupKey,'yes');
+    }
+
+    function bindEvents(){
+      $('startBtn').addEventListener('click', startChallenge);
+      $('adminBtn').addEventListener('click', openAdmin);
+      $('staffHomeBtn').addEventListener('click', () => showScreen('homeScreen'));
+      $('viewLeaderboardBtn').addEventListener('click', showLeaderboard);
+      $('resultLeaderboardBtn').addEventListener('click', showLeaderboard);
+      $('backHomeFromResult').addEventListener('click', () => showScreen('homeScreen'));
+      $('submitBtn').addEventListener('click', () => submitAnswer(false));
+      $('closeAdminModal').addEventListener('click', closeAdminModal);
+      $('loginAdminBtn').addEventListener('click', loginAdmin);
+      $('adminLogout').addEventListener('click', adminLogout);
+      $('saveQuestionBtn').addEventListener('click', () => saveQuestion(false));
+      $('saveActivateQuestionBtn').addEventListener('click', () => saveQuestion(true));
+      $('resetQuestionForm').addEventListener('click', resetQuestionForm);
+      $('exportCsvBtn').addEventListener('click', exportCSV);
+      $('clearAttemptsBtn').addEventListener('click', clearAttempts);
+      $('saveSettingsBtn').addEventListener('click', saveSettings);
+      $('factoryResetBtn').addEventListener('click', factoryReset);
+      $('qImage').addEventListener('change', handleImageUpload);
+      $('questionList').addEventListener('click', handleQuestionBankClick);
+
+      qsa('.admin-tab').forEach(btn => btn.addEventListener('click', () => switchAdminPage(btn.dataset.page)));
+
+      document.addEventListener('visibilitychange', () => {
+        if($('challengeScreen').classList.contains('active') && document.hidden){
+          state.signals.tabSwitches++;
+          $('securityNote').textContent = `Security note: tab switch detected (${state.signals.tabSwitches}).`;
+        }
+      });
+
+      document.addEventListener('copy', e => {
+        if($('challengeScreen').classList.contains('active')){
+          e.preventDefault();
+          state.signals.copyAttempts++;
+          toast('Copy is disabled during the challenge.');
+        }
+      });
+
+      document.addEventListener('contextmenu', e => {
+        if($('challengeScreen').classList.contains('active')){
+          e.preventDefault();
+          state.signals.rightClicks++;
+          toast('Right-click is disabled during the challenge.');
+        }
+      });
+    }
+
+    function renderEverything(){
+      renderHomeStats();
+      renderActivePill();
+      renderQuestionList();
+      renderAdminStats();
+      renderResultsTable();
+      renderSideRanks();
+      renderSettings();
+    }
+
+    function showScreen(id){
+      if(id !== 'challengeScreen') document.body.classList.remove('challenge-mode');
+      clearInterval(state.timerId);
+      qsa('.screen').forEach(s => s.classList.remove('active'));
+      $(id).classList.add('active');
+      window.scrollTo({top:0, behavior:'smooth'});
+      renderEverything();
+    }
+
+    function toast(message){
+      const el = $('toast');
+      el.textContent = message;
+      el.classList.add('show');
+      clearTimeout(el.t);
+      el.t = setTimeout(()=>el.classList.remove('show'),2600);
+    }
+
+    function today(){return new Date().toISOString().slice(0,10)}
+    function isDateActive(q){
+      const d = today();
+      return (!q.startDate || q.startDate <= d) && (!q.endDate || q.endDate >= d);
+    }
+    function activeQuestion(){
+      return questions().find(q => q.active) || null;
+    }
+
+    function renderActivePill(){
+      const q = activeQuestion();
+      $('activeWeekPill').textContent = q ? `✨ ${q.title}` : '⚠️ No Active Challenge';
+    }
+
+    function renderHomeStats(){
+      const att = attempts();
+      $('homeParticipants').textContent = new Set(att.map(a => a.staffNo)).size;
+      $('homeQuestions').textContent = questions().length;
+      const avg = att.length ? Math.round((att.filter(a=>a.correct).length / att.length) * 100) : 0;
+      $('homeAvg').textContent = avg + '%';
+    }
+
+    function startChallenge(){
+      const name = $('staffName').value.trim();
+      const staffNo = $('staffNo').value.trim();
+      const unit = $('unitName').value.trim();
+      if(!name || !staffNo || !unit){toast('Please enter full name, staff number and unit.');return;}
+
+      const q = activeQuestion();
+      if(!q){toast('No active weekly challenge is available now.');return;}
+
+      const already = attempts().some(a => a.questionId === q.id && a.staffNo.toLowerCase() === staffNo.toLowerCase());
+      if(already){
+        $('resultTitle').textContent = 'Already Completed';
+        $('resultText').textContent = 'You have already completed this week’s challenge. Thank you for participating.';
+        showScreen('resultScreen');
+        return;
+      }
+
+      state.currentStaff = {name, staffNo, unit};
+      state.currentQuestion = q;
+      state.selected = null;
+      state.signals = {tabSwitches:0, copyAttempts:0, rightClicks:0};
+      state.startTime = Date.now();
+      setupChallenge(q);
+      showScreen('challengeScreen');
+      startTimer(q.timer || 45);
+    }
+
+    function setupChallenge(q){
+      $('sideName').textContent = state.currentStaff.name;
+      $('sideStaff').textContent = 'Staff No: ' + state.currentStaff.staffNo;
+      $('sideUnit').textContent = 'Unit: ' + state.currentStaff.unit;
+      $('challengeWeekTag').textContent = q.title;
+      $('challengeTitle').textContent = 'This Week’s Clinical Question';
+      $('challengeSubtitle').textContent = 'Choose the best answer. Options are randomized for every participant.';
+      $('questionText').textContent = q.text;
+      $('watermark').textContent = `${state.currentStaff.name} • ${state.currentStaff.staffNo}`;
+      $('securityNote').textContent = 'Copy, right-click and text selection are disabled during challenge.';
+
+      document.body.classList.add('challenge-mode');
+      const img = $('questionImage');
+      const secure = $('secureQuestion');
+      if(q.image){ img.src = q.image; img.style.display = 'block'; secure.classList.add('has-image'); }
+      else { img.removeAttribute('src'); img.style.display = 'none'; secure.classList.remove('has-image'); }
+
+      state.shuffledOptions = shuffle(q.options.map((text, index)=>({text,index})));
+      renderOptions();
+    }
+
+    function renderOptions(){
+      const letters = ['A','B','C','D','E','F'];
+      $('options').innerHTML = state.shuffledOptions.map((op,i)=>`
+        <button class="option ${state.selected===i?'selected':''}" data-i="${i}">
+          <span class="letter">${letters[i]}</span>
+          <span class="text">${escapeHTML(op.text)}</span>
+        </button>
+      `).join('');
+      qsa('.option').forEach(btn => btn.addEventListener('click', () => {
+        state.selected = Number(btn.dataset.i);
+        renderOptions();
+      }));
+    }
+
+    function startTimer(seconds){
+      clearInterval(state.timerId);
+      state.totalTime = seconds;
+      state.remaining = seconds;
+      tickTimer();
+      state.timerId = setInterval(()=>{
+        state.remaining--;
+        tickTimer();
+        if(state.remaining <= 0){
+          clearInterval(state.timerId);
+          submitAnswer(true);
+        }
+      },1000);
+    }
+
+    function tickTimer(){
+      const m = String(Math.floor(state.remaining/60)).padStart(2,'0');
+      const s = String(state.remaining%60).padStart(2,'0');
+      $('timer').textContent = `${m}:${s}`;
+      $('timer').classList.toggle('danger', state.remaining <= 10);
+      const pct = Math.max(0, (state.remaining/state.totalTime)*100);
+      $('timerProgress').style.width = pct + '%';
+    }
+
+    function submitAnswer(auto){
+      if(!state.currentQuestion || !state.currentStaff) return;
+      if(state.selected === null && !auto){toast('Please select an answer before submitting.');return;}
+      clearInterval(state.timerId);
+      qsa('.option').forEach(b=>b.classList.add('disabled'));
+
+      const q = state.currentQuestion;
+      const chosen = state.selected === null ? null : state.shuffledOptions[state.selected];
+      const correct = chosen ? chosen.index === q.correctIndex : false;
+      const elapsed = Math.round((Date.now() - state.startTime)/1000);
+      const suspicious = state.signals.tabSwitches + state.signals.copyAttempts + state.signals.rightClicks;
+
+      const attempt = {
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        questionId:q.id,
+        questionTitle:q.title,
+        name:state.currentStaff.name,
+        staffNo:state.currentStaff.staffNo,
+        unit:state.currentStaff.unit,
+        selectedText:chosen ? chosen.text : 'No answer - time out',
+        selectedIndex:chosen ? chosen.index : null,
+        correct,
+        score:correct ? 100 : 0,
+        elapsed,
+        autoSubmitted:auto,
+        signals:{...state.signals},
+        suspicious,
+        createdAt:new Date().toISOString()
+      };
+      const list = attempts();
+      list.push(attempt);
+      saveAttempts(list);
+
+      const st = settings();
+      $('resultTitle').textContent = auto ? 'Time Over - Submitted' : 'Submitted Successfully';
+      if(st.showAnswerAfterSubmit === 'yes'){
+        $('resultText').innerHTML = `${correct ? 'Excellent work! Your answer was correct.' : 'Thank you for participating. The best answer is: <b>' + escapeHTML(q.options[q.correctIndex]) + '</b>.'}<br><br><b>Clinical Pearl:</b> ${escapeHTML(q.explanation || 'Learning point will be shared by the team.')}`;
+      }else{
+        $('resultText').textContent = 'Your answer has been submitted. The correct answer and learning point will be shared after the challenge closes.';
+      }
+      if(correct) confetti();
+      showScreen('resultScreen');
+    }
+
+    function showLeaderboard(){
+      const rows = sortedLeaderboard();
+      $('leaderboardTable').innerHTML = rows.length ? rows.map((a,i)=>`
+        <tr>
+          <td><span class="badge yellow">#${i+1}</span></td>
+          <td>${escapeHTML(a.name)}</td>
+          <td>${escapeHTML(a.staffNo)}</td>
+          <td>${escapeHTML(a.unit)}</td>
+          <td><span class="badge green">${a.score}</span></td>
+          <td>${a.elapsed}s</td>
+          <td><span class="badge green">Qualified</span></td>
+        </tr>
+      `).join('') : `<tr><td colspan="7" class="muted">No qualified winners yet. Leaderboard shows only correct answers with no cheating signals.</td></tr>`;
+      showScreen('leaderboardScreen');
+    }
+
+    function sortedLeaderboard(){
+      const q = activeQuestion();
+      if(!q) return [];
+      return attempts()
+        .filter(a => a.questionId === q.id && a.correct === true && Number(a.suspicious || 0) === 0)
+        .slice()
+        .sort((a,b)=>{
+          if(a.elapsed !== b.elapsed) return a.elapsed - b.elapsed;
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        })
+        .slice(0,3);
+    }
+
+    function renderSideRanks(){
+      const top = sortedLeaderboard();
+      $('sideRanks').innerHTML = top.length ? top.map((a,i)=>`
+        <div class="rank-row">
+          <div class="rank-no">${i+1}</div>
+          <div class="rank-name">${escapeHTML(a.name)}</div>
+          <div class="rank-score">${a.score}</div>
+        </div>
+      `).join('') : '<p class="muted">No scores yet.</p>';
+    }
+
+    function openAdmin(){
+      localStorage.removeItem(LS.admin);
+      $('adminLoginPassword').value='';
+      $('adminLoginModal').classList.add('show');
+      setTimeout(()=>$('adminLoginPassword').focus(),80);
+    }
+    function closeAdminModal(){ $('adminLoginModal').classList.remove('show'); }
+    function loginAdmin(){
+      if($('adminLoginPassword').value === settings().adminPassword){
+        closeAdminModal();
+        showScreen('adminScreen');
+      }else toast('Wrong admin password.');
+    }
+    function adminLogout(){localStorage.removeItem(LS.admin);showScreen('homeScreen');toast('Logged out.');}
+
+    function switchAdminPage(page){
+      qsa('.admin-tab').forEach(b=>b.classList.toggle('active', b.dataset.page===page));
+      qsa('.admin-page').forEach(p=>p.classList.toggle('active', p.id===page));
+      renderEverything();
+    }
+
+    function handleImageUpload(e){
+      const file = e.target.files[0];
+      if(!file){state.imageDraft='';return;}
+      const reader = new FileReader();
+      reader.onload = () => {state.imageDraft = reader.result; toast('Image uploaded for this question.');};
+      reader.readAsDataURL(file);
+    }
+
+    function saveQuestion(activate){
+      const title = $('qTitle').value.trim();
+      const text = $('qText').value.trim();
+      const opts = [$('opt1').value.trim(),$('opt2').value.trim(),$('opt3').value.trim(),$('opt4').value.trim()];
+      const correctIndex = Number($('correctOpt').value);
+      const explanation = $('qExplain').value.trim();
+      const timer = Number($('qTimer').value);
+      const startDate = $('qStart').value || today();
+      const endDate = $('qEnd').value || '2030-12-31';
+
+      if(!title || !text || opts.some(o=>!o)){
+        toast('Please complete title, question and all options.');return;
+      }
+      if(endDate < startDate){toast('End date cannot be before start date.');return;}
+
+      let list = questions();
+      if(activate) list = list.map(q => ({...q, active:false}));
+      list.push({
+        id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()),
+        title,text,options:opts,correctIndex,explanation,timer,startDate,endDate,
+        active:!!activate,
+        image:state.imageDraft || '',
+        createdAt:new Date().toISOString()
+      });
+      saveQuestions(list);
+      resetQuestionForm();
+      renderEverything();
+      toast(activate ? 'Question saved and activated.' : 'Question saved.');
+    }
+
+    function resetQuestionForm(){
+      ['qTitle','qText','opt1','opt2','opt3','opt4','qExplain','qStart','qEnd'].forEach(id=>$(id).value='');
+      $('qTimer').value='45';
+      $('correctOpt').value='0';
+      $('qImage').value='';
+      state.imageDraft='';
+    }
+
+    function renderQuestionList(){
+      const list = questions().slice().reverse();
+      $('questionList').innerHTML = list.length ? list.map(q=>`
+        <div class="q-item">
+          <div class="q-top">
+            <div>
+              <div class="q-title">${escapeHTML(q.title)}</div>
+              <p class="muted" style="margin-top:6px;line-height:1.5">${escapeHTML(q.text).slice(0,190)}${q.text.length>190?'...':''}</p>
+            </div>
+            <div class="q-meta">
+              <span class="badge ${q.active?'green':'red'}">${q.active?'Active':'Inactive'}</span>
+              <span class="badge">${q.timer}s</span>
+              ${q.image?'<span class="badge yellow">Image</span>':''}
+            </div>
+          </div>
+          <div class="q-actions">
+            <button type="button" class="btn small ${q.active?'danger':'green'}" data-q-action="toggle" data-q-id="${q.id}">${q.active?'Deactivate':'Activate'}</button>
+            <button type="button" class="btn ghost small" data-q-action="duplicate" data-q-id="${q.id}">Duplicate</button>
+            <button type="button" class="btn danger small" data-q-action="delete" data-q-id="${q.id}">Delete</button>
+          </div>
+        </div>
+      `).join('') : '<div class="empty">No questions yet. Add your first weekly challenge from the form above.</div>';
+    }
+
+    function handleQuestionBankClick(event){
+      const btn = event.target.closest('[data-q-action]');
+      if(!btn) return;
+      const id = btn.dataset.qId;
+      const action = btn.dataset.qAction;
+      if(action === 'toggle') window.toggleQuestionActive(id);
+      if(action === 'duplicate') window.duplicateQuestion(id);
+      if(action === 'delete') window.deleteQuestion(id);
+    }
+
+    window.activateQuestion = function(id){
+      const list = questions().map(q => ({...q, active:q.id===id}));
+      saveQuestions(list);
+      renderEverything();
+      toast('Question activated. Leaderboard now follows this active week.');
+    }
+
+    window.toggleQuestionActive = function(id){
+      const target = questions().find(q=>q.id===id);
+      if(!target) return;
+      if(target.active){
+        const ok = confirm('Deactivate this weekly question? Leaderboard will be empty until another question is activated.');
+        if(!ok) return;
+        saveQuestions(questions().map(q => q.id===id ? {...q, active:false} : q));
+        toast('Question deactivated.');
+      }else{
+        const ok = confirm('Activate this weekly question? This will deactivate all other questions.');
+        if(!ok) return;
+        saveQuestions(questions().map(q => ({...q, active:q.id===id})));
+        toast('Question activated. Leaderboard now follows this active week.');
+      }
+      renderEverything();
+    }
+    window.duplicateQuestion = function(id){
+      const q = questions().find(x=>x.id===id);
+      if(!q) return;
+      const copy = {...q, id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now()), title:q.title+' - Copy', active:false, createdAt:new Date().toISOString()};
+      saveQuestions([...questions(), copy]);
+      renderEverything();
+      toast('Question duplicated.');
+    }
+    window.deleteQuestion = function(id){
+      const q = questions().find(x=>x.id===id);
+      const msg = `Delete this question permanently?
+
+${q ? q.title : ''}
+
+Type DELETE to confirm.`;
+      if(prompt(msg) !== 'DELETE') return;
+      saveQuestions(questions().filter(q=>q.id!==id));
+      renderEverything();
+      toast('Question deleted.');
+    }
+
+    function renderAdminStats(){
+      const q = activeQuestion();
+      const att = q ? attempts().filter(a=>a.questionId===q.id) : [];
+      $('adminTotalAttempts').textContent = att.length;
+      $('adminCorrectRate').textContent = att.length ? Math.round(att.filter(a=>a.correct).length/att.length*100)+'%' : '0%';
+      $('adminSuspicious').textContent = att.reduce((sum,a)=>sum+(a.suspicious||0),0);
+      $('activeQuestionSummary').textContent = q ? `${q.title} • ${q.timer}s • Active leaderboard and results` : 'No active question yet.';
+    }
+
+    function renderResultsTable(){
+      const q = activeQuestion();
+      const rows = q ? attempts().filter(a=>a.questionId===q.id).slice().reverse() : [];
+      $('adminResultsTable').innerHTML = rows.length ? rows.map(a=>`
+        <tr>
+          <td>${new Date(a.createdAt).toLocaleString()}</td>
+          <td>${escapeHTML(a.name)}</td>
+          <td>${escapeHTML(a.staffNo)}</td>
+          <td>${escapeHTML(a.unit)}</td>
+          <td>${escapeHTML(a.questionTitle || 'Active Week')}</td>
+          <td><span class="badge ${a.correct?'green':'red'}">${a.correct?'نجح':'رسب'}</span></td>
+          <td>${a.elapsed}s ${a.autoSubmitted?'<span class="badge yellow">Auto</span>':''}</td>
+          <td>
+            <span class="badge ${a.suspicious?'yellow':'green'}">${a.suspicious?'Review':'Clean'}</span><br>
+            <span class="muted">Tabs: ${a.signals?.tabSwitches||0}, Copy: ${a.signals?.copyAttempts||0}, Right: ${a.signals?.rightClicks||0}</span>
+          </td>
+        </tr>
+      `).join('') : `<tr><td colspan="8" class="muted">No attempts for the active question yet.</td></tr>`;
+    }
+
+    function exportCSV(){
+      const q = activeQuestion();
+      const rows = q ? attempts().filter(a=>a.questionId===q.id) : [];
+      if(!q){toast('No active question to export.');return;}
+      if(!rows.length){toast('No results to export for the active question.');return;}
+
+      const safeTitle = escapeHTML(q.title);
+      const generated = new Date().toLocaleString();
+      const bodyRows = rows.slice().sort((a,b)=>new Date(a.createdAt)-new Date(b.createdAt)).map((a,i)=>`
+        <tr>
+          <td>${i+1}</td>
+          <td>${new Date(a.createdAt).toLocaleString()}</td>
+          <td>${escapeHTML(a.name)}</td>
+          <td>${escapeHTML(a.staffNo)}</td>
+          <td>${escapeHTML(a.unit)}</td>
+          <td>${a.correct?'نجح':'رسب'}</td>
+          <td>${a.elapsed}s</td>
+          <td>${a.suspicious?'Review':'Clean'}</td>
+          <td>Tabs: ${a.signals?.tabSwitches||0}, Copy: ${a.signals?.copyAttempts||0}, Right: ${a.signals?.rightClicks||0}</td>
+        </tr>
+      `).join('');
+
+      const html = `<!DOCTYPE html><html><head><title>Respiratory Challenge Results</title>
+        <style>
+          body{font-family:Arial,sans-serif;color:#0d2344;padding:26px;background:#fff}
+          .head{border-bottom:3px solid #5b6cff;padding-bottom:14px;margin-bottom:18px}
+          h1{margin:0;font-size:24px} p{color:#5f6f89;margin:6px 0}
+          table{width:100%;border-collapse:collapse;margin-top:18px;font-size:12px}
+          th{background:#f1f6ff;color:#0d2344;text-align:left;padding:9px;border:1px solid #dbe7f5}
+          td{padding:8px;border:1px solid #dbe7f5;vertical-align:top}
+          .pass{color:#087f63;font-weight:700}.fail{color:#b42345;font-weight:700}
+          @media print{body{padding:10px}.no-print{display:none}}
+        </style></head><body>
+        <div class="head">
+          <h1>Respiratory Care Weekly Challenge - Results</h1>
+          <p><b>HD WEEK:</b> ${safeTitle}</p>
+          <p><b>Generated:</b> ${generated}</p>
+          <p><b>Total Attempts:</b> ${rows.length}</p>
+        </div>
+        <button class="no-print" onclick="window.print()" style="padding:10px 14px;border:0;border-radius:10px;background:#5b6cff;color:white;font-weight:700">Print / Save as PDF</button>
+        <table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Staff No.</th><th>Unit</th><th>Result</th><th>Time</th><th>Status</th><th>Signals</th></tr></thead><tbody>${bodyRows}</tbody></table>
+        <script>setTimeout(()=>window.print(),400)<\/script>
+      </body></html>`;
+      const win = window.open('', '_blank');
+      if(!win){toast('Please allow pop-ups to export PDF.');return;}
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+    }
+
+    function clearAttempts(){
+      if(prompt('Delete all attempts permanently? Type DELETE to confirm.') !== 'DELETE') return;
+      saveAttempts([]);
+      renderEverything();
+      toast('Attempts cleared.');
+    }
+
+    function renderSettings(){
+      const st = settings();
+      $('adminPasswordInput').value = st.adminPassword;
+      $('showAnswerSetting').value = st.showAnswerAfterSubmit;
+    }
+    function saveSettings(){
+      const pass = $('adminPasswordInput').value.trim();
+      if(pass.length < 4){toast('Password should be at least 4 characters.');return;}
+      setJSON(LS.settings, {adminPassword:pass, showAnswerAfterSubmit:$('showAnswerSetting').value});
+      toast('Settings saved.');
+    }
+    function factoryReset(){
+      if(prompt('Factory reset will clear questions, attempts and settings. Type DELETE to confirm.') !== 'DELETE') return;
+      localStorage.removeItem(LS.questions);
+      localStorage.removeItem(LS.attempts);
+      localStorage.removeItem(LS.settings);
+      localStorage.removeItem(LS.admin);
+      setJSON(LS.settings, DEFAULT_SETTINGS);
+      saveQuestions([]);
+      saveAttempts([]);
+      renderEverything();
+      showScreen('homeScreen');
+      toast('All default/demo data removed.');
+    }
+
+    function shuffle(arr){
+      const a = arr.slice();
+      for(let i=a.length-1;i>0;i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [a[i],a[j]]=[a[j],a[i]];
+      }
+      return a;
+    }
+
+    function escapeHTML(str){
+      return String(str ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'}[ch]));
+    }
+
+    function confetti(){
+      const wrap = $('confetti');
+      wrap.innerHTML='';
+      const colors = ['#7c5cff','#32d4ff','#34d399','#ffb05c','#fb7185','#facc15'];
+      for(let i=0;i<70;i++){
+        const s = document.createElement('span');
+        s.style.left = Math.random()*100 + 'vw';
+        s.style.animationDelay = Math.random()*.35 + 's';
+        s.style.background = colors[Math.floor(Math.random()*colors.length)];
+        s.style.transform = `rotate(${Math.random()*180}deg)`;
+        wrap.appendChild(s);
+      }
+      setTimeout(()=>wrap.innerHTML='',2100);
+    }
+
+    init();
+  </script>
+</body>
+</html>

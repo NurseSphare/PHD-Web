@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "**/agent-transcripts/**",
+      "**/*.mp4",
+      "firebase-config.example.js",
+      "firestore.rules.example",
+      "FIREBASE-SETUP.md",
+      "try.html",
+      "Challenge_recovered.html",
+      "Admin-control.html",
+      "public/**",
+      "Public/**",
+      "**/*.bat",
+      "**/*.exe",
+      "**/*.cmd",
+      "START.bat"
+    ]
+  }
+}

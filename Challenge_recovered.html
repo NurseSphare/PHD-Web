@@ -1,0 +1,681 @@
+# -*- coding: utf-8 -*-
+"""Replace Challenge.html admin panel with try.html admin panel."""
+from pathlib import Path
+
+ROOT = Path(r"c:\Users\User\Downloads\New folder")
+CH = ROOT / "Challenge.html"
+TRY = ROOT / "try.html"
+
+ch_lines = CH.read_text(encoding="utf-8").splitlines(keepends=True)
+try_lines = TRY.read_text(encoding="utf-8").splitlines(keepends=True)
+
+def find_line(lines, pattern, start=0):
+    for i in range(start, len(lines)):
+        if pattern in lines[i]:
+            return i
+    raise ValueError(f"Pattern not found: {pattern!r}")
+
+# --- CSS: remove old admin block (before .challenge-overlay) ---
+css_start = find_line(ch_lines, "Added only: Admin sign-in modal")
+css_end = find_line(ch_lines, ".challenge-overlay{")
+
+ADMIN_CSS = r"""
+/* =========================
+   Admin panel (same as try.html)
+   ========================= */
+.glass{
+  border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.065));
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(24px);
+  position:relative;
+  overflow:hidden;
+}
+
+.stat{
+  padding:16px;
+  border-radius:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.07);
+}
+.stat b{font-size:24px;display:block;letter-spacing:-1px;color:#f8fbff}
+.stat span{font-size:12px;color:var(--muted);font-weight:800}
+
+#adminScreen{display:none;width:100%;margin-top:24px}
+body.admin-mode #adminScreen{display:block}
+body.admin-mode .arena-info-stack,
+body.admin-mode .glass.entry-card{display:none !important}
+body.admin-mode{overflow:auto !important}
+body.admin-mode .BackWrapper{pointer-events:none;opacity:.35}
+
+.modal{
+  position:fixed;
+  inset:0;
+  z-index:12050;
+  display:none;
+  place-items:center;
+  padding:18px;
+  background:rgba(0,0,0,.64);
+  backdrop-filter:blur(14px);
+}
+.modal.show{display:grid;animation:adminModalFade .2s ease both}
+@keyframes adminModalFade{from{opacity:0}to{opacity:1}}
+.modal-card{
+  width:min(480px,100%);
+  border:1px solid var(--stroke);
+  border-radius:28px;
+  background:linear-gradient(180deg, rgba(24,27,52,.98), rgba(14,16,33,.98));
+  box-shadow:var(--shadow);
+  padding:24px;
+  color:#f8fbff;
+}
+.modal-card h3{font-size:25px;letter-spacing:-.7px;margin-bottom:7px}
+.modal-card p{color:var(--muted);line-height:1.6;font-size:14px;margin-bottom:14px}
+
+.admin-layout{
+  display:grid;
+  grid-template-columns:310px 1fr;
+  gap:22px;
+  align-items:start;
+}
+.admin-nav{
+  padding:18px;
+  display:grid;
+  gap:10px;
+  position:sticky;
+  top:104px;
+}
+.admin-nav button{
+  width:100%;
+  border:1px solid transparent;
+  background:transparent;
+  color:#dce0ff;
+  padding:13px 14px;
+  border-radius:17px;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  transition:.18s ease;
+  cursor:pointer;
+}
+.admin-nav button:hover,.admin-nav button.active{
+  background:rgba(124,92,255,.16);
+  border-color:rgba(167,139,250,.22);
+}
+.admin-page{display:none}
+.admin-page.active{display:block;animation:adminTabFade .28s ease both}
+@keyframes adminTabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.admin-content{padding:24px;color:#eef0ff}
+
+.admin-content .input-group{display:grid;gap:8px;margin-top:8px}
+.admin-content label{font-size:12px;color:#cfd3f5;font-weight:900;letter-spacing:.2px;text-transform:uppercase}
+.admin-content input,.admin-content select,.admin-content textarea{
+  width:100%;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(7,9,22,.48);
+  color:#f8fbff;
+  border-radius:17px;
+  padding:14px;
+  outline:0;
+}
+.admin-content textarea{min-height:112px;resize:vertical;line-height:1.5}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.table-wrap{overflow:auto;border-radius:22px;border:1px solid var(--stroke);margin-top:15px}
+.admin-content table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(0,0,0,.12)}
+.admin-content th,.admin-content td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px;vertical-align:top}
+.admin-content th{color:#d7dbff;background:rgba(255,255,255,.055);font-size:12px;text-transform:uppercase;letter-spacing:.35px}
+.admin-content td{color:#eef0ff}
+.muted{color:var(--muted)!important}
+
+.admin-content .badge{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);
+  color:#eef0ff;font-size:12px;font-weight:900;white-space:nowrap;
+}
+.admin-content .badge.green{color:#b7ffe4;border-color:rgba(52,211,153,.25);background:rgba(52,211,153,.11)}
+.admin-content .badge.red{color:#ffd1da;border-color:rgba(251,113,133,.25);background:rgba(251,113,133,.11)}
+.admin-content .badge.yellow{color:#fff3b8;border-color:rgba(250,204,21,.25);background:rgba(250,204,21,.1)}
+
+.question-list{display:grid;gap:12px;margin-top:16px}
+.q-item{
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  border-radius:22px;
+  padding:16px;
+  display:grid;
+  gap:11px;
+}
+.q-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.q-title{font-weight:1000;line-height:1.35}
+.q-meta{display:flex;gap:8px;flex-wrap:wrap}
+.q-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.empty{
+  text-align:center;
+  padding:34px;
+  color:var(--muted);
+  border:1px dashed rgba(255,255,255,.18);
+  border-radius:24px;
+  background:rgba(255,255,255,.035);
+}
+
+@media (max-width:980px){
+  .admin-layout{grid-template-columns:1fr}
+  .admin-nav{position:relative;top:auto;grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:680px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  .admin-nav{grid-template-columns:1fr}
+  .admin-content{padding:20px}
+  .q-top{flex-direction:column}
+}
+
+"""
+
+# --- HTML: admin screen from try ---
+html_start = find_line(try_lines, '<section id="adminScreen"')
+html_end = find_line(try_lines, '</section>', html_start) + 1
+admin_html = "".join(try_lines[html_start:html_end])
+
+modal_start = find_line(try_lines, '<div class="modal" id="adminLoginModal">')
+modal_end = find_line(try_lines, '</div>', modal_start)
+# modal has nested divs - find closing after modal-card
+while modal_end < len(try_lines) and 'adminLoginModal' not in try_lines[modal_end] and '</div>' in try_lines[modal_end]:
+    if try_lines[modal_end].strip() == '</div>' and modal_end > modal_start + 5:
+        break
+    modal_end += 1
+# find the outer modal close: line after loginAdminBtn block
+modal_end = find_line(try_lines, 'id="loginAdminBtn"', modal_start)
+while modal_end < len(try_lines) and '</div>' not in try_lines[modal_end]:
+    modal_end += 1
+modal_end += 1  # first </div> after buttons row
+while try_lines[modal_end].strip() != '</div>':
+    modal_end += 1
+modal_end += 1
+admin_modal_html = "".join(try_lines[modal_start:modal_end])
+
+# Replace Challenge admin page block
+ch_admin_start = find_line(ch_lines, "<!-- Admin dashboard -->")
+ch_admin_end = find_line(ch_lines, "</div>", find_line(ch_lines, 'id="adminPage"'))
+# walk until we close adminPage - count div depth
+idx = find_line(ch_lines, 'id="adminPage"')
+depth = 0
+ch_admin_end = idx
+for j in range(idx, len(ch_lines)):
+    depth += ch_lines[j].count("<div") - ch_lines[j].count("</div>")
+    if j > idx and depth <= 0:
+        ch_admin_end = j + 1
+        break
+
+# Replace login modal
+ch_modal_start = find_line(ch_lines, "<!-- Added only: Admin sign-in modal")
+ch_modal_end = find_line(ch_lines, "</div>", find_line(ch_lines, 'id="adminLoginModal"'))
+idx = find_line(ch_lines, 'id="adminLoginModal"')
+depth = 0
+for j in range(idx, len(ch_lines)):
+    depth += ch_lines[j].count("<div") - ch_lines[j].count("</div")
+    if j > idx and depth <= 0:
+        ch_modal_end = j + 1
+        break
+
+# --- JS: replace admin scripts ---
+js_start = find_line(ch_lines, "/* Added only: Admin modal behavior")
+js_end = find_line(ch_lines, "/* Staff challenge flow */")
+
+ADMIN_JS = r"""
+    /* Admin panel (same as try.html) */
+    (function(){
+      const KEYS = {
+        questions: 'respiratoryChallengeQuestions',
+        results: 'respiratoryChallengeResults',
+        settings: 'respiratoryChallengeSettings'
+      };
+      const DEFAULT_SETTINGS = {
+        weekTitle: 'Weekly Tracheostomy Challenge',
+        isActive: true,
+        weekId: 'week_' + new Date().toISOString().slice(0, 10),
+        adminPassword: 'admin1234',
+        showAnswerAfterSubmit: 'no'
+      };
+
+      const $ = function(id){ return document.getElementById(id); };
+      const qsa = function(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+
+      function readJson(key, fallback){
+        try{
+          var v = JSON.parse(localStorage.getItem(key) || 'null');
+          return v == null ? fallback : v;
+        }catch(e){ return fallback; }
+      }
+      function writeJson(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+
+      function settings(){
+        var s = readJson(KEYS.settings, null);
+        if(s && typeof s === 'object') return Object.assign({}, DEFAULT_SETTINGS, s);
+        return Object.assign({}, DEFAULT_SETTINGS);
+      }
+      function saveSettingsObj(s){ writeJson(KEYS.settings, s); }
+
+      function getQuestions(){
+        var q = readJson(KEYS.questions, null);
+        if(Array.isArray(q) && q.length) return q;
+        var seed = [
+          { id:'q1', title:'Question 1', text:'What is the priority when suctioning a tracheostomy patient?', options:['Suction continuously for 60 seconds','Use sterile technique and limit suction time','No oxygen needed before suction','Suction only when SpO2 is 100%'], correctIndex:1, active:true },
+          { id:'q2', title:'Question 2', text:'Which action helps prevent tracheostomy tube obstruction?', options:['Keep cuff fully inflated at all times','Provide adequate humidification and airway clearance','Avoid cuff pressure checks','Remove inner cannula during meals'], correctIndex:1, active:false },
+          { id:'q3', title:'Question 3', text:'A patient with a new tracheostomy has sudden distress and absent breath sounds. First action?', options:['Give IV fluids','Assess airway patency and call for help','Place in Trendelenburg only','Start oral suction immediately'], correctIndex:1, active:false },
+          { id:'q4', title:'Question 4', text:'When changing tracheostomy ties, what is essential?', options:['Remove the old tie before securing the new one','Keep the tube secured and maintain airway','Deflate cuff completely first always','No need for two-person assist'], correctIndex:1, active:false },
+          { id:'q5', title:'Question 5', text:'Which finding should be reported immediately for a tracheostomy patient?', options:['Mild dry oral mucosa','Sudden bleeding, subcutaneous emphysema, or desaturation','Stable respiratory rate','Clear secretions after coughing'], correctIndex:1, active:false }
+        ];
+        writeJson(KEYS.questions, seed);
+        return seed;
+      }
+      function saveQuestions(list){ writeJson(KEYS.questions, list); }
+
+      function getResults(){
+        var r = readJson(KEYS.results, []);
+        return Array.isArray(r) ? r : [];
+      }
+      function saveResults(list){ writeJson(KEYS.results, list); }
+
+      function currentWeekResults(){
+        var weekId = settings().weekId;
+        return getResults().filter(function(r){ return r.weekId === weekId; });
+      }
+
+      function activeQuestion(){
+        return getQuestions().find(function(q){ return q.active; }) || getQuestions()[0] || null;
+      }
+
+      function showToast(msg){
+        var el = $('toast');
+        if(!el){ alert(msg); return; }
+        el.textContent = msg;
+        el.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function(){ el.classList.remove('show'); }, 2600);
+      }
+
+      function escapeHTML(str){
+        return String(str == null ? '' : str).replace(/[&<>'"]/g, function(ch){
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'})[ch];
+        });
+      }
+
+      var imageDraft = '';
+
+      function openAdmin(){
+        $('adminLoginPassword').value = '';
+        $('adminLoginModal').classList.add('show');
+        setTimeout(function(){ $('adminLoginPassword').focus(); }, 80);
+      }
+      function closeAdminModal(){ $('adminLoginModal').classList.remove('show'); }
+
+      function showAdminPanel(){
+        document.body.classList.add('admin-mode');
+        document.body.style.overflow = 'auto';
+        closeAdminModal();
+        switchAdminPage('adminDashboard');
+        renderAdminAll();
+        window.scrollTo(0, 0);
+      }
+
+      function hideAdminPanel(){
+        document.body.classList.remove('admin-mode');
+        document.body.style.overflow = '';
+      }
+
+      function loginAdmin(){
+        if($('adminLoginPassword').value === settings().adminPassword){
+          showAdminPanel();
+        }else{
+          showToast('Wrong admin password.');
+        }
+      }
+
+      function adminLogout(){
+        hideAdminPanel();
+        showToast('Logged out.');
+      }
+
+      function switchAdminPage(page){
+        qsa('.admin-tab').forEach(function(b){
+          b.classList.toggle('active', b.dataset.page === page);
+        });
+        qsa('#adminScreen .admin-page').forEach(function(p){
+          p.classList.toggle('active', p.id === page);
+        });
+        renderAdminAll();
+      }
+
+      function renderAdminAll(){
+        renderAdminStats();
+        renderQuestionList();
+        renderResultsTable();
+        renderSettingsForm();
+        var pill = $('activeWeekPill');
+        var st = settings();
+        if(pill) pill.textContent = st.isActive ? ('✨ ' + (st.weekTitle || 'Challenge Ready')) : '⏸ Challenge Paused';
+      }
+
+      function renderAdminStats(){
+        var results = currentWeekResults();
+        var pctSum = results.reduce(function(s, r){ return s + (r.score / r.total * 100); }, 0);
+        $('adminTotalAttempts').textContent = String(results.length);
+        $('adminCorrectRate').textContent = results.length ? Math.round(pctSum / results.length) + '%' : '0%';
+        $('adminSuspicious').textContent = '0';
+        var q = activeQuestion();
+        $('activeQuestionSummary').textContent = q
+          ? ((q.title || q.text.slice(0, 60)) + ' • ' + (q.timer || 45) + 's • Active quiz set')
+          : 'No active question yet.';
+      }
+
+      function renderQuestionList(){
+        var list = getQuestions().slice().reverse();
+        var box = $('questionList');
+        if(!box) return;
+        box.innerHTML = list.length ? list.map(function(q){
+          return '<div class="q-item"><div class="q-top"><div><div class="q-title">' + escapeHTML(q.title || 'Untitled') + '</div>' +
+            '<p class="muted" style="margin-top:6px;line-height:1.5">' + escapeHTML(q.text).slice(0, 190) + (q.text.length > 190 ? '...' : '') + '</p></div>' +
+            '<div class="q-meta"><span class="badge ' + (q.active ? 'green' : 'red') + '">' + (q.active ? 'Active' : 'Inactive') + '</span>' +
+            (q.timer ? '<span class="badge">' + q.timer + 's</span>' : '') +
+            '</div></div><div class="q-actions">' +
+            '<button type="button" class="btn small ' + (q.active ? 'danger' : 'green') + '" data-q-action="toggle" data-q-id="' + q.id + '">' + (q.active ? 'Deactivate' : 'Activate') + '</button>' +
+            '<button type="button" class="btn danger small" data-q-action="delete" data-q-id="' + q.id + '">Delete</button>' +
+            '</div></div>';
+        }).join('') : '<div class="empty">No questions yet. Add your first weekly challenge from the form above.</div>';
+      }
+
+      function renderResultsTable(){
+        var rows = currentWeekResults().slice().sort(function(a,b){
+          return new Date(b.completedAt) - new Date(a.completedAt);
+        });
+        var weekTitle = settings().weekTitle || 'Active Week';
+        $('adminResultsTable').innerHTML = rows.length ? rows.map(function(r){
+          var passed = (r.score / r.total) >= 0.6;
+          return '<tr><td>' + new Date(r.completedAt).toLocaleString() + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + escapeHTML(weekTitle) + '</td>' +
+            '<td><span class="badge ' + (passed ? 'green' : 'red') + '">' + r.score + '/' + r.total + '</span></td>' +
+            '<td>' + r.timeSeconds + 's</td><td><span class="badge green">Clean</span></td></tr>';
+        }).join('') : '<tr><td colspan="8" class="muted">No attempts for this week yet.</td></tr>';
+      }
+
+      function renderSettingsForm(){
+        var st = settings();
+        $('adminPasswordInput').value = st.adminPassword || 'admin1234';
+        $('showAnswerSetting').value = st.showAnswerAfterSubmit || 'no';
+      }
+
+      function uid(){ return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8); }
+
+      function resetQuestionForm(){
+        ['qTitle','qText','opt1','opt2','opt3','opt4','qExplain','qStart','qEnd'].forEach(function(id){
+          var el = $(id); if(el) el.value = '';
+        });
+        if($('qTimer')) $('qTimer').value = '45';
+        if($('correctOpt')) $('correctOpt').value = '0';
+        if($('qImage')) $('qImage').value = '';
+        imageDraft = '';
+      }
+
+      function saveQuestion(activate){
+        var title = $('qTitle').value.trim();
+        var text = $('qText').value.trim();
+        var opts = [$('opt1').value.trim(), $('opt2').value.trim(), $('opt3').value.trim(), $('opt4').value.trim()];
+        var correctIndex = Number($('correctOpt').value);
+        var explanation = $('qExplain').value.trim();
+        var timer = Number($('qTimer').value) || 45;
+        if(!title || !text || opts.some(function(o){ return !o; })){
+          showToast('Please complete title, question and all options.');
+          return;
+        }
+        var list = getQuestions();
+        if(activate) list = list.map(function(q){ return Object.assign({}, q, {active:false}); });
+        list.push({
+          id: uid(),
+          title: title,
+          text: text,
+          options: opts,
+          correctIndex: correctIndex,
+          explanation: explanation,
+          timer: timer,
+          startDate: $('qStart').value || new Date().toISOString().slice(0, 10),
+          endDate: $('qEnd').value || '2030-12-31',
+          active: !!activate,
+          image: imageDraft || '',
+          createdAt: new Date().toISOString()
+        });
+        saveQuestions(list);
+        resetQuestionForm();
+        renderAdminAll();
+        if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+        showToast(activate ? 'Question saved and activated.' : 'Question saved.');
+      }
+
+      function handleQuestionBankClick(event){
+        var btn = event.target.closest('[data-q-action]');
+        if(!btn) return;
+        var id = btn.dataset.qId;
+        var action = btn.dataset.qAction;
+        var list = getQuestions();
+        if(action === 'toggle'){
+          var target = list.find(function(q){ return q.id === id; });
+          if(!target) return;
+          if(target.active){
+            if(!confirm('Deactivate this question?')) return;
+            list = list.map(function(q){ return q.id === id ? Object.assign({}, q, {active:false}) : q; });
+          }else{
+            if(!confirm('Activate this question? Other questions will be deactivated.')) return;
+            list = list.map(function(q){ return Object.assign({}, q, {active: q.id === id}); });
+          }
+          saveQuestions(list);
+          renderAdminAll();
+          if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+          showToast('Question updated.');
+        }
+        if(action === 'delete'){
+          if(prompt('Type DELETE to remove this question permanently.') !== 'DELETE') return;
+          saveQuestions(list.filter(function(q){ return q.id !== id; }));
+          renderAdminAll();
+          if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+          showToast('Question deleted.');
+        }
+      }
+
+      function exportCSV(){
+        var rows = currentWeekResults();
+        if(!rows.length){ showToast('No results to export.'); return; }
+        var weekTitle = settings().weekTitle || 'Weekly Challenge';
+        var generated = new Date().toLocaleString();
+        var sorted = rows.slice().sort(function(a,b){
+          if(b.score !== a.score) return b.score - a.score;
+          return a.timeSeconds - b.timeSeconds;
+        });
+        var bodyRows = sorted.map(function(r, i){
+          return '<tr><td>' + (i+1) + '</td><td>' + new Date(r.completedAt).toLocaleString() + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + r.score + '/' + r.total + '</td><td>' + r.timeSeconds + 's</td><td>Clean</td></tr>';
+        }).join('');
+        var html = '<!DOCTYPE html><html><head><title>Respiratory Challenge Results</title><style>body{font-family:Arial,sans-serif;color:#0d2344;padding:26px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #dbe7f5;padding:8px}th{background:#f1f6ff}</style></head><body><h1>Respiratory Care Weekly Challenge - Results</h1><p><b>HD WEEK:</b> ' + escapeHTML(weekTitle) + '</p><p><b>Generated:</b> ' + generated + '</p><button onclick="window.print()">Print / Save as PDF</button><table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Staff No.</th><th>Unit</th><th>Score</th><th>Time</th><th>Status</th></tr></thead><tbody>' + bodyRows + '</tbody></table></body></html>';
+        var win = window.open('', '_blank');
+        if(!win){ showToast('Please allow pop-ups to export PDF.'); return; }
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+      }
+
+      function clearAttempts(){
+        if(prompt('Delete all attempts permanently? Type DELETE to confirm.') !== 'DELETE') return;
+        var weekId = settings().weekId;
+        saveResults(getResults().filter(function(r){ return r.weekId !== weekId; }));
+        renderAdminAll();
+        showToast('Attempts cleared.');
+      }
+
+      function saveSettings(){
+        var pass = $('adminPasswordInput').value.trim();
+        if(pass.length < 4){ showToast('Password should be at least 4 characters.'); return; }
+        var st = settings();
+        st.adminPassword = pass;
+        st.showAnswerAfterSubmit = $('showAnswerSetting').value;
+        saveSettingsObj(st);
+        showToast('Settings saved.');
+      }
+
+      function factoryReset(){
+        if(prompt('Factory reset will clear questions, results and settings. Type DELETE to confirm.') !== 'DELETE') return;
+        localStorage.removeItem(KEYS.questions);
+        localStorage.removeItem(KEYS.results);
+        localStorage.removeItem(KEYS.settings);
+        hideAdminPanel();
+        showToast('All data reset.');
+        location.reload();
+      }
+
+      function handleImageUpload(e){
+        var file = e.target.files[0];
+        if(!file){ imageDraft = ''; return; }
+        var reader = new FileReader();
+        reader.onload = function(){ imageDraft = reader.result; showToast('Image uploaded for this question.'); };
+        reader.readAsDataURL(file);
+      }
+
+      $('adminBtn').addEventListener('click', function(e){
+        if(document.body.classList.contains('admin-mode')){
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          showAdminPanel();
+        }else{
+          openAdmin();
+        }
+      }, true);
+
+      $('closeAdminModal').addEventListener('click', closeAdminModal);
+      $('loginAdminBtn').addEventListener('click', loginAdmin);
+      $('adminLogout').addEventListener('click', adminLogout);
+      $('saveQuestionBtn').addEventListener('click', function(){ saveQuestion(false); });
+      $('saveActivateQuestionBtn').addEventListener('click', function(){ saveQuestion(true); });
+      $('resetQuestionForm').addEventListener('click', resetQuestionForm);
+      $('exportCsvBtn').addEventListener('click', exportCSV);
+      $('clearAttemptsBtn').addEventListener('click', clearAttempts);
+      $('saveSettingsBtn').addEventListener('click', saveSettings);
+      $('factoryResetBtn').addEventListener('click', factoryReset);
+      if($('qImage')) $('qImage').addEventListener('change', handleImageUpload);
+      $('questionList').addEventListener('click', handleQuestionBankClick);
+      qsa('.admin-tab').forEach(function(btn){
+        btn.addEventListener('click', function(){ switchAdminPage(btn.dataset.page); });
+      });
+
+      var staffHomeBtn = $('staffHomeBtn');
+      if(staffHomeBtn){
+        staffHomeBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          hideAdminPanel();
+        });
+      }
+
+      getQuestions();
+    })();
+
+    /* Challenge data store for staff quiz */
+    (function(){
+      const KEYS = {
+        questions: 'respiratoryChallengeQuestions',
+        results: 'respiratoryChallengeResults',
+        settings: 'respiratoryChallengeSettings'
+      };
+
+      function readJson(key, fallback){
+        try{
+          var v = JSON.parse(localStorage.getItem(key) || 'null');
+          return v == null ? fallback : v;
+        }catch(e){ return fallback; }
+      }
+
+      function getSettings(){
+        var s = readJson(KEYS.settings, null);
+        if(s && typeof s === 'object') return s;
+        var weekId = 'week_' + new Date().toISOString().slice(0, 10);
+        return { weekTitle:'Weekly Tracheostomy Challenge', isActive:true, weekId:weekId, adminPassword:'admin1234', showAnswerAfterSubmit:'no' };
+      }
+
+      function getQuestions(){
+        var q = readJson(KEYS.questions, null);
+        return Array.isArray(q) && q.length ? q : [];
+      }
+
+      function getResults(){
+        var r = readJson(KEYS.results, []);
+        return Array.isArray(r) ? r : [];
+      }
+
+      function currentWeekResults(){
+        var weekId = getSettings().weekId;
+        return getResults().filter(function(r){ return r.weekId === weekId; });
+      }
+
+      window.ChallengeStore = {
+        getSettings: getSettings,
+        getQuestions: function(){
+          var all = getQuestions();
+          var active = all.filter(function(q){ return q.active !== false; });
+          return (active.length ? active : all).slice(0, 5);
+        },
+        getResults: getResults,
+        currentWeekResults: currentWeekResults,
+        _refreshQuestions: function(){},
+        saveResult: function(entry){
+          var all = getResults();
+          all.push(entry);
+          localStorage.setItem(KEYS.results, JSON.stringify(all));
+        }
+      };
+    })();
+
+"""
+
+new_ch = (
+    ch_lines[:css_start]
+    + [ADMIN_CSS + "\n"]
+    + ch_lines[css_end:]
+)
+
+# Re-find positions after CSS change (line numbers shifted)
+def refind(lines, pattern, start=0):
+    return find_line(lines, pattern, start)
+
+admin_start = refind(new_ch, "<!-- Admin dashboard -->")
+idx = refind(new_ch, 'id="adminPage"')
+depth = 0
+admin_end = idx
+for j in range(idx, len(new_ch)):
+    depth += new_ch[j].count("<div") - new_ch[j].count("</div>")
+    if j > idx and depth <= 0:
+        admin_end = j + 1
+        break
+
+new_ch = new_ch[:admin_start] + [admin_html + "\n"] + new_ch[admin_end:]
+
+modal_start = refind(new_ch, "<!-- Added only: Admin sign-in modal")
+idx = refind(new_ch, 'id="adminLoginModal"')
+depth = 0
+modal_end = idx
+for j in range(idx, len(new_ch)):
+    depth += new_ch[j].count("<div") - new_ch[j].count("</div")
+    if j > idx and depth <= 0:
+        modal_end = j + 1
+        break
+
+new_ch = new_ch[:modal_start] + [admin_modal_html + "\n"] + new_ch[modal_end:]
+
+js_start = refind(new_ch, "/* Added only: Admin modal behavior")
+js_end = refind(new_ch, "/* Staff challenge flow */")
+
+# Also remove duplicate ChallengeStore block inside old admin dashboard if still there - the patch replaces js_start to js_end
+new_ch = new_ch[:js_start] + [ADMIN_JS] + new_ch[js_end:]
+
+CH.write_text("".join(new_ch), encoding="utf-8")
+print("Patched Challenge.html successfully")
+print("Lines:", len(new_ch))

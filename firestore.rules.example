@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // للتجربة الداخلية فقط — اسمح بالقراءة والكتابة للجميع.
+    // للإنتاج: أضف Firebase Authentication وقيّد الوصول.
+    match /challenges/{docId} {
+      allow read, write: if true;
+    }
+  }
+}

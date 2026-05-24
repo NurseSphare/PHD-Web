@@ -1,0 +1,1960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Control — Respiratory Challenge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<style>
+:root{
+  --primary:#5c45df;
+  --stroke:rgba(48,66,216,.2);
+  --shadow:0 24px 80px rgba(17,24,39,.18);
+  --muted:rgba(31,42,68,.72);
+}
+        *{
+        box-sizing: border-box;
+    }
+
+    html,
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    body{
+        background-image: url("media/شيةهى-لاشؤنلقخعىي.png");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        overflow-y: auto;
+        position: relative;
+    }
+
+    .dmin-control{ display: none;
+    }
+
+    /* الحاوية الرئيسية للكمبيوتر والتابلت */
+    .BackWrapper{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(99vw, 1400px);
+        height: 89dvh;
+        max-height: 89vh;
+        border-radius: clamp(18px, 2.5vw, 34px);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
+        overflow: visible;
+        z-index: 2;
+    }
+
+    .Back{
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
+  
+    /* صورة الممرضة على حافة صورة Back */
+.nurse_pic{
+    position: absolute;
+    bottom: 0;
+    left: -7rem;
+    width: clamp(300px, 60vw, 660px);
+    height: auto;
+    z-index: 5;
+    background: transparent;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+    .BackPhoneWrapper{
+        display: none;
+    }
+
+
+    /* النص الرئيسي مثل الصورة */
+    .challenge-content{
+        position: absolute;
+        top: clamp(42px, 9vh, 105px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(92%, 650px);
+        text-align: center;
+        color: #ffffff;
+        z-index: 4;
+        padding: 0 16px;
+        font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+        pointer-events: auto;
+    }
+
+    .challenge-title{
+        margin: 0;
+        font-size: clamp(34px, 5.3vw, 72px);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        text-shadow: 0 8px 28px rgba(58, 35, 160, 0.32);
+    }
+
+    .challenge-subtitle{
+        margin: clamp(14px, 2vh, 22px) auto 0;
+        max-width: 520px;
+        font-size: clamp(14px, 1.55vw, 21px);
+        line-height: 1.55;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 5px 18px rgba(58, 35, 160, 0.25);
+    }
+
+    .join-btn{
+        margin-top: clamp(18px, 3vh, 34px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: clamp(185px, 18vw, 265px);
+        min-height: clamp(48px, 5.2vw, 66px);
+        padding: 14px 32px;
+        border-radius: 999px;
+        border: 0;
+        background: linear-gradient(135deg, #262aa8 0%, #3b35c5 52%, #5144e8 100%);
+        color: #ffffff;
+        font-size: clamp(15px, 1.45vw, 20px);
+        font-weight: 750;
+        letter-spacing: 0.1px;
+        text-decoration: none;
+        box-shadow: 0 16px 30px rgba(38, 42, 168, 0.34), inset 0 1px 0 rgba(255,255,255,.22);
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .join-btn:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 22px 36px rgba(38, 42, 168, 0.42), inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    .challenge-dot{
+        position: absolute;
+        width: clamp(8px, 1.15vw, 18px);
+        height: clamp(8px, 1.15vw, 18px);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 8px 18px rgba(91, 70, 210, 0.22);
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .dot-one{
+        top: clamp(28px, 5vh, 62px);
+        left: 50%;
+        transform: translateX(-160px);
+    }
+
+    .dot-two{
+        top: clamp(185px, 27vh, 290px);
+        right: clamp(80px, 17vw, 250px);
+        width: clamp(6px, .75vw, 11px);
+        height: clamp(6px, .75vw, 11px);
+    }
+
+    .dot-three{
+        top: clamp(250px, 43vh, 410px);
+        left: clamp(24px, 8vw, 130px);
+        width: clamp(8px, .9vw, 13px);
+        height: clamp(8px, .9vw, 13px);
+    }
+
+
+
+
+
+
+    
+/* =========================
+
+/* =========================
+   Admin panel (same as try.html)
+   ========================= */
+.glass{
+  border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.065));
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(24px);
+  position:relative;
+  overflow:hidden;
+}
+
+.stat{
+  padding:16px;
+  border-radius:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.07);
+}
+.stat b{font-size:24px;display:block;letter-spacing:-1px;color:#002b63}
+.stat span{font-size:12px;color:#262aa8;font-weight:800}
+
+#adminScreen{
+  display:block;width:100%;margin-top:24px;position:relative;isolation:isolate;
+  border-radius:28px;overflow:visible;min-height:calc(100dvh - 140px);padding:clamp(16px,2vw,24px);
+  background-size:cover;background-position:center;
+}
+#adminScreen::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(180deg,rgba(255, 255, 255, 0.35),rgba(255, 255, 255, 0.55));pointer-events:none;
+}
+#adminScreen .admin-layout{position:relative;z-index:1}
+body.admin-mode #adminScreen{display:block}
+body.admin-mode .arena-info-stack,
+body.admin-mode .glass.entry-card{display:none !important}
+body.admin-mode{overflow:auto !important}
+body.admin-mode .BackWrapper{pointer-events:none;opacity:.35}
+
+/* Admin login modal styles removed: page opens directly to admin interface. */
+.admin-layout{
+  display:grid;
+  grid-template-columns:310px 1fr;
+  gap:22px;
+  align-items:start;
+}
+#adminScreen .admin-nav{
+  padding:18px;
+  display:grid;
+  gap:10px;
+  position:sticky;
+  top:96px;
+  align-self:start;
+  width:100%;
+  max-height:calc(100dvh - 110px);
+  overflow-y:auto;
+  z-index:20;
+}
+#adminScreen .admin-content{
+  grid-column:2;
+  min-width:0;
+  align-self:start;
+}
+.admin-nav button{
+  width:100%;
+  border:1px solid transparent;
+  background:transparent;
+  color:#14213d;
+  padding:13px 14px;
+  border-radius:17px;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  transition:.18s ease;
+  cursor:pointer;
+}
+.admin-nav button:hover,.admin-nav button.active{
+  background:rgba(124,92,255,.18);
+  border-color:rgba(92,69,223,.35);
+  color:#0f1f3d;
+}
+.admin-page{display:none}
+.admin-page.active{display:block;animation:adminTabFade .28s ease both}
+@keyframes adminTabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.admin-content{padding:24px;color:#14213d}
+
+.admin-content .input-group{display:grid;gap:8px;margin-top:8px}
+.admin-content label{font-size:12px;color:#1e3a5f;font-weight:900;letter-spacing:.2px;text-transform:uppercase}
+.admin-content input,.admin-content select,.admin-content textarea{
+  width:100%;
+  border:1px solid rgba(48,66,216,.22);
+  background:rgba(255,255,255,.92);
+  color:#14213d;
+  border-radius:17px;
+  padding:14px;
+  outline:0;
+  font-weight:600;
+}
+.admin-content input::placeholder,.admin-content textarea::placeholder{color:rgba(31,42,68,.45)}
+.admin-content input:focus,.admin-content select:focus,.admin-content textarea:focus{
+  border-color:rgba(48,66,216,.55);
+  box-shadow:0 0 0 3px rgba(48,66,216,.12);
+}
+.admin-content textarea{min-height:112px;resize:vertical;line-height:1.5}
+.admin-content .panel-title h3{color:#0f1f3d}
+.admin-content .panel-title p{color:rgba(20,33,61,.78)}
+.admin-content h3{color:#0f1f3d}
+.admin-content .q-title{color:#0f1f3d}
+.admin-content .mini-card{color:#1f2a44}
+.admin-content .mini-card h4{color:#0f1f3d}
+.admin-content .mini-card p{color:rgba(31,42,68,.78)}
+.admin-content .empty{color:rgba(31,42,68,.72)}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+.table-wrap{overflow:auto;border-radius:22px;border:1px solid rgba(48,66,216,.18);margin-top:15px}
+.admin-content table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(255,255,255,.55)}
+.admin-content th,.admin-content td{padding:13px 14px;text-align:left;border-bottom:1px solid rgba(48,66,216,.12);font-size:13px;vertical-align:top}
+.admin-content th{color:#0f1f3d;background:rgba(48,66,216,.08);font-size:12px;text-transform:uppercase;letter-spacing:.35px;font-weight:950}
+.admin-content td{color:#1f2a44;font-weight:600}
+.admin-content .muted{color:rgba(31,42,68,.72)!important}
+
+.admin-content .badge{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;
+  border:1px solid rgba(48,66,216,.2);background:rgba(255,255,255,.75);
+  color:#1f2a44;font-size:12px;font-weight:900;white-space:nowrap;
+}
+.admin-content .badge.green{color:#047857;border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.14)}
+.admin-content .badge.red{color:#b4234a;border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.12)}
+.admin-content .badge.yellow{color:#9a6700;border-color:rgba(250,204,21,.35);background:rgba(250,204,21,.16)}
+
+.question-list{display:grid;gap:12px;margin-top:16px}
+.q-item{
+  border:1px solid rgba(48,66,216,.16);
+  background:rgba(255,255,255,.72);
+  border-radius:22px;
+  padding:16px;
+  display:grid;
+  gap:11px;
+  color:#1f2a44;
+}
+.q-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.q-title{font-weight:1000;line-height:1.35}
+.q-meta{display:flex;gap:8px;flex-wrap:wrap}
+.q-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.empty{
+  text-align:center;
+  padding:34px;
+  color:var(--muted);
+  border:1px dashed rgba(255,255,255,.18);
+  border-radius:24px;
+  background:rgba(255,255,255,.035);
+}
+
+@media (max-width:980px){
+  .admin-layout{grid-template-columns:1fr}
+  #adminScreen .admin-nav{
+    top:88px;
+    max-height:calc(100dvh - 96px);
+    grid-template-columns:repeat(2,1fr);
+  }
+  #adminScreen .admin-content{grid-column:1}
+}
+@media (max-width:680px){
+  .grid-2,.grid-3{grid-template-columns:1fr}
+  #adminScreen .admin-nav{grid-template-columns:1fr}
+  .admin-content{padding:20px}
+  .q-top{flex-direction:column}
+}
+
+
+.challenge-overlay{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(20,27,80,.55);
+  backdrop-filter:blur(8px);
+}
+
+.challenge-overlay.show{
+  display:flex;
+}
+
+.challenge-modal{
+  width:min(720px, 100%);
+  max-height:min(90dvh, 900px);
+  overflow:auto;
+  border-radius:28px;
+  padding:24px;
+  background:linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,255,255,.84));
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 30px 80px rgba(17,24,39,.28);
+  color:#1f2a44;
+}
+
+.challenge-modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.challenge-modal-head h3{
+  margin:0;
+  font-size:20px;
+  font-weight:950;
+}
+
+.challenge-close{
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:12px;
+  background:rgba(48,66,216,.10);
+  color:#3042d8;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.quiz-progress{
+  height:8px;
+  border-radius:999px;
+  background:rgba(48,66,216,.10);
+  overflow:hidden;
+  margin-bottom:16px;
+}
+
+.quiz-progress span{
+  display:block;
+  height:100%;
+  border-radius:inherit;
+  background:linear-gradient(90deg, #3042d8, #18a6c4);
+  transition:width .25s ease;
+}
+
+.quiz-question{
+  font-size:16px;
+  font-weight:900;
+  line-height:1.45;
+  margin:0 0 14px;
+}
+
+.quiz-options{
+  display:grid;
+  gap:10px;
+}
+
+.quiz-option{
+  width:100%;
+  text-align:left;
+  min-height:48px;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(48,66,216,.14);
+  background:rgba(255,255,255,.82);
+  color:#1f2a44;
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  transition:border-color .2s ease, background .2s ease;
+}
+
+.quiz-option:hover{
+  border-color:rgba(48,66,216,.35);
+  background:rgba(48,66,216,.06);
+}
+
+.quiz-option.selected{
+  border-color:rgba(48,66,216,.55);
+  background:rgba(48,66,216,.12);
+}
+
+.quiz-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-top:16px;
+}
+
+@media (max-width: 980px){
+  .admin-shell{grid-template-columns:1fr}
+  .admin-sidebar{position:relative;top:0}
+  .admin-stats-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+
+@media (max-width: 560px){
+  .admin-stats-grid{grid-template-columns:1fr}
+}
+
+.toast.show{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:10050;
+  padding:12px 18px;
+  border-radius:14px;
+  background:rgba(31,42,68,.94);
+  color:#ffffff;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 18px 40px rgba(17,24,39,.28);
+  pointer-events:none;
+}
+
+
+
+@media (max-width:980px){
+  body{
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+
+  .BackWrapper{
+    width:min(98vw, 760px);
+    height:92dvh;
+    opacity:.95;
+  }
+
+  .nurse_pic{
+    left:-9rem;
+    width:clamp(330px, 76vw, 560px);
+    opacity:.78;
+  }
+
+  .app{
+    width:min(100% - 22px, 760px);
+    padding-top:14px;
+  }
+
+  .topbar{
+    position:relative;
+    top:0;
+    border-radius:22px;
+    align-items:flex-start;
+  }
+
+  .top-actions{
+    display:none;
+  }
+
+  .brand h1{
+    white-space:normal;
+    font-size:16px;
+  }
+
+  .brand p{
+    font-size:11px;
+    margin-top:3px !important;
+  }
+
+  .pro-stage{
+    min-height:auto;
+    grid-template-columns:1fr;
+    padding:22px 0 28px;
+  }
+
+  .hero-copy{
+    margin:0;
+  }
+
+  .hero-copy h2{
+    font-size:clamp(34px, 12vw, 54px);
+  }
+
+  .hero-metrics{
+    grid-template-columns:1fr;
+  }
+
+  .glass.entry-card{
+    justify-self:center;
+  }
+}
+
+@media (max-width:560px){
+  .BackWrapper{
+    border-radius:24px;
+    height:94dvh;
+  }
+
+  .logo{
+    width:42px;
+    height:42px;
+    border-radius:15px;
+  }
+
+  .hero-copy{
+    padding:16px;
+    border-radius:24px;
+  }
+
+  .hero-copy p{
+    font-size:14px;
+  }
+
+  .glass.entry-card{
+    padding:18px;
+    border-radius:26px;
+  }
+
+  .panel-title{
+    align-items:flex-start;
+  }
+
+  .panel-title h3{
+    font-size:24px;
+  }
+}
+
+
+/* =========================
+   Compact right-side entry card
+   مكان الكارد: تحت الهيدر مباشرة في جهة اليمين وبحجم أصغر
+   ========================= */
+.app > .glass.entry-card{
+  width:min(505px, 100%);
+  margin:16px 0 0 auto;
+  padding:16px;
+  border-radius:24px;
+  z-index:12;
+  transform:translateX(-6px);
+  box-shadow:
+    0 18px 48px rgba(24,35,90,.18),
+    inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.app > .glass.entry-card::before{
+  width:125px;
+  height:125px;
+  top:-56px;
+  right:-52px;
+}
+
+.app > .glass.entry-card::after{
+  left:18px;
+  right:18px;
+  height:3px;
+}
+
+.app > .glass.entry-card .panel-title{
+  margin-bottom:12px;
+  gap:10px;
+}
+
+.app > .glass.entry-card .panel-title h3{
+  font-size:22px;
+  letter-spacing:-.5px;
+}
+
+.app > .glass.entry-card .panel-title p{
+  margin-top:5px;
+  font-size:11.5px;
+  line-height:1.35;
+}
+
+.app > .glass.entry-card .badge{
+  padding:6px 9px;
+  font-size:10.5px;
+}
+
+.app > .glass.entry-card .badge.green::before{
+  width:7px;
+  height:7px;
+  box-shadow:0 0 0 5px rgba(16,185,129,.13);
+}
+
+.app > .glass.entry-card .input-group{
+  margin-bottom:9px;
+}
+
+.app > .glass.entry-card .input-group label{
+  margin-bottom:5px;
+  font-size:10.5px;
+}
+
+.app > .glass.entry-card .input-group input{
+  min-height:42px;
+  border-radius:14px;
+  padding:0 13px;
+  font-size:13px;
+}
+
+.app > .glass.entry-card .btn{
+  min-height:42px;
+  margin-top:7px;
+  border-radius:14px;
+  font-size:13px;
+  padding:10px 12px;
+}
+
+.app > .glass.entry-card .mini-card{
+  margin-top:12px;
+  padding:12px 12px 12px 40px;
+  border-radius:17px;
+}
+
+.app > .glass.entry-card .mini-card::before{
+  left:12px;
+  top:13px;
+  width:19px;
+  height:19px;
+  font-size:11px;
+}
+
+.app > .glass.entry-card .mini-card h4{
+  font-size:12.5px;
+}
+
+.app > .glass.entry-card .mini-card p{
+  margin-top:4px;
+  font-size:10.8px;
+  line-height:1.35;
+}
+
+@media (max-width:980px){
+  .app > .glass.entry-card{
+    width:min(360px, 100%);
+    margin:16px auto 0;
+    transform:none;
+  }
+}
+
+@media (max-width:560px){
+  .app > .glass.entry-card{
+    width:100%;
+    padding:15px;
+    border-radius:22px;
+  }
+}
+
+
+
+      button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+
+    .app{
+      width:min(1220px, calc(100% - 32px));
+      margin:0 auto;
+      padding:22px 0 50px;
+      position:relative;
+      z-index:2;
+    }
+
+    .topbar{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px 12px 18px;
+      border:1px solid var(--stroke);
+      border-radius:24px;
+      background:rgba(255,255,255,.07);
+      backdrop-filter:blur(22px);
+      box-shadow:0 16px 50px rgba(0,0,0,.18);
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,1), rgba(50,212,255,.82));
+      box-shadow:0 16px 35px rgba(124,92,255,.38);
+      font-size:23px;
+      flex:0 0 auto;
+    }
+
+    .brand h1{
+      font-size:18px;
+      line-height:1.05;
+      letter-spacing:-.3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:4px;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--stroke);
+      color:#e9ebff;
+      background:rgba(255,255,255,.08);
+      padding:10px 13px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      backdrop-filter:blur(16px);
+    }
+
+    .btn{
+      border:0;
+      outline:0;
+      color:white;
+      font-weight:900;
+      letter-spacing:-.1px;
+      padding:12px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--primary), #b669ff);
+      box-shadow:0 14px 30px rgba(124,92,255,.34);
+      transition:.22s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover{transform:translateY(-2px);filter:saturate(1.08)}
+    .btn:active{transform:translateY(0)}
+    .btn.ghost{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid var(--stroke);
+    }
+    .btn.soft{
+      background:rgba(124,92,255,.16);
+      border:1px solid rgba(167,139,250,.28);
+      box-shadow:none;
+    }
+    .btn.danger{
+      background:linear-gradient(135deg, #fb7185, #ef4444);
+      box-shadow:0 14px 30px rgba(251,113,133,.22);
+    }
+    .btn.green{
+      background:linear-gradient(135deg, #34d399, #10b981);
+      box-shadow:0 14px 30px rgba(52,211,153,.22);
+    }
+    .btn.small{padding:9px 12px;border-radius:13px;font-size:13px}
+
+
+/* =========================
+   Professional UI Upgrade
+   Added without changing your image paths or button IDs
+   ========================= */
+:root{
+  --primary:#5c45df;
+  --primary-2:#18a6c4;
+  --emerald:#10b981;
+  --orange:#ff9f43;
+  --text:#f8fbff;
+  --muted:rgba(233,238,255,.74);
+  --stroke:rgba(255,255,255,.22);
+  --glass:rgba(255,255,255,.12);
+  --glass-strong:rgba(255,255,255,.18);
+  --shadow:0 24px 80px rgba(17,24,39,.28);
+}
+
+body{
+  font-family:"Rubik","Livvic","Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  isolation:isolate;
+  overflow-y:auto;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.36), transparent 20%),
+    radial-gradient(circle at 78% 18%, rgba(24,166,196,.26), transparent 28%),
+    radial-gradient(circle at 68% 88%, rgba(255,159,67,.22), transparent 26%),
+    linear-gradient(135deg, rgba(20,27,96,.24), rgba(10,135,137,.10));
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 78%);
+}
+
+.BackWrapper{
+  z-index:1;
+  filter:drop-shadow(0 32px 55px rgba(30,28,105,.20));
+}
+
+.BackWrapper::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(18,22,80,.08), transparent 45%, rgba(255,255,255,.12)),
+    radial-gradient(circle at 28% 72%, rgba(255,255,255,.12), transparent 24%);
+}
+
+.nurse_pic{
+  filter:drop-shadow(0 28px 32px rgba(26,22,69,.25));
+  animation:nurseFloat 5.5s ease-in-out infinite;
+}
+
+
+.challenge-dot{
+  animation:dotPulse 2.9s ease-in-out infinite;
+}
+
+.dot-two{animation-delay:.45s}
+.dot-three{animation-delay:.9s}
+
+@keyframes dotPulse{
+  0%,100%{transform:scale(1);opacity:.7}
+  50%{transform:scale(1.45);opacity:1}
+}
+
+.app{
+  z-index:5;
+  min-height:100dvh;
+}
+
+.topbar{
+  background:linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.34));
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 22px 50px rgba(42,51,133,.18);
+  color:#1f2a44;
+}
+
+.logo{
+  background:
+    linear-gradient(135deg, #ffffff, rgba(255,255,255,.65)),
+    linear-gradient(135deg, #3042d8, #18a6c4);
+  border:1px solid rgba(48,66,216,.16);
+}
+
+.brand h1{
+  font-family:"Rubik","Segoe UI",Arial,sans-serif !important;
+  font-weight:900;
+}
+
+.brand p{
+  color:rgba(31,42,68,.68) !important;
+  font-weight:600;
+}
+
+.pill{
+  color:#1f2a44;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(48,66,216,.16);
+  box-shadow:0 10px 24px rgba(48,66,216,.10);
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(120deg, transparent 0 30%, rgba(255,255,255,.34), transparent 70% 100%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+}
+
+.btn:hover::before{
+  transform:translateX(120%);
+}
+
+.pro-stage{
+  width:100%;
+  min-height:calc(89dvh - 96px);
+  display:grid;
+  grid-template-columns:minmax(280px, 1fr) minmax(340px, 430px);
+  gap:clamp(20px, 3vw, 38px);
+  align-items:center;
+  padding:clamp(28px, 5vh, 62px) clamp(6px, 1vw, 14px) 10px;
+}
+
+.hero-copy{
+  width:min(620px, 100%);
+  margin-left:clamp(10px, 3vw, 34px);
+  padding:clamp(18px, 2.4vw, 28px);
+  border-radius:30px;
+  background:linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.34);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);
+}
+
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 13px;
+  border-radius:999px;
+  color:#183358;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.58);
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 12px 24px rgba(48,66,216,.10);
+}
+
+.hero-copy h2{
+  margin:18px 0 12px;
+  font-size:clamp(34px, 5vw, 70px);
+  line-height:.98;
+  letter-spacing:-2.2px;
+  font-weight:950;
+  color:#ffffff;
+  text-shadow:0 14px 32px rgba(47,50,131,.24);
+}
+
+.hero-copy h2 span{
+  display:block;
+  background:linear-gradient(135deg, #ffffff 0%, #eaf8ff 36%, #fff1dd 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-copy p{
+  margin:0;
+  max-width:520px;
+  color:rgba(255,255,255,.88);
+  font-size:clamp(15px, 1.4vw, 18px);
+  line-height:1.65;
+  font-weight:600;
+}
+
+.hero-metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+
+.metric{
+  padding:14px 12px;
+  border-radius:22px;
+  background:rgba(255,255,255,.64);
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 14px 28px rgba(34,45,98,.12);
+  color:#1f2a44;
+}
+
+.metric strong{
+  display:block;
+  font-size:20px;
+  line-height:1;
+  font-weight:950;
+}
+
+.metric small{
+  display:block;
+  margin-top:6px;
+  color:rgba(31,42,68,.62);
+  font-weight:700;
+  font-size:11px;
+  line-height:1.25;
+}
+
+.glass.entry-card{
+  position:relative;
+  width:min(430px, 100%);
+  justify-self:end;
+  padding:clamp(20px, 2.4vw, 28px);
+  border-radius:32px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.54)),
+    radial-gradient(circle at top right, rgba(24,166,196,.20), transparent 34%);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 28px 80px rgba(24,35,90,.22),
+    inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter:blur(22px);
+  color:#1f2a44;
+  overflow:hidden;
+}
+
+.glass.entry-card::before{
+  content:"";
+  position:absolute;
+  top:-80px;
+  right:-80px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:linear-gradient(135deg, rgba(48,66,216,.22), rgba(18,163,143,.18));
+}
+
+.glass.entry-card::after{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg, #3042d8, #18a6c4, #12a38f, #ff9f43);
+}
+
+.panel-title{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.panel-title h3{
+  margin:0;
+  color:#14213d;
+  font-size:clamp(23px, 2vw, 30px);
+  line-height:1;
+  letter-spacing:-.8px;
+  font-weight:950;
+}
+
+.panel-title p{
+  margin:8px 0 0;
+  color:rgba(31,42,68,.64);
+  font-size:13px;
+  line-height:1.45;
+  font-weight:700;
+}
+
+.badge{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:950;
+}
+
+.badge.green{
+  color:#047857;
+  background:rgba(16,185,129,.14);
+  border:1px solid rgba(16,185,129,.26);
+}
+
+.badge.green::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#10b981;
+  box-shadow:0 0 0 6px rgba(16,185,129,.14);
+}
+
+.input-group{
+  position:relative;
+  z-index:1;
+  margin-bottom:14px;
+}
+
+.input-group label{
+  display:block;
+  margin:0 0 8px 3px;
+  color:#25314f;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+}
+
+.input-group input{
+  width:100%;
+  min-height:52px;
+  border:1px solid rgba(48,66,216,.14);
+  border-radius:18px;
+  padding:0 16px;
+  color:#1f2a44;
+  background:rgba(255,255,255,.72);
+  outline:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 12px 24px rgba(48,66,216,.06);
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.input-group input::placeholder{
+  color:rgba(31,42,68,.42);
+  font-weight:600;
+}
+
+.input-group input:focus{
+  border-color:rgba(48,66,216,.48);
+  box-shadow:0 0 0 4px rgba(48,66,216,.11), 0 16px 28px rgba(48,66,216,.09);
+  transform:translateY(-1px);
+}
+
+.entry-card .btn{
+  position:relative;
+  z-index:1;
+  width:100%;
+  min-height:52px;
+  margin-top:10px;
+  border-radius:18px;
+}
+
+.entry-card .btn.green{
+  background:linear-gradient(135deg, #0fb981, #18a6c4 58%, #3042d8);
+  box-shadow:0 18px 34px rgba(24,166,196,.24);
+}
+
+.entry-card .btn.ghost{
+  color:#263455;
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(48,66,216,.16);
+}
+
+.mini-card{
+  position:relative;
+  z-index:1;
+  margin-top:18px;
+  padding:15px 15px 15px 48px;
+  border-radius:22px;
+  background:linear-gradient(135deg, rgba(255,159,67,.14), rgba(48,66,216,.08));
+  border:1px solid rgba(255,255,255,.68);
+  color:#263455;
+}
+
+.mini-card::before{
+  content:"✓";
+  position:absolute;
+  left:15px;
+  top:17px;
+  width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:white;
+  font-size:13px;
+  font-weight:900;
+  background:linear-gradient(135deg, #12a38f, #18a6c4);
+  box-shadow:0 9px 18px rgba(18,163,143,.24);
+}
+
+.mini-card h4{
+  margin:0;
+  font-size:14px;
+  font-weight:950;
+}
+
+.mini-card p{
+  margin:6px 0 0;
+  color:rgba(31,42,68,.66);
+  font-size:12px;
+  line-height:1.45;
+  font-weight:650;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%) translateY(16px);
+  opacity:0;
+  pointer-events:none;
+  z-index:10050;
+  padding:12px 18px;
+  border-radius:14px;
+  background:rgba(15,31,61,.94);
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  transition:opacity .25s ease, transform .25s ease;
+}
+</style>
+<body class="admin-mode">
+
+
+    <!-- الكمبيوتر والتابلت -->
+
+
+
+  <div class="toast" id="toast"></div>
+
+    <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🫁</div>
+        <div>
+          <h1 style="      background:linear-gradient(135deg, #3042d8 0%, #18a6c4 46%, #12a38f 72%, #ff9f43 100%) !important;
+      -webkit-background-clip:text !important;
+      background-clip:text !important;
+      color:transparent !important; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Respiratory Care Weekly Challenge</h1>
+          <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: -0.5rem;">A weekly tracheostomy care challenge to learn, compete, and improve patient safety.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill" id="activeWeekPill" role="button" tabindex="0" title="Click to pause or resume challenge" style="cursor:pointer">✨ Challenge Ready</span>
+        <button class="btn ghost small" id="staffHomeBtn">Staff View</button>
+        <button class="btn small" id="adminBtn">Admin</button>
+      </div>
+    </header>
+
+
+      
+    <section id="adminScreen" class="screen" >
+      <div class="admin-layout">
+        <nav class="glass admin-nav">
+          <button class="admin-tab active" data-page="adminDashboard">📊 Dashboard</button>
+          <button class="admin-tab" data-page="adminQuestions">➕ Questions</button>
+          <button class="admin-tab" data-page="adminResults">🏆 Results</button>
+          <button class="admin-tab" data-page="adminSettings">⚙️ Settings</button>
+          <button id="adminLogout" class="btn danger small" style="justify-content:center;margin-top:8px">Logout</button>
+        </nav>
+
+        <div class="glass admin-content">
+          <div id="adminDashboard" class="admin-page active">
+            <div class="panel-title">
+              <div>
+                <h3>Admin Dashboard</h3>
+                <p>Manage weekly questions, monitor participation and detect suspicious activity.</p>
+              </div>
+              <span class="badge green">Admin Mode</span>
+            </div>
+            <div class="grid-3" style="margin-top:18px">
+              <div class="stat"><b id="adminTotalAttempts">0</b><span>Total Attempts</span></div>
+              <div class="stat"><b id="adminCorrectRate">0%</b><span>Correct Rate</span></div>
+              <div class="stat"><b id="adminSuspicious">0</b><span>Suspicious Signals</span></div>
+            </div>
+            <div class="mini-card" style="margin-top:16px">
+              <h4>Active Weekly Questions <span class="badge green" id="activeQuestionsCount">0 / 5</span></h4>
+              <div class="input-group" style="margin-top:12px">
+                <label for="activeQuestionsDropdown">Active questions list</label>
+                <select id="activeQuestionsDropdown">
+                  <option value="">No active questions yet</option>
+                </select>
+              </div>
+              <p id="activeQuestionSummary" style="margin-top:10px;line-height:1.5">Add up to 5 active questions for this week.</p>
+            </div>
+          </div>
+
+          <div id="adminQuestions" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Create Weekly Question</h3>
+                <p>Add scenario-based questions, images, choices, timer and explanation.</p>
+              </div>
+              <button class="btn ghost small" id="resetQuestionForm">Clear Form</button>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Week Title</label>
+                <input id="qTitle" placeholder="Week 1: Tracheostomy Basics" />
+              </div>
+              <div class="input-group">
+                <label>Timer</label>
+                <select id="qTimer">
+                  <option value="30">30 seconds</option>
+                  <option value="45" selected>45 seconds</option>
+                  <option value="60">60 seconds</option>
+                  <option value="90">90 seconds</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Question / Scenario</label>
+              <textarea id="qText" placeholder="A child with tracheostomy suddenly develops respiratory distress. What should be your first nursing action?"></textarea>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group"><label>Option 1</label><input id="opt1" placeholder="Assess the child and check airway patency" /></div>
+              <div class="input-group"><label>Option 2</label><input id="opt2" placeholder="Call biomedical team first" /></div>
+              <div class="input-group"><label>Option 3</label><input id="opt3" placeholder="Wait for the doctor" /></div>
+              <div class="input-group"><label>Option 4</label><input id="opt4" placeholder="Increase feeding rate" /></div>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Correct Answer</label>
+                <select id="correctOpt">
+                  <option value="0">Option 1</option>
+                  <option value="1">Option 2</option>
+                  <option value="2">Option 3</option>
+                  <option value="3">Option 4</option>
+                </select>
+              </div>
+              <div class="input-group">
+                <label>Question Image</label>
+                <input id="qImage" type="file" accept="image/*" />
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Clinical Pearl / Explanation</label>
+              <textarea id="qExplain" placeholder="Always assess the patient first, check airway patency, call for help, and follow the emergency tracheostomy algorithm."></textarea>
+            </div>
+
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Start Date</label>
+                <input id="qStart" type="date" />
+              </div>
+              <div class="input-group">
+                <label>End Date</label>
+                <input id="qEnd" type="date" />
+              </div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn green" id="saveQuestionBtn">Save Question</button>
+              <button class="btn" id="saveActivateQuestionBtn">Save & Add to Week</button>
+            </div>
+
+            <div class="input-group" style="margin-top:20px">
+              <label for="activeQuestionsDropdownQuestions">Active questions this week (max 5)</label>
+              <select id="activeQuestionsDropdownQuestions">
+                <option value="">No active questions</option>
+              </select>
+            </div>
+
+            <h3 style="margin-top:28px;letter-spacing:-.5px">Question Bank</h3>
+            <div id="questionList" class="question-list"></div>
+          </div>
+
+          <div id="adminResults" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Results & Monitoring</h3>
+                <p>Review submissions, response time, tab switching and copy attempts.</p>
+              </div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button class="btn ghost small" id="exportCsvBtn">Export PDF</button>
+                <button class="btn danger small" id="clearAttemptsBtn">Clear Attempts</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Staff No.</th>
+                    <th>Unit</th>
+                    <th>HD WEEK</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                    <th>Signals</th>
+                  </tr>
+                </thead>
+                <tbody id="adminResultsTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="adminSettings" class="admin-page">
+            <div class="panel-title">
+              <div>
+                <h3>Settings</h3>
+                <p>Customize admin password and participation rules.</p>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Admin Password</label>
+                <input id="adminPasswordInput" type="password" placeholder="New password" />
+              </div>
+              <div class="input-group">
+                <label>Show Correct Answer After Submission</label>
+                <select id="showAnswerSetting">
+                  <option value="no">No - show after closing only</option>
+                  <option value="yes">Yes - show immediately</option>
+                </select>
+              </div>
+            </div>
+            <div class="input-group" style="margin-top:8px">
+              <label>Challenge Status</label>
+              <select id="challengeActiveSetting">
+                <option value="yes">Active — staff can play</option>
+                <option value="no">Paused — staff cannot start</option>
+              </select>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn green" id="saveSettingsBtn">Save Settings</button>
+              <button class="btn danger" id="factoryResetBtn">Factory Reset Demo</button>
+            </div>
+            <div class="mini-card" style="margin-top:18px">
+              <h4>Prototype Note</h4>
+              <p>This single HTML file uses localStorage. For hospital-wide use, connect it to a secure backend such as Firebase, Supabase, MySQL or a hospital server to truly protect attempts and staff identity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <div class="challenge-overlay" id="quizOverlay" aria-hidden="true">
+    <div class="challenge-modal" role="dialog" aria-modal="true">
+      <div class="challenge-modal-head">
+        <h3>Weekly Challenge Quiz</h3>
+        <button class="challenge-close" type="button" data-close-quiz aria-label="Close">×</button>
+      </div>
+      <div class="quiz-progress"><span id="quizProgressBar" style="width:0%"></span></div>
+      <p class="quiz-question" id="quizQuestionText"></p>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-footer">
+        <span id="quizCounter">Question 1 of 5</span>
+        <button class="admin-btn primary" type="button" id="quizNextBtn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="challenge-overlay" id="leaderboardOverlay" aria-hidden="true">
+    <div class="challenge-modal" role="dialog" aria-modal="true">
+      <div class="challenge-modal-head">
+        <h3>Leaderboard 🏆</h3>
+        <button class="challenge-close" type="button" data-close-leaderboard aria-label="Close">×</button>
+      </div>
+      <div class="admin-table-wrap" id="publicLeaderboardWrap"></div>
+    </div>
+  </div>
+
+  <div class="challenge-overlay" id="quizResultOverlay" aria-hidden="true">
+    <div class="challenge-modal" role="dialog" aria-modal="true">
+      <div class="challenge-modal-head">
+        <h3>Challenge Complete</h3>
+        <button class="challenge-close" type="button" data-close-result aria-label="Close">×</button>
+      </div>
+      <p id="quizResultText" style="font-size:15px;font-weight:800;line-height:1.6;margin:0 0 16px"></p>
+      <button class="admin-btn primary" type="button" data-close-result style="width:100%">Done</button>
+    </div>
+  </div>
+
+  <!-- Admin login modal removed: this page opens the Admin interface directly. -->
+
+  <script>
+
+    /* Admin panel (same as try.html) */
+    (function(){
+      const KEYS = {
+        questions: 'respiratoryChallengeQuestions',
+        results: 'respiratoryChallengeResults',
+        settings: 'respiratoryChallengeSettings'
+      };
+      const DEFAULT_SETTINGS = {
+        weekTitle: 'Weekly Tracheostomy Challenge',
+        isActive: true,
+        weekId: 'week_' + new Date().toISOString().slice(0, 10),
+        adminPassword: 'admin1234',
+        showAnswerAfterSubmit: 'no'
+      };
+
+      const $ = function(id){ return document.getElementById(id); };
+      const qsa = function(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+
+      function readJson(key, fallback){
+        try{
+          var v = JSON.parse(localStorage.getItem(key) || 'null');
+          return v == null ? fallback : v;
+        }catch(e){ return fallback; }
+      }
+      function writeJson(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+
+      function settings(){
+        var s = readJson(KEYS.settings, null);
+        if(s && typeof s === 'object') return Object.assign({}, DEFAULT_SETTINGS, s);
+        return Object.assign({}, DEFAULT_SETTINGS);
+      }
+      function saveSettingsObj(s){ writeJson(KEYS.settings, s); }
+
+      function getQuestions(){
+        var q = readJson(KEYS.questions, null);
+        if(Array.isArray(q) && q.length) return q;
+        var seed = [
+          { id:'q1', title:'Question 1', text:'What is the priority when suctioning a tracheostomy patient?', options:['Suction continuously for 60 seconds','Use sterile technique and limit suction time','No oxygen needed before suction','Suction only when SpO2 is 100%'], correctIndex:1, active:true },
+          { id:'q2', title:'Question 2', text:'Which action helps prevent tracheostomy tube obstruction?', options:['Keep cuff fully inflated at all times','Provide adequate humidification and airway clearance','Avoid cuff pressure checks','Remove inner cannula during meals'], correctIndex:1, active:true },
+          { id:'q3', title:'Question 3', text:'A patient with a new tracheostomy has sudden distress and absent breath sounds. First action?', options:['Give IV fluids','Assess airway patency and call for help','Place in Trendelenburg only','Start oral suction immediately'], correctIndex:1, active:true },
+          { id:'q4', title:'Question 4', text:'When changing tracheostomy ties, what is essential?', options:['Remove the old tie before securing the new one','Keep the tube secured and maintain airway','Deflate cuff completely first always','No need for two-person assist'], correctIndex:1, active:true },
+          { id:'q5', title:'Question 5', text:'Which finding should be reported immediately for a tracheostomy patient?', options:['Mild dry oral mucosa','Sudden bleeding, subcutaneous emphysema, or desaturation','Stable respiratory rate','Clear secretions after coughing'], correctIndex:1, active:true }
+        ];
+        writeJson(KEYS.questions, seed);
+        return seed;
+      }
+      function saveQuestions(list){ writeJson(KEYS.questions, list); }
+
+      function getResults(){
+        var r = readJson(KEYS.results, []);
+        return Array.isArray(r) ? r : [];
+      }
+      function saveResults(list){ writeJson(KEYS.results, list); }
+
+      function currentWeekResults(){
+        var weekId = settings().weekId;
+        return getResults().filter(function(r){ return r.weekId === weekId; });
+      }
+
+      var MAX_WEEKLY_ACTIVE = 5;
+
+      function getActiveQuestions(){
+        return getQuestions().filter(function(q){ return q.active; });
+      }
+
+      function countActiveQuestions(){
+        return getActiveQuestions().length;
+      }
+
+      function canActivateMore(){
+        return countActiveQuestions() < MAX_WEEKLY_ACTIVE;
+      }
+
+      function activeQuestion(){
+        var active = getActiveQuestions();
+        return active[0] || getQuestions()[0] || null;
+      }
+
+      function renderActiveQuestionsDropdown(){
+        var active = getActiveQuestions();
+        var optionsHtml = active.length
+          ? active.map(function(q, i){
+              return '<option value="' + q.id + '">' + (i + 1) + '. ' + escapeHTML(q.title || 'Untitled') + '</option>';
+            }).join('')
+          : '<option value="">No active questions yet</option>';
+        ['activeQuestionsDropdown', 'activeQuestionsDropdownQuestions'].forEach(function(id){
+          var sel = $(id);
+          if(!sel) return;
+          var prev = sel.value;
+          sel.innerHTML = optionsHtml;
+          if(prev && active.some(function(q){ return q.id === prev; })) sel.value = prev;
+        });
+        var countEl = $('activeQuestionsCount');
+        if(countEl) countEl.textContent = active.length + ' / ' + MAX_WEEKLY_ACTIVE;
+        updateActiveQuestionSummary();
+      }
+
+      function updateActiveQuestionSummary(){
+        var summary = $('activeQuestionSummary');
+        if(!summary) return;
+        var active = getActiveQuestions();
+        if(!active.length){
+          summary.textContent = 'Add up to 5 active questions for this week.';
+          return;
+        }
+        var sel = $('activeQuestionsDropdown') || $('activeQuestionsDropdownQuestions');
+        var q = active.find(function(x){ return x.id === (sel && sel.value); }) || active[0];
+        summary.textContent = (q.title || q.text.slice(0, 80)) + ' • ' + (q.timer || 45) + 's • ' + active.length + ' question(s) in weekly quiz';
+      }
+
+      function showToast(msg){
+        var el = $('toast');
+        if(!el){ alert(msg); return; }
+        el.textContent = msg;
+        el.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function(){ el.classList.remove('show'); }, 2600);
+      }
+
+      function escapeHTML(str){
+        return String(str == null ? '' : str).replace(/[&<>'"]/g, function(ch){
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'})[ch];
+        });
+      }
+
+      var imageDraft = '';
+
+      function showAdminPanel(){
+        document.body.classList.add('admin-mode');
+        document.body.style.overflow = 'auto';
+        switchAdminPage('adminDashboard');
+        renderAdminAll();
+        window.scrollTo(0, 0);
+      }
+
+      /* Login and modal functions removed: direct admin access only. */
+
+      function switchAdminPage(page){
+        qsa('.admin-tab').forEach(function(b){
+          b.classList.toggle('active', b.dataset.page === page);
+        });
+        qsa('#adminScreen .admin-page').forEach(function(p){
+          p.classList.toggle('active', p.id === page);
+        });
+        renderAdminAll();
+      }
+
+      function renderAdminAll(){
+        renderAdminStats();
+        renderActiveQuestionsDropdown();
+        renderQuestionList();
+        renderResultsTable();
+        renderSettingsForm();
+        var pill = $('activeWeekPill');
+        var st = settings();
+        if(pill) pill.textContent = st.isActive ? ('✨ ' + (st.weekTitle || 'Challenge Ready')) : '⏸ Challenge Paused';
+      }
+
+      function renderAdminStats(){
+        var results = currentWeekResults();
+        var pctSum = results.reduce(function(s, r){ return s + (r.score / r.total * 100); }, 0);
+        $('adminTotalAttempts').textContent = String(results.length);
+        $('adminCorrectRate').textContent = results.length ? Math.round(pctSum / results.length) + '%' : '0%';
+        $('adminSuspicious').textContent = '0';
+        updateActiveQuestionSummary();
+      }
+
+      function renderQuestionList(){
+        var list = getQuestions().slice().reverse();
+        var box = $('questionList');
+        if(!box) return;
+        box.innerHTML = list.length ? list.map(function(q){
+          return '<div class="q-item"><div class="q-top"><div><div class="q-title">' + escapeHTML(q.title || 'Untitled') + '</div>' +
+            '<p class="muted" style="margin-top:6px;line-height:1.5">' + escapeHTML(q.text).slice(0, 190) + (q.text.length > 190 ? '...' : '') + '</p></div>' +
+            '<div class="q-meta"><span class="badge ' + (q.active ? 'green' : 'red') + '">' + (q.active ? 'Active' : 'Inactive') + '</span>' +
+            (q.timer ? '<span class="badge">' + q.timer + 's</span>' : '') +
+            '</div></div><div class="q-actions">' +
+            '<button type="button" class="btn small ' + (q.active ? 'danger' : 'green') + '" data-q-action="toggle" data-q-id="' + q.id + '">' + (q.active ? 'Deactivate' : 'Activate') + '</button>' +
+            '<button type="button" class="btn danger small" data-q-action="delete" data-q-id="' + q.id + '">Delete</button>' +
+            '</div></div>';
+        }).join('') : '<div class="empty">No questions yet. Add your first weekly challenge from the form above.</div>';
+      }
+
+      function renderResultsTable(){
+        var rows = currentWeekResults().slice().sort(function(a,b){
+          return new Date(b.completedAt) - new Date(a.completedAt);
+        });
+        var weekTitle = settings().weekTitle || 'Active Week';
+        $('adminResultsTable').innerHTML = rows.length ? rows.map(function(r){
+          var passed = (r.score / r.total) >= 0.6;
+          return '<tr><td>' + new Date(r.completedAt).toLocaleString() + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + escapeHTML(weekTitle) + '</td>' +
+            '<td><span class="badge ' + (passed ? 'green' : 'red') + '">' + r.score + '/' + r.total + '</span></td>' +
+            '<td>' + r.timeSeconds + 's</td><td><span class="badge green">Clean</span></td></tr>';
+        }).join('') : '<tr><td colspan="8" class="muted">No attempts for this week yet.</td></tr>';
+      }
+
+      function renderSettingsForm(){
+        var st = settings();
+        $('adminPasswordInput').value = st.adminPassword || 'admin1234';
+        $('showAnswerSetting').value = st.showAnswerAfterSubmit || 'no';
+        if($('challengeActiveSetting')) $('challengeActiveSetting').value = st.isActive ? 'yes' : 'no';
+      }
+
+      function toggleChallengeActive(){
+        var st = settings();
+        st.isActive = !st.isActive;
+        saveSettingsObj(st);
+        renderAdminAll();
+        showToast(st.isActive ? 'Challenge is now active for staff.' : 'Challenge paused for staff.');
+      }
+
+      function uid(){ return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8); }
+
+      function resetQuestionForm(){
+        ['qTitle','qText','opt1','opt2','opt3','opt4','qExplain','qStart','qEnd'].forEach(function(id){
+          var el = $(id); if(el) el.value = '';
+        });
+        if($('qTimer')) $('qTimer').value = '45';
+        if($('correctOpt')) $('correctOpt').value = '0';
+        if($('qImage')) $('qImage').value = '';
+        imageDraft = '';
+      }
+
+      function saveQuestion(activate){
+        var title = $('qTitle').value.trim();
+        var text = $('qText').value.trim();
+        var opts = [$('opt1').value.trim(), $('opt2').value.trim(), $('opt3').value.trim(), $('opt4').value.trim()];
+        var correctIndex = Number($('correctOpt').value);
+        var explanation = $('qExplain').value.trim();
+        var timer = Number($('qTimer').value) || 45;
+        if(!title || !text || opts.some(function(o){ return !o; })){
+          showToast('Please complete title, question and all options.');
+          return;
+        }
+        var list = getQuestions();
+        if(activate && !canActivateMore()){
+          showToast('Maximum ' + MAX_WEEKLY_ACTIVE + ' active questions per week. Deactivate one first.');
+          return;
+        }
+        list.push({
+          id: uid(),
+          title: title,
+          text: text,
+          options: opts,
+          correctIndex: correctIndex,
+          explanation: explanation,
+          timer: timer,
+          startDate: $('qStart').value || new Date().toISOString().slice(0, 10),
+          endDate: $('qEnd').value || '2030-12-31',
+          active: !!activate,
+          image: imageDraft || '',
+          createdAt: new Date().toISOString()
+        });
+        saveQuestions(list);
+        resetQuestionForm();
+        renderAdminAll();
+        if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+        showToast(activate ? ('Question saved & active (' + countActiveQuestions() + '/' + MAX_WEEKLY_ACTIVE + ').') : 'Question saved.');
+      }
+
+      function handleQuestionBankClick(event){
+        var btn = event.target.closest('[data-q-action]');
+        if(!btn) return;
+        var id = btn.dataset.qId;
+        var action = btn.dataset.qAction;
+        var list = getQuestions();
+        if(action === 'toggle'){
+          var target = list.find(function(q){ return q.id === id; });
+          if(!target) return;
+          if(target.active){
+            if(!confirm('Remove this question from the weekly active set?')) return;
+            list = list.map(function(q){ return q.id === id ? Object.assign({}, q, {active:false}) : q; });
+          }else{
+            if(!canActivateMore()){
+              showToast('Maximum ' + MAX_WEEKLY_ACTIVE + ' active questions per week.');
+              return;
+            }
+            if(!confirm('Add to weekly active set? (' + (countActiveQuestions() + 1) + '/' + MAX_WEEKLY_ACTIVE + ')')) return;
+            list = list.map(function(q){ return q.id === id ? Object.assign({}, q, {active:true}) : q; });
+          }
+          saveQuestions(list);
+          renderAdminAll();
+          if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+          showToast('Question updated.');
+        }
+        if(action === 'delete'){
+          if(prompt('Type DELETE to remove this question permanently.') !== 'DELETE') return;
+          saveQuestions(list.filter(function(q){ return q.id !== id; }));
+          renderAdminAll();
+          if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+          showToast('Question deleted.');
+        }
+      }
+
+      function exportCSV(){
+        var rows = currentWeekResults();
+        if(!rows.length){ showToast('No results to export.'); return; }
+        var weekTitle = settings().weekTitle || 'Weekly Challenge';
+        var generated = new Date().toLocaleString();
+        var sorted = rows.slice().sort(function(a,b){
+          if(b.score !== a.score) return b.score - a.score;
+          return a.timeSeconds - b.timeSeconds;
+        });
+        var bodyRows = sorted.map(function(r, i){
+          return '<tr><td>' + (i+1) + '</td><td>' + new Date(r.completedAt).toLocaleString() + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + r.score + '/' + r.total + '</td><td>' + r.timeSeconds + 's</td><td>Clean</td></tr>';
+        }).join('');
+        var html = '<!DOCTYPE html><html><head><title>Respiratory Challenge Results</title><style>body{font-family:Arial,sans-serif;color:#0d2344;padding:26px}table{width:100%;border-collapse:collapse;font-size:12px}th,td{border:1px solid #dbe7f5;padding:8px}th{background:#f1f6ff}</style></head><body><h1>Respiratory Care Weekly Challenge - Results</h1><p><b>HD WEEK:</b> ' + escapeHTML(weekTitle) + '</p><p><b>Generated:</b> ' + generated + '</p><button onclick="window.print()">Print / Save as PDF</button><table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Staff No.</th><th>Unit</th><th>Score</th><th>Time</th><th>Status</th></tr></thead><tbody>' + bodyRows + '</tbody></table></body></html>';
+        var win = window.open('', '_blank');
+        if(!win){ showToast('Please allow pop-ups to export PDF.'); return; }
+        win.document.open();
+        win.document.write(html);
+        win.document.close();
+      }
+
+      function clearAttempts(){
+        if(prompt('Delete all attempts permanently? Type DELETE to confirm.') !== 'DELETE') return;
+        var weekId = settings().weekId;
+        saveResults(getResults().filter(function(r){ return r.weekId !== weekId; }));
+        renderAdminAll();
+        showToast('Attempts cleared.');
+      }
+
+      function saveSettings(){
+        var pass = $('adminPasswordInput').value.trim();
+        if(pass.length < 4){ showToast('Password should be at least 4 characters.'); return; }
+        var st = settings();
+        st.adminPassword = pass;
+        st.showAnswerAfterSubmit = $('showAnswerSetting').value;
+        if($('challengeActiveSetting')) st.isActive = $('challengeActiveSetting').value === 'yes';
+        saveSettingsObj(st);
+        renderAdminAll();
+        showToast('Settings saved.');
+      }
+
+      function factoryReset(){
+        if(prompt('Factory reset will clear questions, results and settings. Type DELETE to confirm.') !== 'DELETE') return;
+        localStorage.removeItem(KEYS.questions);
+        localStorage.removeItem(KEYS.results);
+        localStorage.removeItem(KEYS.settings);
+        showToast('All data reset.');
+        location.reload();
+      }
+
+      function handleImageUpload(e){
+        var file = e.target.files[0];
+        if(!file){ imageDraft = ''; return; }
+        var reader = new FileReader();
+        reader.onload = function(){ imageDraft = reader.result; showToast('Image uploaded for this question.'); };
+        reader.readAsDataURL(file);
+      }
+
+      function bindClick(id, handler){
+        var el = $(id);
+        if(el) el.addEventListener('click', handler);
+      }
+
+      showAdminPanel();
+
+      bindClick('adminLogout', function(){
+        sessionStorage.removeItem('activeAdminUser');
+        window.location.href = 'Challenge.html';
+      });
+      bindClick('staffHomeBtn', function(){
+        window.location.href = 'Challenge.html';
+      });
+      bindClick('adminBtn', function(){
+        switchAdminPage('adminDashboard');
+        renderAdminAll();
+        window.scrollTo(0, 0);
+        showToast('Dashboard ready.');
+      });
+      bindClick('saveQuestionBtn', function(){ saveQuestion(false); });
+      bindClick('saveActivateQuestionBtn', function(){ saveQuestion(true); });
+      bindClick('resetQuestionForm', resetQuestionForm);
+      bindClick('exportCsvBtn', exportCSV);
+      bindClick('clearAttemptsBtn', clearAttempts);
+      bindClick('saveSettingsBtn', saveSettings);
+      bindClick('factoryResetBtn', factoryReset);
+      if($('qImage')) $('qImage').addEventListener('change', handleImageUpload);
+      if($('questionList')) $('questionList').addEventListener('click', handleQuestionBankClick);
+      qsa('.admin-tab').forEach(function(btn){
+        btn.addEventListener('click', function(){ switchAdminPage(btn.dataset.page); });
+      });
+
+      ['activeQuestionsDropdown', 'activeQuestionsDropdownQuestions'].forEach(function(id){
+        var sel = $(id);
+        if(sel) sel.addEventListener('change', updateActiveQuestionSummary);
+      });
+
+      var weekPill = $('activeWeekPill');
+      if(weekPill){
+        weekPill.addEventListener('click', toggleChallengeActive);
+        weekPill.addEventListener('keydown', function(e){
+          if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleChallengeActive(); }
+        });
+      }
+
+      getQuestions();
+    })();
+</script>
+</body>
+</html>

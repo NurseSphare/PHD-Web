@@ -1,0 +1,5617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Respiratory Care Group Challenges</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<style>
+    *{
+        box-sizing: border-box;
+    }
+
+    html,
+    body{
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    body{
+        background-image: url("media/Background.png");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow-x: hidden;
+        overflow-y: auto;
+        position: relative;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .Web-game,
+    .TelPhone_game{
+        display: none;
+    }
+
+    /* الحاوية الرئيسية للكمبيوتر والتابلت */
+    .BackWrapper{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: min(99vw, 1400px);
+        height: 89dvh;
+        max-height: 89vh;
+        border-radius: clamp(18px, 2.5vw, 34px);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.28);
+        overflow: visible;
+        z-index: 2;
+    }
+
+    .Back{
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
+  
+    /* صورة الممرضة على حافة صورة Back */
+.nurse_pic{
+    position: absolute;
+    bottom: 0;
+    left: -7rem;
+    width: clamp(300px, 60vw, 660px);
+    height: auto;
+    z-index: 5;
+    background: transparent;
+    pointer-events: none;
+    user-select: none;
+}
+
+
+    .BackPhoneWrapper{
+        display: none;
+    }
+
+
+    /* النص الرئيسي مثل الصورة */
+    .challenge-content{
+        position: absolute;
+        top: clamp(42px, 9vh, 105px);
+        left: 50%;
+        transform: translateX(-50%);
+        width: min(92%, 650px);
+        text-align: center;
+        color: #ffffff;
+        z-index: 4;
+        padding: 0 16px;
+        font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+        pointer-events: auto;
+    }
+
+    .challenge-title{
+        margin: 0;
+        font-size: clamp(34px, 5.3vw, 72px);
+        line-height: 1.05;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        text-shadow: 0 8px 28px rgba(58, 35, 160, 0.32);
+    }
+
+    .challenge-subtitle{
+        margin: clamp(14px, 2vh, 22px) auto 0;
+        max-width: 520px;
+        font-size: clamp(14px, 1.55vw, 21px);
+        line-height: 1.55;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.92);
+        text-shadow: 0 5px 18px rgba(58, 35, 160, 0.25);
+    }
+
+    .join-btn{
+        margin-top: clamp(18px, 3vh, 34px);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: clamp(185px, 18vw, 265px);
+        min-height: clamp(48px, 5.2vw, 66px);
+        padding: 14px 32px;
+        border-radius: 999px;
+        border: 0;
+        background: linear-gradient(135deg, #262aa8 0%, #3b35c5 52%, #5144e8 100%);
+        color: #ffffff;
+        font-size: clamp(15px, 1.45vw, 20px);
+        font-weight: 750;
+        letter-spacing: 0.1px;
+        text-decoration: none;
+        box-shadow: 0 16px 30px rgba(38, 42, 168, 0.34), inset 0 1px 0 rgba(255,255,255,.22);
+        transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .join-btn:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 22px 36px rgba(38, 42, 168, 0.42), inset 0 1px 0 rgba(255,255,255,.28);
+    }
+
+    .challenge-dot{
+        position: absolute;
+        width: clamp(8px, 1.15vw, 18px);
+        height: clamp(8px, 1.15vw, 18px);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 8px 18px rgba(91, 70, 210, 0.22);
+        z-index: 3;
+        pointer-events: none;
+    }
+
+    .dot-one{
+        top: clamp(28px, 5vh, 62px);
+        left: 50%;
+        transform: translateX(-160px);
+    }
+
+    .dot-two{
+        top: clamp(185px, 27vh, 290px);
+        right: clamp(80px, 17vw, 250px);
+        width: clamp(6px, .75vw, 11px);
+        height: clamp(6px, .75vw, 11px);
+    }
+
+    .dot-three{
+        top: clamp(250px, 43vh, 410px);
+        left: clamp(24px, 8vw, 130px);
+        width: clamp(8px, .9vw, 13px);
+        height: clamp(8px, .9vw, 13px);
+    }
+
+
+
+
+
+
+      button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+
+    .app{
+      width:min(1220px, calc(100% - 32px));
+      margin:0 auto;
+      padding:22px 0 50px;
+      position:relative;
+      z-index:2;
+    }
+
+    .topbar{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 14px 12px 18px;
+      border:1px solid var(--stroke);
+      border-radius:24px;
+      background:rgba(255,255,255,.07);
+      backdrop-filter:blur(22px);
+      box-shadow:0 16px 50px rgba(0,0,0,.18);
+      position:sticky;
+      top:14px;
+      z-index:20;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .logo{
+      width:48px;
+      height:48px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,1), rgba(50,212,255,.82));
+      box-shadow:0 16px 35px rgba(124,92,255,.38);
+      font-size:23px;
+      flex:0 0 auto;
+    }
+
+    .brand h1{
+      font-size:18px;
+      line-height:1.05;
+      letter-spacing:-.3px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .brand p{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:4px;
+    }
+
+    .top-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--stroke);
+      color:#e9ebff;
+      background:rgba(255,255,255,.08);
+      padding:10px 13px;
+      border-radius:999px;
+      font-size:13px;
+      font-weight:800;
+      backdrop-filter:blur(16px);
+    }
+
+    .btn{
+      border:0;
+      outline:0;
+      color:white;
+      font-weight:900;
+      letter-spacing:-.1px;
+      padding:12px 16px;
+      border-radius:16px;
+      background:linear-gradient(135deg, var(--primary), #b669ff);
+      box-shadow:0 14px 30px rgba(124,92,255,.34);
+      transition:.22s ease;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+    }
+
+    .btn:hover{transform:translateY(-2px);filter:saturate(1.08)}
+    .btn:active{transform:translateY(0)}
+    .btn.ghost{
+      background:rgba(255,255,255,.08);
+      box-shadow:none;
+      border:1px solid var(--stroke);
+    }
+    .btn.soft{
+      background:rgba(124,92,255,.16);
+      border:1px solid rgba(167,139,250,.28);
+      box-shadow:none;
+    }
+    .btn.danger{
+      background:linear-gradient(135deg, #fb7185, #ef4444);
+      box-shadow:0 14px 30px rgba(251,113,133,.22);
+    }
+    .btn.green{
+      background:linear-gradient(135deg, #34d399, #10b981);
+      box-shadow:0 14px 30px rgba(52,211,153,.22);
+    }
+    .btn.small{padding:9px 12px;border-radius:13px;font-size:13px}
+    .btn.btn-export-pdf{
+      background:linear-gradient(135deg, #3042d8 0%, #18a6c4 100%);
+      box-shadow:0 14px 28px rgba(48,66,216,.32);
+      border:1px solid rgba(255,255,255,.2);
+    }
+    .btn.btn-export-pdf:hover{filter:saturate(1.08)}
+    .btn.btn-export-pdf{
+      background:linear-gradient(135deg, #3042d8 0%, #18a6c4 100%);
+      box-shadow:0 14px 28px rgba(48,66,216,.32);
+      border:1px solid rgba(255,255,255,.2);
+    }
+    .btn.btn-export-pdf:hover{filter:saturate(1.08)}
+
+#staffHomeBtn.btn-staff-view,
+.top-actions .btn-staff-view{
+  background:linear-gradient(135deg,#3042d8 0%,#18a6c4 100%);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 10px 24px rgba(48,66,216,.24);
+  color:#fff;
+}
+#staffHomeBtn.btn-staff-view:hover,
+.top-actions .btn-staff-view:hover{
+  filter:saturate(1.06);
+  box-shadow:0 12px 28px rgba(48,66,216,.3);
+}
+
+#adminScreen .btn-clear-form,
+#resetQuestionForm.btn-clear-form{
+  background:linear-gradient(135deg,#ff9f43,#f59e0b) !important;
+  color:#fff !important;
+  border:1px solid rgba(255,255,255,.35) !important;
+  box-shadow:0 8px 20px rgba(255,159,67,.28) !important;
+}
+#adminScreen .btn-clear-form:hover,
+#resetQuestionForm.btn-clear-form:hover{
+  filter:saturate(1.08);
+}
+
+.admin-confirm-backdrop{
+  display:none;
+  position:fixed;inset:0;z-index:20000;
+  align-items:center;justify-content:center;
+  padding:20px;
+  background:rgba(15,23,56,.55);
+  backdrop-filter:blur(8px);
+}
+.admin-confirm-backdrop.show{display:flex}
+.admin-confirm-card{
+  width:min(400px,100%);
+  padding:24px 22px 20px;
+  border-radius:22px;
+  text-align:center;
+  background:linear-gradient(135deg,rgba(255,255,255,.98),rgba(255,255,255,.9));
+  border:1px solid rgba(48,66,216,.14);
+  box-shadow:0 24px 60px rgba(20,35,90,.22);
+  color:#1f2a44;
+}
+.admin-confirm-icon{font-size:36px;margin-bottom:8px}
+.admin-confirm-card h4{
+  margin:0 0 10px;font-size:20px;font-weight:900;color:#0f1f3d;
+}
+.admin-confirm-card p{
+  margin:0 0 18px;font-size:14px;font-weight:600;line-height:1.5;
+  color:rgba(31,42,68,.72);
+}
+.admin-confirm-actions{
+  display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+}
+
+/* Quiz result — celebrate / encourage / support */
+#quizResultOverlay .quiz-result-modal{
+  width:min(400px,100%);
+  padding:28px 22px 22px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.58);
+  background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,255,255,.88));
+  box-shadow:0 22px 50px rgba(42,51,133,.22);
+}
+#quizResultOverlay .quiz-result-close{
+  position:absolute;top:12px;right:12px;z-index:2;
+}
+#quizResultOverlay .quiz-result-icon{
+  font-size:52px;line-height:1;margin-bottom:10px;
+  animation:resultPop .5s ease both;
+}
+#quizResultOverlay .result-celebrate .quiz-result-icon{
+  animation:resultPop .5s ease both, resultTrophy 1.2s ease-in-out .5s infinite;
+}
+@keyframes resultPop{
+  from{transform:scale(.5);opacity:0}
+  to{transform:scale(1);opacity:1}
+}
+@keyframes resultTrophy{
+  0%,100%{transform:translateY(0) rotate(-4deg)}
+  50%{transform:translateY(-6px) rotate(4deg)}
+}
+#quizResultOverlay .quiz-result-title{
+  margin:0 0 6px;font-size:22px;font-weight:900;color:#1f2a44;
+}
+#quizResultOverlay .quiz-result-score{
+  margin:0 0 12px;font-size:32px;font-weight:900;
+  letter-spacing:-.5px;
+  background:linear-gradient(135deg,#3042d8,#18a6c4);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+#quizResultOverlay .result-celebrate .quiz-result-score{
+  background:linear-gradient(135deg,#0fb981,#18a6c4,#3042d8);
+  -webkit-background-clip:text;background-clip:text;
+}
+#quizResultOverlay .result-encourage .quiz-result-score{
+  background:linear-gradient(135deg,#3042d8,#18a6c4);
+  -webkit-background-clip:text;background-clip:text;
+}
+#quizResultOverlay .result-support .quiz-result-score{
+  color:#6b7280;
+  background:none;
+  -webkit-text-fill-color:#5c6778;
+}
+#quizResultOverlay .quiz-result-msg{
+  margin:0 0 10px;font-size:15px;font-weight:700;line-height:1.55;
+  color:#1f2a44;
+}
+#quizResultOverlay .quiz-result-meta{
+  margin:0 0 18px;font-size:12px;font-weight:600;
+  color:rgba(31,42,68,.55);
+}
+#quizResultOverlay .quiz-result-done{
+  width:100%;border:0;border-radius:14px;
+  padding:12px 18px;font-family:inherit;font-size:15px;font-weight:800;
+  color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#0fb981,#18a6c4 58%,#3042d8);
+  box-shadow:0 12px 24px rgba(24,166,196,.22);
+}
+#quizResultOverlay .result-celebrate{
+  background:linear-gradient(160deg,#fff9e6 0%,#fff 45%,#f0fff8 100%);
+  border-color:rgba(255,193,7,.35);
+}
+#quizResultOverlay .result-celebrate .quiz-result-done{
+  background:linear-gradient(135deg,#f5c542,#0fb981,#18a6c4);
+  box-shadow:0 12px 28px rgba(15,185,129,.3);
+}
+#quizResultOverlay .result-encourage{
+  background:linear-gradient(160deg,#f8faff 0%,#fff 100%);
+}
+#quizResultOverlay .result-support{
+  background:linear-gradient(160deg,#faf8ff 0%,#fff 100%);
+}
+#quizResultOverlay .result-support .quiz-result-done{
+  background:linear-gradient(135deg,#7d5cf6,#3042d8);
+}
+.quiz-result-confetti{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0;
+}
+.quiz-result-confetti span{
+  position:absolute;top:-12px;
+  width:8px;height:8px;border-radius:2px;
+  animation:confettiFall 2.8s ease-in forwards;
+}
+@keyframes confettiFall{
+  to{transform:translateY(110vh) rotate(720deg);opacity:0}
+}
+
+/* =========================
+   Professional UI Upgrade
+   Added without changing your image paths or button IDs
+   ========================= */
+:root{
+  --primary:#5c45df;
+  --primary-2:#18a6c4;
+  --emerald:#10b981;
+  --orange:#ff9f43;
+  --text:#f8fbff;
+  --muted:rgba(233,238,255,.74);
+  --stroke:rgba(255,255,255,.22);
+  --glass:rgba(255,255,255,.12);
+  --glass-strong:rgba(255,255,255,.18);
+  --shadow:0 24px 80px rgba(17,24,39,.28);
+}
+
+body{
+  font-family:"Rubik","Livvic","Segoe UI",Arial,sans-serif;
+  color:var(--text);
+  isolation:isolate;
+  overflow-y:auto;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255,255,255,.36), transparent 20%),
+    radial-gradient(circle at 78% 18%, rgba(24,166,196,.26), transparent 28%),
+    radial-gradient(circle at 68% 88%, rgba(255,159,67,.22), transparent 26%),
+    linear-gradient(135deg, rgba(20,27,96,.24), rgba(10,135,137,.10));
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:42px 42px;
+  mask-image:linear-gradient(to bottom, rgba(0,0,0,.55), transparent 78%);
+}
+
+.BackWrapper{
+  z-index:1;
+  filter:drop-shadow(0 32px 55px rgba(30,28,105,.20));
+}
+
+.BackWrapper::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg, rgba(18,22,80,.08), transparent 45%, rgba(255,255,255,.12)),
+    radial-gradient(circle at 28% 72%, rgba(255,255,255,.12), transparent 24%);
+}
+
+.nurse_pic{
+  filter:drop-shadow(0 28px 32px rgba(26,22,69,.25));
+  animation:nurseFloat 5.5s ease-in-out infinite;
+}
+
+
+.challenge-dot{
+  animation:dotPulse 2.9s ease-in-out infinite;
+}
+
+.dot-two{animation-delay:.45s}
+.dot-three{animation-delay:.9s}
+
+@keyframes dotPulse{
+  0%,100%{transform:scale(1);opacity:.7}
+  50%{transform:scale(1.45);opacity:1}
+}
+
+.app{
+  z-index:5;
+  min-height:100dvh;
+}
+
+.topbar{
+  background:linear-gradient(135deg, rgba(255,255,255,.72), rgba(255,255,255,.34));
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 22px 50px rgba(42,51,133,.18);
+  color:#1f2a44;
+}
+
+.logo{
+  background:
+    linear-gradient(135deg, #ffffff, rgba(255,255,255,.65)),
+    linear-gradient(135deg, #3042d8, #18a6c4);
+  border:1px solid rgba(48,66,216,.16);
+}
+
+.brand h1{
+  font-family:"Rubik","Segoe UI",Arial,sans-serif !important;
+  font-weight:900;
+}
+
+.brand p{
+  color:rgba(31,42,68,.68) !important;
+  font-weight:600;
+}
+
+.pill{
+  color:#1f2a44;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(48,66,216,.16);
+  box-shadow:0 10px 24px rgba(48,66,216,.10);
+}
+
+#cloudSyncPill{
+  font-size:11px;
+  padding:8px 10px;
+  white-space:nowrap;
+}
+#cloudSyncPill[data-status="live"]{
+  color:#047857;
+  background:#ecfdf5;
+  border-color:rgba(16,185,129,.28);
+}
+#cloudSyncPill[data-status="syncing"]{
+  color:#3042d8;
+  background:#eef2ff;
+  border-color:rgba(48,66,216,.22);
+}
+#cloudSyncPill[data-status="error"]{
+  color:#b4234a;
+  background:#fff1f2;
+  border-color:rgba(251,113,133,.3);
+}
+#cloudSyncPill[data-status="off"]{
+  color:rgba(31,42,68,.55);
+  background:rgba(255,255,255,.65);
+}
+
+.btn{
+  position:relative;
+  overflow:hidden;
+}
+
+.btn::before{
+  content:"";
+  position:absolute;
+  inset:-1px;
+  background:linear-gradient(120deg, transparent 0 30%, rgba(255,255,255,.34), transparent 70% 100%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+}
+
+.btn:hover::before{
+  transform:translateX(120%);
+}
+
+.pro-stage{
+  width:100%;
+  min-height:calc(89dvh - 96px);
+  display:grid;
+  grid-template-columns:minmax(280px, 1fr) minmax(340px, 430px);
+  gap:clamp(20px, 3vw, 38px);
+  align-items:center;
+  padding:clamp(28px, 5vh, 62px) clamp(6px, 1vw, 14px) 10px;
+}
+
+.hero-copy{
+  width:min(620px, 100%);
+  margin-left:clamp(10px, 3vw, 34px);
+  padding:clamp(18px, 2.4vw, 28px);
+  border-radius:30px;
+  background:linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.08));
+  border:1px solid rgba(255,255,255,.34);
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(18px);
+}
+
+.hero-kicker{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 13px;
+  border-radius:999px;
+  color:#183358;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(255,255,255,.58);
+  font-size:13px;
+  font-weight:900;
+  box-shadow:0 12px 24px rgba(48,66,216,.10);
+}
+
+.hero-copy h2{
+  margin:18px 0 12px;
+  font-size:clamp(34px, 5vw, 70px);
+  line-height:.98;
+  letter-spacing:-2.2px;
+  font-weight:950;
+  color:#ffffff;
+  text-shadow:0 14px 32px rgba(47,50,131,.24);
+}
+
+.hero-copy h2 span{
+  display:block;
+  background:linear-gradient(135deg, #ffffff 0%, #eaf8ff 36%, #fff1dd 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero-copy p{
+  margin:0;
+  max-width:520px;
+  color:rgba(255,255,255,.88);
+  font-size:clamp(15px, 1.4vw, 18px);
+  line-height:1.65;
+  font-weight:600;
+}
+
+.hero-metrics{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:12px;
+  margin-top:22px;
+}
+
+.metric{
+  padding:14px 12px;
+  border-radius:22px;
+  background:rgba(255,255,255,.64);
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 14px 28px rgba(34,45,98,.12);
+  color:#1f2a44;
+}
+
+.metric strong{
+  display:block;
+  font-size:20px;
+  line-height:1;
+  font-weight:950;
+}
+
+.metric small{
+  display:block;
+  margin-top:6px;
+  color:rgba(31,42,68,.62);
+  font-weight:700;
+  font-size:11px;
+  line-height:1.25;
+}
+
+.glass.entry-card{
+  position:relative;
+  width:min(430px, 100%);
+  justify-self:end;
+  padding:clamp(20px, 2.4vw, 28px);
+  border-radius:32px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,255,255,.54)),
+    radial-gradient(circle at top right, rgba(24,166,196,.20), transparent 34%);
+  border:1px solid rgba(255,255,255,.72);
+  box-shadow:
+    0 28px 80px rgba(24,35,90,.22),
+    inset 0 1px 0 rgba(255,255,255,.8);
+  backdrop-filter:blur(22px);
+  color:#1f2a44;
+  overflow:hidden;
+}
+
+.glass.entry-card::before{
+  content:"";
+  position:absolute;
+  top:-80px;
+  right:-80px;
+  width:180px;
+  height:180px;
+  border-radius:50%;
+  background:linear-gradient(135deg, rgba(48,66,216,.22), rgba(18,163,143,.18));
+}
+
+.glass.entry-card::after{
+  content:"";
+  position:absolute;
+  left:22px;
+  right:22px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg, #3042d8, #18a6c4, #12a38f, #ff9f43);
+}
+
+.panel-title{
+  position:relative;
+  z-index:1;
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:20px;
+}
+
+.panel-title h3{
+  margin:0;
+  color:#14213d;
+  font-size:clamp(23px, 2vw, 30px);
+  line-height:1;
+  letter-spacing:-.8px;
+  font-weight:950;
+}
+
+.panel-title p{
+  margin:8px 0 0;
+  color:rgba(31,42,68,.64);
+  font-size:13px;
+  line-height:1.45;
+  font-weight:700;
+}
+
+.badge{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 11px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:950;
+}
+
+.badge.green{
+  color:#047857;
+  background:rgba(16,185,129,.14);
+  border:1px solid rgba(16,185,129,.26);
+}
+
+.badge.green::before{
+  content:"";
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#10b981;
+  box-shadow:0 0 0 6px rgba(16,185,129,.14);
+}
+
+.input-group{
+  position:relative;
+  z-index:1;
+  margin-bottom:14px;
+}
+
+.input-group label{
+  display:block;
+  margin:0 0 8px 3px;
+  color:#25314f;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:.3px;
+  text-transform:uppercase;
+}
+
+.input-group input{
+  width:100%;
+  min-height:52px;
+  border:1px solid rgba(48,66,216,.14);
+  border-radius:18px;
+  padding:0 16px;
+  color:#1f2a44;
+  background:rgba(255,255,255,.72);
+  outline:0;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9), 0 12px 24px rgba(48,66,216,.06);
+  transition:border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+.input-group input::placeholder{
+  color:rgba(31,42,68,.42);
+  font-weight:600;
+}
+
+.input-group input:focus{
+  border-color:rgba(48,66,216,.48);
+  box-shadow:0 0 0 4px rgba(48,66,216,.11), 0 16px 28px rgba(48,66,216,.09);
+  transform:translateY(-1px);
+}
+
+.entry-card .btn{
+  position:relative;
+  z-index:1;
+  width:100%;
+  min-height:52px;
+  margin-top:10px;
+  border-radius:18px;
+}
+
+.entry-card .btn.green{
+  background:linear-gradient(135deg, #0fb981, #18a6c4 58%, #3042d8);
+  box-shadow:0 18px 34px rgba(24,166,196,.24);
+}
+
+.entry-card .btn.ghost{
+  color:#263455;
+  background:rgba(255,255,255,.66);
+  border:1px solid rgba(48,66,216,.16);
+}
+
+.mini-card{
+  position:relative;
+  z-index:1;
+  margin-top:18px;
+  padding:15px 15px 15px 48px;
+  border-radius:22px;
+  background:linear-gradient(135deg, rgba(255,159,67,.14), rgba(48,66,216,.08));
+  border:1px solid rgba(255,255,255,.68);
+  color:#263455;
+}
+
+.mini-card::before{
+  content:"✓";
+  position:absolute;
+  left:15px;
+  top:17px;
+  width:22px;
+  height:22px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:white;
+  font-size:13px;
+  font-weight:900;
+  background:linear-gradient(135deg, #12a38f, #18a6c4);
+  box-shadow:0 9px 18px rgba(18,163,143,.24);
+}
+
+.mini-card h4{
+  margin:0;
+  font-size:14px;
+  font-weight:950;
+}
+
+.mini-card p{
+  margin:6px 0 0;
+  color:rgba(31,42,68,.66);
+  font-size:12px;
+  line-height:1.45;
+  font-weight:650;
+}
+
+.confetti,
+.toast{
+  pointer-events:none;
+}
+
+@media (max-width:980px){
+  body{
+    overflow-y:auto;
+    overflow-x:hidden;
+  }
+
+  .BackWrapper{
+    width:min(98vw, 760px);
+    height:92dvh;
+    opacity:.95;
+  }
+
+  .nurse_pic{
+    left:-9rem;
+    width:clamp(330px, 76vw, 560px);
+    opacity:.78;
+  }
+
+  .app{
+    width:min(100% - 22px, 760px);
+    padding-top:14px;
+  }
+
+  .topbar{
+    position:relative;
+    top:0;
+    border-radius:22px;
+    align-items:flex-start;
+  }
+
+  .top-actions{
+    display:flex;
+    flex-wrap:wrap;
+    width:100%;
+    justify-content:flex-start;
+    gap:8px;
+    margin-top:4px;
+  }
+
+  .topbar{
+    flex-wrap:wrap;
+  }
+
+  .brand{
+    width:100%;
+    flex:1 1 100%;
+  }
+
+  .brand h1{
+    white-space:normal;
+    font-size:16px;
+  }
+
+  .brand p{
+    font-size:11px;
+    margin-top:3px !important;
+  }
+
+  .pro-stage{
+    min-height:auto;
+    grid-template-columns:1fr;
+    padding:22px 0 28px;
+  }
+
+  .hero-copy{
+    margin:0;
+  }
+
+  .hero-copy h2{
+    font-size:clamp(34px, 12vw, 54px);
+  }
+
+  .hero-metrics{
+    grid-template-columns:1fr;
+  }
+
+  .glass.entry-card{
+    justify-self:center;
+  }
+}
+
+@media (max-width:560px){
+  .BackWrapper{
+    border-radius:24px;
+    height:94dvh;
+  }
+
+  .logo{
+    width:42px;
+    height:42px;
+    border-radius:15px;
+  }
+
+  .hero-copy{
+    padding:16px;
+    border-radius:24px;
+  }
+
+  .hero-copy p{
+    font-size:14px;
+  }
+
+  .glass.entry-card{
+    padding:18px;
+    border-radius:26px;
+  }
+
+  .panel-title{
+    align-items:flex-start;
+  }
+
+  .panel-title h3{
+    font-size:24px;
+  }
+}
+
+
+/* =========================
+   Compact right-side entry card
+   مكان الكارد: تحت الهيدر مباشرة في جهة اليمين وبحجم أصغر
+   ========================= */
+.app > .glass.entry-card{
+  width:min(505px, 100%);
+  margin:16px 0 0 auto;
+  padding:16px;
+  border-radius:24px;
+  z-index:12;
+  transform:translateX(-6px);
+  box-shadow:
+    0 18px 48px rgba(24,35,90,.18),
+    inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.app > .glass.entry-card::before{
+  width:125px;
+  height:125px;
+  top:-56px;
+  right:-52px;
+}
+
+.app > .glass.entry-card::after{
+  left:18px;
+  right:18px;
+  height:3px;
+}
+
+.app > .glass.entry-card .panel-title{
+  margin-bottom:12px;
+  gap:10px;
+}
+
+.app > .glass.entry-card .panel-title h3{
+  font-size:22px;
+  letter-spacing:-.5px;
+}
+
+.app > .glass.entry-card .panel-title p{
+  margin-top:5px;
+  font-size:11.5px;
+  line-height:1.35;
+}
+
+.app > .glass.entry-card .badge{
+  padding:6px 9px;
+  font-size:10.5px;
+}
+
+.app > .glass.entry-card .badge.green::before{
+  width:7px;
+  height:7px;
+  box-shadow:0 0 0 5px rgba(16,185,129,.13);
+}
+
+.app > .glass.entry-card .input-group{
+  margin-bottom:9px;
+}
+
+.app > .glass.entry-card .input-group label{
+  margin-bottom:5px;
+  font-size:10.5px;
+}
+
+.app > .glass.entry-card .input-group input{
+  min-height:42px;
+  border-radius:14px;
+  padding:0 13px;
+  font-size:13px;
+}
+
+.app > .glass.entry-card .btn{
+  min-height:42px;
+  margin-top:7px;
+  border-radius:14px;
+  font-size:13px;
+  padding:10px 12px;
+}
+
+.app > .glass.entry-card .mini-card{
+  margin-top:12px;
+  padding:12px 12px 12px 40px;
+  border-radius:17px;
+}
+
+.app > .glass.entry-card .mini-card::before{
+  left:12px;
+  top:13px;
+  width:19px;
+  height:19px;
+  font-size:11px;
+}
+
+.app > .glass.entry-card .mini-card h4{
+  font-size:12.5px;
+}
+
+.app > .glass.entry-card .mini-card p{
+  margin-top:4px;
+  font-size:10.8px;
+  line-height:1.35;
+}
+
+@media (max-width:980px){
+  .app > .glass.entry-card{
+    width:min(360px, 100%);
+    margin:16px auto 0;
+    transform:none;
+  }
+}
+
+@media (max-width:560px){
+  .app > .glass.entry-card{
+    width:100%;
+    padding:15px;
+    border-radius:22px;
+  }
+}
+
+
+/* =========================
+   Added only: Equal stacked glass cards beside Enter the Arena
+   بدون تغيير الأكواد السابقة
+   ========================= */
+.arena-info-stack{
+  position:absolute;
+  top:126px;
+  right:525px;
+  width:320px;
+  display:grid;
+  gap:24px;
+  z-index:13;
+}
+
+.arena-info-card{
+  height:76px;
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:22px;
+  color:#1f2a44;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.76), rgba(255,255,255,.38)),
+    radial-gradient(circle at 96% 8%, rgba(48,66,216,.16), transparent 40%);
+  border:1px solid rgba(255,255,255,.66);
+  box-shadow:
+    0 16px 34px rgba(31,42,68,.12),
+    inset 0 1px 0 rgba(255,255,255,.82);
+  backdrop-filter:blur(18px);
+  overflow:hidden;
+  position:relative;
+}
+
+.arena-info-card::after{
+  content:"";
+  position:absolute;
+  inset:auto 14px 0 14px;
+  height:3px;
+  border-radius:999px 999px 0 0;
+  background:linear-gradient(90deg, rgba(48,66,216,.85), rgba(24,166,196,.85));
+}
+
+.arena-info-card.orange::after{
+  background:linear-gradient(90deg, rgba(255,159,67,.9), rgba(255,193,7,.8));
+}
+
+.arena-info-card.green::after{
+  background:linear-gradient(90deg, rgba(18,163,143,.9), rgba(16,185,129,.85));
+}
+
+.arena-info-card.red::after{
+  background:linear-gradient(90deg, rgba(239,68,68,.85), rgba(251,113,133,.85));
+}
+
+.arena-info-card.purple::after{
+  background:linear-gradient(90deg, rgba(92,69,223,.9), rgba(182,105,255,.8));
+}
+
+.arena-card-icon{
+  flex:0 0 38px;
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:15px;
+  color:#ffffff;
+  font-size:16px;
+  font-weight:950;
+  background:linear-gradient(135deg, #3042d8, #18a6c4);
+  box-shadow:0 12px 22px rgba(48,66,216,.18);
+}
+
+.arena-info-card.orange .arena-card-icon{
+  background:linear-gradient(135deg, #ff9f43, #ffbf69);
+}
+
+.arena-info-card.green .arena-card-icon{
+  background:linear-gradient(135deg, #12a38f, #10b981);
+}
+
+.arena-info-card.red .arena-card-icon{
+  background:linear-gradient(135deg, #ef4444, #fb7185);
+}
+
+.arena-info-card.purple .arena-card-icon{
+  background:linear-gradient(135deg, #5c45df, #b669ff);
+}
+
+.arena-card-text{
+  min-width:0;
+  flex:1;
+}
+
+.arena-card-text h4{
+  margin:0;
+  font-size:13px;
+  line-height:1.05;
+  font-weight:950;
+  color:#14213d;
+  letter-spacing:-.2px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.arena-card-text p{
+  margin:5px 0 0;
+  color:rgba(31,42,68,.64);
+  font-size:10px;
+  line-height:1.25;
+  font-weight:700;
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+.arena-mini-tag{
+  flex:0 0 auto;
+  align-self:flex-start;
+  padding:5px 7px;
+  border-radius:999px;
+  color:#263455;
+  background:rgba(255,255,255,.62);
+  border:1px solid rgba(48,66,216,.12);
+  font-size:9px;
+  font-weight:950;
+  box-shadow:0 8px 16px rgba(48,66,216,.08);
+}
+
+@media (max-width:1180px){
+  .arena-info-stack{
+    right:575px;
+    width:270px;
+  }
+}
+
+@media (max-width:980px){
+  .arena-info-stack{
+    position:relative;
+    top:auto;
+    right:auto;
+    width:min(360px, 100%);
+    margin:14px auto 0;
+  }
+
+  .arena-info-card{
+    height:72px;
+  }
+}
+
+@media (max-width:560px){
+  .arena-info-stack{
+    width:100%;
+  }
+
+  .arena-info-card{
+    border-radius:19px;
+    padding:11px 12px;
+  }
+
+  .arena-mini-tag{
+    font-size:8px;
+    padding:4px 6px;
+  }
+}
+
+.mobile-only{display:none!important}
+.desktop-only{}
+.btn .mobile-only,
+.entry-head-ico.mobile-only{display:none!important}
+
+/* =========================
+   Mobile — staff UI (reference layout, phones only)
+   ========================= */
+@media (max-width:768px){
+  .mobile-only{display:block!important}
+  .btn .mobile-only,
+  .entry-head-ico.mobile-only,
+  .mobile-view-toggle .view-tab{display:inline-flex!important}
+  .desktop-only{display:none!important}
+
+  body:not(.admin-mode){
+    background:#e9effa url("media/Background.png") center top / cover no-repeat fixed;
+  }
+
+  body:not(.admin-mode) .BackWrapper{
+    display:none;
+  }
+
+  body:not(.admin-mode) .Web-game{
+    display:none;
+  }
+
+  .mobile-view-toggle{
+    display:grid!important;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    width:100%;
+    margin-top:2px;
+  }
+
+  .view-tab{
+    min-height:44px;
+    padding:10px 12px;
+    border-radius:14px;
+    border:1px solid rgba(48,66,216,.16);
+    background:#fff;
+    color:#3042d8;
+    font-size:12px;
+    font-weight:800;
+    font-family:inherit;
+    cursor:pointer;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    box-shadow:0 4px 14px rgba(48,66,216,.08);
+  }
+
+  .view-tab.active{
+    border-color:transparent;
+    color:#fff;
+    background:linear-gradient(135deg,#6a5af9 0%,#3042d8 100%);
+    box-shadow:0 8px 22px rgba(106,90,249,.35);
+  }
+
+  body.admin-mode .mobile-view-toggle{
+    display:grid!important;
+  }
+
+  body.admin-mode .mobile-hero{
+    display:none!important;
+  }
+
+  .mobile-hero{
+    order:1;
+    width:100%;
+    margin:10px 0 0;
+    padding:0 2px;
+  }
+
+  .mobile-hero-inner{
+    display:grid;
+    grid-template-columns:1fr minmax(108px, 34%);
+    gap:8px;
+    align-items:end;
+  }
+
+  .mobile-hero-title{
+    margin:0;
+    font-size:26px;
+    line-height:1.08;
+    font-weight:900;
+    letter-spacing:-.6px;
+    color:#1a2d5a;
+  }
+
+  .mobile-hero-title span{
+    display:block;
+    color:#3042d8;
+  }
+
+  .mobile-hero-sub{
+    margin:8px 0 14px;
+    font-size:13px;
+    line-height:1.5;
+    font-weight:600;
+    color:rgba(31,42,68,.62);
+  }
+
+  .mobile-join-btn,
+  .mobile-start-btn{
+    width:100%;
+    min-height:48px;
+    border-radius:14px;
+    border:none;
+    font-size:14px;
+    font-weight:900;
+    background:linear-gradient(135deg,#6a5af9 0%,#3042d8 100%)!important;
+    box-shadow:0 10px 24px rgba(106,90,249,.32)!important;
+    color:#fff!important;
+  }
+
+  .mobile-join-arrow{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    margin-left:6px;
+    border-radius:50%;
+    background:rgba(255,255,255,.22);
+    font-size:14px;
+  }
+
+  .mobile-hero-visual img{
+    width:100%;
+    max-height:150px;
+    object-fit:contain;
+    object-position:bottom right;
+    filter:drop-shadow(0 8px 18px rgba(48,66,216,.18));
+  }
+
+  .topbar{
+    order:0;
+    background:rgba(255,255,255,.92);
+    border:1px solid rgba(48,66,216,.1);
+    box-shadow:0 8px 24px rgba(48,66,216,.1);
+  }
+
+  .top-actions{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .top-actions .pill{
+    align-self:flex-end;
+    width:auto;
+    max-width:100%;
+    background:#ecfdf5;
+    color:#047857;
+    border-color:rgba(16,185,129,.25);
+    font-size:11px;
+    padding:7px 11px;
+  }
+
+  .arena-info-stack{
+    order:2;
+  }
+
+  .arena-info-card:nth-child(n+4){
+    display:none;
+  }
+
+  .arena-info-card{
+    background:rgba(255,255,255,.88);
+    border:1px solid rgba(48,66,216,.1);
+    box-shadow:0 6px 20px rgba(48,66,216,.08);
+    min-height:72px;
+  }
+
+  .glass.entry-card{
+    order:3;
+    background:#fff;
+    border:1px solid rgba(48,66,216,.1);
+    box-shadow:0 10px 28px rgba(48,66,216,.1);
+    border-radius:20px;
+    padding:16px 14px 18px;
+  }
+
+  .entry-panel-head h3{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:20px;
+    color:#1a2d5a;
+  }
+
+  .entry-head-ico{
+    width:32px;
+    height:32px;
+    border-radius:10px;
+    background:linear-gradient(135deg,rgba(106,90,249,.15),rgba(48,66,216,.12));
+    place-items:center;
+    font-size:16px;
+  }
+
+  .input-icon-group label{
+    position:absolute;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+  }
+
+  .input-icon-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+  }
+
+  .field-ico{
+    position:absolute;
+    left:12px;
+    font-size:16px;
+    opacity:.55;
+    pointer-events:none;
+    z-index:1;
+  }
+
+  .input-icon-wrap input{
+    width:100%;
+    padding:13px 14px 13px 40px!important;
+    border-radius:12px!important;
+    border:1px solid rgba(48,66,216,.16)!important;
+    background:#fff!important;
+    font-size:16px!important;
+  }
+
+  .field-chevron{
+    position:absolute;
+    right:12px;
+    color:rgba(48,66,216,.45);
+    font-size:14px;
+    pointer-events:none;
+  }
+
+  .input-icon-select input{
+    padding-right:32px!important;
+  }
+
+  .mobile-lb-btn{
+    width:100%;
+    margin-top:8px;
+    min-height:44px;
+    border-radius:12px;
+    background:#f5f7ff!important;
+    color:#3042d8!important;
+    border:1px solid rgba(48,66,216,.16)!important;
+    box-shadow:none!important;
+  }
+
+  .app{
+    display:flex;
+    flex-direction:column;
+    width:calc(100% - 16px);
+    max-width:100%;
+    padding:12px 0 max(28px, env(safe-area-inset-bottom, 0px));
+    box-sizing:border-box;
+  }
+
+  .topbar{
+    position:sticky;
+    top:max(8px, env(safe-area-inset-top, 0px));
+    z-index:30;
+    padding:10px 12px;
+    gap:10px;
+  }
+
+  .top-actions{
+    display:flex !important;
+    flex:1 1 100%;
+    width:100%;
+  }
+
+  .brand h1{
+    font-size:15px !important;
+    line-height:1.15 !important;
+    white-space:normal !important;
+  }
+
+  .brand p{
+    display:none;
+  }
+
+  .logo{
+    width:40px;
+    height:40px;
+    font-size:20px;
+  }
+
+  .glass.entry-card{
+    width:100% !important;
+    margin:12px 0 0 !important;
+    transform:none !important;
+  }
+
+  .arena-info-stack{
+    width:100% !important;
+    margin:12px 0 0 !important;
+    gap:10px;
+  }
+
+  .arena-info-card{
+    height:auto;
+    min-height:68px;
+    flex-wrap:wrap;
+  }
+
+  .arena-card-text h4{
+    white-space:normal;
+  }
+
+  .arena-card-text p{
+    -webkit-line-clamp:3;
+  }
+
+  .BackWrapper{
+    width:100vw;
+    max-width:100vw;
+    height:100dvh;
+    max-height:100dvh;
+    border-radius:0;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+  }
+
+  .nurse_pic{
+    left:50%;
+    transform:translateX(-58%);
+    width:min(72vw, 320px);
+    opacity:.55;
+    pointer-events:none;
+  }
+
+  .challenge-overlay{
+    padding:max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom));
+    align-items:flex-end;
+  }
+
+  .challenge-modal,
+  #quizOverlay .quiz-modal,
+  #quizResultOverlay .quiz-result-modal,
+  #leaderboardOverlay .leaderboard-modal{
+    width:100% !important;
+    max-height:min(92dvh, calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 20px));
+    border-radius:20px 20px 16px 16px;
+  }
+
+  #quizOverlay.challenge-overlay.show{
+    align-items:center;
+  }
+
+  .admin-confirm-card{
+    width:100%;
+    max-width:100%;
+  }
+}
+
+@media (max-width:400px){
+  .entry-card .btn,
+  .app > .glass.entry-card .btn{
+    font-size:13px;
+  }
+
+  .lb-w-row{
+    grid-template-columns:40px 48px 1fr auto;
+    gap:6px;
+    padding:8px;
+  }
+
+  .lb-w-info strong{font-size:14px}
+}
+
+/* =========================
+   Admin panel (same as try.html)
+   ========================= */
+.glass{
+  border:1px solid var(--stroke);
+  background:linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.065));
+  border-radius:28px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(24px);
+  position:relative;
+  overflow:hidden;
+}
+
+.stat{
+  padding:16px;
+  border-radius:20px;
+  border:1px solid var(--stroke);
+  background:rgba(255,255,255,.07);
+}
+.stat b{font-size:24px;display:block;letter-spacing:-1px}
+.stat span{font-size:12px;font-weight:800}
+
+#adminScreen{
+  display:none;width:100%;margin-top:24px;position:relative;isolation:isolate;
+  border-radius:28px;overflow:visible;min-height:calc(100dvh - 140px);padding:clamp(16px,2vw,24px);
+  background-image:url("media/شيةهى-لاشؤنلقخعىي.png");background-size:cover;background-position:center;
+}
+#adminScreen .admin-layout{position:relative;z-index:1;align-items:start}
+body.admin-mode #adminScreen{display:block}
+body.admin-mode .arena-info-stack,
+body.admin-mode .glass.entry-card{display:none !important}
+body.admin-mode{overflow:auto !important}
+/* ضبابية بيضاء للخلفية الخارجية فقط — خلف لوحة الأدمن */
+body.admin-mode::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:4;
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(20px) saturate(1.1);
+  -webkit-backdrop-filter:blur(20px) saturate(1.1);
+  pointer-events:none;
+}
+body.admin-mode .BackWrapper{pointer-events:none}
+body.admin-mode .app{position:relative;z-index:5}
+
+/* =========================
+   Admin modal update only
+   صورة واضحة + المودال أصغر وفي المنتصف
+   ========================= */
+
+.admin-modal-brand{
+  display:flex;
+  align-items:center;
+}
+
+.admin-modal-shield{
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(135deg, #7d5cf6, #18a6c4);
+}
+
+.admin-modal-input-wrap{
+  position:relative;
+}
+
+.admin-modal-input-wrap .admin-input-icon{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  pointer-events:none;
+}
+
+.admin-password-toggle{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  border:0;
+  background:transparent;
+  cursor:pointer;
+}
+
+.admin-modal-submit{
+  width:100%;
+  border:0;
+  cursor:pointer;
+  color:#fff;
+  font-weight:900;
+  background:linear-gradient(135deg, #7d5cf6, #18a6c4);
+  box-shadow:0 12px 26px rgba(125,92,246,.18);
+}
+
+.admin-modal-close{
+  position:absolute;
+  border:0;
+  background:rgba(125,92,246,.10);
+  color:#7a5cff;
+  cursor:pointer;
+  line-height:1;
+}
+
+.admin-modal-backdrop{
+  display:none !important;
+  position:fixed !important;
+  inset:0 !important;
+  z-index:9999 !important;
+  align-items:center !important;
+  justify-content:center !important;
+  padding:20px !important;
+
+  /* بدون blur على الصورة */
+  background:rgba(59, 38, 103, .08) !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+
+  overflow:hidden !important;
+}
+
+.admin-modal-backdrop.show{
+  display:flex !important;
+  opacity:1 !important;
+  visibility:visible !important;
+  pointer-events:auto !important;
+}
+
+/* لا تضيف طبقة blur فوق الصورة */
+.admin-modal-backdrop::before,
+.admin-modal-backdrop::after{
+  display:none !important;
+}
+/* الصورة في المنتصف وواضحة مع حواف دائرية */
+.Admin-nurse{
+  position:absolute !important;
+  top:50% !important;
+  left:50% !important;
+  transform:translate(-50%, -50%) !important;
+
+  width:80% !important;
+  height:85% !important;
+
+ 
+  object-position:center center !important;
+
+  z-index:0 !important;
+  opacity:1 !important;
+  filter:none !important;
+
+  pointer-events:none !important;
+  user-select:none !important;
+
+  /* الحواف الفعلية */
+  border-radius:10px !important;
+  clip-path:inset(0 round 20px) !important;
+  overflow:hidden !important;
+
+}
+/* المودال أصغر وفي المنتصف */
+.admin-login-modal-card{
+  position:relative !important;
+  z-index:3 !important;
+
+  width:min(400px, calc(100vw - 34px)) !important;
+  margin:0 !important;
+  padding:18px 20px !important;
+  border-radius:20px !important;
+  left: -20rem;
+  color:#2b3140 !important;
+  background:rgba(255,255,255,.90) !important;
+  border:1px solid rgba(255,255,255,.82) !important;
+
+  box-shadow:
+    0 22px 55px rgba(89,70,160,.22),
+    0 8px 22px rgba(89,70,160,.12),
+    inset 0 1px 0 rgba(255,255,255,.96) !important;
+
+  backdrop-filter:blur(10px) !important;
+  -webkit-backdrop-filter:blur(10px) !important;
+
+  transform:scale(.96) !important;
+}
+
+.admin-modal-backdrop.show .admin-login-modal-card{
+  transform:scale(1) !important;
+}
+
+/* تصغير العناصر الداخلية */
+.admin-modal-brand{
+  gap:10px !important;
+  margin-bottom:16px !important;
+}
+
+.admin-modal-shield{
+  width:38px !important;
+  height:44px !important;
+  flex:0 0 38px !important;
+}
+
+.admin-modal-shield::before{
+  font-size:23px !important;
+}
+
+.admin-modal-brand h3{
+  font-size:12.5px !important;
+}
+
+.admin-modal-brand p{
+  font-size:11px !important;
+  margin-top:3px !important;
+}
+
+.admin-modal-title{
+  font-size:27px !important;
+  line-height:1.02 !important;
+  letter-spacing:-1px !important;
+}
+
+.admin-modal-subtitle{
+  margin:7px 0 16px !important;
+  font-size:11px !important;
+}
+
+.admin-modal-form-group{
+  margin-bottom:11px !important;
+}
+
+.admin-modal-label-row{
+  margin-bottom:5px !important;
+}
+
+.admin-modal-form-group label,
+.admin-modal-forgot{
+  font-size:10px !important;
+}
+
+.admin-modal-input-wrap input{
+  width:100% !important;
+  min-height:38px !important;
+  border-radius:11px !important;
+  padding:0 38px 0 38px !important;
+  font-size:11px !important;
+  border:1px solid rgba(125,92,246,.18) !important;
+  background:rgba(255,255,255,.86) !important;
+  color:#2b3140 !important;
+  outline:0 !important;
+}
+
+.admin-modal-input-wrap input:focus{
+  border-color:rgba(125,92,246,.55) !important;
+  box-shadow:0 0 0 3px rgba(125,92,246,.12) !important;
+}
+
+.admin-modal-input-wrap .admin-input-icon{
+  left:13px !important;
+  font-size:14px !important;
+}
+
+.admin-password-toggle{
+  right:8px !important;
+  width:28px !important;
+  height:28px !important;
+  font-size:13px !important;
+}
+
+.admin-modal-submit{
+  min-height:38px !important;
+  border-radius:11px !important;
+  font-size:12px !important;
+  margin-top:2px !important;
+}
+
+.admin-modal-divider{
+  margin:12px 0 !important;
+  font-size:10px !important;
+}
+
+.admin-modal-sso{
+  min-height:38px !important;
+  border-radius:11px !important;
+  font-size:11px !important;
+}
+
+.admin-modal-secure{
+  margin:13px 0 0 !important;
+  font-size:9.8px !important;
+}
+
+.admin-modal-close{
+  top:11px !important;
+  right:11px !important;
+  width:27px !important;
+  height:27px !important;
+  border-radius:10px !important;
+  font-size:16px !important;
+}
+
+/* =========================
+   Added only: Exit button + blur outside modal
+   لا يغير تنسيق المودال الحالي
+   ========================= */
+.admin-modal-backdrop.show{
+  backdrop-filter:blur(7px) !important;
+  -webkit-backdrop-filter:blur(7px) !important;
+  background:rgba(59,38,103,.13) !important;
+}
+
+.admin-modal-backdrop.show .admin-login-modal-card,
+.admin-modal-backdrop.show .Admin-nurse{
+  filter:none !important;
+}
+
+.admin-modal-exit{
+  width:100% !important;
+  min-height:38px !important;
+  margin-top:10px !important;
+  border:1px solid rgba(142,112,245,.26) !important;
+  border-radius:11px !important;
+  background:rgba(255,255,255,.72) !important;
+  color:#7a5cff !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  box-shadow:0 10px 22px rgba(125,92,246,.10) !important;
+  cursor:pointer !important;
+}
+
+.admin-modal-exit:hover{
+  background:rgba(246,242,255,.95) !important;
+}
+
+
+/* =========================
+   Added only: Add Admin account inside Admin modal
+   رمز ثابت ثم إضافة username/password محفوظين محلياً
+   ========================= */
+.admin-add-admin-btn{
+  width:100% !important;
+  min-height:38px !important;
+  margin-top:10px !important;
+  border:0 !important;
+  border-radius:11px !important;
+  background:linear-gradient(135deg, #f65c5c, #c41818) !important;
+  color:#ffffff !important;
+  font-size:12px !important;
+  font-weight:900 !important;
+  box-shadow:0 12px 26px rgba(125,92,246,.18) !important;
+  cursor:pointer !important;
+}
+
+.admin-add-admin-panel{
+  margin-top:12px !important;
+  padding:12px !important;
+  border-radius:14px !important;
+  background:rgba(246,242,255,.74) !important;
+  border:1px solid rgba(125,92,246,.18) !important;
+  color:#2b3140 !important;
+}
+
+.admin-add-admin-panel[hidden],
+.admin-add-step[hidden]{
+  display:none !important;
+}
+
+.admin-add-title{
+  margin:0 0 9px !important;
+  font-size:11.5px !important;
+  font-weight:950 !important;
+  color:#4b3aa8 !important;
+}
+
+.admin-add-row{
+  margin-bottom:9px !important;
+}
+
+.admin-add-row label{
+  display:block !important;
+  margin:0 0 5px !important;
+  font-size:10px !important;
+  font-weight:900 !important;
+  color:#4a5267 !important;
+}
+
+.admin-add-row input{
+  width:100% !important;
+  min-height:36px !important;
+  border-radius:10px !important;
+  border:1px solid rgba(125,92,246,.18) !important;
+  background:rgba(255,255,255,.86) !important;
+  padding:0 11px !important;
+  color:#2b3140 !important;
+  font-size:11px !important;
+  outline:0 !important;
+}
+
+.admin-add-row input:focus{
+  border-color:rgba(125,92,246,.55) !important;
+  box-shadow:0 0 0 3px rgba(125,92,246,.12) !important;
+}
+
+.admin-add-action-row{
+  display:grid !important;
+  grid-template-columns:1fr 1fr !important;
+  gap:8px !important;
+  margin-top:8px !important;
+}
+
+.admin-add-action-row button{
+  min-height:34px !important;
+  border-radius:10px !important;
+  border:0 !important;
+  font-size:10.5px !important;
+  font-weight:900 !important;
+  cursor:pointer !important;
+}
+
+.admin-add-confirm,
+.admin-add-save{
+  background:linear-gradient(135deg, #7d5cf6, #18a6c4) !important;
+  color:#fff !important;
+}
+
+.admin-add-cancel{
+  background:rgba(255,255,255,.82) !important;
+  color:#7a5cff !important;
+  border:1px solid rgba(125,92,246,.18) !important;
+}
+
+.admin-modal-note{
+  min-height:15px !important;
+  margin:9px 0 0 !important;
+  font-size:10.5px !important;
+  font-weight:800 !important;
+  line-height:1.35 !important;
+  color:#4b3aa8 !important;
+  text-align:center !important;
+}
+
+.admin-modal-note.is-error{
+  color:#d23b5d !important;
+}
+
+.admin-modal-note.is-success{
+  color:#0f9f72 !important;
+}
+
+.admin-layout{
+  display:grid;
+  grid-template-columns:310px 1fr;
+  gap:22px;
+  align-items:start;
+}
+#adminScreen .admin-nav{
+  padding:18px;
+  display:grid;
+  gap:10px;
+  position:sticky;
+  top:96px;
+  align-self:start;
+  width:100%;
+  max-height:calc(100dvh - 110px);
+  overflow-y:auto;
+  z-index:20;
+}
+#adminScreen .admin-content{
+  grid-column:2;
+  min-width:0;
+  align-self:start;
+}
+#adminScreen .admin-nav button{
+  width:100%;
+  border:1px solid transparent;
+  background:transparent;
+  color:#14213d;
+  padding:13px 14px;
+  border-radius:17px;
+  text-align:left;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  transition:.18s ease;
+  cursor:pointer;
+}
+#adminScreen .admin-nav button:hover,
+#adminScreen .admin-nav button.active{
+  background:rgba(124,92,255,.18);
+  border-color:rgba(92,69,223,.35);
+  color:#0f1f3d;
+}
+.admin-page{display:none}
+.admin-page.active{display:block;animation:adminTabFade .28s ease both}
+@keyframes adminTabFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#adminScreen .admin-content{padding:24px;color:#14213d}
+#adminScreen .admin-content .panel-title h3{color:#0f1f3d}
+#adminScreen .admin-content .panel-title p{color:rgba(20,33,61,.78)}
+#adminScreen .admin-content h3{color:#0f1f3d}
+#adminScreen .stat b{color:#0f1f3d}
+#adminScreen .stat span{color:#3042d8}
+#adminScreen .admin-content .mini-card{color:#1f2a44}
+#adminScreen .admin-content .mini-card h4{color:#0f1f3d}
+#adminScreen .admin-content .mini-card p{color:rgba(31,42,68,.78)}
+
+#adminScreen .admin-content .input-group{display:grid;gap:8px;margin-top:8px}
+#adminScreen .admin-content label{font-size:12px;color:#1e3a5f;font-weight:900;letter-spacing:.2px;text-transform:uppercase}
+#adminScreen .admin-content input,
+#adminScreen .admin-content select,
+#adminScreen .admin-content textarea{
+  width:100%;
+  border:1px solid rgba(48,66,216,.22);
+  background:rgba(255,255,255,.92);
+  color:#14213d;
+  border-radius:17px;
+  padding:14px;
+  outline:0;
+  font-weight:600;
+}
+#adminScreen .admin-content textarea{min-height:112px;resize:vertical;line-height:1.5}
+
+#adminScreen .q-image-preview-wrap{
+  margin-top:10px;padding:10px;
+  border-radius:14px;
+  border:1px solid rgba(48,66,216,.16);
+  background:rgba(255,255,255,.85);
+  text-align:center;
+}
+#adminScreen .q-image-preview-wrap img{
+  display:block;max-width:100%;max-height:200px;width:auto;height:auto;
+  margin:0 auto 10px;border-radius:10px;
+  object-fit:contain;
+  box-shadow:0 8px 20px rgba(48,66,216,.1);
+}
+#adminScreen .q-item-thumb{
+  margin-top:8px;border-radius:12px;overflow:hidden;
+  border:1px solid rgba(48,66,216,.12);
+  max-height:120px;
+}
+#adminScreen .q-item-thumb img{
+  display:block;width:100%;max-height:120px;object-fit:cover;
+}
+#quizOverlay .quiz-question-image{
+  display:block;width:100%;max-height:160px;
+  margin:0 0 10px;border-radius:10px;
+  object-fit:contain;
+  background:rgba(48,66,216,.04);
+  border:1px solid rgba(48,66,216,.1);
+}
+#quizOverlay .quiz-question-image[hidden]{display:none!important}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+#adminScreen .table-wrap{overflow:auto;border-radius:22px;border:1px solid rgba(48,66,216,.2);margin-top:15px}
+#adminScreen .admin-content table{width:100%;border-collapse:collapse;min-width:760px;background:rgba(255,255,255,.78)}
+#adminScreen .admin-content th,
+#adminScreen .admin-content td{
+  padding:13px 14px;text-align:left;border-bottom:1px solid rgba(48,66,216,.14);
+  font-size:13px;vertical-align:top;
+}
+#adminScreen .admin-content th{
+  color:#0f1f3d;background:rgba(48,66,216,.1);font-size:12px;
+  text-transform:uppercase;letter-spacing:.35px;font-weight:950;
+}
+#adminScreen .admin-content td{color:#1f2a44;font-weight:600}
+#adminScreen .admin-content tr:hover td{background:rgba(48,66,216,.06)}
+#adminScreen .admin-content .muted{color:rgba(31,42,68,.72)!important}
+
+#adminScreen .admin-content .badge{
+  display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:999px;
+  border:1px solid rgba(48,66,216,.2);background:rgba(255,255,255,.85);
+  color:#1f2a44;font-size:12px;font-weight:900;white-space:nowrap;
+}
+#adminScreen .admin-content .badge.green{color:#047857;border-color:rgba(16,185,129,.35);background:rgba(16,185,129,.14)}
+#adminScreen .admin-content .badge.red{color:#b4234a;border-color:rgba(251,113,133,.35);background:rgba(251,113,133,.12)}
+#adminScreen .admin-content .badge.yellow{color:#9a6700;border-color:rgba(250,204,21,.35);background:rgba(250,204,21,.16)}
+
+.question-list{display:grid;gap:12px;margin-top:16px}
+#adminScreen .q-item{
+  border:1px solid rgba(48,66,216,.16);
+  background:rgba(255,255,255,.82);
+  border-radius:22px;
+  padding:16px;
+  display:grid;
+  gap:11px;
+  color:#1f2a44;
+}
+.q-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+#adminScreen .q-title{font-weight:1000;line-height:1.35;color:#0f1f3d}
+#adminScreen .empty{color:rgba(31,42,68,.72)}
+.q-meta{display:flex;gap:8px;flex-wrap:wrap}
+.q-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+.empty{
+  text-align:center;
+  padding:34px;
+  color:var(--muted);
+  border:1px dashed rgba(255,255,255,.18);
+  border-radius:24px;
+  background:rgba(255,255,255,.035);
+}
+
+/* Admin panel — responsive (all screen sizes) */
+body.admin-mode .app{
+  width:calc(100% - 16px);
+  max-width:100%;
+  padding-left:8px;
+  padding-right:8px;
+}
+
+body.admin-mode .topbar{
+  position:sticky;
+  top:max(6px, env(safe-area-inset-top, 0px));
+  z-index:40;
+}
+
+#adminScreen{
+  box-sizing:border-box;
+  overflow-x:hidden;
+}
+
+#adminScreen .admin-layout{
+  display:grid;
+  gap:14px;
+  min-width:0;
+}
+
+#adminScreen .admin-content{
+  min-width:0;
+  overflow-x:hidden;
+}
+
+#adminScreen .admin-content .panel-title{
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+#adminScreen .admin-form-actions,
+#adminScreen .admin-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:16px;
+}
+
+#adminScreen .admin-toolbar{
+  margin-top:0;
+  width:100%;
+  justify-content:flex-start;
+}
+
+#adminScreen .table-wrap{
+  position:relative;
+  -webkit-overflow-scrolling:touch;
+  max-width:100%;
+}
+
+#adminScreen .table-scroll-hint{
+  display:none;
+  margin:0 0 8px;
+  font-size:11px;
+  font-weight:700;
+  color:rgba(31,42,68,.55);
+}
+
+.admin-m-only{display:none!important}
+.admin-m-label-d{display:block}
+.admin-m-label{display:none!important}
+
+.admin-options-block{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin:12px 0;
+}
+.admin-opt-row{
+  display:flex;
+  align-items:flex-start;
+  gap:8px;
+}
+.admin-opt-badge{display:none}
+.admin-opt-row .admin-opt-input{
+  flex:1;
+  min-width:0;
+  margin:0;
+}
+.admin-timer-wrap{display:block}
+.admin-timer-suffix{display:none}
+.admin-form-card{margin-top:0}
+
+@media (max-width:768px){
+  body.admin-mode,
+  body.admin-mobile-bg-off,
+  body:has(#adminLoginModal.show){
+    background:#eef1f6!important;
+    background-image:none!important;
+  }
+
+  body.admin-mode::before,
+  body.admin-mobile-bg-off::before,
+  body:has(#adminLoginModal.show)::before{
+    background:#eef1f6;
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+  }
+
+  body.admin-mode .BackWrapper,
+  body.admin-mode .Web-game,
+  body.admin-mode .nurse_pic,
+  body.admin-mobile-bg-off .BackWrapper,
+  body.admin-mobile-bg-off .Web-game,
+  body.admin-mobile-bg-off .nurse_pic,
+  body:has(#adminLoginModal.show) .BackWrapper,
+  body:has(#adminLoginModal.show) .Web-game,
+  body:has(#adminLoginModal.show) .nurse_pic{
+    display:none!important;
+    visibility:hidden!important;
+    opacity:0!important;
+    pointer-events:none!important;
+  }
+
+  body.admin-mode #adminScreen{
+    background:transparent!important;
+    background-image:none!important;
+  }
+
+  #adminLoginModal.admin-modal-backdrop,
+  #adminLoginModal.admin-modal-backdrop.show{
+    background:#eef1f6!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  #adminLoginModal .Admin-nurse,
+  #adminLoginModal.show .Admin-nurse{
+    display:none!important;
+    width:0!important;
+    height:0!important;
+    opacity:0!important;
+    visibility:hidden!important;
+  }
+
+  #adminLoginModal.show .admin-login-modal-card{
+    left:0!important;
+    right:0!important;
+    margin:0 auto!important;
+    transform:none!important;
+  }
+
+  body.admin-mode .topbar{
+    padding:10px 12px;
+    gap:8px;
+    align-items:flex-start;
+  }
+
+  body.admin-mode .topbar .brand h1{
+    font-size:15px!important;
+    line-height:1.15;
+  }
+
+  body.admin-mode .topbar .brand p{
+    display:none;
+  }
+
+  body.admin-mode .top-actions .pill{
+    display:inline-flex!important;
+  }
+
+  #adminScreen{
+    margin-top:6px;
+    padding:0 10px 24px;
+    border-radius:0;
+    min-height:auto;
+    background:transparent;
+    background-image:none;
+  }
+
+  #adminScreen .admin-layout{
+    display:block;
+  }
+
+  #adminScreen .admin-content{
+    background:#fff;
+    border-radius:20px;
+    padding:16px 14px 22px;
+    box-shadow:0 8px 32px rgba(15,31,61,.08);
+    border:1px solid rgba(48,66,216,.08);
+  }
+
+  #adminScreen .admin-page:not(.active){
+    display:none!important;
+  }
+
+  .admin-m-only{display:block!important}
+  .admin-d-only{display:none!important}
+  .admin-m-label-d{display:none!important}
+  .admin-m-label{display:block!important}
+
+  .admin-dash-title{
+    margin:0;
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:-.4px;
+    color:#0f1f3d;
+  }
+
+  .admin-dash-sub{
+    margin:6px 0 16px;
+    font-size:13px;
+    line-height:1.45;
+    color:rgba(31,42,68,.65);
+    font-weight:600;
+  }
+
+  .admin-stats-m{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:18px;
+  }
+
+  .admin-stat-card{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 10px;
+    border-radius:16px;
+    background:#fff;
+    border:1px solid rgba(48,66,216,.1);
+    box-shadow:0 4px 16px rgba(15,31,61,.06);
+    min-width:0;
+  }
+
+  .admin-stat-ico{
+    flex:0 0 40px;
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+    font-weight:900;
+  }
+
+  .stat-blue .admin-stat-ico{background:rgba(74,144,226,.15);color:#4a90e2}
+  .stat-purple .admin-stat-ico{background:rgba(123,97,255,.14);color:#7b61ff}
+  .stat-green .admin-stat-ico{background:rgba(71,194,141,.16);color:#47c28d}
+  .stat-orange .admin-stat-ico{background:rgba(245,166,35,.16);color:#f5a623}
+
+  .admin-stat-body b{
+    display:block;
+    font-size:20px;
+    font-weight:900;
+    color:#0f1f3d;
+    line-height:1.1;
+  }
+
+  .admin-stat-body span{
+    display:block;
+    margin-top:2px;
+    font-size:10px;
+    font-weight:800;
+    color:#3042d8;
+    line-height:1.25;
+  }
+
+  .admin-stat-body span small{
+    display:block;
+    font-size:9px;
+    font-weight:700;
+    color:rgba(31,42,68,.5);
+    margin-top:1px;
+  }
+
+  .admin-m-menu-heading{
+    margin:4px 0 10px;
+    font-size:13px;
+    font-weight:900;
+    color:#0f1f3d;
+    letter-spacing:.02em;
+  }
+
+  .admin-m-menu-item{
+    width:100%;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 12px;
+    margin-bottom:8px;
+    border:1px solid rgba(48,66,216,.1);
+    border-radius:16px;
+    background:#fff;
+    box-shadow:0 4px 14px rgba(15,31,61,.05);
+    cursor:pointer;
+    text-align:left;
+    font:inherit;
+    color:inherit;
+  }
+
+  .admin-m-menu-item:active{transform:scale(.99)}
+
+  .admin-m-menu-icon{
+    flex:0 0 42px;
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:grid;
+    place-items:center;
+    font-size:18px;
+  }
+
+  .admin-m-menu-icon.blue{background:rgba(74,144,226,.14)}
+  .admin-m-menu-icon.purple{background:rgba(123,97,255,.14)}
+  .admin-m-menu-icon.green{background:rgba(71,194,141,.14)}
+  .admin-m-menu-icon.teal{background:rgba(24,166,196,.14)}
+  .admin-m-menu-icon.orange{background:rgba(245,166,35,.14)}
+  .admin-m-menu-icon.red{background:rgba(231,76,60,.12)}
+
+  .admin-m-menu-text{
+    flex:1;
+    min-width:0;
+  }
+
+  .admin-m-menu-text strong{
+    display:block;
+    font-size:14px;
+    font-weight:900;
+    color:#0f1f3d;
+  }
+
+  .admin-m-menu-text small{
+    display:block;
+    margin-top:3px;
+    font-size:11px;
+    font-weight:600;
+    color:rgba(31,42,68,.55);
+    line-height:1.35;
+  }
+
+  .admin-m-menu-chevron{
+    flex:0 0 auto;
+    font-size:22px;
+    font-weight:300;
+    color:rgba(48,66,216,.45);
+    line-height:1;
+  }
+
+  .admin-m-menu-danger .admin-m-menu-text strong{color:#b4234a}
+
+  .admin-m-toolbar{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin:-4px 0 14px;
+    padding-bottom:12px;
+    border-bottom:1px solid rgba(48,66,216,.1);
+  }
+
+  .admin-m-toolbar[hidden]{display:none!important}
+
+  .admin-m-back{
+    flex:0 0 40px;
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    border:1px solid rgba(48,66,216,.15);
+    background:#f5f7ff;
+    color:#3042d8;
+    font-size:20px;
+    font-weight:700;
+    cursor:pointer;
+    line-height:1;
+  }
+
+  .admin-m-toolbar-title{
+    font-size:17px;
+    font-weight:900;
+    color:#0f1f3d;
+    letter-spacing:-.3px;
+  }
+
+  .admin-m-toolbar-sub{
+    margin-top:2px;
+    font-size:12px;
+    font-weight:600;
+    color:rgba(31,42,68,.55);
+  }
+
+  #adminQuestions .panel-title,
+  #adminResults .panel-title,
+  #adminSettings .panel-title{display:none}
+
+  .admin-form-card{
+    padding:14px 12px 16px;
+    border-radius:18px;
+    background:#fafbfd;
+    border:1px solid rgba(48,66,216,.1);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.8);
+  }
+
+  #adminScreen .admin-content label.admin-m-label{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:.04em;
+    color:#1e3a5f;
+    font-weight:900;
+  }
+
+  #adminScreen .admin-content input,
+  #adminScreen .admin-content select,
+  #adminScreen .admin-content textarea{
+    border-radius:12px;
+    border:1px solid rgba(48,66,216,.18);
+    background:#fff;
+    padding:12px 14px;
+    font-size:16px;
+  }
+
+  .admin-q-meta-grid,
+  .admin-q-bottom-grid{
+    grid-template-columns:1fr!important;
+    gap:12px;
+  }
+
+  .admin-options-block{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:8px;
+    margin:12px 0;
+  }
+
+  .admin-opt-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .admin-opt-badge{
+    display:grid;
+    flex:0 0 32px;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    font-size:13px;
+    font-weight:900;
+    color:#fff;
+    background:linear-gradient(135deg,#4a90e2,#7b61ff);
+    box-shadow:0 4px 10px rgba(74,144,226,.35);
+  }
+
+  .admin-opt-row .admin-opt-input{
+    flex:1;
+    min-width:0;
+    margin:0;
+  }
+
+  .admin-opt-row .admin-opt-input label{display:none}
+
+  .admin-timer-wrap{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .admin-timer-wrap select{flex:1}
+
+  .admin-timer-suffix{
+    display:block;
+    font-size:13px;
+    font-weight:800;
+    color:rgba(31,42,68,.5);
+    flex:0 0 auto;
+  }
+
+  #adminScreen .admin-form-actions{
+    flex-direction:column;
+    gap:10px;
+    margin-top:14px;
+  }
+
+  #adminScreen .admin-m-save-primary{
+    width:100%;
+    min-height:48px;
+    border-radius:14px;
+    border:none;
+    font-size:15px;
+    font-weight:900;
+    background:linear-gradient(135deg,#4a90e2,#7b61ff)!important;
+    color:#fff!important;
+    box-shadow:0 8px 22px rgba(74,144,226,.35);
+  }
+
+  #adminScreen .admin-m-save-secondary{
+    width:100%;
+    min-height:44px;
+    border-radius:14px;
+    background:#fff!important;
+    color:#3042d8!important;
+    border:1px solid rgba(48,66,216,.22)!important;
+    font-weight:800;
+  }
+
+  #adminScreen .admin-m-clear{
+    width:100%;
+    min-height:42px;
+    border-radius:12px;
+    background:#fff7ed!important;
+    color:#c2410c!important;
+    border:1px solid rgba(249,115,22,.35)!important;
+  }
+
+  .admin-m-active-wrap{
+    margin-top:16px;
+    display:grid;
+    gap:8px;
+  }
+
+  .admin-m-active-wrap label{
+    font-size:11px;
+    font-weight:900;
+    text-transform:uppercase;
+    color:#1e3a5f;
+  }
+
+  .admin-qbank-heading{
+    margin:18px 0 10px;
+    font-size:15px;
+    font-weight:900;
+    color:#0f1f3d;
+  }
+
+  #adminScreen .q-item{
+    border-radius:14px;
+    padding:12px;
+  }
+
+  #adminScreen .q-actions .btn{
+    flex:1 1 100%;
+  }
+
+  .admin-m-results-actions{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-bottom:12px;
+  }
+
+  .admin-m-results-actions .btn{
+    width:100%;
+    min-height:44px;
+  }
+
+  #adminScreen .admin-toolbar{
+    flex-direction:column;
+    margin-top:12px;
+  }
+
+  #adminScreen .admin-toolbar .btn{
+    width:100%;
+    flex:1 1 100%;
+  }
+
+  #adminScreen .table-scroll-hint{display:block}
+
+  #adminScreen .admin-content table{
+    min-width:520px;
+    font-size:11px;
+  }
+
+  #adminScreen .grid-2,
+  #adminScreen .grid-3{
+    grid-template-columns:1fr!important;
+  }
+}
+
+@media (max-width:900px){
+  #adminScreen{
+    margin-top:12px;
+    padding:12px 10px 20px;
+    border-radius:20px;
+    min-height:calc(100dvh - 120px);
+  }
+
+  #adminScreen .admin-layout{
+    grid-template-columns:1fr;
+  }
+
+  #adminScreen .admin-nav{
+    position:sticky;
+    top:max(64px, env(safe-area-inset-top, 0px));
+    z-index:35;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+    gap:8px;
+    padding:10px;
+    max-height:none;
+    overflow:visible;
+  }
+
+  #adminScreen .admin-nav .admin-tab{
+    min-height:44px;
+    font-size:12px;
+    padding:10px 8px;
+    white-space:normal;
+    line-height:1.2;
+    text-align:center;
+  }
+
+  #adminScreen #adminLogout{
+    grid-column:1 / -1;
+    width:100%;
+    min-height:44px;
+  }
+
+  #adminScreen .admin-content{
+    padding:16px 14px 20px;
+    border-radius:20px;
+  }
+
+  #adminScreen .grid-2,
+  #adminScreen .grid-3{
+    grid-template-columns:1fr !important;
+    gap:12px;
+  }
+
+  #adminScreen .stat{
+    padding:14px 12px;
+  }
+
+  #adminScreen .stat b{
+    font-size:22px;
+  }
+
+  #adminScreen .admin-content .panel-title h3{
+    font-size:22px;
+  }
+
+  #adminScreen .admin-content input,
+  #adminScreen .admin-content select,
+  #adminScreen .admin-content textarea{
+    font-size:16px;
+    max-width:100%;
+  }
+
+  #adminScreen .admin-content table{
+    min-width:580px;
+    font-size:12px;
+  }
+
+  #adminScreen .admin-content th,
+  #adminScreen .admin-content td{
+    padding:10px 8px;
+  }
+
+  #adminScreen .table-scroll-hint{
+    display:block;
+  }
+
+  #adminScreen .admin-form-actions .btn,
+  #adminScreen .admin-toolbar .btn{
+    flex:1 1 calc(50% - 5px);
+    min-width:0;
+  }
+
+  #adminScreen .q-top{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  #adminScreen .q-meta{
+    width:100%;
+  }
+
+  #adminScreen .q-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    width:100%;
+  }
+
+  #adminScreen .q-actions .btn{
+    flex:1 1 calc(50% - 4px);
+    min-width:0;
+  }
+
+  #adminScreen .q-image-preview-wrap img{
+    max-height:160px;
+  }
+
+  .admin-login-modal-card{
+    left:0 !important;
+    right:0 !important;
+    margin:0 auto !important;
+    width:min(400px, calc(100vw - 24px)) !important;
+    max-width:100% !important;
+  }
+
+  .admin-modal-backdrop.show{
+    padding:12px !important;
+    align-items:center !important;
+    background:#eef1f6!important;
+    backdrop-filter:none!important;
+    -webkit-backdrop-filter:none!important;
+  }
+
+  #adminLoginModal .Admin-nurse,
+  .admin-modal-backdrop .Admin-nurse{
+    display:none!important;
+  }
+
+  .admin-add-action-row{
+    grid-template-columns:1fr !important;
+  }
+}
+
+@media (max-width:520px){
+  #adminScreen{
+    padding:10px 8px 16px;
+    margin-top:8px;
+  }
+
+  #adminScreen .admin-nav{
+    grid-template-columns:1fr;
+    top:max(56px, env(safe-area-inset-top, 0px));
+  }
+
+  #adminScreen .admin-nav .admin-tab{
+    width:100%;
+    text-align:left;
+    padding:12px 14px;
+  }
+
+  #adminScreen .admin-content{
+    padding:14px 12px 18px;
+  }
+
+  #adminScreen .admin-content .panel-title h3{
+    font-size:20px;
+  }
+
+  #adminScreen .admin-form-actions .btn,
+  #adminScreen .admin-toolbar .btn,
+  #adminScreen .q-actions .btn{
+    flex:1 1 100%;
+    width:100%;
+  }
+
+  #adminScreen .admin-content table{
+    min-width:520px;
+    font-size:11px;
+  }
+
+  #adminScreen .badge{
+    white-space:normal;
+    text-align:center;
+  }
+}
+
+@media (min-width:901px) and (max-width:1100px){
+  #adminScreen .admin-layout{
+    grid-template-columns:260px 1fr;
+  }
+
+  #adminScreen .admin-nav{
+    grid-template-columns:1fr;
+  }
+}
+
+
+.challenge-overlay{
+  position:fixed;
+  inset:0;
+  z-index:12000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:rgba(20,27,80,.55);
+  backdrop-filter:blur(8px);
+}
+
+.challenge-overlay.show{
+  display:flex;
+}
+
+/* PDF export — print from same page (works with file:// and local HTML) */
+.pdf-export-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:25000;
+  background:rgba(8,12,32,.72);
+  overflow:auto;
+  padding:20px;
+  -webkit-overflow-scrolling:touch;
+}
+.pdf-export-overlay.show{display:block}
+.pdf-export-sheet{
+  max-width:920px;
+  margin:0 auto 40px;
+  background:#fff;
+  color:#0d2344;
+  border-radius:20px;
+  padding:24px 28px 32px;
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+.pdf-export-toolbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin-bottom:20px;
+  padding-bottom:16px;
+  border-bottom:1px solid #dbe7f5;
+}
+.pdf-export-toolbar .btn-export-pdf{margin:0}
+.pdf-export-close{
+  border:1px solid rgba(48,66,216,.2);
+  background:#fff;
+  color:#3042d8;
+  font-weight:900;
+  padding:10px 16px;
+  border-radius:12px;
+  cursor:pointer;
+}
+.pdf-export-body h1{font-size:22px;margin:0 0 10px;color:#0d2344}
+.pdf-export-body .meta{font-size:13px;line-height:1.5;margin:0 0 18px;color:#4a5f7a}
+.pdf-export-body table{width:100%;border-collapse:collapse;font-size:12px}
+.pdf-export-body th,.pdf-export-body td{border:1px solid #c5d4ea;padding:9px 10px;text-align:left}
+.pdf-export-body th{background:#e8f0ff;font-weight:800;color:#0d2344}
+.pdf-export-body tr:nth-child(even){background:#f7faff}
+@media print{
+  body.pdf-print-mode *{visibility:hidden}
+  body.pdf-print-mode #pdfExportOverlay,
+  body.pdf-print-mode #pdfExportOverlay *{visibility:visible}
+  body.pdf-print-mode #pdfExportOverlay{
+    display:block!important;
+    position:absolute;
+    inset:0;
+    background:#fff;
+    padding:0;
+    overflow:visible;
+  }
+  body.pdf-print-mode .pdf-export-sheet{
+    box-shadow:none;
+    border-radius:0;
+    max-width:none;
+    margin:0;
+    padding:12mm;
+  }
+  body.pdf-print-mode .no-print{display:none!important}
+}
+
+.challenge-modal{
+  width:min(720px, 100%);
+  max-height:min(90dvh, 900px);
+  overflow:auto;
+  border-radius:28px;
+  padding:24px;
+  background:linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,255,255,.84));
+  border:1px solid rgba(255,255,255,.8);
+  box-shadow:0 30px 80px rgba(17,24,39,.28);
+  color:#1f2a44;
+}
+
+.challenge-modal-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:16px;
+}
+
+.challenge-modal-head h3{
+  margin:0;
+  font-size:20px;
+  font-weight:950;
+}
+
+.challenge-close{
+  width:36px;
+  height:36px;
+  border:0;
+  border-radius:12px;
+  background:rgba(48,66,216,.10);
+  color:#3042d8;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* Weekly Challenge Quiz — compact, matches app glass theme */
+#quizOverlay.challenge-overlay{
+  padding:12px;
+  align-items:center;
+}
+#quizOverlay.challenge-overlay.show{
+  background:rgba(20,27,80,.45);
+  backdrop-filter:blur(10px);
+}
+#quizOverlay .quiz-modal{
+  width:min(460px,100%);
+  max-height:none;
+  padding:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  border-radius:22px;
+  border:1px solid rgba(255,255,255,.58);
+  box-shadow:0 22px 50px rgba(42,51,133,.22);
+  background:linear-gradient(135deg,rgba(255,255,255,.94),rgba(255,255,255,.82));
+  backdrop-filter:blur(18px);
+}
+#quizOverlay .quiz-header{
+  padding:12px 14px 10px;
+  background:linear-gradient(135deg,rgba(48,66,216,.1),rgba(24,166,196,.08));
+  border-bottom:1px solid rgba(48,66,216,.1);
+  color:#1f2a44;
+}
+#quizOverlay .quiz-header-top{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:6px;
+}
+#quizOverlay .quiz-eyebrow{
+  display:inline-flex;align-items:center;
+  padding:3px 8px;border-radius:999px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(48,66,216,.14);
+  font-size:10px;font-weight:800;letter-spacing:.3px;text-transform:uppercase;
+  color:#3042d8;
+}
+#quizOverlay .quiz-close{
+  width:30px;height:30px;font-size:18px;
+  background:rgba(48,66,216,.1);
+  color:#3042d8;
+  border:1px solid rgba(48,66,216,.14);
+}
+#quizOverlay .quiz-close:hover{background:rgba(48,66,216,.16)}
+#quizOverlay .quiz-header h3{
+  margin:0;font-size:17px;font-weight:900;letter-spacing:-.2px;color:#1f2a44;
+}
+#quizOverlay .quiz-player-line{
+  margin:4px 0 0;font-size:11px;font-weight:600;color:rgba(31,42,68,.65);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+#quizOverlay .quiz-body{
+  flex:0 1 auto;overflow:visible;padding:10px 14px 8px;
+}
+#quizOverlay .quiz-meta-row{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  margin-bottom:6px;
+}
+#quizOverlay .quiz-counter{
+  font-size:10px;font-weight:800;color:#3042d8;
+  text-transform:uppercase;letter-spacing:.3px;
+}
+#quizOverlay .quiz-pct{
+  font-size:10px;font-weight:800;color:rgba(31,42,68,.5);
+  font-variant-numeric:tabular-nums;
+}
+#quizOverlay .quiz-progress{
+  height:6px;border-radius:999px;
+  background:rgba(48,66,216,.1);overflow:hidden;margin-bottom:8px;
+}
+#quizOverlay .quiz-progress span{
+  display:block;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,#3042d8,#18a6c4);
+  transition:width .35s ease;
+}
+#quizOverlay .quiz-timer-card{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 10px;margin-bottom:8px;
+  border-radius:12px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(48,66,216,.12);
+}
+#quizOverlay .quiz-timer-icon{display:none}
+#quizOverlay .quiz-timer-copy{flex:1;min-width:0}
+#quizOverlay .quiz-timer-label{
+  font-size:9px;font-weight:800;color:rgba(31,42,68,.5);
+  text-transform:uppercase;letter-spacing:.3px;
+  margin-bottom:3px;display:block;
+}
+#quizOverlay .quiz-timer-track{
+  height:5px;border-radius:999px;
+  background:rgba(48,66,216,.1);overflow:hidden;
+}
+#quizOverlay .quiz-timer-track span{
+  display:block;height:100%;width:100%;border-radius:inherit;
+  background:linear-gradient(90deg,#3042d8,#18a6c4);
+  transition:width .35s linear;
+}
+#quizOverlay .quiz-timer-track span.warning{background:linear-gradient(90deg,#ff9f43,#f59e0b)}
+#quizOverlay .quiz-timer-track span.danger{background:linear-gradient(90deg,#fb7185,#ef4444)}
+#quizOverlay .quiz-timer{
+  font-size:18px;font-weight:900;font-variant-numeric:tabular-nums;
+  color:#3042d8;line-height:1;min-width:2.8ch;flex-shrink:0;
+}
+#quizOverlay .quiz-timer.warning{color:#d97706}
+#quizOverlay .quiz-timer.danger{color:#dc2626;animation:quizTimerPulse .85s ease infinite}
+@keyframes quizTimerPulse{0%,100%{opacity:1}50%{opacity:.55}}
+#quizOverlay .quiz-q-card{
+  padding:10px 12px;margin-bottom:8px;
+  border-radius:12px;
+  background:rgba(255,255,255,.72);
+  border:1px solid rgba(48,66,216,.1);
+  box-shadow:0 6px 16px rgba(48,66,216,.06);
+}
+#quizOverlay .quiz-q-label{
+  display:block;font-size:9px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.35px;
+  color:rgba(48,66,216,.6);margin-bottom:4px;
+}
+#quizOverlay .quiz-question{
+  margin:0;font-size:14px;
+  font-weight:700;line-height:1.45;color:#1f2a44;
+}
+#quizOverlay .quiz-options{display:grid;gap:6px}
+#quizOverlay .quiz-option{
+  width:100%;text-align:left;
+  display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:center;
+  min-height:38px;padding:6px 10px 6px 8px;
+  border-radius:11px;
+  border:1px solid rgba(48,66,216,.14);
+  background:rgba(255,255,255,.78);
+  color:#1f2a44;font-size:12px;font-weight:600;line-height:1.35;
+  cursor:pointer;
+  transition:border-color .15s ease,background .15s ease;
+}
+#quizOverlay .quiz-option:hover{
+  border-color:rgba(48,66,216,.3);
+  background:rgba(255,255,255,.95);
+}
+#quizOverlay .quiz-option.selected{
+  border-color:rgba(48,66,216,.45);
+  background:linear-gradient(135deg,rgba(48,66,216,.08),rgba(24,166,196,.1));
+}
+#quizOverlay .quiz-opt-letter{
+  width:26px;height:26px;border-radius:8px;
+  display:grid;place-items:center;
+  font-size:11px;font-weight:800;color:#3042d8;
+  background:rgba(48,66,216,.1);
+}
+#quizOverlay .quiz-option.selected .quiz-opt-letter{
+  background:linear-gradient(135deg,#3042d8,#18a6c4);
+  color:#fff;
+}
+#quizOverlay .quiz-opt-text{display:block;min-width:0}
+#quizOverlay .quiz-steps{
+  display:flex;justify-content:center;gap:5px;
+  margin-top:8px;
+}
+#quizOverlay .quiz-step-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(48,66,216,.2);
+}
+#quizOverlay .quiz-step-dot.done{background:#18a6c4}
+#quizOverlay .quiz-step-dot.current{
+  width:16px;border-radius:999px;
+  background:linear-gradient(90deg,#3042d8,#18a6c4);
+}
+#quizOverlay .quiz-footer{
+  padding:10px 14px 12px;
+  border-top:1px solid rgba(48,66,216,.1);
+  background:rgba(255,255,255,.5);
+}
+#quizOverlay .quiz-next-btn{
+  width:100%;border:0;border-radius:14px;
+  padding:11px 16px;
+  font-family:inherit;font-size:14px;font-weight:800;
+  color:#fff;cursor:pointer;
+  background:linear-gradient(135deg,#0fb981,#18a6c4 58%,#3042d8);
+  box-shadow:0 12px 24px rgba(24,166,196,.22);
+  transition:transform .15s ease,filter .15s ease;
+}
+#quizOverlay .quiz-next-btn:hover{transform:translateY(-1px);filter:saturate(1.04)}
+#quizOverlay .quiz-next-btn:active{transform:translateY(0)}
+#quizOverlay .quiz-security-note{
+  margin:0 0 8px;padding:6px 10px;border-radius:10px;
+  font-size:10px;font-weight:700;line-height:1.4;
+  background:rgba(48,66,216,.06);color:rgba(31,42,68,.55);
+  border:1px solid transparent;
+}
+#quizOverlay .quiz-security-note.has-signal{
+  background:rgba(251,113,133,.12);color:#b4234a;
+  border-color:rgba(251,113,133,.28);
+}
+#quizResultOverlay .result-rejected{
+  background:linear-gradient(160deg,#fff5f5 0%,#fff 100%);
+  border-color:rgba(251,113,133,.35);
+}
+#quizResultOverlay .result-rejected .quiz-result-score{
+  color:#b4234a;background:none;-webkit-text-fill-color:#b4234a;
+}
+#quizResultOverlay .result-rejected .quiz-result-done{
+  background:linear-gradient(135deg,#fb7185,#ef4444);
+  box-shadow:0 12px 24px rgba(251,113,133,.25);
+}
+@media (max-width:480px){
+  #quizOverlay .quiz-modal{width:min(100%,calc(100vw - 24px))}
+  #quizOverlay .quiz-body{padding:8px 12px 6px}
+}
+
+@media (max-width: 980px){
+  .admin-shell{grid-template-columns:1fr}
+  .admin-sidebar{position:relative;top:0}
+  .admin-stats-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+
+@media (max-width: 560px){
+  .admin-stats-grid{grid-template-columns:1fr}
+}
+
+/* Leaderboard — WINNER game style (nurse avatars, no sword/coins) */
+#leaderboardOverlay.challenge-overlay.show{
+  background:rgba(55,28,110,.55);
+  backdrop-filter:blur(8px);
+}
+#leaderboardOverlay .leaderboard-modal{
+  width:min(420px,100%);
+  max-height:min(94dvh,860px);
+  padding:0;
+  overflow:visible;
+  border-radius:0;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+#publicLeaderboardWrap.lb-winner-ui{
+  font-family:'Fredoka','Rubik',sans-serif;
+  max-height:min(94dvh,860px);
+  overflow-y:auto;
+  padding:8px 4px 16px;
+}
+.lb-w-close{
+  position:absolute;top:6px;right:8px;z-index:10;
+  width:36px;height:36px;border:none;border-radius:50%;
+  background:rgba(255,255,255,.9);
+  color:#6b3fa8;font-size:22px;font-weight:700;line-height:1;
+  cursor:pointer;
+  box-shadow:0 4px 12px rgba(0,0,0,.15);
+}
+.lb-w-hero{
+  text-align:center;
+  padding:8px 12px 0;
+  position:relative;
+}
+.lb-w-trophy-top{
+  font-size:56px;line-height:1;
+  filter:drop-shadow(0 6px 0 rgba(120,80,0,.35));
+  margin-bottom:-4px;
+}
+.lb-w-wings{
+  position:relative;display:inline-block;
+}
+.lb-w-wings::before,.lb-w-wings::after{
+  content:"✦";
+  position:absolute;top:18px;
+  font-size:22px;color:#ffd54a;
+  opacity:.9;
+}
+.lb-w-wings::before{left:-28px}
+.lb-w-wings::after{right:-28px;content:"✦"}
+.lb-w-title{
+  margin:0;
+  font-size:clamp(36px,10vw,44px);
+  font-weight:700;
+  letter-spacing:.06em;
+  color:#ffe566;
+  -webkit-text-stroke:3px #7b3fc8;
+  paint-order:stroke fill;
+  text-shadow:0 4px 0 #5a2d9e,0 6px 14px rgba(0,0,0,.2);
+}
+.lb-w-ribbon{
+  display:inline-flex;gap:6px;align-items:center;
+  margin:10px auto 14px;
+  padding:8px 22px;
+  border-radius:999px;
+  background:linear-gradient(180deg,#9b6bff,#7b3fc8);
+  box-shadow:0 4px 0 #5a2d9e,inset 0 2px 0 rgba(255,255,255,.25);
+  font-size:14px;color:#ffe566;
+}
+.lb-w-board{
+  margin:0 10px;
+  border:4px solid #fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 40px rgba(60,30,120,.25);
+  background:#fff8ee;
+}
+.lb-w-pink{
+  background:linear-gradient(180deg,#ff7eb8,#ff5ca8);
+  padding:14px 12px 10px;
+}
+.lb-w-cream{padding:10px 12px 14px;background:#fff8ee}
+.lb-w-row{
+  display:grid;
+  grid-template-columns:52px 64px 1fr auto;
+  gap:10px;align-items:center;
+  padding:10px 12px;
+  border-radius:16px;
+  margin-bottom:8px;
+  background:linear-gradient(180deg,#fff4b8,#ffe566);
+  box-shadow:0 4px 0 rgba(200,160,40,.35),inset 0 2px 0 rgba(255,255,255,.5);
+}
+.lb-w-row:last-child{margin-bottom:0}
+.lb-w-pink .lb-w-row.rank-1{
+  background:linear-gradient(180deg,#fff9c4,#ffd54a);
+  box-shadow:0 5px 0 rgba(180,130,20,.4),inset 0 2px 0 rgba(255,255,255,.6);
+  margin-bottom:0;
+}
+.lb-w-row.rank-2,.lb-w-row.rank-3{
+  background:linear-gradient(180deg,#fff8e0,#ffeaa0);
+}
+.lb-w-row.lb-w-empty{opacity:.65}
+.lb-w-rank-badge{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:2px;min-width:48px;
+}
+.lb-w-rank-icon{font-size:28px;line-height:1;filter:drop-shadow(0 2px 0 rgba(0,0,0,.12))}
+.lb-w-rank-txt{
+  font-size:11px;font-weight:700;
+  color:#5a3a10;
+  text-transform:uppercase;
+}
+.lb-w-avatar-wrap{
+  position:relative;width:56px;height:56px;flex-shrink:0;
+}
+.lb-w-avatar-wrap img{
+  width:100%;height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  border:3px solid #fff;
+  box-shadow:0 4px 10px rgba(0,0,0,.12);
+  background:#e8f4ff;
+}
+.lb-w-crown{
+  position:absolute;top:-10px;left:-6px;
+  font-size:22px;
+  filter:drop-shadow(0 2px 2px rgba(0,0,0,.25));
+  transform:rotate(-18deg);
+}
+.lb-w-info{min-width:0;text-align:left}
+.lb-w-info strong{
+  display:block;
+  font-size:17px;font-weight:700;
+  color:#2d6fd4;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.lb-w-score{
+  display:block;margin-top:3px;
+  font-size:12px;font-weight:600;
+  color:#5a4a30;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.lb-w-meta{text-align:right;padding-left:4px}
+.lb-w-time{
+  display:inline-block;
+  padding:6px 10px;
+  border-radius:12px;
+  background:rgba(255,255,255,.65);
+  font-size:14px;font-weight:700;
+  color:#7b3fc8;
+  white-space:nowrap;
+}
+.lb-w-empty-msg{
+  text-align:center;padding:28px 20px;
+  color:#5a4a30;font-size:14px;font-weight:600;line-height:1.5;
+}
+.lb-w-back{
+  display:block;width:calc(100% - 32px);margin:14px auto 0;
+  padding:12px;border:none;border-radius:14px;
+  font-family:inherit;font-size:15px;font-weight:700;
+  color:#fff;cursor:pointer;
+  background:linear-gradient(180deg,#9b6bff,#7b3fc8);
+  box-shadow:0 4px 0 #5a2d9e;
+}
+.lb-w-back:active{transform:translateY(2px);box-shadow:0 2px 0 #5a2d9e}
+@media (max-width:360px){
+  .lb-w-row{grid-template-columns:44px 52px 1fr auto;gap:8px;padding:8px 10px}
+  .lb-w-info strong{font-size:15px}
+}
+
+.toast.show{
+  position:fixed;
+  left:50%;
+  bottom:24px;
+  transform:translateX(-50%);
+  z-index:10050;
+  padding:12px 18px;
+  border-radius:14px;
+  background:rgba(31,42,68,.94);
+  color:#ffffff;
+  font-size:13px;
+  font-weight:800;
+  box-shadow:0 18px 40px rgba(17,24,39,.28);
+  pointer-events:none;
+}
+
+</style>
+
+<body>
+    <img src="media/Background.png" class="Web-game" alt="">
+
+    <!-- الكمبيوتر والتابلت -->
+    <div class="BackWrapper">
+        <img src="media/Back.png" class="Back" alt="">
+
+        <!-- النص مثل الصورة -->
+        <span class="challenge-dot dot-one"></span>
+        <span class="challenge-dot dot-two"></span>
+        <span class="challenge-dot dot-three"></span>
+
+        <img src="media/Dark Blue Clean Ramadhan Kareem Instagram Post (1).png" class="nurse_pic" alt="">
+       
+    </div>
+  <div class="confetti" id="confetti"></div>
+  <div class="toast" id="toast"></div>
+
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">🫁</div>
+        <div>
+          <h1 style="      background:linear-gradient(135deg, #3042d8 0%, #18a6c4 46%, #12a38f 72%, #ff9f43 100%) !important;
+      -webkit-background-clip:text !important;
+      background-clip:text !important;
+      color:transparent !important; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Respiratory Care Weekly Challenge</h1>
+          <p style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-top: -0.5rem;">A weekly tracheostomy care challenge to learn, compete, and improve patient safety.</p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <span class="pill" id="activeWeekPill">✨ Challenge Ready</span>
+        <span class="pill" id="cloudSyncPill" data-status="off" hidden aria-live="polite">☁️ Local only</span>
+        <div class="mobile-view-toggle mobile-only" role="tablist" aria-label="Staff or Admin view">
+          <button type="button" class="view-tab active" id="mobileStaffTab" role="tab" aria-selected="true">👤 Staff View</button>
+          <button type="button" class="view-tab" id="mobileAdminTab" role="tab" aria-selected="false">🛡️ Admin</button>
+        </div>
+        <button class="btn small btn-staff-view desktop-only" id="staffHomeBtn" type="button" hidden>Staff View</button>
+        <button class="btn small desktop-only" id="adminBtn" type="button">Admin</button>
+      </div>
+    </header>
+
+    <section class="mobile-hero mobile-only" aria-label="Challenge introduction">
+      <div class="mobile-hero-inner">
+        <div class="mobile-hero-copy">
+          <h2 class="mobile-hero-title">Respiratory Care <span>Group Challenges</span></h2>
+          <p class="mobile-hero-sub">Join your team, test your knowledge, and improve patient care together.</p>
+          <button type="button" class="btn mobile-join-btn" id="mobileJoinBtn">Join the Challenge <span class="mobile-join-arrow" aria-hidden="true">→</span></button>
+        </div>
+        <div class="mobile-hero-visual" aria-hidden="true">
+          <img src="media/Dark Blue Clean Ramadhan Kareem Instagram Post (1).png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    
+    
+
+
+
+
+
+
+
+
+    
+ 
+
+
+      <!-- Added only: Small equal glass cards to fill the side space -->
+      <div class="arena-info-stack" aria-label="Challenge rules and system information">
+        <div class="arena-info-card purple">
+          <span class="arena-card-icon">5</span>
+          <div class="arena-card-text">
+            <h4>5 Clinical Questions</h4>
+            <p>Each challenge includes five focused tracheostomy care questions.</p>
+          </div>
+          <span class="arena-mini-tag">Quiz</span>
+        </div>
+
+        <div class="arena-info-card green">
+          <span class="arena-card-icon">⚡</span>
+          <div class="arena-card-text">
+            <h4>Competition Mode</h4>
+            <p>Answer correctly and quickly to move higher on the leaderboard.</p>
+          </div>
+          <span class="arena-mini-tag">Live</span>
+        </div>
+
+        <div class="arena-info-card">
+          <span class="arena-card-icon">🖥️</span>
+          <div class="arena-card-text">
+            <h4>System Tracking</h4>
+            <p>The system records name, staff number, time, score, and result.</p>
+          </div>
+          <span class="arena-mini-tag">System</span>
+        </div>
+
+        <div class="arena-info-card red">
+          <span class="arena-card-icon">⛔</span>
+          <div class="arena-card-text">
+            <h4>No Cheating Allowed</h4>
+            <p>Independent answers only. Any suspicious attempt may be excluded.</p>
+          </div>
+          <span class="arena-mini-tag">Fair</span>
+        </div>
+
+        <div class="arena-info-card orange">
+          <span class="arena-card-icon">🏆</span>
+          <div class="arena-card-text">
+            <h4>Leaderboard Rule</h4>
+            <p>Top ranking is based on correct answers, fastest time, and fair play.</p>
+          </div>
+          <span class="arena-mini-tag">Top 3</span>
+        </div>
+      </div>
+
+
+      <div class="glass entry-card">
+        <div class="panel-title entry-panel-head">
+          <div>
+            <h3><span class="entry-head-ico mobile-only" aria-hidden="true">👥</span> Enter the Arena</h3>
+            <p class="desktop-only">Fill your details to start this week’s challenge.</p>
+          </div>
+          <span class="badge green desktop-only">Live</span>
+        </div>
+
+        <div class="input-group input-icon-group">
+          <label for="staffName">Full Name</label>
+          <div class="input-icon-wrap">
+            <span class="field-ico" aria-hidden="true">👤</span>
+            <input id="staffName" placeholder="Full Name" autocomplete="name" />
+          </div>
+        </div>
+        <div class="input-group input-icon-group">
+          <label for="staffNo">Staff Number</label>
+          <div class="input-icon-wrap">
+            <span class="field-ico" aria-hidden="true">🪪</span>
+            <input id="staffNo" placeholder="Staff Number" inputmode="numeric" autocomplete="off" />
+          </div>
+        </div>
+        <div class="input-group input-icon-group">
+          <label for="unitName">Unit / Department</label>
+          <div class="input-icon-wrap input-icon-select">
+            <span class="field-ico" aria-hidden="true">🏥</span>
+            <input id="unitName" placeholder="Unit / Department" />
+            <span class="field-chevron mobile-only" aria-hidden="true">▾</span>
+          </div>
+        </div>
+
+        <button class="btn green mobile-start-btn" type="button" id="startBtn">
+          <span class="desktop-only">Start This Week’s Challenge 🚀</span>
+          <span class="mobile-only">Let's Start <span class="mobile-join-arrow" aria-hidden="true">→</span></span>
+        </button>
+        <button class="btn ghost desktop-only" type="button" id="viewLeaderboardBtn">View Leaderboard 🏆</button>
+        <button class="btn ghost mobile-only mobile-lb-btn" type="button" id="viewLeaderboardBtnMobile">View Leaderboard 🏆</button>
+
+        <div class="mini-card desktop-only">
+          <h4>Fair Play Note</h4>
+          <p>This is a learning challenge, not a formal exam. Please answer independently and enjoy the competition.</p>
+        </div>
+      </div>
+
+
+
+
+
+
+
+      
+    <section id="adminScreen" class="screen" >
+      <div class="admin-layout">
+        <nav class="glass admin-nav admin-d-only">
+          <button class="admin-tab active" data-page="adminDashboard">📊 Dashboard</button>
+          <button class="admin-tab" data-page="adminQuestions">➕ Questions</button>
+          <button class="admin-tab" data-page="adminResults">🏆 Results</button>
+          <button class="admin-tab" data-page="adminSettings">⚙️ Settings</button>
+          <button id="adminLogout" class="btn danger small" style="justify-content:center;margin-top:8px">Logout</button>
+        </nav>
+
+        <div class="glass admin-content">
+          <div class="admin-m-toolbar admin-m-only" id="adminMobileToolbar" hidden>
+            <button type="button" class="admin-m-back" id="adminMobileBack" aria-label="Back to dashboard">←</button>
+            <div class="admin-m-toolbar-text">
+              <div class="admin-m-toolbar-title" id="adminMobileTitle">Question Bank</div>
+              <div class="admin-m-toolbar-sub" id="adminMobileSub">Add New Question</div>
+            </div>
+          </div>
+
+          <div id="adminDashboard" class="admin-page active">
+            <div class="admin-dash-mobile admin-m-only">
+              <h2 class="admin-dash-title">Admin Dashboard</h2>
+              <p class="admin-dash-sub">Manage challenges, questions and participants.</p>
+              <div class="admin-stats-m">
+                <div class="admin-stat-card stat-blue">
+                  <span class="admin-stat-ico" aria-hidden="true">📋</span>
+                  <div class="admin-stat-body">
+                    <b id="adminStatActive">0</b>
+                    <span>Active Challenge <small>In Progress</small></span>
+                  </div>
+                </div>
+                <div class="admin-stat-card stat-purple">
+                  <span class="admin-stat-ico" aria-hidden="true">👥</span>
+                  <div class="admin-stat-body">
+                    <b id="adminStatParticipants">0</b>
+                    <span>Participants <small>Registered</small></span>
+                  </div>
+                </div>
+                <div class="admin-stat-card stat-green">
+                  <span class="admin-stat-ico" aria-hidden="true">✓</span>
+                  <div class="admin-stat-body">
+                    <b id="adminStatCompleted">0</b>
+                    <span>Completed <small>This Week</small></span>
+                  </div>
+                </div>
+                <div class="admin-stat-card stat-orange">
+                  <span class="admin-stat-ico" aria-hidden="true">★</span>
+                  <div class="admin-stat-body">
+                    <b id="adminStatTop">0%</b>
+                    <span>Top Score <small>Best Performance</small></span>
+                  </div>
+                </div>
+              </div>
+              <div class="admin-m-menu">
+                <h4 class="admin-m-menu-heading">Management</h4>
+                <button type="button" class="admin-m-menu-item admin-tab" data-page="adminQuestions">
+                  <span class="admin-m-menu-icon blue">📝</span>
+                  <span class="admin-m-menu-text"><strong>Question Bank</strong><small>Create and manage questions</small></span>
+                  <span class="admin-m-menu-chevron" aria-hidden="true">›</span>
+                </button>
+                <button type="button" class="admin-m-menu-item" id="adminMobileLeaderboard">
+                  <span class="admin-m-menu-icon purple">🏆</span>
+                  <span class="admin-m-menu-text"><strong>Leaderboard</strong><small>View weekly rankings</small></span>
+                  <span class="admin-m-menu-chevron" aria-hidden="true">›</span>
+                </button>
+                <button type="button" class="admin-m-menu-item admin-tab" data-page="adminResults">
+                  <span class="admin-m-menu-icon green">📊</span>
+                  <span class="admin-m-menu-text"><strong>Results &amp; Monitoring</strong><small>Attempts and integrity signals</small></span>
+                  <span class="admin-m-menu-chevron" aria-hidden="true">›</span>
+                </button>
+                <button type="button" class="admin-m-menu-item admin-m-menu-danger" id="adminMobileLogout">
+                  <span class="admin-m-menu-icon red">⏻</span>
+                  <span class="admin-m-menu-text"><strong>Logout</strong><small>Exit admin mode</small></span>
+                  <span class="admin-m-menu-chevron" aria-hidden="true">›</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="panel-title admin-d-only">
+              <div>
+                <h3>Admin Dashboard</h3>
+                <p>Manage weekly questions, monitor participation and detect suspicious activity.</p>
+              </div>
+              <span class="badge green">Admin Mode</span>
+            </div>
+            <div class="grid-3 admin-d-only" style="margin-top:18px">
+              <div class="stat"><b id="adminTotalAttempts">0</b><span>Total Attempts</span></div>
+              <div class="stat"><b id="adminCorrectRate">0%</b><span>Correct Rate</span></div>
+              <div class="stat"><b id="adminSuspicious">0</b><span>Suspicious Signals</span></div>
+            </div>
+            <div class="mini-card admin-d-only" style="margin-top:16px">
+              <h4>Active Weekly Questions <span class="badge green" id="activeQuestionsCount">0 / 5</span></h4>
+              <div class="input-group" style="margin-top:12px">
+                <label for="activeQuestionsDropdown">Active questions list</label>
+                <select id="activeQuestionsDropdown">
+                  <option value="">No active questions yet</option>
+                </select>
+              </div>
+              <p id="activeQuestionSummary" style="margin-top:10px;line-height:1.5">Add up to 5 active questions for this week.</p>
+            </div>
+          </div>
+
+          <div id="adminQuestions" class="admin-page">
+            <div class="panel-title admin-d-only">
+              <div>
+                <h3>Create Weekly Question</h3>
+                <p>Add scenario-based questions, images, choices, timer and explanation.</p>
+              </div>
+              <button class="btn small btn-clear-form" type="button" id="resetQuestionForm">Clear Form</button>
+            </div>
+
+            <div class="admin-form-card">
+            <div class="grid-2 admin-q-meta-grid">
+              <div class="input-group admin-m-field-title">
+                <label class="admin-m-label">Question Title</label>
+                <input id="qTitle" placeholder="Enter the question title" />
+              </div>
+              <div class="input-group admin-m-field-timer">
+                <label class="admin-m-label-d">Timer</label>
+                <label class="admin-m-label admin-m-only">Time Limit</label>
+                <div class="admin-timer-wrap">
+                  <select id="qTimer">
+                    <option value="30">30 seconds</option>
+                    <option value="45" selected>45 seconds</option>
+                    <option value="60">60 seconds</option>
+                    <option value="90">90 seconds</option>
+                  </select>
+                  <span class="admin-timer-suffix admin-m-only">sec</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group admin-m-field-scenario">
+              <label class="admin-m-label-d">Question / Scenario</label>
+              <label class="admin-m-label admin-m-only">Question</label>
+              <textarea id="qText" placeholder="A child with tracheostomy suddenly develops respiratory distress. What should be your first nursing action?"></textarea>
+            </div>
+
+            <div class="admin-options-block">
+              <label class="admin-m-label admin-m-only">Options</label>
+              <div class="admin-opt-row"><span class="admin-opt-badge">A</span><div class="input-group admin-opt-input"><label class="admin-d-only">Option 1</label><input id="opt1" placeholder="Option A" /></div></div>
+              <div class="admin-opt-row"><span class="admin-opt-badge">B</span><div class="input-group admin-opt-input"><label class="admin-d-only">Option 2</label><input id="opt2" placeholder="Option B" /></div></div>
+              <div class="admin-opt-row"><span class="admin-opt-badge">C</span><div class="input-group admin-opt-input"><label class="admin-d-only">Option 3</label><input id="opt3" placeholder="Option C" /></div></div>
+              <div class="admin-opt-row"><span class="admin-opt-badge">D</span><div class="input-group admin-opt-input"><label class="admin-d-only">Option 4</label><input id="opt4" placeholder="Option D" /></div></div>
+            </div>
+
+            <div class="grid-2 admin-q-bottom-grid">
+              <div class="input-group">
+                <label class="admin-m-label">Correct Answer</label>
+                <select id="correctOpt">
+                  <option value="0">Option A</option>
+                  <option value="1">Option B</option>
+                  <option value="2">Option C</option>
+                  <option value="3">Option D</option>
+                </select>
+              </div>
+              <div class="input-group q-image-field">
+                <label class="admin-m-label-d">Question Image</label>
+                <input id="qImage" type="file" accept="image/*" />
+                <div class="q-image-preview-wrap" id="qImagePreviewWrap" hidden>
+                  <img id="qImagePreview" src="" alt="Question image preview" />
+                  <button type="button" class="btn danger small" id="qImageRemove">Remove image</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label class="admin-m-label">Explanation</label>
+              <textarea id="qExplain" placeholder="Why is this answer correct?"></textarea>
+            </div>
+
+            <div class="grid-2 admin-d-only">
+              <div class="input-group">
+                <label>Start Date</label>
+                <input id="qStart" type="date" />
+              </div>
+              <div class="input-group">
+                <label>End Date</label>
+                <input id="qEnd" type="date" />
+              </div>
+            </div>
+
+            <div class="admin-form-actions">
+              <button class="btn green admin-m-save-primary" type="button" id="saveQuestionBtn">✓ Save Question</button>
+              <button class="btn admin-m-save-secondary" type="button" id="saveActivateQuestionBtn">Save &amp; Add to Week</button>
+              <button class="btn small btn-clear-form admin-m-clear admin-m-only" type="button" id="resetQuestionFormMobile">Clear Form</button>
+            </div>
+            </div>
+
+            <div class="input-group admin-d-only" style="margin-top:20px">
+              <label for="activeQuestionsDropdownQuestions">Active questions this week (max 5)</label>
+              <select id="activeQuestionsDropdownQuestions">
+                <option value="">No active questions</option>
+              </select>
+            </div>
+
+            <div class="admin-m-active-wrap admin-m-only">
+              <label for="activeQuestionsDropdownQuestionsMobile">Active this week (max 5)</label>
+              <select id="activeQuestionsDropdownQuestionsMobile"></select>
+            </div>
+
+            <h3 class="admin-qbank-heading admin-d-only" style="margin-top:28px;letter-spacing:-.5px">Question Bank</h3>
+            <h4 class="admin-qbank-heading admin-m-only">Saved Questions</h4>
+            <div id="questionList" class="question-list"></div>
+          </div>
+
+          <div id="adminResults" class="admin-page">
+            <div class="panel-title admin-d-only">
+              <div>
+                <h3>Results & Monitoring</h3>
+                <p>Review submissions, response time, tab switching and copy attempts.</p>
+              </div>
+              <div class="admin-toolbar">
+                <button type="button" class="btn small btn-export-pdf" id="exportCsvBtn">Export PDF</button>
+                <button class="btn danger small" id="clearAttemptsBtn">Clear Attempts</button>
+              </div>
+            </div>
+            <div class="admin-m-results-actions admin-m-only">
+              <button type="button" class="btn danger small" id="clearAttemptsBtnMobile">Clear Attempts</button>
+            </div>
+            <p class="table-scroll-hint" aria-hidden="true">Swipe left/right to see all columns →</p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Name</th>
+                    <th>Staff No.</th>
+                    <th>Unit</th>
+                    <th>HD WEEK</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                    <th>Signals</th>
+                  </tr>
+                </thead>
+                <tbody id="adminResultsTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div id="adminSettings" class="admin-page">
+            <div class="panel-title admin-d-only">
+              <div>
+                <h3>Settings</h3>
+                <p>Customize admin password and participation rules.</p>
+              </div>
+            </div>
+            <div class="grid-2">
+              <div class="input-group">
+                <label>Admin Password</label>
+                <input id="adminPasswordInput" type="password" placeholder="New password" />
+              </div>
+              <div class="input-group">
+                <label>Show Correct Answer After Submission</label>
+                <select id="showAnswerSetting">
+                  <option value="no">No - show after closing only</option>
+                  <option value="yes">Yes - show immediately</option>
+                </select>
+              </div>
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:16px">
+              <button class="btn green" id="saveSettingsBtn">Save Settings</button>
+            </div>
+            <div class="mini-card" style="margin-top:18px">
+              <h4>Prototype Note</h4>
+              <p>This single HTML file uses localStorage. For hospital-wide use, connect it to a secure backend such as Firebase, Supabase, MySQL or a hospital server to truly protect attempts and staff identity.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <div class="admin-confirm-backdrop" id="adminDeleteModal" aria-hidden="true">
+    <div class="admin-confirm-card" role="dialog" aria-modal="true" aria-labelledby="adminDeleteModalTitle">
+      <div class="admin-confirm-icon" aria-hidden="true">🗑️</div>
+      <h4 id="adminDeleteModalTitle">Delete question?</h4>
+      <p id="adminDeleteModalText">This question will be removed permanently.</p>
+      <div class="admin-confirm-actions">
+        <button type="button" class="btn ghost small" id="adminDeleteCancel">Cancel</button>
+        <button type="button" class="btn danger small" id="adminDeleteConfirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <div class="pdf-export-overlay no-print" id="pdfExportOverlay" aria-hidden="true">
+    <div class="pdf-export-sheet">
+      <div class="pdf-export-toolbar no-print">
+        <button type="button" class="btn small btn-export-pdf" id="pdfExportPrintBtn">Print / Save as PDF</button>
+        <button type="button" class="pdf-export-close" id="pdfExportCloseBtn">Close</button>
+      </div>
+      <div class="pdf-export-body" id="pdfExportBody"></div>
+    </div>
+  </div>
+
+  <div class="challenge-overlay" id="quizOverlay" aria-hidden="true">
+    <div class="challenge-modal quiz-modal" role="dialog" aria-modal="true" aria-labelledby="quizModalTitle">
+      <header class="quiz-header">
+        <div class="quiz-header-top">
+          <span class="quiz-eyebrow">Respiratory Care</span>
+          <button class="challenge-close quiz-close" type="button" data-close-quiz aria-label="Close quiz">×</button>
+        </div>
+        <h3 id="quizModalTitle">Weekly Challenge Quiz</h3>
+        <p class="quiz-player-line" id="quizPlayerLine"></p>
+      </header>
+      <div class="quiz-body">
+        <div class="quiz-meta-row">
+          <span class="quiz-counter" id="quizCounter">Question 1 of 5</span>
+          <span class="quiz-pct" id="quizProgressPct">20%</span>
+        </div>
+        <div class="quiz-progress" aria-hidden="true"><span id="quizProgressBar" style="width:20%"></span></div>
+        <div class="quiz-timer-card">
+          <div class="quiz-timer-icon" aria-hidden="true">⏱</div>
+          <div class="quiz-timer-copy">
+            <span class="quiz-timer-label">Time remaining</span>
+            <div class="quiz-timer-track" aria-hidden="true"><span id="quizTimerBar"></span></div>
+          </div>
+          <span class="quiz-timer" id="quizTimer" aria-live="polite">0:45</span>
+        </div>
+        <p class="quiz-security-note" id="quizSecurityNote" aria-live="polite">Independent attempt only. Tab switch, copy, paste, and right-click are monitored.</p>
+        <article class="quiz-q-card">
+          <span class="quiz-q-label">Question</span>
+          <img class="quiz-question-image" id="quizQuestionImage" src="" alt="" hidden />
+          <p class="quiz-question" id="quizQuestionText"></p>
+        </article>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-steps" id="quizStepDots" aria-hidden="true"></div>
+      </div>
+      <footer class="quiz-footer">
+        <button class="quiz-next-btn" type="button" id="quizNextBtn">Next question</button>
+      </footer>
+    </div>
+  </div>
+
+  <div class="challenge-overlay" id="leaderboardOverlay" aria-hidden="true">
+    <div class="challenge-modal leaderboard-modal" role="dialog" aria-modal="true" aria-labelledby="lbModalTitle">
+      <div id="publicLeaderboardWrap"></div>
+    </div>
+  </div>
+
+  <div class="challenge-overlay" id="quizResultOverlay" aria-hidden="true">
+    <div class="challenge-modal quiz-result-modal" id="quizResultModal" role="dialog" aria-modal="true" aria-labelledby="quizResultTitle">
+      <div class="quiz-result-confetti" id="quizResultConfetti" aria-hidden="true"></div>
+      <button class="challenge-close quiz-result-close" type="button" data-close-result aria-label="Close">×</button>
+      <div class="quiz-result-icon" id="quizResultIcon" aria-hidden="true">🏆</div>
+      <h3 class="quiz-result-title" id="quizResultTitle">Challenge Complete</h3>
+      <p class="quiz-result-score" id="quizResultScore">0/5</p>
+      <p class="quiz-result-msg" id="quizResultText"></p>
+      <p class="quiz-result-meta" id="quizResultMeta"></p>
+      <button class="quiz-result-done" type="button" data-close-result>Done</button>
+    </div>
+  </div>
+
+  <div class="admin-modal-backdrop" id="adminLoginModal" aria-hidden="true">
+    <img src="media/Admin-nurse.png" class="Admin-nurse" alt="">
+    <section class="admin-login-modal-card" role="dialog" aria-modal="true" aria-labelledby="adminModalTitle">
+      <button class="admin-modal-close" type="button" data-admin-close aria-label="Close admin sign in">×</button>
+
+      <div class="admin-modal-brand">
+        <div class="admin-modal-shield">+</div>
+        <div>
+          <h3>Healthcare Admin</h3>
+          <p>Management Portal</p>
+        </div>
+      </div>
+
+      <h2 class="admin-modal-title" id="adminModalTitle">Admin Sign in</h2>
+
+      <form class="admin-modal-form" id="adminLoginForm">
+        <div class="admin-modal-form-group">
+          <div class="admin-modal-label-row">
+            <label for="adminModalUser">Username</label>
+          </div>
+          <div class="admin-modal-input-wrap">
+            <span class="admin-input-icon">👤</span>
+            <input id="adminModalUser" type="text" placeholder="Enter username" autocomplete="username" />
+          </div>
+        </div>
+
+        <div class="admin-modal-form-group">
+          <div class="admin-modal-label-row">
+            <label for="adminModalPassword">Password</label>
+          </div>
+          <div class="admin-modal-input-wrap">
+            <span class="admin-input-icon">🔒</span>
+            <input id="adminModalPassword" type="password" placeholder="Enter password" autocomplete="current-password" />
+            <button class="admin-password-toggle" type="button" id="adminPasswordToggle" aria-label="Show password">👁</button>
+          </div>
+        </div>
+
+        <button class="admin-modal-submit" type="submit">🔒 Sign in</button>
+        <button class="admin-modal-exit" type="button" data-admin-exit>Exit</button>
+      </form>
+
+      <button class="admin-add-admin-btn" type="button" id="adminAddAdminBtn">➕ Add Admin</button>
+
+      <div class="admin-add-admin-panel" id="adminAddAdminPanel" hidden>
+        <div class="admin-add-step" id="adminAddCodeStep">
+          <p class="admin-add-title">Authorized admin creation</p>
+          <div class="admin-add-row">
+            <label for="adminAddCode">Access code</label>
+            <input id="adminAddCode" type="password" placeholder="Enter access code" autocomplete="off" />
+          </div>
+          <div class="admin-add-action-row">
+            <button class="admin-add-confirm" type="button" id="adminAddCodeConfirm">Confirm Code</button>
+            <button class="admin-add-cancel" type="button" data-admin-add-cancel>Cancel</button>
+          </div>
+        </div>
+
+        <div class="admin-add-step" id="adminAddAccountStep" hidden>
+          <p class="admin-add-title">Create new admin login</p>
+          <div class="admin-add-row">
+            <label for="adminNewUsername">New Username</label>
+            <input id="adminNewUsername" type="text" placeholder="Enter new username" autocomplete="off" />
+          </div>
+          <div class="admin-add-row">
+            <label for="adminNewPassword">New Password</label>
+            <input id="adminNewPassword" type="password" placeholder="Enter new password" autocomplete="new-password" />
+          </div>
+          <div class="admin-add-action-row">
+            <button class="admin-add-save" type="button" id="adminSaveNewAdmin">Save Admin</button>
+            <button class="admin-add-cancel" type="button" data-admin-add-cancel>Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="admin-modal-note" id="adminModalNote" aria-live="polite"></p>
+    </section>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="js/cloud-sync.js"></script>
+
+  <script>
+
+    /* Admin panel (same as try.html) */
+    (function(){
+      const KEYS = {
+        questions: 'respiratoryChallengeQuestions',
+        results: 'respiratoryChallengeResults',
+        settings: 'respiratoryChallengeSettings'
+      };
+      const DEFAULT_SETTINGS = {
+        weekTitle: 'Weekly Tracheostomy Challenge',
+        isActive: true,
+        weekId: 'week_' + new Date().toISOString().slice(0, 10),
+        adminPassword: 'admin1234',
+        showAnswerAfterSubmit: 'no'
+      };
+
+      const $ = function(id){ return document.getElementById(id); };
+      const qsa = function(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); };
+
+      function showToast(message){
+        var el = $('toast');
+        if(!el) return;
+        el.textContent = message;
+        el.classList.add('show');
+        clearTimeout(showToast._t);
+        showToast._t = setTimeout(function(){ el.classList.remove('show'); }, 2600);
+      }
+      window.showToast = showToast;
+
+      function resultSignalCount(r){
+        if(!r) return 0;
+        if(typeof r.suspicious === 'number') return r.suspicious;
+        var s = r.signals || {};
+        return (s.tabSwitches || 0) + (s.copyAttempts || 0) + (s.rightClicks || 0) + (s.pasteAttempts || 0);
+      }
+
+      function isResultRejected(r){
+        return !!(r && (r.rejected || resultSignalCount(r) > 0));
+      }
+
+      function formatResultSignals(r){
+        var s = (r && r.signals) || {};
+        return 'Tabs: ' + (s.tabSwitches || 0) + ', Copy: ' + (s.copyAttempts || 0) +
+          ', Right: ' + (s.rightClicks || 0) + ', Paste: ' + (s.pasteAttempts || 0);
+      }
+
+      window.resultSignalCount = resultSignalCount;
+      window.isResultRejected = isResultRejected;
+      window.formatResultSignals = formatResultSignals;
+
+      function readJson(key, fallback){
+        try{
+          var v = JSON.parse(localStorage.getItem(key) || 'null');
+          return v == null ? fallback : v;
+        }catch(e){ return fallback; }
+      }
+      function writeJson(key, value){ localStorage.setItem(key, JSON.stringify(value)); }
+
+      function settings(){
+        var s = readJson(KEYS.settings, null);
+        if(s && typeof s === 'object') return Object.assign({}, DEFAULT_SETTINGS, s);
+        return Object.assign({}, DEFAULT_SETTINGS);
+      }
+      function saveSettingsObj(s){
+        writeJson(KEYS.settings, s);
+        if(window.RCCloudSync) window.RCCloudSync.pushState();
+      }
+
+      function getQuestions(){
+        var q = readJson(KEYS.questions, null);
+        if(Array.isArray(q) && q.length) return q;
+        var seed = [
+          { id:'q1', title:'Question 1', text:'What is the priority when suctioning a tracheostomy patient?', options:['Suction continuously for 60 seconds','Use sterile technique and limit suction time','No oxygen needed before suction','Suction only when SpO2 is 100%'], correctIndex:1, active:true },
+          { id:'q2', title:'Question 2', text:'Which action helps prevent tracheostomy tube obstruction?', options:['Keep cuff fully inflated at all times','Provide adequate humidification and airway clearance','Avoid cuff pressure checks','Remove inner cannula during meals'], correctIndex:1, active:true },
+          { id:'q3', title:'Question 3', text:'A patient with a new tracheostomy has sudden distress and absent breath sounds. First action?', options:['Give IV fluids','Assess airway patency and call for help','Place in Trendelenburg only','Start oral suction immediately'], correctIndex:1, active:true },
+          { id:'q4', title:'Question 4', text:'When changing tracheostomy ties, what is essential?', options:['Remove the old tie before securing the new one','Keep the tube secured and maintain airway','Deflate cuff completely first always','No need for two-person assist'], correctIndex:1, active:true },
+          { id:'q5', title:'Question 5', text:'Which finding should be reported immediately for a tracheostomy patient?', options:['Mild dry oral mucosa','Sudden bleeding, subcutaneous emphysema, or desaturation','Stable respiratory rate','Clear secretions after coughing'], correctIndex:1, active:true }
+        ];
+        writeJson(KEYS.questions, seed);
+        return seed;
+      }
+      function saveQuestions(list){
+        writeJson(KEYS.questions, list);
+        if(window.RCCloudSync) window.RCCloudSync.pushState();
+      }
+
+      function getResults(){
+        var r = readJson(KEYS.results, []);
+        return Array.isArray(r) ? r : [];
+      }
+      function saveResults(list){
+        writeJson(KEYS.results, list);
+        if(window.RCCloudSync) window.RCCloudSync.pushState();
+      }
+
+      function currentWeekResults(){
+        var weekId = settings().weekId;
+        return getResults().filter(function(r){ return r.weekId === weekId; });
+      }
+
+      var MAX_WEEKLY_ACTIVE = 5;
+
+      function getActiveQuestions(){
+        return getQuestions().filter(function(q){ return q.active; });
+      }
+
+      function countActiveQuestions(){
+        return getActiveQuestions().length;
+      }
+
+      function canActivateMore(){
+        return countActiveQuestions() < MAX_WEEKLY_ACTIVE;
+      }
+
+      function activeQuestion(){
+        var active = getActiveQuestions();
+        return active[0] || getQuestions()[0] || null;
+      }
+
+      function renderActiveQuestionsDropdown(){
+        var active = getActiveQuestions();
+        var optionsHtml = active.length
+          ? active.map(function(q, i){
+              return '<option value="' + q.id + '">' + (i + 1) + '. ' + escapeHTML(q.title || 'Untitled') + '</option>';
+            }).join('')
+          : '<option value="">No active questions yet</option>';
+        ['activeQuestionsDropdown', 'activeQuestionsDropdownQuestions', 'activeQuestionsDropdownQuestionsMobile'].forEach(function(id){
+          var sel = $(id);
+          if(!sel) return;
+          var prev = sel.value;
+          sel.innerHTML = optionsHtml;
+          if(prev && active.some(function(q){ return q.id === prev; })) sel.value = prev;
+        });
+        var countEl = $('activeQuestionsCount');
+        if(countEl) countEl.textContent = active.length + ' / ' + MAX_WEEKLY_ACTIVE;
+        updateActiveQuestionSummary();
+      }
+
+      function updateActiveQuestionSummary(){
+        var summary = $('activeQuestionSummary');
+        if(!summary) return;
+        var active = getActiveQuestions();
+        if(!active.length){
+          summary.textContent = 'Add up to 5 active questions for this week.';
+          return;
+        }
+        var sel = $('activeQuestionsDropdown') || $('activeQuestionsDropdownQuestions');
+        var q = active.find(function(x){ return x.id === (sel && sel.value); }) || active[0];
+        summary.textContent = (q.title || q.text.slice(0, 80)) + ' • ' + (q.timer || 45) + 's • ' + active.length + ' question(s) in weekly quiz';
+      }
+
+      
+      function escapeHTML(str){
+        return String(str == null ? '' : str).replace(/[&<>'"]/g, function(ch){
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'})[ch];
+        });
+      }
+
+      var imageDraft = '';
+
+      const ADMIN_STORAGE_KEY = 'respiratoryChallengeAdmins';
+      const ADMIN_AUTH_CODE = 'Hajer@2007';
+
+      function getStoredAdmins(){
+        try{
+          var saved = JSON.parse(localStorage.getItem(ADMIN_STORAGE_KEY) || '[]');
+          return Array.isArray(saved) ? saved : [];
+        }catch(e){ return []; }
+      }
+
+      function saveStoredAdmins(admins){
+        localStorage.setItem(ADMIN_STORAGE_KEY, JSON.stringify(admins));
+      }
+
+      function showModalNote(message, type){
+        var note = $('adminModalNote');
+        if(!note) return;
+        note.textContent = message || '';
+        note.classList.remove('is-error', 'is-success');
+        if(type) note.classList.add(type === 'success' ? 'is-success' : 'is-error');
+      }
+
+      function resetAddAdminPanel(){
+        if($('adminAddCode')) $('adminAddCode').value = '';
+        if($('adminNewUsername')) $('adminNewUsername').value = '';
+        if($('adminNewPassword')) $('adminNewPassword').value = '';
+        if($('adminAddCodeStep')) $('adminAddCodeStep').hidden = false;
+        if($('adminAddAccountStep')) $('adminAddAccountStep').hidden = true;
+      }
+
+      function setAdminMobileBackground(hidden){
+        if(!window.matchMedia('(max-width: 768px)').matches) return;
+        document.body.classList.toggle('admin-mobile-bg-off', !!hidden);
+      }
+
+      function openAdmin(){
+        var modal = $('adminLoginModal');
+        if(!modal) return;
+        if($('adminModalUser')) $('adminModalUser').value = '';
+        if($('adminModalPassword')) $('adminModalPassword').value = '';
+        showModalNote('', '');
+        resetAddAdminPanel();
+        if($('adminAddAdminPanel')) $('adminAddAdminPanel').hidden = true;
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        setAdminMobileBackground(true);
+        setTimeout(function(){ if($('adminModalUser')) $('adminModalUser').focus(); }, 120);
+      }
+
+      function closeAdminModal(){
+        var modal = $('adminLoginModal');
+        if(!modal) return;
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        showModalNote('', '');
+        resetAddAdminPanel();
+        if(!document.body.classList.contains('admin-mode')){
+          setAdminMobileBackground(false);
+        }
+      }
+
+      function setMobileViewTab(view){
+        var staffTab = $('mobileStaffTab');
+        var adminTab = $('mobileAdminTab');
+        if(staffTab){
+          staffTab.classList.toggle('active', view === 'staff');
+          staffTab.setAttribute('aria-selected', view === 'staff' ? 'true' : 'false');
+        }
+        if(adminTab){
+          adminTab.classList.toggle('active', view === 'admin');
+          adminTab.setAttribute('aria-selected', view === 'admin' ? 'true' : 'false');
+        }
+      }
+
+      function showAdminPanel(){
+        document.body.classList.add('admin-mode');
+        document.body.style.overflow = 'auto';
+        closeAdminModal();
+        if($('adminLoginForm')) $('adminLoginForm').reset();
+        var staffBtn = $('staffHomeBtn');
+        if(staffBtn) staffBtn.hidden = false;
+        setMobileViewTab('admin');
+        setAdminMobileBackground(true);
+        switchAdminPage('adminDashboard');
+        renderAdminAll();
+        window.scrollTo(0, 0);
+      }
+
+      function hideAdminPanel(){
+        document.body.classList.remove('admin-mode');
+        document.body.style.overflow = '';
+        var staffBtn = $('staffHomeBtn');
+        if(staffBtn) staffBtn.hidden = true;
+        setMobileViewTab('staff');
+        setAdminMobileBackground(false);
+        var toolbar = $('adminMobileToolbar');
+        if(toolbar) toolbar.hidden = true;
+      }
+
+      function tryAdminLogin(username, password){
+        var admins = getStoredAdmins();
+        var matched = admins.find(function(admin){
+          return String(admin.username).trim().toLowerCase() === String(username).trim().toLowerCase() &&
+            String(admin.password) === String(password);
+        });
+        if(matched){
+          sessionStorage.setItem('activeAdminUser', String(matched.username).trim());
+          showAdminPanel();
+          
+          return true;
+        }
+        if(!admins.length){
+          showModalNote('No admin account added yet. Click Add Admin first.', 'error');
+          return false;
+        }
+        showModalNote('Invalid username or password.', 'error');
+        return false;
+      }
+
+      function adminLogout(){
+        hideAdminPanel();
+        showToast('Logged out.');
+      }
+
+      var ADMIN_MOBILE_PAGES = {
+        adminDashboard: { title: 'Admin Dashboard', sub: 'Manage challenges, questions and participants', showToolbar: false },
+        adminQuestions: { title: 'Question Bank', sub: 'Add New Question', showToolbar: true },
+        adminResults: { title: 'Results & Monitoring', sub: 'Attempts and integrity signals', showToolbar: true },
+        adminSettings: { title: 'Settings', sub: 'Password and participation rules', showToolbar: true }
+      };
+
+      function isAdminMobileView(){
+        return window.matchMedia('(max-width: 768px)').matches;
+      }
+
+      function updateAdminMobileChrome(page){
+        if(!isAdminMobileView()) return;
+        var meta = ADMIN_MOBILE_PAGES[page] || ADMIN_MOBILE_PAGES.adminDashboard;
+        var toolbar = $('adminMobileToolbar');
+        if(toolbar) toolbar.hidden = !meta.showToolbar;
+        var titleEl = $('adminMobileTitle');
+        var subEl = $('adminMobileSub');
+        if(titleEl) titleEl.textContent = meta.title;
+        if(subEl) subEl.textContent = meta.sub;
+        var adminBtn = $('adminBtn');
+        if(adminBtn) adminBtn.textContent = '🛡️ Admin Mode';
+      }
+
+      function switchAdminPage(page){
+        qsa('.admin-tab').forEach(function(b){
+          b.classList.toggle('active', b.dataset.page === page);
+        });
+        qsa('#adminScreen .admin-page').forEach(function(p){
+          p.classList.toggle('active', p.id === page);
+        });
+        updateAdminMobileChrome(page);
+        renderAdminAll();
+      }
+
+      function renderAdminAll(){
+        renderAdminStats();
+        renderActiveQuestionsDropdown();
+        renderQuestionList();
+        renderResultsTable();
+        renderSettingsForm();
+        var pill = $('activeWeekPill');
+        var st = settings();
+        if(pill) pill.textContent = st.isActive ? ('✨ ' + (st.weekTitle || 'Challenge Ready')) : '⏸ Challenge Paused';
+      }
+
+      function renderAdminStats(){
+        var results = currentWeekResults();
+        var pctSum = results.reduce(function(s, r){ return s + (r.score / r.total * 100); }, 0);
+        var attempts = String(results.length);
+        var rate = results.length ? Math.round(pctSum / results.length) + '%' : '0%';
+        var suspicious = String(results.reduce(function(sum, r){
+          return sum + resultSignalCount(r);
+        }, 0));
+        var uniqueStaff = {};
+        results.forEach(function(r){
+          if(r && r.staffNo) uniqueStaff[String(r.staffNo).trim()] = 1;
+        });
+        var participants = String(Object.keys(uniqueStaff).length);
+        var activeN = String(countActiveQuestions());
+        if($('adminTotalAttempts')) $('adminTotalAttempts').textContent = attempts;
+        if($('adminCorrectRate')) $('adminCorrectRate').textContent = rate;
+        if($('adminSuspicious')) $('adminSuspicious').textContent = suspicious;
+        if($('adminStatActive')) $('adminStatActive').textContent = activeN;
+        if($('adminStatParticipants')) $('adminStatParticipants').textContent = participants;
+        if($('adminStatCompleted')) $('adminStatCompleted').textContent = attempts;
+        if($('adminStatTop')) $('adminStatTop').textContent = rate;
+        updateActiveQuestionSummary();
+      }
+
+      function renderQuestionList(){
+        var list = getQuestions().slice().reverse();
+        var box = $('questionList');
+        if(!box) return;
+        box.innerHTML = list.length ? list.map(function(q){
+          return '<div class="q-item"><div class="q-top"><div><div class="q-title">' + escapeHTML(q.title || 'Untitled') + '</div>' +
+            '<p class="muted" style="margin-top:6px;line-height:1.5">' + escapeHTML(q.text).slice(0, 190) + (q.text.length > 190 ? '...' : '') + '</p></div>' +
+            '<div class="q-meta"><span class="badge ' + (q.active ? 'green' : 'red') + '">' + (q.active ? 'Active' : 'Inactive') + '</span>' +
+            (q.timer ? '<span class="badge">' + q.timer + 's</span>' : '') +
+            (q.image ? '<span class="badge yellow">Image</span>' : '') +
+            '</div></div>' +
+            (q.image ? '<div class="q-item-thumb"><img src="' + q.image.replace(/"/g, '&quot;') + '" alt=""></div>' : '') +
+            '<div class="q-actions">' +
+            '<button type="button" class="btn small ' + (q.active ? 'danger' : 'green') + '" data-q-action="toggle" data-q-id="' + q.id + '">' + (q.active ? 'Deactivate' : 'Activate') + '</button>' +
+            '<button type="button" class="btn danger small" data-q-action="delete" data-q-id="' + q.id + '">Delete</button>' +
+            '</div></div>';
+        }).join('') : '<div class="empty">No questions yet. Add your first weekly challenge from the form above.</div>';
+      }
+
+      function renderResultsTable(){
+        var rows = currentWeekResults().slice().sort(function(a,b){
+          return new Date(b.completedAt) - new Date(a.completedAt);
+        });
+        var weekTitle = settings().weekTitle || 'Active Week';
+        $('adminResultsTable').innerHTML = rows.length ? rows.map(function(r){
+          var passed = (r.score / r.total) >= 0.6;
+          var rejected = isResultRejected(r);
+          var sigN = resultSignalCount(r);
+          return '<tr><td>' + new Date(r.completedAt).toLocaleString() + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + escapeHTML(weekTitle) + '</td>' +
+            '<td><span class="badge ' + (passed ? 'green' : 'red') + '">' + r.score + '/' + r.total + '</span></td>' +
+            '<td>' + r.timeSeconds + 's</td><td><span class="badge ' + (rejected ? 'yellow' : 'green') + '">' + (rejected ? 'Rejected' : 'Clean') + '</span><br><span class="muted" style="font-size:11px">' + formatResultSignals(r) + (sigN ? ' · ' + sigN + ' signal(s)' : '') + '</span></td></tr>';
+        }).join('') : '<tr><td colspan="8" class="muted">No attempts for this week yet.</td></tr>';
+      }
+
+      function renderSettingsForm(){
+        var st = settings();
+        $('adminPasswordInput').value = st.adminPassword || 'admin1234';
+        $('showAnswerSetting').value = st.showAnswerAfterSubmit || 'no';
+      }
+
+      function uid(){ return 'id_' + Date.now() + '_' + Math.random().toString(36).slice(2, 8); }
+
+      function updateQuestionImagePreview(src){
+        var wrap = $('qImagePreviewWrap');
+        var img = $('qImagePreview');
+        if(!wrap || !img) return;
+        if(src){
+          img.src = src;
+          wrap.hidden = false;
+        }else{
+          img.removeAttribute('src');
+          wrap.hidden = true;
+        }
+      }
+
+      function resetQuestionForm(){
+        ['qTitle','qText','opt1','opt2','opt3','opt4','qExplain','qStart','qEnd'].forEach(function(id){
+          var el = $(id); if(el) el.value = '';
+        });
+        if($('qTimer')) $('qTimer').value = '45';
+        if($('correctOpt')) $('correctOpt').value = '0';
+        if($('qImage')) $('qImage').value = '';
+        imageDraft = '';
+        updateQuestionImagePreview('');
+      }
+
+      function saveQuestion(activate){
+        var title = $('qTitle').value.trim();
+        var text = $('qText').value.trim();
+        var opts = [$('opt1').value.trim(), $('opt2').value.trim(), $('opt3').value.trim(), $('opt4').value.trim()];
+        var correctIndex = Number($('correctOpt').value);
+        var explanation = $('qExplain').value.trim();
+        var timer = Number($('qTimer').value) || 45;
+        if(!title || !text || opts.some(function(o){ return !o; })){
+          showToast('Please complete title, question and all options.');
+          return;
+        }
+        var list = getQuestions();
+        if(activate && !canActivateMore()){
+          showToast('Maximum ' + MAX_WEEKLY_ACTIVE + ' active questions per week. Deactivate one first.');
+          return;
+        }
+        list.push({
+          id: uid(),
+          title: title,
+          text: text,
+          options: opts,
+          correctIndex: correctIndex,
+          explanation: explanation,
+          timer: timer,
+          startDate: $('qStart').value || new Date().toISOString().slice(0, 10),
+          endDate: $('qEnd').value || '2030-12-31',
+          active: !!activate,
+          image: imageDraft || '',
+          createdAt: new Date().toISOString()
+        });
+        saveQuestions(list);
+        resetQuestionForm();
+        renderAdminAll();
+        if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+        showToast(activate ? ('Question saved & active (' + countActiveQuestions() + '/' + MAX_WEEKLY_ACTIVE + ').') : 'Question saved.');
+      }
+
+      var pendingDeleteQuestionId = null;
+
+      function openDeleteQuestionModal(id){
+        var q = getQuestions().find(function(item){ return item.id === id; });
+        if(!q) return;
+        pendingDeleteQuestionId = id;
+        var label = q.title || (q.text ? q.text.slice(0, 80) : 'Untitled question');
+        $('adminDeleteModalText').textContent = 'Permanently remove “' + label + '”? This cannot be undone.';
+        var modal = $('adminDeleteModal');
+        modal.classList.add('show');
+        modal.setAttribute('aria-hidden', 'false');
+      }
+
+      function closeDeleteQuestionModal(){
+        pendingDeleteQuestionId = null;
+        var modal = $('adminDeleteModal');
+        modal.classList.remove('show');
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      function confirmDeleteQuestion(){
+        if(!pendingDeleteQuestionId) return;
+        var id = pendingDeleteQuestionId;
+        saveQuestions(getQuestions().filter(function(q){ return q.id !== id; }));
+        closeDeleteQuestionModal();
+        renderAdminAll();
+        if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+        showToast('Question deleted.');
+      }
+
+      function handleQuestionBankClick(event){
+        var btn = event.target.closest('[data-q-action]');
+        if(!btn) return;
+        var id = btn.dataset.qId;
+        var action = btn.dataset.qAction;
+        var list = getQuestions();
+        if(action === 'toggle'){
+          var target = list.find(function(q){ return q.id === id; });
+          if(!target) return;
+          if(target.active){
+            if(!confirm('Remove this question from the weekly active set?')) return;
+            list = list.map(function(q){ return q.id === id ? Object.assign({}, q, {active:false}) : q; });
+          }else{
+            if(!canActivateMore()){
+              showToast('Maximum ' + MAX_WEEKLY_ACTIVE + ' active questions per week.');
+              return;
+            }
+            if(!confirm('Add to weekly active set? (' + (countActiveQuestions() + 1) + '/' + MAX_WEEKLY_ACTIVE + ')')) return;
+            list = list.map(function(q){ return q.id === id ? Object.assign({}, q, {active:true}) : q; });
+          }
+          saveQuestions(list);
+          renderAdminAll();
+          if(window.ChallengeStore) window.ChallengeStore._refreshQuestions();
+          showToast('Question updated.');
+        }
+        if(action === 'delete'){
+          openDeleteQuestionModal(id);
+        }
+      }
+
+      function getExportResultsRows(){
+        var rows = currentWeekResults();
+        if(rows.length) return { rows: rows, scope: 'current week' };
+        var all = getResults();
+        if(all.length) return { rows: all, scope: 'all saved results' };
+        return { rows: [], scope: '' };
+      }
+
+      function closePdfExport(){
+        var overlay = document.getElementById('pdfExportOverlay');
+        document.body.classList.remove('pdf-print-mode');
+        if(overlay){
+          overlay.classList.remove('show');
+          overlay.setAttribute('aria-hidden', 'true');
+        }
+        document.body.style.overflow = '';
+      }
+
+      function runPdfPrint(){
+        document.body.classList.add('pdf-print-mode');
+        var afterPrint = function(){
+          document.body.classList.remove('pdf-print-mode');
+          window.removeEventListener('afterprint', afterPrint);
+        };
+        window.addEventListener('afterprint', afterPrint);
+        setTimeout(function(){ window.print(); }, 150);
+      }
+
+      function exportPDF(){
+        var pack = getExportResultsRows();
+        var rows = pack.rows;
+        if(!rows.length){
+          showToast('No results to export. Complete a challenge first.');
+          return;
+        }
+        var weekTitle = settings().weekTitle || 'Weekly Challenge';
+        var generated = new Date().toLocaleString();
+        var sorted = rows.slice().sort(function(a,b){
+          if(b.score !== a.score) return b.score - a.score;
+          return a.timeSeconds - b.timeSeconds;
+        });
+        var bodyRows = sorted.map(function(r, i){
+          var rejected = isResultRejected(r);
+          return '<tr><td>' + (i + 1) + '</td><td>' + escapeHTML(new Date(r.completedAt).toLocaleString()) + '</td><td>' + escapeHTML(r.name) + '</td><td>' + escapeHTML(r.staffNo) + '</td><td>' + escapeHTML(r.unit) + '</td><td>' + escapeHTML(weekTitle) + '</td><td>' + r.score + '/' + r.total + '</td><td>' + r.timeSeconds + 's</td><td>' + (rejected ? 'Rejected' : 'Clean') + '</td></tr>';
+        }).join('');
+        var body = document.getElementById('pdfExportBody');
+        var overlay = document.getElementById('pdfExportOverlay');
+        if(!body || !overlay){
+          showToast('Export panel missing. Refresh the page.');
+          return;
+        }
+        body.innerHTML =
+          '<h1>Respiratory Care Weekly Challenge — Results</h1>' +
+          '<p class="meta"><strong>HD WEEK:</strong> ' + escapeHTML(weekTitle) + '<br>' +
+          '<strong>Generated:</strong> ' + escapeHTML(generated) + '<br>' +
+          '<strong>Records:</strong> ' + sorted.length + ' (' + escapeHTML(pack.scope) + ')</p>' +
+          '<table><thead><tr><th>#</th><th>Date</th><th>Name</th><th>Staff No.</th><th>Unit</th><th>HD WEEK</th><th>Score</th><th>Time</th><th>Status</th></tr></thead><tbody>' +
+          bodyRows + '</tbody></table>';
+        overlay.classList.add('show');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        overlay.scrollTop = 0;
+        showToast('Click «Print / Save as PDF» then choose Save as PDF.');
+      }
+
+      function clearAttempts(){
+        if(prompt('Delete all attempts permanently? Type DELETE to confirm.') !== 'DELETE') return;
+        var weekId = settings().weekId;
+        saveResults(getResults().filter(function(r){ return r.weekId !== weekId; }));
+        renderAdminAll();
+        showToast('Attempts cleared.');
+      }
+
+      function saveSettings(){
+        var pass = $('adminPasswordInput').value.trim();
+        if(pass.length < 4){ showToast('Password should be at least 4 characters.'); return; }
+        var st = settings();
+        st.adminPassword = pass;
+        st.showAnswerAfterSubmit = $('showAnswerSetting').value;
+        saveSettingsObj(st);
+        showToast('Settings saved.');
+      }
+
+      function handleImageUpload(e){
+        var file = e.target.files[0];
+        if(!file){
+          imageDraft = '';
+          updateQuestionImagePreview('');
+          return;
+        }
+        if(!file.type || file.type.indexOf('image/') !== 0){
+          showToast('Please choose an image file (PNG, JPG, etc.).');
+          if($('qImage')) $('qImage').value = '';
+          return;
+        }
+        var reader = new FileReader();
+        reader.onload = function(){
+          imageDraft = reader.result;
+          updateQuestionImagePreview(imageDraft);
+          showToast('Image ready. Save the question to keep it.');
+        };
+        reader.onerror = function(){
+          showToast('Could not read image. Try another file.');
+        };
+        reader.readAsDataURL(file);
+      }
+
+      $('adminBtn').addEventListener('click', function(e){
+        if(document.body.classList.contains('admin-mode')){
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          showAdminPanel();
+        }else{
+          e.preventDefault();
+          e.stopImmediatePropagation();
+          openAdmin();
+        }
+      }, true);
+
+      qsa('[data-admin-close]').forEach(function(btn){
+        btn.addEventListener('click', closeAdminModal);
+      });
+      qsa('[data-admin-exit]').forEach(function(btn){
+        btn.addEventListener('click', closeAdminModal);
+      });
+
+      if($('adminLoginModal')){
+        $('adminLoginModal').addEventListener('click', function(event){
+          if(event.target === $('adminLoginModal')) closeAdminModal();
+        });
+      }
+
+      document.addEventListener('keydown', function(event){
+        if(event.key === 'Escape' && $('adminLoginModal') && $('adminLoginModal').classList.contains('show')){
+          closeAdminModal();
+        }
+      });
+
+      if($('adminPasswordToggle') && $('adminModalPassword')){
+        $('adminPasswordToggle').addEventListener('click', function(){
+          var input = $('adminModalPassword');
+          var isHidden = input.type === 'password';
+          input.type = isHidden ? 'text' : 'password';
+          $('adminPasswordToggle').setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
+        });
+      }
+
+      if($('adminLoginForm')){
+        $('adminLoginForm').addEventListener('submit', function(event){
+          event.preventDefault();
+          tryAdminLogin($('adminModalUser').value, $('adminModalPassword').value);
+        });
+      }
+
+      if($('adminAddAdminBtn') && $('adminAddAdminPanel')){
+        $('adminAddAdminBtn').addEventListener('click', function(){
+          $('adminAddAdminPanel').hidden = !$('adminAddAdminPanel').hidden;
+          resetAddAdminPanel();
+          showModalNote('', '');
+          if(!$('adminAddAdminPanel').hidden){
+            setTimeout(function(){ if($('adminAddCode')) $('adminAddCode').focus(); }, 80);
+          }
+        });
+      }
+
+      if($('adminAddCodeConfirm')){
+        $('adminAddCodeConfirm').addEventListener('click', function(){
+          var code = $('adminAddCode') ? $('adminAddCode').value.trim() : '';
+          if(code !== ADMIN_AUTH_CODE){
+            showModalNote('Incorrect access code.', 'error');
+            return;
+          }
+          if($('adminAddCodeStep')) $('adminAddCodeStep').hidden = true;
+          if($('adminAddAccountStep')) $('adminAddAccountStep').hidden = false;
+          showModalNote('Code accepted. Enter username and password for the new admin.', 'success');
+          setTimeout(function(){ if($('adminNewUsername')) $('adminNewUsername').focus(); }, 80);
+        });
+      }
+
+      if($('adminSaveNewAdmin')){
+        $('adminSaveNewAdmin').addEventListener('click', function(){
+          var username = $('adminNewUsername') ? $('adminNewUsername').value.trim() : '';
+          var password = $('adminNewPassword') ? $('adminNewPassword').value : '';
+          if(!username || !password){
+            showModalNote('Please enter username and password.', 'error');
+            return;
+          }
+          var admins = getStoredAdmins();
+          if(admins.some(function(a){ return String(a.username).toLowerCase() === username.toLowerCase(); })){
+            showModalNote('This username already exists.', 'error');
+            return;
+          }
+          admins.push({ username: username, password: password, createdAt: new Date().toISOString() });
+          saveStoredAdmins(admins);
+          if($('adminAddAdminPanel')) $('adminAddAdminPanel').hidden = true;
+          resetAddAdminPanel();
+          showModalNote('Admin added successfully. You can sign in now.', 'success');
+        });
+      }
+
+      qsa('[data-admin-add-cancel]').forEach(function(btn){
+        btn.addEventListener('click', function(){
+          if($('adminAddAdminPanel')) $('adminAddAdminPanel').hidden = true;
+          resetAddAdminPanel();
+          showModalNote('', '');
+        });
+      });
+
+      if(sessionStorage.getItem('activeAdminUser')){
+        showAdminPanel();
+      }
+
+      $('adminLogout').addEventListener('click', function(){
+        sessionStorage.removeItem('activeAdminUser');
+        adminLogout();
+      });
+      $('saveQuestionBtn').addEventListener('click', function(){ saveQuestion(false); });
+      $('saveActivateQuestionBtn').addEventListener('click', function(){ saveQuestion(true); });
+      $('resetQuestionForm').addEventListener('click', resetQuestionForm);
+      if($('resetQuestionFormMobile')) $('resetQuestionFormMobile').addEventListener('click', resetQuestionForm);
+      if($('adminMobileBack')) $('adminMobileBack').addEventListener('click', function(){ switchAdminPage('adminDashboard'); });
+      if($('adminMobileLogout')) $('adminMobileLogout').addEventListener('click', function(){
+        sessionStorage.removeItem('activeAdminUser');
+        adminLogout();
+      });
+      if($('adminMobileLeaderboard')){
+        $('adminMobileLeaderboard').addEventListener('click', function(){
+          var lbBtn = $('viewLeaderboardBtnMobile') || $('viewLeaderboardBtn');
+          if(lbBtn) lbBtn.click();
+        });
+      }
+      if($('clearAttemptsBtnMobile')) $('clearAttemptsBtnMobile').addEventListener('click', function(){
+        if($('clearAttemptsBtn')) $('clearAttemptsBtn').click();
+      });
+      window.addEventListener('resize', function(){
+        if(document.body.classList.contains('admin-mode')){
+          var activePage = document.querySelector('#adminScreen .admin-page.active');
+          updateAdminMobileChrome(activePage ? activePage.id : 'adminDashboard');
+          if(!isAdminMobileView() && $('adminBtn')) $('adminBtn').textContent = 'Admin';
+        }
+      });
+      $('adminDeleteCancel').addEventListener('click', closeDeleteQuestionModal);
+      $('adminDeleteConfirm').addEventListener('click', confirmDeleteQuestion);
+      $('adminDeleteModal').addEventListener('click', function(e){
+        if(e.target === $('adminDeleteModal')) closeDeleteQuestionModal();
+      });
+      $('exportCsvBtn').addEventListener('click', function(e){
+        e.preventDefault();
+        exportPDF();
+      });
+      var pdfPrintBtn = document.getElementById('pdfExportPrintBtn');
+      var pdfCloseBtn = document.getElementById('pdfExportCloseBtn');
+      if(pdfPrintBtn) pdfPrintBtn.addEventListener('click', runPdfPrint);
+      if(pdfCloseBtn) pdfCloseBtn.addEventListener('click', closePdfExport);
+      var pdfOverlay = document.getElementById('pdfExportOverlay');
+      if(pdfOverlay){
+        pdfOverlay.addEventListener('click', function(e){
+          if(e.target === pdfOverlay) closePdfExport();
+        });
+      }
+      $('clearAttemptsBtn').addEventListener('click', clearAttempts);
+      $('saveSettingsBtn').addEventListener('click', saveSettings);
+      if($('qImage')) $('qImage').addEventListener('change', handleImageUpload);
+      if($('qImageRemove')){
+        $('qImageRemove').addEventListener('click', function(){
+          imageDraft = '';
+          if($('qImage')) $('qImage').value = '';
+          updateQuestionImagePreview('');
+          showToast('Image removed from draft.');
+        });
+      }
+      $('questionList').addEventListener('click', handleQuestionBankClick);
+      qsa('.admin-tab').forEach(function(btn){
+        btn.addEventListener('click', function(){ switchAdminPage(btn.dataset.page); });
+      });
+
+      ['activeQuestionsDropdown', 'activeQuestionsDropdownQuestions', 'activeQuestionsDropdownQuestionsMobile'].forEach(function(id){
+        var sel = $(id);
+        if(sel) sel.addEventListener('change', updateActiveQuestionSummary);
+      });
+
+      var staffHomeBtn = $('staffHomeBtn');
+      if(staffHomeBtn){
+        staffHomeBtn.addEventListener('click', function(e){
+          e.preventDefault();
+          hideAdminPanel();
+        });
+      }
+
+      if($('mobileStaffTab')){
+        $('mobileStaffTab').addEventListener('click', function(){
+          hideAdminPanel();
+        });
+      }
+      if($('mobileAdminTab')){
+        $('mobileAdminTab').addEventListener('click', function(){
+          if(sessionStorage.getItem('activeAdminUser')){
+            showAdminPanel();
+          }else{
+            openAdmin();
+          }
+        });
+      }
+      if($('mobileJoinBtn')){
+        $('mobileJoinBtn').addEventListener('click', function(){
+          var card = document.querySelector('.glass.entry-card');
+          if(card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          var nameInput = $('staffName');
+          if(nameInput) setTimeout(function(){ nameInput.focus(); }, 350);
+        });
+      }
+
+      function refreshFromCloud(){
+        renderAdminAll();
+      }
+
+      window.addEventListener('rc-cloud-updated', refreshFromCloud);
+
+      function bootAppData(){
+        getQuestions();
+        renderAdminAll();
+      }
+
+      var cloudPill = $('cloudSyncPill');
+      if(cloudPill) cloudPill.hidden = false;
+
+      if(window.RCCloudSync && window.RCCloudSync.isConfigured()){
+        window.RCCloudSync.init().then(function(ok){
+          if(ok) showToast('Cloud connected — data is shared with everyone.');
+          bootAppData();
+        });
+      }else{
+        bootAppData();
+      }
+    })();
+
+    /* Challenge data store for staff quiz */
+    (function(){
+      const KEYS = {
+        questions: 'respiratoryChallengeQuestions',
+        results: 'respiratoryChallengeResults',
+        settings: 'respiratoryChallengeSettings'
+      };
+
+      function readJson(key, fallback){
+        try{
+          var v = JSON.parse(localStorage.getItem(key) || 'null');
+          return v == null ? fallback : v;
+        }catch(e){ return fallback; }
+      }
+
+      function getSettings(){
+        var s = readJson(KEYS.settings, null);
+        if(s && typeof s === 'object') return s;
+        var weekId = 'week_' + new Date().toISOString().slice(0, 10);
+        return { weekTitle:'Weekly Tracheostomy Challenge', isActive:true, weekId:weekId, adminPassword:'admin1234', showAnswerAfterSubmit:'no' };
+      }
+
+      function getQuestions(){
+        var q = readJson(KEYS.questions, null);
+        return Array.isArray(q) && q.length ? q : [];
+      }
+
+      function getResults(){
+        var r = readJson(KEYS.results, []);
+        return Array.isArray(r) ? r : [];
+      }
+
+      function currentWeekResults(){
+        var weekId = getSettings().weekId;
+        return getResults().filter(function(r){ return r.weekId === weekId; });
+      }
+
+      window.ChallengeStore = {
+        getSettings: getSettings,
+        getQuestions: function(){
+          var all = getQuestions();
+          var active = all.filter(function(q){ return q.active; });
+          if(active.length) return active.slice(0, 5);
+          return all.slice(0, 5);
+        },
+        getResults: getResults,
+        currentWeekResults: currentWeekResults,
+        _refreshQuestions: function(){},
+        saveResult: function(entry){
+          var all = getResults();
+          all.push(entry);
+          localStorage.setItem(KEYS.results, JSON.stringify(all));
+          if(window.RCCloudSync && window.RCCloudSync.isEnabled && window.RCCloudSync.isEnabled()){
+            window.RCCloudSync.pushState();
+          }
+        }
+      };
+    })();
+
+
+    /* Staff challenge flow */
+    (function(){
+      const startBtn = document.getElementById('startBtn');
+      const viewLbBtn = document.getElementById('viewLeaderboardBtn');
+      const quizOverlay = document.getElementById('quizOverlay');
+      const lbOverlay = document.getElementById('leaderboardOverlay');
+      const resultOverlay = document.getElementById('quizResultOverlay');
+
+      let quiz = {
+        questions:[], index:0, answers:[], startedAt:0, player:{},
+        timerInterval:null, timeLeft:0, questionDuration:45,
+        signals:{ tabSwitches:0, copyAttempts:0, rightClicks:0, pasteAttempts:0 }
+      };
+
+      function isQuizActive(){
+        var el = document.getElementById('quizOverlay');
+        return el && el.classList.contains('show');
+      }
+
+      function freshQuizSignals(){
+        return { tabSwitches:0, copyAttempts:0, rightClicks:0, pasteAttempts:0 };
+      }
+
+      function quizSignalTotal(){
+        var s = quiz.signals || freshQuizSignals();
+        return (s.tabSwitches || 0) + (s.copyAttempts || 0) + (s.rightClicks || 0) + (s.pasteAttempts || 0);
+      }
+
+      function staffToast(message){
+        if(typeof window.showToast === 'function') window.showToast(message);
+      }
+
+      function updateQuizSecurityNote(){
+        var note = document.getElementById('quizSecurityNote');
+        if(!note) return;
+        var s = quiz.signals || freshQuizSignals();
+        var total = quizSignalTotal();
+        if(total > 0){
+          note.classList.add('has-signal');
+          note.textContent = 'Security alert: ' + total + ' signal(s) detected (tabs ' + (s.tabSwitches||0) +
+            ', copy ' + (s.copyAttempts||0) + ', right-click ' + (s.rightClicks||0) + ', paste ' + (s.pasteAttempts||0) + '). Attempt will be rejected.';
+        }else{
+          note.classList.remove('has-signal');
+          note.textContent = 'Independent attempt only. Tab switch, copy, paste, and right-click are monitored.';
+        }
+      }
+
+      function clearQuizTimer(){
+        if(quiz.timerInterval){
+          clearInterval(quiz.timerInterval);
+          quiz.timerInterval = null;
+        }
+      }
+
+      function formatQuizTime(seconds){
+        var s = Math.max(0, Math.floor(seconds));
+        var m = Math.floor(s / 60);
+        var r = s % 60;
+        return m > 0 ? (m + ':' + String(r).padStart(2, '0')) : String(r);
+      }
+
+      function updateQuizTimerDisplay(){
+        var el = document.getElementById('quizTimer');
+        var bar = document.getElementById('quizTimerBar');
+        if(el){
+          el.textContent = formatQuizTime(quiz.timeLeft);
+          el.classList.toggle('warning', quiz.timeLeft <= 10 && quiz.timeLeft > 5);
+          el.classList.toggle('danger', quiz.timeLeft <= 5);
+        }
+        if(bar && quiz.questionDuration){
+          var pct = Math.max(0, (quiz.timeLeft / quiz.questionDuration) * 100);
+          bar.style.width = pct + '%';
+          bar.classList.toggle('warning', quiz.timeLeft <= 10 && quiz.timeLeft > 5);
+          bar.classList.toggle('danger', quiz.timeLeft <= 5);
+        }
+      }
+
+      function handleQuizTimeUp(){
+        if(quiz.answers[quiz.index] == null) quiz.answers[quiz.index] = -1;
+        if(quiz.index < quiz.questions.length - 1){
+          quiz.index++;
+          renderQuizQuestion();
+        }else{
+          finishQuiz();
+        }
+      }
+
+      function startQuestionTimer(){
+        clearQuizTimer();
+        var q = quiz.questions[quiz.index];
+        quiz.questionDuration = Math.max(10, Number(q.timer) || 45);
+        quiz.timeLeft = quiz.questionDuration;
+        updateQuizTimerDisplay();
+        quiz.timerInterval = setInterval(function(){
+          quiz.timeLeft--;
+          updateQuizTimerDisplay();
+          if(quiz.timeLeft <= 0){
+            clearQuizTimer();
+            handleQuizTimeUp();
+          }
+        }, 1000);
+      }
+
+      function openOverlay(el){
+        el.classList.add('show');
+        el.setAttribute('aria-hidden','false');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeOverlay(el){
+        if(el === quizOverlay) clearQuizTimer();
+        el.classList.remove('show');
+        el.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+      }
+
+      function lbEsc(str){
+        return String(str == null ? '' : str).replace(/[&<>'"]/g, function(ch){
+          return ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#039;','"':'&quot;'})[ch];
+        });
+      }
+
+      var LB_NURSE_IMG = 'media/Admin-nurse.png';
+
+      function sortedLeaderboard(store){
+        var okResult = window.isResultRejected || function(){ return false; };
+        return store.currentWeekResults()
+          .filter(function(r){
+            return !okResult(r);
+          })
+          .slice()
+          .sort(function(a, b){
+            if(b.score !== a.score) return b.score - a.score;
+            if(a.timeSeconds !== b.timeSeconds) return a.timeSeconds - b.timeSeconds;
+            var ta = a.completedAt ? new Date(a.completedAt).getTime() : 0;
+            var tb = b.completedAt ? new Date(b.completedAt).getTime() : 0;
+            return ta - tb;
+          })
+          .slice(0, 3);
+      }
+
+      function lbRankBadge(rank){
+        var icons = { 1: '🏆', 2: '🥈', 3: '🎖️' };
+        var labels = { 1: '1st', 2: '2nd', 3: '3rd' };
+        return '<div class="lb-w-rank-badge">' +
+          '<span class="lb-w-rank-icon" aria-hidden="true">' + icons[rank] + '</span>' +
+          '<span class="lb-w-rank-txt">' + labels[rank] + '</span></div>';
+      }
+
+      function lbWinnerRow(entry, rank){
+        var crown = rank === 1 ? '<span class="lb-w-crown" aria-hidden="true">👑</span>' : '';
+        if(!entry){
+          return '<article class="lb-w-row rank-' + rank + ' lb-w-empty">' +
+            lbRankBadge(rank) +
+            '<div class="lb-w-avatar-wrap"><img src="' + LB_NURSE_IMG + '" alt="Nurse"></div>' +
+            '<div class="lb-w-info"><strong>—</strong><span class="lb-w-score">Open spot</span></div>' +
+            '<div class="lb-w-meta"><span class="lb-w-time">—</span></div></article>';
+        }
+        var secs = Math.max(0, Math.floor(entry.timeSeconds || 0));
+        return '<article class="lb-w-row rank-' + rank + '">' +
+          lbRankBadge(rank) +
+          '<div class="lb-w-avatar-wrap">' + crown +
+          '<img src="' + LB_NURSE_IMG + '" alt="Nurse avatar for ' + lbEsc(entry.name) + '"></div>' +
+          '<div class="lb-w-info"><strong>' + lbEsc(entry.name) + '</strong>' +
+          '<span class="lb-w-score">' + entry.score + '/' + entry.total + ' · ' + lbEsc(entry.unit) + '</span></div>' +
+          '<div class="lb-w-meta"><span class="lb-w-time">' + secs + 's</span></div></article>';
+      }
+
+      function renderPublicLeaderboard(){
+        const wrap = document.getElementById('publicLeaderboardWrap');
+        const store = window.ChallengeStore;
+        if(!store || !wrap) return;
+        wrap.className = 'lb-winner-ui';
+        const top = sortedLeaderboard(store);
+        const slots = [top[0] || null, top[1] || null, top[2] || null];
+
+        var boardInner =
+          '<div class="lb-w-pink">' + lbWinnerRow(slots[0], 1) + '</div>' +
+          '<div class="lb-w-cream">' +
+          lbWinnerRow(slots[1], 2) +
+          lbWinnerRow(slots[2], 3) +
+          '</div>';
+        if(!top.length){
+          boardInner += '<p class="lb-w-empty-msg">No winners yet. Complete the challenge to rank here.</p>';
+        }
+
+        wrap.innerHTML =
+          '<div style="position:relative">' +
+          '<button type="button" class="lb-w-close" data-close-leaderboard aria-label="Close">×</button>' +
+          '<header class="lb-w-hero">' +
+          '<div class="lb-w-wings"><div class="lb-w-trophy-top" aria-hidden="true">🏆</div></div>' +
+          '<h2 class="lb-w-title" id="lbModalTitle">WINNER</h2>' +
+          '<div class="lb-w-ribbon" aria-hidden="true">★ ★ ★ ★ ★</div>' +
+          '</header>' +
+          '<div class="lb-w-board">' + boardInner + '</div>' +
+          '<button type="button" class="lb-w-back" data-close-leaderboard>Back</button></div>';
+      }
+
+      function renderQuizStepDots(){
+        var box = document.getElementById('quizStepDots');
+        if(!box) return;
+        var html = '';
+        for(var i = 0; i < quiz.questions.length; i++){
+          var cls = 'quiz-step-dot';
+          if(i < quiz.index) cls += ' done';
+          else if(i === quiz.index) cls += ' current';
+          html += '<span class="' + cls + '"></span>';
+        }
+        box.innerHTML = html;
+      }
+
+      function renderQuizQuestion(){
+        const q = quiz.questions[quiz.index];
+        const total = quiz.questions.length;
+        const current = quiz.index + 1;
+        const pct = Math.round((current / total) * 100);
+        document.getElementById('quizQuestionText').textContent = q.text;
+        var qImg = document.getElementById('quizQuestionImage');
+        if(qImg){
+          if(q.image){
+            qImg.src = q.image;
+            qImg.alt = 'Question illustration';
+            qImg.hidden = false;
+          }else{
+            qImg.removeAttribute('src');
+            qImg.alt = '';
+            qImg.hidden = true;
+          }
+        }
+        document.getElementById('quizCounter').textContent = 'Question ' + current + ' of ' + total;
+        var pctEl = document.getElementById('quizProgressPct');
+        if(pctEl) pctEl.textContent = pct + '%';
+        document.getElementById('quizProgressBar').style.width = pct + '%';
+        const optsBox = document.getElementById('quizOptions');
+        optsBox.innerHTML = '';
+        q.options.forEach(function(opt, i){
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'quiz-option' + (quiz.answers[quiz.index] === i ? ' selected' : '');
+          btn.innerHTML =
+            '<span class="quiz-opt-letter" aria-hidden="true">' + String.fromCharCode(65 + i) + '</span>' +
+            '<span class="quiz-opt-text">' + lbEsc(opt) + '</span>';
+          btn.addEventListener('click', function(){
+            quiz.answers[quiz.index] = i;
+            optsBox.querySelectorAll('.quiz-option').forEach(function(b, j){
+              b.classList.toggle('selected', j === i);
+            });
+          });
+          optsBox.appendChild(btn);
+        });
+        var nextBtn = document.getElementById('quizNextBtn');
+        nextBtn.textContent = quiz.index === total - 1 ? 'Submit challenge' : 'Next question →';
+        renderQuizStepDots();
+        updateQuizSecurityNote();
+        startQuestionTimer();
+      }
+
+      function finishQuiz(){
+        clearQuizTimer();
+        let score = 0;
+        quiz.questions.forEach(function(q, i){
+          if(quiz.answers[i] === q.correctIndex) score++;
+        });
+        const timeSeconds = Math.max(1, Math.round((Date.now() - quiz.startedAt) / 1000));
+        const store = window.ChallengeStore;
+        const settings = store.getSettings();
+        const signals = Object.assign(freshQuizSignals(), quiz.signals || {});
+        const suspicious = quizSignalTotal();
+        const rejected = suspicious > 0;
+        store.saveResult({
+          id: 'res_' + Date.now(),
+          weekId: settings.weekId,
+          name: quiz.player.name,
+          staffNo: quiz.player.staffNo,
+          unit: quiz.player.unit,
+          score: score,
+          total: quiz.questions.length,
+          timeSeconds: timeSeconds,
+          completedAt: new Date().toISOString(),
+          signals: signals,
+          suspicious: suspicious,
+          rejected: rejected
+        });
+        closeOverlay(quizOverlay);
+        if(rejected) showQuizRejected(score, quiz.questions.length, timeSeconds, signals);
+        else showQuizResult(score, quiz.questions.length, timeSeconds);
+        openOverlay(resultOverlay);
+      }
+
+      function showQuizRejected(score, total, timeSeconds, signals){
+        var modal = document.getElementById('quizResultModal');
+        if(modal) modal.className = 'challenge-modal quiz-result-modal result-rejected';
+        var iconEl = document.getElementById('quizResultIcon');
+        if(iconEl) iconEl.textContent = '⛔';
+        var titleEl = document.getElementById('quizResultTitle');
+        if(titleEl) titleEl.textContent = 'Attempt Rejected';
+        var scoreEl = document.getElementById('quizResultScore');
+        if(scoreEl) scoreEl.textContent = score + ' / ' + total + ' (not counted)';
+        var msgEl = document.getElementById('quizResultText');
+        if(msgEl){
+          msgEl.textContent = 'This attempt was rejected because anti-cheating signals were detected. ' +
+            'Your score will not appear on the leaderboard. Please complete the challenge independently next time.';
+        }
+        var metaEl = document.getElementById('quizResultMeta');
+        if(metaEl){
+          metaEl.textContent = 'Signals — tabs: ' + (signals.tabSwitches||0) + ', copy: ' + (signals.copyAttempts||0) +
+            ', right-click: ' + (signals.rightClicks||0) + ', paste: ' + (signals.pasteAttempts||0);
+        }
+        var confetti = document.getElementById('quizResultConfetti');
+        if(confetti) confetti.innerHTML = '';
+      }
+
+      function launchResultConfetti(){
+        var box = document.getElementById('quizResultConfetti');
+        if(!box) return;
+        box.innerHTML = '';
+        var colors = ['#3042d8','#18a6c4','#0fb981','#ff9f43','#f5c542','#fb7185'];
+        for(var i = 0; i < 36; i++){
+          var p = document.createElement('span');
+          p.style.left = (Math.random() * 100) + '%';
+          p.style.background = colors[i % colors.length];
+          p.style.animationDelay = (Math.random() * 0.8) + 's';
+          p.style.animationDuration = (2 + Math.random() * 1.5) + 's';
+          box.appendChild(p);
+        }
+      }
+
+      function showQuizResult(score, total, timeSeconds){
+        var tier;
+        if(score >= 4 || score === total) tier = 'celebrate';
+        else if(score >= 3) tier = 'encourage';
+        else tier = 'support';
+        var modal = document.getElementById('quizResultModal');
+        if(modal){
+          modal.className = 'challenge-modal quiz-result-modal result-' + tier;
+        }
+        var titles = {
+          celebrate: 'Outstanding!',
+          encourage: 'Good effort!',
+          support: 'Keep going!'
+        };
+        var messages = {
+          celebrate: 'Brilliant work! You mastered this week\'s respiratory care challenge. Celebrate your win!',
+          encourage: 'You\'re on the right track. Review the learning points and come back stronger next week.',
+          support: 'Learning takes practice. Don\'t give up—every attempt builds your clinical confidence.'
+        };
+        var icons = { celebrate: '🎉', encourage: '💪', support: '🌱' };
+        var iconEl = document.getElementById('quizResultIcon');
+        if(iconEl) iconEl.textContent = icons[tier];
+        var titleEl = document.getElementById('quizResultTitle');
+        if(titleEl) titleEl.textContent = titles[tier];
+        var scoreEl = document.getElementById('quizResultScore');
+        if(scoreEl) scoreEl.textContent = score + ' / ' + total;
+        var msgEl = document.getElementById('quizResultText');
+        if(msgEl) msgEl.textContent = messages[tier];
+        var metaEl = document.getElementById('quizResultMeta');
+        if(metaEl){
+          metaEl.textContent = quiz.player.name + ' · ' + quiz.player.unit + ' · ' +
+            Math.floor(timeSeconds / 60) + 'm ' + (timeSeconds % 60) + 's';
+        }
+        var confetti = document.getElementById('quizResultConfetti');
+        if(confetti){
+          confetti.innerHTML = '';
+          if(tier === 'celebrate') launchResultConfetti();
+        }
+      }
+
+      if(startBtn){
+        startBtn.addEventListener('click', function(){
+          const store = window.ChallengeStore;
+          if(!store){ alert('System loading, please refresh.'); return; }
+          const settings = store.getSettings();
+          if(!settings.isActive){ alert('Challenge is currently paused by admin.'); return; }
+          const name = document.getElementById('staffName').value.trim();
+          const staffNo = document.getElementById('staffNo').value.trim();
+          const unit = document.getElementById('unitName').value.trim();
+          if(!name || !staffNo || !unit){ alert('Please fill name, staff number, and unit.'); return; }
+          const questions = store.getQuestions();
+          if(!questions.length){ alert('No active questions for this week. Admin must activate questions first.'); return; }
+          if(questions.length < 5){ alert('This week has only ' + questions.length + ' active question(s). Admin should set 5 active questions.'); }
+          const existing = store.currentWeekResults().find(function(r){
+            return String(r.staffNo) === staffNo;
+          });
+          if(existing){ alert('This staff number already completed the challenge this week.'); return; }
+          quiz = {
+            questions: questions.slice(0, 5),
+            index: 0,
+            answers: [],
+            startedAt: Date.now(),
+            player: { name:name, staffNo:staffNo, unit:unit },
+            signals: freshQuizSignals()
+          };
+          var playerLine = document.getElementById('quizPlayerLine');
+          if(playerLine) playerLine.textContent = name + ' · ' + unit + ' · Staff #' + staffNo;
+          updateQuizSecurityNote();
+          renderQuizQuestion();
+          openOverlay(quizOverlay);
+        });
+      }
+
+      document.getElementById('quizNextBtn').addEventListener('click', function(){
+        if(quiz.answers[quiz.index] == null){ alert('Please select an answer.'); return; }
+        clearQuizTimer();
+        if(quiz.index < quiz.questions.length - 1){
+          quiz.index++;
+          renderQuizQuestion();
+        }else{
+          finishQuiz();
+        }
+      });
+
+      function openLeaderboard(){
+        renderPublicLeaderboard();
+        openOverlay(lbOverlay);
+      }
+
+      if(viewLbBtn){
+        viewLbBtn.addEventListener('click', openLeaderboard);
+      }
+      var viewLbMobile = document.getElementById('viewLeaderboardBtnMobile');
+      if(viewLbMobile){
+        viewLbMobile.addEventListener('click', openLeaderboard);
+      }
+
+      document.querySelectorAll('[data-close-quiz]').forEach(function(b){
+        b.addEventListener('click', function(){ closeOverlay(quizOverlay); });
+      });
+      if(lbOverlay){
+        lbOverlay.addEventListener('click', function(e){
+          if(e.target.closest('[data-close-leaderboard]')) closeOverlay(lbOverlay);
+        });
+      }
+      document.querySelectorAll('[data-close-result]').forEach(function(b){
+        b.addEventListener('click', function(){ closeOverlay(resultOverlay); });
+      });
+
+      document.addEventListener('visibilitychange', function(){
+        if(!isQuizActive() || !document.hidden) return;
+        quiz.signals.tabSwitches++;
+        updateQuizSecurityNote();
+        staffToast('Tab switch detected. This is recorded as a security signal.');
+      });
+
+      document.addEventListener('copy', function(e){
+        if(!isQuizActive()) return;
+        e.preventDefault();
+        quiz.signals.copyAttempts++;
+        updateQuizSecurityNote();
+        staffToast('Copy is disabled during the challenge.');
+      });
+
+      document.addEventListener('cut', function(e){
+        if(!isQuizActive()) return;
+        e.preventDefault();
+        quiz.signals.copyAttempts++;
+        updateQuizSecurityNote();
+        staffToast('Cut is disabled during the challenge.');
+      });
+
+      document.addEventListener('paste', function(e){
+        if(!isQuizActive()) return;
+        e.preventDefault();
+        quiz.signals.pasteAttempts++;
+        updateQuizSecurityNote();
+        staffToast('Paste is disabled during the challenge.');
+      });
+
+      document.addEventListener('contextmenu', function(e){
+        if(!isQuizActive()) return;
+        e.preventDefault();
+        quiz.signals.rightClicks++;
+        updateQuizSecurityNote();
+        staffToast('Right-click is disabled during the challenge.');
+      });
+    })();
+
+  </script>
+
+</body>
+</html>
